@@ -220,6 +220,7 @@
                         removeFromLocalStorage(fibrwdata.num, favType);
                         layer.msg('操作完成', {icon: 0}, function () {
                         });
+                        checkFav(fibrwdata.num, favType);
                     }, function () {
                     });
 
@@ -228,11 +229,12 @@
                         add2LocalStorage("fibrwblue", fibrwdata.num, favType)
                         layer.msg('操作完成', {icon: 0}, function () {
                         });
+                        checkFav(fibrwdata.num, favType);
                     }, function () {
                     });
 
                 }
-                checkFav(fibrwdata.num, favType);
+
             }
         });
         // 自定义验证规则
