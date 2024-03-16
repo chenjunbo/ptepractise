@@ -210,7 +210,7 @@ function createFibRwPdfHtml(parmas, serNum, fibrwdata) {
     var highlight = parmas.highlight;//是否需要中文
 
     var questionDiv = document.createElement("div");
-    $(questionDiv).attr("style", "padding-left: 20px;padding-right: 20px;line-height: 30px;font-size: large");
+    $(questionDiv).attr("style", "padding-left: 20px;padding-right: 20px;line-height: 30px;font-size: large;width:90%;");
     var anserDive = document.createElement("div");
     $(anserDive).attr("class", "layui-form-item");
     var analysispre = document.createElement("pre");

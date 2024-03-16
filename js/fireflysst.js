@@ -89,6 +89,7 @@ function createFireFlySSTPdfHtml(params, serNum, fireflySSTData) {
     var num = fireflySSTData.id;
     var name = fireflySSTData.title;
     var questionDiv = document.createElement("div");
+    $(questionDiv).attr("style", "padding-left: 20px;padding-right: 20px;line-height: 30px;font-size: larger");
     var h3 = document.createElement("h3");
     h3.innerHTML = serNum + "." + "&nbsp;" + "&nbsp;" + name + "&nbsp;" + "&nbsp;题号:" + num + "<br/>" ;
     $(questionDiv).append(h3);
@@ -107,7 +108,6 @@ function createFireFlySSTPdfHtml(params, serNum, fireflySSTData) {
     }
     text = text + "<br/>"+ "<br/>";
 
-    $(questionDiv).attr("style", "padding-left: 20px;padding-right: 20px;line-height: 30px;font-size: larger");
     $(questionDiv).append(text);
     return questionDiv;
 }
