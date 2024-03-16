@@ -10,9 +10,9 @@ function fibrwInit() {
         url: "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fibrwallquestions.txt?access_token=2fd4d53480c117fa597505cebeceee9d",
         type: "GET",
         crossDomain: true, // 设置为true，则不发送Origin头部
-        success: function(response) {
+        success: function (response) {
             // 处理响应数据
-            var result=decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+            var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
             cnList = JSON.parse(result);
             // cnList = response;
             for (let i = 0; i < cnList.length; i++) {
@@ -20,7 +20,7 @@ function fibrwInit() {
                 cnMap.set(fibrwData.num, fibrwData);
             }
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             // 处理错误
         }
     });
@@ -29,9 +29,9 @@ function fibrwInit() {
         url: "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fibrwallquestionsen.txt?access_token=2fd4d53480c117fa597505cebeceee9d",
         type: "GET",
         crossDomain: true, // 设置为true，则不发送Origin头部
-        success: function(response) {
+        success: function (response) {
             // 处理响应数据
-            var result=decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+            var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
             enList = JSON.parse(result);
             //enList = response;
             for (let i = 0; i < enList.length; i++) {
@@ -39,7 +39,7 @@ function fibrwInit() {
                 enMap.set(fibrwData.num, fibrwData);
             }
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             // 处理错误
         }
     });
@@ -70,7 +70,7 @@ function fibrwInit() {
         url: "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/阅读答案.txt?access_token=2fd4d53480c117fa597505cebeceee9d",
         type: "GET",
         crossDomain: true, // 设置为true，则不发送Origin头部
-        success: function(response) {
+        success: function (response) {
             let chineseContent = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
             chineseContent.forEach((item, index) => { // 删除空项
 
@@ -83,7 +83,7 @@ function fibrwInit() {
 
             })
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             // 处理错误
         }
     });
@@ -109,6 +109,7 @@ function fibRwCurrentTypedata(param) {
     var filePath;
     index = 0;
     currentList = new Array();
+    var localstoragedata;
     switch (type) {
         case "1":
             //C哥蓝色数据
@@ -133,6 +134,13 @@ function fibRwCurrentTypedata(param) {
         case "6":
             //自定义数据
             filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/cge_fib_rw_zidingyi2.txt?access_token=2fd4d53480c117fa597505cebeceee9d"
+            break;
+        case "7":
+            var content = getFromLocalStorage("fibrwblue");
+            if (content) {
+                var json = JSON.parse(content);
+                localstoragedata = json.nums;
+            }
             break;
 
     }
@@ -161,6 +169,18 @@ function fibRwCurrentTypedata(param) {
 
         });
         $.ajaxSettings.async = true;
+    }
+    if (localstoragedata) {
+        //如果有数据
+        localstoragedata.forEach(function (qnum) {
+            var fibrwData = cnMap.get(parseInt(qnum));
+            if (!fibrwData) {
+                fibrwData = enMap.get(parseInt(qnum));
+            }
+            if (fibrwData) {
+                currentList.push(fibrwData);
+            }
+        });
     }
     console.log(currentList.length);
     // return fibrwTranslateData();
@@ -264,7 +284,7 @@ function createFibRwPdfHtml(parmas, serNum, fibrwdata) {
             text = text.replace("{{" + key + "}}", stringBuffer.toString());
         }
     })
-    $(questionDiv).append(text+"<br/>"+"<br/>");
+    $(questionDiv).append(text + "<br/>" + "<br/>");
 
 
     if (needchinese) {
@@ -280,7 +300,7 @@ function createFibRwPdfHtml(parmas, serNum, fibrwdata) {
         }
     }
 
-    var answerInText = "<span  style=\"background-color:#ecf8f2;\">"+fibrwdata.answer_in_text+"</span>";
+    var answerInText = "<span  style=\"background-color:#ecf8f2;\">" + fibrwdata.answer_in_text + "</span>";
     if (analysis) {
         var explanation_in_locale = fibrwdata.explanation_in_locale;
         if (explanation_in_locale) {
