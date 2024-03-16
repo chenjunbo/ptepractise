@@ -79,7 +79,14 @@ function fireflySSTCurrentTypedata(param) {
             }
         })
     }else{
-        sstCurrentList = sstAllDataList;
+        if (qNum) {
+            var sstData = sstMap.get(qNum+"");
+            if (sstData) {
+                sstCurrentList.push(sstData);
+            }
+        }else{
+            sstCurrentList = sstAllDataList;
+        }
     }
     //全部已经整理
     // sstCurrentList = sstAllDataList;
