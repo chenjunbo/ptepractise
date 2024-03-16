@@ -103,7 +103,7 @@
                 return false;
             },
             next: function (obj, event) {
-                var result = nextFibRwQuestion(obj, event);
+                var result = nextFibRwQuestion(obj, event,favType);
 
                 form.render();
                 return result;
@@ -154,7 +154,7 @@
                 if (!isWrong) {
                     layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
                         // layer.msg('提示框关闭后的回调');
-                        nextFibRwQuestion(obj, event);
+                        nextFibRwQuestion(obj, event,favType);
                         form.render();
                     });
                 } else {
@@ -287,7 +287,7 @@
         $("#answer-area").html(answercontent);
     }
 
-    function nextFibRwQuestion(obj, event) {
+    function nextFibRwQuestion(obj, event,favType) {
         event.preventDefault();
         if (isFibRwLast()) {
             $("#next").hide();

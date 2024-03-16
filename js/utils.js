@@ -73,7 +73,7 @@ function add2LocalStorage(key, qNum, type) {
         var json = JSON.parse(data);
         json.nums.push(qNum);
         var array = json.nums;
-        const index = array.indexOf(qNum); // 找到要删除的元素的索引
+        const index = array.indexOf(qNum+""); // 找到要删除的元素的索引
         if (index == -1) {
             json.nums.push(qNum);
         }
@@ -90,7 +90,7 @@ function removeFromLocalStorage(qNum, type) {
         var json = JSON.parse(data);
         json.nums.push(qNum);
         var array = json.nums;
-        const index = array.indexOf(qNum); // 找到要删除的元素的索引
+        const index = array.indexOf(qNum+""); // 找到要删除的元素的索引
         if (index !== -1) {
             array.splice(index, 1); // 删除题号
             json.nums = array;
