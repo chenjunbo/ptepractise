@@ -177,7 +177,7 @@
                         removeFromLocalStorage(fireFlySSTData.id, favType);
                         layer.msg('操作完成', {icon: 0}, function () {
                         });
-                        checkFav(fireFlySSTData.num, favType);
+                        checkFav(fireFlySSTData.id, favType);
                     }, function () {
                     });
 
@@ -186,7 +186,7 @@
                         add2LocalStorage("fireflysst", fireFlySSTData.id, favType)
                         layer.msg('操作完成', {icon: 0}, function () {
                         });
-                        checkFav(fireFlySSTData.num, favType);
+                        checkFav(fireFlySSTData.id, favType);
                     }, function () {
                     });
 
