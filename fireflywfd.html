@@ -160,7 +160,7 @@
                 } else {
                     setFireFlyIndex(parseInt(qIndex));
                     var fireFlydata = currentFireFlyData();
-                    if (fireFlydata) {
+                    if (!fireFlydata) {
                         layer.msg('超出题目数量范围', {icon: 0}, function () {
                         });
                     }
