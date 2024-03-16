@@ -78,6 +78,7 @@ function fireFlyTranslateData(fireFlyData) {
     for (var idx in allWords) {
         var word = allWords[idx];
         word = word.replace(" ", "");
+        word = word.replace(",", "");
         var firstLetter = word.substring(0, 1);
         var otherLetters = word.substring(1);
         var parentin = $("<div class=\"layui-input-inline\"  > </div>");
