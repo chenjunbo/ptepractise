@@ -64,47 +64,47 @@ function getAlljs() {
  * @param type 是fibrw还是fibr还是其他
  */
 function add2LocalStorage(key, qNum, type) {
-    $.localStorage.set(qNum + type, key);//根据题号保存,方便检查题目在不在
-    var data = $.localStorage.get(key);
+    window.localStorage.setItem(qNum + type, key);//根据题号保存,方便检查题目在不在
+    var data = window.localStorage.getItem(key);
     if (!data) {
         data = {"nums": [qNum]};
     } else {
         data.nums.push(qNum);
     }
-    $.localStorage.set(key, data);
+    window.localStorage.setItem(key, data);
 }
 
 function removeFromLocalStorage(qNum, type) {
     //数据保存的key
-    var key = $.localStorage.get(qNum + type);
-    var data = $.localStorage.get(key);
+    var key = window.localStorage.getItem(qNum + type);
+    var data = window.localStorage.getItem(key);
     if (data) {
         var array = data.nums;
         const index = array.indexOf(qNum); // 找到要删除的元素的索引
         if (index !== -1) {
             array.splice(index, 1); // 删除题号
             data.nums = array;
-            $.localStorage.set(key, data)
+            window.localStorage.setItem(key, data)
         }
     }
     //删除题号的映射关系
-    $.localStorage.remove(qNum + type);
+    window.localStorage.remove(qNum + type);
 }
 
 function clearLocalStorageByKey(key, type) {
-    var data = $.localStorage.get(key);
+    var data = window.localStorage.getItem(key);
     if (data) {
         var nums = data.nums;
         nums.forEach(function (qNum) {
             //删除所有的题号对应的位置
-            $.localStorage.remove(qNum + type);
+            window.localStorage.removeItem(qNum + type);
         });
     }
-    $.localStorage.remove(key);
+    window.localStorage.removeItem(key);
 }
 
 function getFromLocalStorage(key) {
-    return $.localStorage.get(key);
+    return window.localStorage.getItem(key);
 }
 
 /**
@@ -112,11 +112,11 @@ function getFromLocalStorage(key) {
  * @param qNum
  */
 function containsValue(qNum, type) {
-    return $.localStorage.get(qNum + type);
+    return window.localStorage.getItem(qNum + type);
 }
 
 function checkFav(qNum, type) {
-    var value = $.localStorage.get(qNum + type);
+    var value = window.localStorage.getItem(qNum + type);
     if (value) {
         $("#adddeletefav").val("从收藏中移除")
     }else{
