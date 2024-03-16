@@ -11,6 +11,7 @@
                 <select name="type" id="typeselection">
                     <option value="1">萤火虫SST高频</option>
                     <option value="2">萤火虫SST已整理题库</option>
+                    <option value="3">收藏夹</option>
                 </select>
             </div>
             <div class="layui-inline">
@@ -34,6 +35,7 @@
         <div class="layui-input-block" style="padding-top: 30px">
             <button class="layui-btn" id="pre" lay-header-event="pre" hidden="hidden">上一题</button>
             <button class="layui-btn" id="next" lay-header-event="next" hidden="hidden">下一题</button>
+            <button class="layui-btn" id="adddeletefav" lay-header-event="adddeletefav" hidden="hidden">添加到收藏
             </button>
             <div class="layui-inline" id="gotoarea">
                 <div class="layui-input-inline" style="width: 100px;">
@@ -54,6 +56,7 @@
         var form = layui.form;
         var util = layui.util;
         fireFlySSTInit();
+        var favType = "fireflysst";
         form.render();
         util.event('lay-header-event', {
             fireflysstsearch: function (obj, event) { // 左侧菜单事件
@@ -83,6 +86,7 @@
                 }else{
                     $("#gotoarea").show();
                 }
+                checkFav(fireFlySSTData.num, favType);
                 form.render();
                 return false;
             }
@@ -102,6 +106,7 @@
                 if (!isSSTFirst()) {
                     $("#pre").show();
                 }
+                checkFav(fireFlySSTData.num, favType);
                 form.render();
                 return false;
             },
@@ -122,6 +127,7 @@
                     $("#next").show();
                 }
                 $("#question-div").html(content);
+                checkFav(fireFlySSTData.num, favType);
                 form.render();
                 return false;
             },
@@ -152,10 +158,39 @@
                         $("#next").hide();
                     }
                     $("#question-div").html(content);
+                    checkFav(fireFlySSTData.num, favType);
                     form.render();
                     return false;
                 }
+            },
+            adddeletefav: function (obj, event) {
+                event.preventDefault();
+                var fireFlySSTData = currentSSTData();
+                if (!fireFlySSTData) {
+                    layer.msg('题目无效', {icon: 0}, function () {
+                    });
+                    return false;
+                }
+                var isContains = containsValue(fireFlySSTData.num, favType);
+                if (isContains) {
+                    layer.confirm('是否删除收藏？', {icon: 3}, function () {
+                        removeFromLocalStorage(fireFlySSTData.num, favType);
+                        layer.msg('操作完成', {icon: 0}, function () {
+                        });
+                        checkFav(fireFlySSTData.num, favType);
+                    }, function () {
+                    });
 
+                } else {
+                    layer.confirm('是否添加到收藏？', {icon: 3}, function () {
+                        add2LocalStorage("fireflysst", fireFlySSTData.num, favType)
+                        layer.msg('操作完成', {icon: 0}, function () {
+                        });
+                        checkFav(fireFlySSTData.num, favType);
+                    }, function () {
+                    });
+
+                }
 
             }
         });

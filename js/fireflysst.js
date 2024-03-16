@@ -22,6 +22,7 @@ function fireflySSTCurrentTypedata(param) {
     var filePath;
     sstIndex = 0;
     sstCurrentList = new Array();
+    var localstoragedata;
     switch (type) {
         case "1":
             //高频预测
@@ -31,6 +32,13 @@ function fireflySSTCurrentTypedata(param) {
         case "2":
             //全部已经整理
             sstCurrentList = sstAllDataList;
+            break;
+        case "3":
+            var content = getFromLocalStorage("fireflysst");
+            if (content) {
+                var json = JSON.parse(content);
+                localstoragedata = json.nums;
+            }
             break;
 
     }
@@ -56,6 +64,21 @@ function fireflySSTCurrentTypedata(param) {
 
         });
         $.ajaxSettings.async = true;
+    }else if (localstoragedata) {
+        localstoragedata.forEach((item, index) => { // 删除空项
+            if (qNum && qNum != item) {
+
+            } else {
+                if (!item) {
+                    qNums.splice(index, 1);
+                } else {
+                    var sstData = sstMap.get(item+"");
+                    if (sstData) {
+                        sstCurrentList.push(sstData);
+                    }
+                }
+            }
+        })
     }
     console.log(sstCurrentList.length);
     return sstCurrentList;
