@@ -69,9 +69,11 @@ function add2LocalStorage(key, qNum, type) {
     if (!data) {
         data = {"nums": [qNum]};
     } else {
-        data.nums.push(qNum);
+        var json = JSON.parse(data);
+        json.nums.push(qNum);
+        data = JSON.stringify(json);
     }
-    window.localStorage.setItem(key, data);
+    window.localStorage.setItem(key, JSON.stringify(data));
 }
 
 function removeFromLocalStorage(qNum, type) {
@@ -79,12 +81,14 @@ function removeFromLocalStorage(qNum, type) {
     var key = window.localStorage.getItem(qNum + type);
     var data = window.localStorage.getItem(key);
     if (data) {
-        var array = data.nums;
+        var json = JSON.parse(data);
+        json.nums.push(qNum);
+        var array = json.nums;
         const index = array.indexOf(qNum); // 找到要删除的元素的索引
         if (index !== -1) {
             array.splice(index, 1); // 删除题号
-            data.nums = array;
-            window.localStorage.setItem(key, data)
+            json.nums = array;
+            window.localStorage.setItem(key, JSON.stringify(json))
         }
     }
     //删除题号的映射关系
@@ -94,7 +98,9 @@ function removeFromLocalStorage(qNum, type) {
 function clearLocalStorageByKey(key, type) {
     var data = window.localStorage.getItem(key);
     if (data) {
-        var nums = data.nums;
+        var json = JSON.parse(data);
+        json.nums.push(qNum);
+        var nums = json.nums;
         nums.forEach(function (qNum) {
             //删除所有的题号对应的位置
             window.localStorage.removeItem(qNum + type);
@@ -118,9 +124,9 @@ function containsValue(qNum, type) {
 function checkFav(qNum, type) {
     var value = window.localStorage.getItem(qNum + type);
     if (value) {
-        $("#adddeletefav").val("从收藏中移除")
+        $("#adddeletefav").html("从收藏中移除")
     }else{
-        $("#adddeletefav").val("添加到收藏")
+        $("#adddeletefav").html("添加到收藏")
     }
 
 }
