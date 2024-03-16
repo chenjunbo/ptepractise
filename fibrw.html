@@ -1,0 +1,252 @@
+<form action="#" class="layui-form" id="search-form">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label>题号:</label>
+            <div class="layui-inline">
+                <input id="qNumInput" type="number" name="qNum" autocomplete="off" placeholder="请输入题号"
+                       class="layui-input">
+            </div>
+            类型:
+            <div class="layui-inline">
+                <select name="type" id="typeselection">
+                    <option value="1">C哥阅读下拉蓝色题目</option>
+                    <option value="2">C哥阅读下拉黄色题目</option>
+                    <option value="3">C哥阅读下拉白色题目</option>
+                    <option value="4">C哥阅读下拉全部题目</option>
+                    <option value="5">自定义题目1</option>
+                    <option value="6">自定义题目2</option>
+                </select>
+            </div>
+            <button class="layui-btn" lay-header-event="search">加载(搜索)题目</button>
+        </div>
+    </div>
+</form>
+
+
+<form class="layui-form" action="" id="question-form">
+    <div id="question-div" style="padding-left: 20px;padding-right: 20px;line-height: 30px;font-size: large"></div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block" style="padding-top: 30px">
+            <button type="submit" class="layui-btn" lay-submit lay-header-event="checkanswer" lay-filter="demo1"
+                    hidden="hidden">
+                检查答案
+            </button>
+            <button class="layui-btn" id="pre" lay-header-event="pre" hidden="hidden">上一题</button>
+            <button class="layui-btn" id="next" lay-header-event="next" hidden="hidden">下一题</button>
+            <button class="layui-btn" id="showanswer" lay-header-event="showanswer" hidden="hidden">显示/隐藏答案
+            </button>
+            <div class="layui-inline">
+                <div class="layui-input-inline" style="width: 100px;">
+                    <input type="number" id="qindex" name="price_min" placeholder="第几题" autocomplete="off"
+                           class="layui-input" min="0" step="1" lay-affix="number">
+                </div>
+                <div class="layui-input-inline" style="width: 100px;">
+                    <button class="layui-btn" id="gotoindex" lay-header-event="gotoindex">跳转</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+<div class="layui-form-item" id="chineseandanswer">
+
+<pre class="layui-code answer-area" lay-options="{}" id="answer-area" style="font-size: medium">
+</pre>
+</div>
+
+<script type="text/javascript">
+    layui.use(['table', 'layer', 'form', 'util'], function () {
+        var table = layui.table;
+        var layer = layui.layer;
+        var form = layui.form;
+        var util = layui.util;
+        fibrwInit();
+        form.render();
+        $("#chineseandanswer").hide();
+        util.event('lay-header-event', {
+            search: function (obj, event) { // 左侧菜单事件
+                //  var json = JSON.stringify($("#search-form").serializeJson())
+                // alert("aaaaa" + json)
+                event.preventDefault();
+                $("#pre").hide();
+                // var content = fibRwGetdata($("#search-form").serializeJson());
+                fibRwCurrentTypedata($("#search-form").serializeJson())
+                var fibrwdata =  currentFibRWData();
+                var content = fibrwTranslateData(fibrwdata);
+                $("#question-div").html(content);
+                fillAnswer(fibrwdata);
+                if (isFibRwLast()) {
+                    $("#next").hide();
+                } else {
+                    $("#next").show();
+                }
+                form.render();
+                return false;
+            },
+            next: function (obj, event) {
+                var result = nextFibRwQuestion(obj, event);
+                form.render();
+                return result;
+            },
+            pre: function (obj, event) {
+                event.preventDefault();
+                if (isFibRwFirst()) {
+                    $("#pre").hide();
+                    return false;
+                }
+
+                // var content = fibrwPreQuest();
+                var fibrwdata = fibrwPreQuest();
+                var content = fibrwTranslateData(fibrwdata);
+                if (isFibRwFirst()) {
+                    $("#pre").hide();
+                }
+                if (!isFibRwLast()) {
+                    $("#next").show();
+                }
+                $("#question-div").html(content);
+                fillAnswer(fibrwdata);
+                form.render();
+                return false;
+            },
+            checkanswer: function (obj, event) {
+                event.preventDefault();
+                var content = JSON.stringify($("#question-form").serializeJson());
+                var result = $("#question-form").serializeJson();
+                var isWrong = false;
+                for (var ans in result) {
+                    if (!ans||!ans.startsWith("answer")){
+                        continue;
+                    }
+                    console.log(result[ans]);
+                    var answer = result[ans];
+                    var select = $("#" + ans);
+                    console.log($(select))
+                    if (!answer||answer.startsWith("false")) {
+                        // $(allSelects[i]).addClass("layui-form-danger");
+                        $(select).removeClass();
+                        $(select).attr("class", "layui-form-danger");
+                        isWrong = true;
+                    }
+
+                }
+                if (!isWrong) {
+                    layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
+                        // layer.msg('提示框关闭后的回调');
+                        nextFibRwQuestion(obj, event);
+                        form.render();
+                    });
+                }else {
+                    layer.msg('答案不小心选错了哟!', {icon: 0}, function () {
+                        // layer.msg('提示框关闭后的回调');
+                    });
+                }
+            },
+            showanswer: function (obj, event) {
+                event.preventDefault();
+                if ($("#chineseandanswer").is(":hidden")) {
+                    $("#chineseandanswer").show();
+                } else {
+                    $("#chineseandanswer").hide();
+                }
+            },
+            gotoindex: function (obj, event) {
+                event.preventDefault();
+                var qIndex = $("#qindex").val();//想要跳转的题目
+                console.log(qIndex);
+                if (!qIndex || qIndex <= 0 || qIndex > getFibRwTotalNum) {
+
+                } else {
+                    setFibRWIndex(parseInt(qIndex));
+                    var fibrwdata = currentFibRWData();
+                    var content = fibrwTranslateData(fibrwdata);
+                    if (isFibRwFirst()) {
+                        $("#pre").hide();
+                    } else {
+                        $("#pre").show();
+                    }
+                    if (!isFibRwLast()) {
+                        $("#next").show();
+                    } else {
+                        $("#next").hide();
+                    }
+                    $("#question-div").html(content);
+                    fillAnswer(fibrwdata);
+                    form.render();
+                    return false;
+                }
+
+
+            }
+        });
+        // 自定义验证规则
+        form.verify({
+            answer: function (value) {
+
+                if (value.startsWith("false")) {
+                    return "答案不小心选错了哟";
+                }
+            }
+        });
+    })
+    $.fn.serializeJson = function () {
+        var serializeObj = {};
+        var array = this.serializeArray();
+        $.each(array, function () {
+            if (serializeObj[this.name] !== undefined) {
+                if (!serializeObj[this.name].push) {
+                    serializeObj[this.name] = [serializeObj[this.name]];
+                }
+                serializeObj[this.name].push(this.value || '');
+            } else {
+                serializeObj[this.name] = this.value || '';
+            }
+        });
+        return serializeObj;
+    };
+
+    function fillAnswer(fibrwdata) {
+        var chinese = getChinese(fibrwdata.num + "");
+        var chinesespan = $("#chinesespan");
+        if (chinesespan) {
+            chinesespan.remove();
+        }
+        if (chinese) {
+            var chinesepre = "<span id='chinesespan' style=\"font-size:20px;font-family:AaManYuShouXieTi;color:red;margin: 40px\">";
+            var chinesebiaoshipre = "<span style=\"font-size:20px;font-family:AaManYuShouXieTi;color:green;\">";
+            var sPanend = "</span>"
+            chinese = chinese.replaceAll("【", chinesebiaoshipre + "【" + sPanend)
+            chinese = chinese.replaceAll("】", chinesebiaoshipre + "】" + sPanend);
+            chinese = chinesepre + chinese + sPanend;
+            $("#chineseandanswer").prepend(chinese);
+        }
+
+        $("#chineseandanswer").hide();
+        var answerInText = fibrwdata.answer_in_text;
+        var explanation_in_locale = fibrwdata.explanation_in_locale;
+        var answercontent = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + explanation_in_locale;
+        $("#answer-area").html(answercontent);
+    }
+
+    function nextFibRwQuestion(obj, event) {
+        event.preventDefault();
+        if (isFibRwLast()) {
+            $("#next").hide();
+            return false;
+        }
+
+        var fibrwdata = fibrwNextQuest();
+        var content = fibrwTranslateData(fibrwdata);
+        if (isFibRwLast()) {
+            $("#next").hide();
+        }
+        $("#question-div").html(content);
+        fillAnswer(fibrwdata);
+        if (!isFibRwFirst()) {
+            $("#pre").show();
+        }
+
+        return false;
+    }
+</script>

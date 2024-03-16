@@ -1,0 +1,162 @@
+<form action="#" class="layui-form" id="fireflysst-form">
+    <div class="layui-form-item">
+        <label>题号:</label>
+        <div class="layui-inline">
+            <input id="qNumInput" type="number" name="qNum" autocomplete="off" placeholder="请输入题号"
+                   class="layui-input">
+        </div>
+        <div class="layui-inline">
+            题目类型:
+            <div class="layui-inline">
+                <select name="type" id="typeselection">
+                    <option value="1">萤火虫SST高频</option>
+                    <option value="2">萤火虫SST已整理题库</option>
+                </select>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="color: red">可选选项:</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="simpleanswer" title="英文简单答案" checked>
+                    <input type="checkbox" name="keyword" title="纯关键词" checked>
+                    <input type="checkbox" name="chinese" title="中文速记" checked>
+                </div>
+            </div>
+            <button class="layui-btn" lay-header-event="fireflysstsearch">加载(搜索)题目</button>
+        </div>
+    </div>
+</form>
+
+
+<form class="layui-form" action="" id="question-form">
+    <div id="question-div" style="padding-left: 20px;padding-right: 20px;line-height: 30px;font-size: large"></div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block" style="padding-top: 30px">
+            <button class="layui-btn" id="pre" lay-header-event="pre" hidden="hidden">上一题</button>
+            <button class="layui-btn" id="next" lay-header-event="next" hidden="hidden">下一题</button>
+            </button>
+            <div class="layui-inline">
+                <div class="layui-input-inline" style="width: 100px;">
+                    <input type="number" id="qindex" name="price_min" placeholder="第几题" autocomplete="off"
+                           class="layui-input" min="0" step="1" lay-affix="number">
+                </div>
+                <div class="layui-input-inline" style="width: 100px;">
+                    <button class="layui-btn" id="gotoindex" lay-header-event="gotoindex">跳转</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<script type="text/javascript">
+    layui.use(['table', 'layer', 'form', 'util'], function () {
+        var form = layui.form;
+        var util = layui.util;
+        fireFlySSTInit();
+        form.render();
+        util.event('lay-header-event', {
+            fireflysstsearch: function (obj, event) { // 左侧菜单事件
+                event.preventDefault();
+                $("#pre").hide();
+                var params = $("#fireflysst-form").serializeJson();
+                 fireflySSTCurrentTypedata(params);
+                var fireFlydata = currentSSTData();
+                var content = fireFlySSTTranslateData(fireFlydata,params);
+                $("#question-div").html(content);
+                if (isSSTLast()) {
+                    $("#next").hide();
+                } else {
+                    $("#next").show();
+                }
+                form.render();
+                return false;
+            }
+            , next: function (obj, event) {
+                event.preventDefault();
+                if (isSSTLast()) {
+                    $("#next").hide();
+                    return false;
+                }
+                var params = $("#fireflysst-form").serializeJson();
+                var fireFlydata = sstNextQuest();
+                var content = fireFlySSTTranslateData(fireFlydata,params);
+                if (isSSTLast()) {
+                    $("#next").hide();
+                }
+                $("#question-div").html(content);
+                if (!isSSTFirst()) {
+                    $("#pre").show();
+                }
+                form.render();
+                return false;
+            },
+            pre: function (obj, event) {
+                event.preventDefault();
+                if (isSSTFirst()) {
+                    $("#pre").hide();
+                    return false;
+                }
+                var params = $("#fireflysst-form").serializeJson();
+                // var content = fireFlyPreQuest();
+                var fireFlydata = sstPreQuest();
+                var content = fireFlySSTTranslateData(fireFlydata,params);
+                if (isSSTFirst()) {
+                    $("#pre").hide();
+                }
+                if (!isSSTLast()) {
+                    $("#next").show();
+                }
+                $("#question-div").html(content);
+                form.render();
+                return false;
+            },
+            gotoindex: function (obj, event) {
+                event.preventDefault();
+                var qIndex = $("#qindex").val();//想要跳转的题目
+                console.log(qIndex);
+                if (!qIndex || qIndex <= 0 || qIndex > getSSTTotalNum) {
+
+                } else {
+                    setSSTIndex(parseInt(qIndex));
+                    var fireFlydata = currentSSTData();
+                    var params = $("#fireflysst-form").serializeJson();
+                    var content = fireFlySSTTranslateData(fireFlydata,params);
+                    if (isSSTFirst()) {
+                        $("#pre").hide();
+                    } else {
+                        $("#pre").show();
+                    }
+                    if (!isSSTLast()) {
+                        $("#next").show();
+                    } else {
+                        $("#next").hide();
+                    }
+                    $("#question-div").html(content);
+                    form.render();
+                    return false;
+                }
+
+
+            }
+        });
+    })
+    $.fn.serializeJson = function () {
+        var serializeObj = {};
+        var array = this.serializeArray();
+        $.each(array, function () {
+            if (serializeObj[this.name] !== undefined) {
+                if (!serializeObj[this.name].push) {
+                    serializeObj[this.name] = [serializeObj[this.name]];
+                }
+                serializeObj[this.name].push(this.value || '');
+            } else {
+                serializeObj[this.name] = this.value || '';
+            }
+        });
+        return serializeObj;
+    };
+
+
+
+</script>

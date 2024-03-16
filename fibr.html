@@ -1,0 +1,353 @@
+<form action="#" class="layui-form" id="fibrsearch-form">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label>题号:</label>
+            <div class="layui-inline">
+                <input id="fibrqNumInput" type="number" name="qNum" autocomplete="off" placeholder="请输入题号"
+                       class="layui-input">
+            </div>
+            类型:
+            <div class="layui-inline">
+                <select name="type" id="fibrtypeselection">
+                    <option value="1">C哥阅读拖拽蓝色题目</option>
+                    <option value="2">C哥阅读拖拽黄色题目</option>
+                    <option value="3">C哥阅读拖拽白色题目</option>
+                    <option value="4">C哥阅读拖拽全部题目</option>
+                    <option value="5">自定义题目1</option>
+                    <option value="6">自定义题目2</option>
+                </select>
+            </div>
+            <button class="layui-btn" lay-header-event="fibrsearch">加载(搜索)题目</button>
+        </div>
+    </div>
+</form>
+
+
+<form class="layui-form" action="" id="fibrquestion-form">
+    <div id="fibrquestion-div" style="padding-left: 20px;padding-right: 20px; line-height: 50px;font-size: large"></div>
+
+    <div class="layui-inline" id="fibroptions" ondrop="drop1(event)" ondragover="allowDrop(event)"
+         style="border: 1px solid green;margin-top:60px;text-align:center;">
+
+    </div>
+
+    <div class="layui-form-item" style="padding-top: 30px">
+        <div class="layui-input-block">
+            <button type="submit" class="layui-btn" lay-submit lay-header-event="fibrcheckanswer" lay-filter="demo1"
+                    hidden="hidden">
+                检查答案
+            </button>
+            <button class="layui-btn" id="fibpre" lay-header-event="fibrpre" hidden="hidden">上一题</button>
+            <button class="layui-btn" id="fibnext" lay-header-event="fibrnext" hidden="hidden">下一题</button>
+            <button class="layui-btn" id="fibshowanswer" lay-header-event="fibrshowanswer" hidden="hidden">显示/隐藏答案
+            </button>
+            <div class="layui-inline">
+                <div class="layui-input-inline" style="width: 100px;">
+                    <input type="number" id="qindex" name="price_min" placeholder="第几题" autocomplete="off"
+                           class="layui-input" min="0" step="1" lay-affix="number">
+                </div>
+                <div class="layui-input-inline" style="width: 100px;">
+                    <button class="layui-btn" id="gotoindex" lay-header-event="gotoindex">跳转</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<pre class="layui-code answer-area" lay-options="{}" id="fibranswer-area" style="font-size: x-large">
+</pre>
+<script type="text/javascript">
+    layui.use(['table', 'layer', 'form', 'util'], function () {
+        var table = layui.table;
+        var layer = layui.layer;
+        var form = layui.form;
+        var util = layui.util;
+        fibrInit();
+        form.render();
+        $("#fibranswer-area").hide();
+        util.event('lay-header-event', {
+            fibrsearch: function (obj, event) { // 左侧菜单事件
+                // var json = JSON.stringify($("#fibrsearch-form").serializeJson())
+                // alert("aaaaa" + json)
+                event.preventDefault();
+                $("#pre").hide();
+                // var content = fibRwGetdata($("#search-form").serializeJson());
+                fibRCurrentTypedata($("#fibrsearch-form").serializeJson());
+                var fibrdata = currentFibRData()
+                var content = fibrTranslateData(fibrdata);
+                $("#fibrquestion-div").html(content);
+                fillAnswer(fibrdata);
+                fillOptions(fibrdata);
+                if (isFibRLast()) {
+                    $("#fibrnext").hide();
+                } else {
+                    $("#fibrnext").show();
+                }
+                form.render();
+                return false;
+            }, fibrnext: function (obj, event) {
+                var result = nextFibRQuestion(obj, event);
+                form.render();
+                return result;
+            },
+            fibrpre: function (obj, event) {
+                event.preventDefault();
+                if (isFibRFirst()) {
+                    $("#fibrpre").hide();
+                    return false;
+                }
+
+                // var content = fibrwPreQuest();
+                var fibrdata = fibrPreQuest();
+                var content = fibrTranslateData(fibrdata);
+                if (isFibRFirst()) {
+                    $("#fibrpre").hide();
+                }
+                if (!isFibRLast()) {
+                    $("#fibrnext").show();
+                }
+                $("#fibrquestion-div").html(content);
+                fillAnswer(fibrdata);
+                fillOptions(fibrdata);
+                form.render();
+                return false;
+            },
+            fibrcheckanswer: function (obj, event, form) {
+                event.preventDefault();
+                var allInputs = $("input[name='answeroptions'][id]");
+                // console.log(allInputs.length)
+                var isWrong = false;
+                if (!allInputs || allInputs.length == 0) {
+                    isWrong = true;
+                }
+                allInputs.each(function (index, currentInput) {
+                    var id = $(currentInput).attr("id");
+                    if (id && id.startsWith("option") && (id.endsWith("-"))) {
+                        var val = $(currentInput).val();
+                        var realanswer = $(currentInput).attr("realanswer");
+                        if (val != realanswer) {
+                            var attr = $(currentInput).attr("style");
+                            attr = "border: 1px solid red;" + attr;
+                            $(currentInput).attr("style", attr);
+                            isWrong = true;
+                        }
+                    }
+                });
+                if (!isWrong) {
+                    layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
+                        // layer.msg('提示框关闭后的回调');
+                        nextFibRQuestion(obj, event);
+                        form.render();
+                    });
+                } else {
+                    layer.msg('答案不小心选错了哟!', {icon: 0}, function () {
+                        // layer.msg('提示框关闭后的回调');
+                    });
+                }
+            },
+            fibrshowanswer: function (obj, event) {
+                event.preventDefault();
+                if ($("#fibranswer-area").is(":hidden")) {
+                    $("#fibranswer-area").show();
+                } else {
+                    $("#fibranswer-area").hide();
+                }
+            },
+            gotoindex: function (obj, event) {
+                event.preventDefault();
+                var qIndex = $("#qindex").val();//想要跳转的题目
+                console.log(qIndex);
+                if (!qIndex || qIndex <= 0 || qIndex > getFibRTotalNum()) {
+
+                } else {
+                    setFibRIndex(parseInt(qIndex));
+                    var fibrdata = currentFibRData();
+                    var content = fibrTranslateData(fibrdata);
+                    if (isFibRFirst()) {
+                        $("#fibrpre").hide();
+                    } else {
+                        $("#fibrpre").show();
+                    }
+                    if (!isFibRLast()) {
+                        $("#fibrnext").show();
+                    } else {
+                        $("#fibrnext").hide();
+                    }
+                    $("#fibrquestion-div").html(content);
+                    fillAnswer(fibrdata);
+                    fillOptions(fibrdata);
+                    form.render();
+                    return false;
+                }
+
+
+            }
+        });
+        // 自定义验证规则
+        form.verify({
+            answer: function (value, obj) {
+                if (!value) {
+                    var attr = $(obj).attr("style");
+                    attr = "border: 1px solid red;" + attr;
+                    $(obj).attr("style", attr);
+                    return "必填项不能为空";
+                }
+            }
+        });
+    })
+    $.fn.serializeJson = function () {
+        var serializeObj = {};
+        var array = this.serializeArray();
+        $.each(array, function () {
+            if (serializeObj[this.name] !== undefined) {
+                if (!serializeObj[this.name].push) {
+                    serializeObj[this.name] = [serializeObj[this.name]];
+                }
+                serializeObj[this.name].push(this.value || '');
+            } else {
+                serializeObj[this.name] = this.value || '';
+            }
+        });
+        return serializeObj;
+    };
+
+    function fillOptions(fibrData) {
+        console.log(fibrData);
+        $("#fibroptions").children().remove();
+        var options = fibrData.choices;
+        for (var key in options) {
+            var option = options[key];
+            var choice = option.choice;
+            var id = option.id;
+            var textId = "option" + id + choice
+            //var optionInput="<div class=\"layui-inline\" id=\""+textId+"\" style=\"font-size: 20px;margin: 10px\" draggable=\"true\" ondragstart=\"drag(event)\"></div>"
+            var div = document.createElement("div");
+            $(div).attr("class", "layui-inline");
+            $(div).attr("display", "inline-block");
+            $(div).attr("id", textId);
+            $(div).attr("style", "font-size: large ;margin: 10px;border:1px solid blue")
+            $(div).attr("draggable", "true")
+            $(div).attr("ondragstart", "drag(event)")
+            // $(div).html(choice);
+            // var div = $("<div class=\"layui-input-inline\"  id=" + divid + "> </div>");
+            var input = "<input  type=\"text\" style='text-align:center' disabled autocomplete=\"off\" lay-verify=\"required|answer\" class=\"layui-input\" name='answeroptions' value=" + choice + ">";
+            // $(input).attr("name", "answeroptions");
+            // $(input).val(choice);
+            $(div).append(input);
+            $("#fibroptions").append(div);
+        }
+
+    }
+
+    function fillAnswer(fibrdata) {
+        $("#fibranswer-area").hide();
+        var answerInText = fibrdata.answer_in_text;
+        $("#fibranswer-area").html(answerInText);
+    }
+
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("Text", ev.target.id);
+    }
+
+    /**
+     * 题目中的区域
+     * @param ev
+     */
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("Text");
+        console.log(data);
+        var target = ev.target;
+        var id = target.id;
+        //移除未填写的答案的红框,不管有没有
+        $(target).attr("style", "text-align:center");
+        console.log(id)
+        var newData = $("#" + data).children("input").val();
+        if (data.endsWith("-")) {
+            //代表是从内容中其它位置移动过来的
+            //获取到移动过来的数据
+            var value = $("#" + data).val();
+            newData = value;
+            //清除原先位置的数据
+            $("#" + data).val("");
+            //设置到新的位置
+            //  $(target).val(value);
+            //移除之前的位置的id
+            $("#" + data).removeAttr("id");
+            //把id设置给新的位置
+            //  $(target).attr("id", data);
+            data = data.substring(0, data.length - 1);
+            // return;
+        }
+        //将要放的新内容
+        console.log(newData);
+        if (id.startsWith("option")) {
+            // //代表往一个答案里放答案
+            // //先找到父亲,把自己移除
+            // var parent = $(target).parent();
+            // //加回到选项区
+            // $("#fibroptions").append(target);
+            // parent.append(document.getElementById(data));
+            //根据当前id找到之前的input
+            var newid = id.substring(0, id.length - 1);
+            console.log(newid);
+            //将现在的数据放回去
+            var currentValue = $("#" + id).val;
+            $("#" + newid).show();
+            //设置新数据
+        }
+        $(target).attr("id", data + "-");
+        $(target).val(newData)
+        $("#" + data).hide();
+    }
+
+    /**
+     * 所有选项区域
+     * @param ev
+     */
+    function drop1(ev) {
+        ev.preventDefault();
+        //往回拖的答案
+        var dataTransfer = ev.dataTransfer;
+        var data = dataTransfer.getData("Text");
+        console.log(data);
+        //如果有id说明是有内容
+        if (data && data.startsWith("option")) {
+            //获取到需要显示的选项的id
+            var newid = data.substring(0, data.length - 1);
+            //显示
+            $("#" + newid).show();
+            //移除自己的id
+            $("#" + data).val("");//清除内容
+            $("#" + data).removeAttr("id");
+        }
+        //如果没有id则不动
+    }
+
+    function nextFibRQuestion(obj, event) {
+        event.preventDefault();
+        if (isFibRLast()) {
+            $("#fibrnext").hide();
+            return false;
+        }
+
+        var fibrdata = fibrNextQuest();
+        var content = fibrTranslateData(fibrdata);
+        if (isFibRLast()) {
+            $("#fibrnext").hide();
+        }
+        $("#fibrquestion-div").html(content);
+        fillAnswer(fibrdata);
+        fillOptions(fibrdata);
+        if (!isFibRFirst()) {
+            $("#fibrpre").show();
+        }
+
+        return false;
+    }
+</script>
