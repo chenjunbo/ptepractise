@@ -37,11 +37,11 @@
                     hidden="hidden">
                 检查答案
             </button>
-            <button class="layui-btn" id="fibpre" lay-header-event="fibrpre" hidden="hidden">上一题</button>
-            <button class="layui-btn" id="fibnext" lay-header-event="fibrnext" hidden="hidden">下一题</button>
-            <button class="layui-btn" id="fibshowanswer" lay-header-event="fibrshowanswer" hidden="hidden">显示/隐藏答案
+            <button class="layui-btn" id="fibrpre" lay-header-event="fibrpre" hidden="hidden">上一题</button>
+            <button class="layui-btn" id="fibrnext" lay-header-event="fibrnext" hidden="hidden">下一题</button>
+            <button class="layui-btn" id="fibrshowanswer" lay-header-event="fibrshowanswer" hidden="hidden">显示/隐藏答案
             </button>
-            <div class="layui-inline" is="gotoarea">
+            <div class="layui-inline" id="gotoarea">
                 <div class="layui-input-inline" style="width: 100px;">
                     <input type="number" id="qindex" name="price_min" placeholder="第几题" autocomplete="off"
                            class="layui-input" min="0" step="1" lay-affix="number">
@@ -71,7 +71,7 @@
                 // var json = JSON.stringify($("#fibrsearch-form").serializeJson())
                 // alert("aaaaa" + json)
                 event.preventDefault();
-                $("#pre").hide();
+                $("#fibrpre").hide();
                 // var content = fibRwGetdata($("#search-form").serializeJson());
                 fibRCurrentTypedata($("#fibrsearch-form").serializeJson());
                 var fibrdata = currentFibRData()
