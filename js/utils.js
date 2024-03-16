@@ -45,6 +45,29 @@ function createMenu() {
         str += '</li>'
     })
     $("#left-menu").html(str);
+
+
+    // 字体文件的URL
+    const fontURL = 'https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/font%2FAaManYuShouXieTi3.ttf?access_token=2fd4d53480c117fa597505cebeceee9d';
+
+// 创建一个新的FontFace对象
+    const fontFace = new FontFace('AaManYuShouXieTi', `url(${fontURL})`, {
+        weight: 'normal',
+        style: 'normal',
+        // 其他字体属性
+    });
+
+// 加载字体
+    fontFace.load().then(() => {
+        // 字体加载成功后，将其安装到FontFaceSet中
+        document.fonts.add(fontFace);
+        // 然后可以设置元素的字体
+        document.body.style.fontFamily = 'AaManYuShouXieTi';
+    }).catch(error => {
+        // 字体加载失败的处理
+        console.error('Font loading failed:', error);
+    });
+
 }
 
 function getAlljs() {
