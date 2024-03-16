@@ -61,8 +61,6 @@ function createMenu() {
     fontFace.load().then(() => {
         // 字体加载成功后，将其安装到FontFaceSet中
         document.fonts.add(fontFace);
-        // 然后可以设置元素的字体
-        document.body.style.fontFamily = 'AaManYuShouXieTi';
     }).catch(error => {
         // 字体加载失败的处理
         console.error('Font loading failed:', error);
