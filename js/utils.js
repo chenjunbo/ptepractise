@@ -74,7 +74,9 @@ function add2LocalStorage(key, qNum, type) {
     $.localStorage.set(key, data);
 }
 
-function removeFromLocalStorage(key, qNum, type) {
+function removeFromLocalStorage(qNum, type) {
+    //数据保存的key
+    var key = $.localStorage.get(qNum + type);
     var data = $.localStorage.get(key);
     if (data) {
         var array = data.nums;
@@ -111,4 +113,14 @@ function getFromLocalStorage(key) {
  */
 function containsValue(qNum, type) {
     return $.localStorage.get(qNum + type);
+}
+
+function checkFav(qNum, type) {
+    var value = $.localStorage.get(qNum + type);
+    if (value) {
+        $("#adddeletefav").val("从收藏中移除")
+    }else{
+        $("#adddeletefav").val("添加到收藏")
+    }
+
 }
