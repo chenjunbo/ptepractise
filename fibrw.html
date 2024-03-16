@@ -218,12 +218,16 @@
                 if (isContains) {
                     layer.confirm('是否删除收藏？', {icon: 3}, function () {
                         removeFromLocalStorage(fibrwdata.num, favType);
+                        layer.msg('操作完成', {icon: 0}, function () {
+                        });
                     }, function () {
                     });
 
                 } else {
                     layer.confirm('是否添加到收藏？', {icon: 3}, function () {
                         add2LocalStorage("fibrwblue", fibrwdata.num, favType)
+                        layer.msg('操作完成', {icon: 0}, function () {
+                        });
                     }, function () {
                     });
 
