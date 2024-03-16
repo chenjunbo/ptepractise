@@ -71,7 +71,6 @@ function add2LocalStorage(key, qNum, type) {
         data = JSON.stringify(data);
     } else {
         var json = JSON.parse(data);
-        json.nums.push(qNum);
         var array = json.nums;
         const index = array.indexOf(qNum); // 找到要删除的元素的索引
         if (index == -1) {
