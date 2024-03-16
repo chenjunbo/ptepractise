@@ -26,13 +26,13 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+            <ul class="layui-nav layui-nav-tree" lay-filter="test" id="left-menu">
 
-                <li class="layui-nav-item"><a href="javascript:;" onclick="openRight('https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibrw.html?access_token=2fd4d53480c117fa597505cebeceee9d')">FIB-RW阅读下拉</a></li>
-                <li class="layui-nav-item"><a href="javascript:;" onclick="openRight('https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibr.html?access_token=2fd4d53480c117fa597505cebeceee9d')">FIB-R阅读拖拽</a></li>
-                <li class="layui-nav-item"><a href="javascript:;" onclick="openRight('https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflywfd.html?access_token=2fd4d53480c117fa597505cebeceee9d')">WFD</a></li>
-                <li class="layui-nav-item"><a href="javascript:;" onclick="openRight('https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflysst.html?access_token=2fd4d53480c117fa597505cebeceee9d')">SST</a></li>
-                <li class="layui-nav-item"><a href="javascript:;" onclick="openRight('https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/createpdf.html?access_token=2fd4d53480c117fa597505cebeceee9d')">生成PDF</a></li>
+<!--                <li class="layui-nav-item"><a href="javascript:;" onclick="openRight('https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibrw.html?access_token=2fd4d53480c117fa597505cebeceee9d')">FIB-RW阅读下拉</a></li>-->
+<!--                <li class="layui-nav-item"><a href="javascript:;" onclick="openRight('https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibr.html?access_token=2fd4d53480c117fa597505cebeceee9d')">FIB-R阅读拖拽</a></li>-->
+<!--                <li class="layui-nav-item"><a href="javascript:;" onclick="openRight('https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflywfd.html?access_token=2fd4d53480c117fa597505cebeceee9d')">WFD</a></li>-->
+<!--                <li class="layui-nav-item"><a href="javascript:;" onclick="openRight('https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflysst.html?access_token=2fd4d53480c117fa597505cebeceee9d')">SST</a></li>-->
+<!--                <li class="layui-nav-item"><a href="javascript:;" onclick="openRight('https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/createpdf.html?access_token=2fd4d53480c117fa597505cebeceee9d')">生成PDF</a></li>-->
             </ul>
         </div>
     </div>
@@ -53,7 +53,7 @@
         var util = layui.util;
         $ = layui.$;
     });
-
+    createMenu();
     function openRight(url) {
         $.ajax({
             type:"get",
