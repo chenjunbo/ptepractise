@@ -15,7 +15,7 @@ function createMenu() {
         {"menuName":"FIB-RW阅读下拉","url":"https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibrw.html?access_token=2fd4d53480c117fa597505cebeceee9d"},
         {"menuName":"FIB-R阅读拖拽","url":"https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibr.html?access_token=2fd4d53480c117fa597505cebeceee9d"},
         {"menuName":"WFD","url":"https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflywfd.html?access_token=2fd4d53480c117fa597505cebeceee9d"},
-        {"menuName":"SST","url":"https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflysst.html?access_token=2fd4d53480c117fa597505cebeceee9d"},
+        // {"menuName":"SST","url":"https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflysst.html?access_token=2fd4d53480c117fa597505cebeceee9d"},
         {"menuName":"生成PDF","url":"https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/createpdf.html?access_token=2fd4d53480c117fa597505cebeceee9d"}
 
     ]
