@@ -73,7 +73,7 @@ function add2LocalStorage(key, qNum, type) {
         json.nums.push(qNum);
         data = JSON.stringify(json);
     }
-    window.localStorage.setItem(key, JSON.stringify(data));
+    window.localStorage.setItem(key, data);
 }
 
 function removeFromLocalStorage(qNum, type) {
