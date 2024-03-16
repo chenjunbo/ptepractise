@@ -8,6 +8,7 @@
                     <option value="2">C哥阅读下拉黄色题目</option>
                     <option value="3">C哥阅读下拉白色题目</option>
                     <option value="4">C哥阅读下拉全部题目</option>
+                    <option value="7">阅读下拉收藏夹</option>
 <!--                    <option value="5">自定义阅读下拉题目1</option>-->
 <!--                    <option value="6">自定义阅读下拉题目2</option>-->
                 </select>
@@ -39,6 +40,7 @@
                     <option value="2">C哥阅读拖拽黄色题目</option>
                     <option value="3">C哥阅读拖拽白色题目</option>
                     <option value="4">C哥阅读拖拽全部题目</option>
+                    <option value="7">阅读拖拽收藏夹</option>
 <!--                    <option value="5">自定义阅读拖拽题目1</option>-->
 <!--                    <option value="6">自定义阅读拖拽题目2</option>-->
                 </select>
@@ -66,6 +68,7 @@
                 <select name="type" >
                     <option value="1">萤火虫SST高频</option>
                     <option value="2">萤火虫SST已整理题库</option>
+                    <option value="3">SST收藏夹</option>
                 </select>
             </div>
             <div class="layui-inline">
@@ -138,6 +141,9 @@
                     case "6":
                         name = "自定义阅读下拉题目2";
                         break;
+                    case "7":
+                        name = "阅读下拉收藏夹";
+                        break;
 
                 }
                 head.innerHTML = "<meta charset=\"utf-8\">\n" +
@@ -208,6 +214,9 @@
                     case "6":
                         name = "自定义阅读拖拽题目2";
                         break;
+                    case "7":
+                        name = "阅读拖拽收藏夹";
+                        break;
 
                 }
                 head.innerHTML = "<meta charset=\"utf-8\">\n" +
@@ -265,6 +274,9 @@
 
                     case "2":
                         name = "萤火虫SST已整理预测";
+                        break;
+                    case "3":
+                        name = "萤火虫SST收藏夹";
                         break;
                 }
                 head.innerHTML = "<meta charset=\"utf-8\">\n" +
