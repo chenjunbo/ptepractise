@@ -93,7 +93,7 @@ function removeFromLocalStorage(qNum, type) {
         }
     }
     //删除题号的映射关系
-    window.localStorage.remove(qNum + type);
+    window.localStorage.removeItem(qNum + type);
 }
 
 function clearLocalStorageByKey(key, type) {
