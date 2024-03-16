@@ -71,8 +71,8 @@ function add2LocalStorage(key, qNum, type) {
     } else {
         var json = JSON.parse(data);
         json.nums.push(qNum);
-        data = JSON.stringify(json);
     }
+    data = JSON.stringify(json);
     window.localStorage.setItem(key, data);
 }
 
