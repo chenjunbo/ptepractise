@@ -116,7 +116,8 @@ function clearLocalStorageByKey(key, type) {
 }
 
 function getFromLocalStorage(key) {
-    return window.localStorage.getItem(key);
+    var value = window.localStorage.getItem(key);
+    return value;
 }
 
 /**
