@@ -169,16 +169,23 @@ function fibRwCurrentTypedata(param) {
 
         });
         $.ajaxSettings.async = true;
-    }
-    if (localstoragedata) {
+    } else if (localstoragedata) {
         //如果有数据
-        localstoragedata.forEach(function (qnum) {
-            var fibrwData = cnMap.get(parseInt(qnum));
-            if (!fibrwData) {
-                fibrwData = enMap.get(parseInt(qnum));
-            }
-            if (fibrwData) {
-                currentList.push(fibrwData);
+        localstoragedata.forEach(function (item) {
+            if (qNum && qNum != item) {
+
+            } else {
+                if (!item) {
+                    qNums.splice(index, 1);
+                } else {
+                    var fibrwData = cnMap.get(parseInt(item));
+                    if (!fibrwData) {
+                        fibrwData = enMap.get(parseInt(item));
+                    }
+                    if (fibrwData) {
+                        currentList.push(fibrwData);
+                    }
+                }
             }
         });
     }
