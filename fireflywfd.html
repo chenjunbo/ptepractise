@@ -125,7 +125,7 @@
                         console.log(val + "---->" + realanswer);
                         if (val.toLowerCase().trim() != realanswer.toLowerCase().trim()) {
                             var attr = $(currentInput).attr("style");
-                            attr = "border: 1px solid red;" + attr;
+                            attr = "border: 3px solid red;" + attr;
                             $(currentInput).attr("style", attr);
                             isWrong = true;
                         }else{
