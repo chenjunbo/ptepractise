@@ -19,7 +19,7 @@ function createMenu() {
         {"menuName":"生成PDF","url":"https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/createpdf.html?access_token=2fd4d53480c117fa597505cebeceee9d"}
 
     ]
-
+    var str = "";
     allPages.forEach(function (obj) {
         str += '<li class="layui-nav-item layui-nav-itemed">';
         //拼接每一个地址
