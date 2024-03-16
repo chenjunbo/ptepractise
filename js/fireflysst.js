@@ -30,8 +30,7 @@ function fireflySSTCurrentTypedata(param) {
             filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fireflysstprediction.txt?access_token=2fd4d53480c117fa597505cebeceee9d"
             break;
         case "2":
-            //全部已经整理
-            sstCurrentList = sstAllDataList;
+
             break;
         case "3":
             var content = getFromLocalStorage("fireflysst");
@@ -79,7 +78,11 @@ function fireflySSTCurrentTypedata(param) {
                 }
             }
         })
+    }else{
+        sstCurrentList = sstAllDataList;
     }
+    //全部已经整理
+    // sstCurrentList = sstAllDataList;
     console.log(sstCurrentList.length);
     return sstCurrentList;
 

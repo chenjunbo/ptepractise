@@ -24,11 +24,11 @@ function fireFlyGetdata(param) {
     fireFlyCurrentList = new Array();
     switch (type) {
         case "1":
-            fireFlyCurrentList = fireFlyList;
             if (qNum) {
                 fireFlyCurrentList.push(fireFlyMap.get(qNum + ""));
                 return fireFlyCurrentList[0];
             }
+            fireFlyCurrentList = fireFlyList;
             break;
         case "2":
             var content = getFromLocalStorage("fireflywfd");
