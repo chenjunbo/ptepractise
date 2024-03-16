@@ -70,7 +70,7 @@ function fireflySSTCurrentTypedata(param) {
 
             } else {
                 if (!item) {
-                    qNums.splice(index, 1);
+                    localstoragedata.splice(index, 1);
                 } else {
                     var sstData = sstMap.get(item+"");
                     if (sstData) {

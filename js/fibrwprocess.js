@@ -176,7 +176,7 @@ function fibRwCurrentTypedata(param) {
 
             } else {
                 if (!item) {
-                    qNums.splice(index, 1);
+                    localstoragedata.splice(index, 1);
                 } else {
                     var fibrwData = cnMap.get(parseInt(item));
                     if (!fibrwData) {

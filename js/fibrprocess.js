@@ -99,7 +99,7 @@ function fibRCurrentTypedata(param) {
 
             } else {
                 if (!item) {
-                    qNums.splice(fibrIndex, 1);
+                    localstoragedata.splice(fibrIndex, 1);
                 } else {
                     var fibrData = fibrCnMap.get(parseInt(item));
                     if (!fibrData) {
