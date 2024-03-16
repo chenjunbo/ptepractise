@@ -68,11 +68,12 @@ function add2LocalStorage(key, qNum, type) {
     var data = window.localStorage.getItem(key);
     if (!data) {
         data = {"nums": [qNum]};
+        data = JSON.stringify(data);
     } else {
         var json = JSON.parse(data);
         json.nums.push(qNum);
+        data = JSON.stringify(json);
     }
-    data = JSON.stringify(json);
     window.localStorage.setItem(key, data);
 }
 
