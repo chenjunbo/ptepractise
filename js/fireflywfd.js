@@ -48,7 +48,7 @@ function fireFlyGetdata(param) {
                 if (!item) {
                     qNums.splice(index, 1);
                 } else {
-                    var fibrwData = fireFlyMap.get(parseInt(item));
+                    var fibrwData = fireFlyMap.get(item+"");
                     if (fibrwData) {
                         fireFlyCurrentList.push(fibrwData);
                     }
