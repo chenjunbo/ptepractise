@@ -72,6 +72,11 @@ function add2LocalStorage(key, qNum, type) {
     } else {
         var json = JSON.parse(data);
         json.nums.push(qNum);
+        var array = json.nums;
+        const index = array.indexOf(qNum); // 找到要删除的元素的索引
+        if (index == -1) {
+            json.nums.push(qNum);
+        }
         data = JSON.stringify(json);
     }
     window.localStorage.setItem(key, data);
@@ -126,7 +131,7 @@ function checkFav(qNum, type) {
     var value = window.localStorage.getItem(qNum + type);
     if (value) {
         $("#adddeletefav").html("从收藏中移除")
-    }else{
+    } else {
         $("#adddeletefav").html("添加到收藏")
     }
 
