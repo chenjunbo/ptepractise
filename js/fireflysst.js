@@ -107,7 +107,7 @@ function createFireFlySSTPdfHtml(params, serNum, fireflySSTData) {
     }
     text = text + "<br/>"+ "<br/>";
 
-    $(questionDiv).attr("style", "padding-left: 20px;padding-right: 20px;line-height: 30px;font-size: large");
+    $(questionDiv).attr("style", "padding-left: 20px;padding-right: 20px;line-height: 30px;font-size: larger");
     $(questionDiv).append(text);
     return questionDiv;
 }

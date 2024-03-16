@@ -168,6 +168,10 @@
                 } else {
                     setFibRIndex(parseInt(qIndex));
                     var fibrdata = currentFibRData();
+                    if (!fibrdata) {
+                        layer.msg('超出题目数量范围', {icon: 0}, function () {
+                        });
+                    }
                     var content = fibrTranslateData(fibrdata);
                     if (isFibRFirst()) {
                         $("#fibrpre").hide();
