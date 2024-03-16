@@ -60,7 +60,7 @@ function fibRCurrentTypedata(param) {
             filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/cge_fib_r_zidingyi2.txt?access_token=2fd4d53480c117fa597505cebeceee9d"
             break;
         case "7":
-            var content = getFromLocalStorage("fibrwblue");
+            var content = getFromLocalStorage("fibrblue");
             if (content) {
                 var json = JSON.parse(content);
                 localstoragedata = json.nums;
