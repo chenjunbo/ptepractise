@@ -287,7 +287,7 @@
             $(div).attr("ondragstart", "drag(event)")
             // $(div).html(choice);
             // var div = $("<div class=\"layui-input-inline\"  id=" + divid + "> </div>");
-            var input = "<input  type=\"text\" style='text-align:center' disabled autocomplete=\"off\" lay-verify=\"required|answer\" class=\"layui-input\" name='answeroptions' value=" + choice + ">";
+            var input = "<input  type=\"text\" style='text-align:center' disabled autocomplete=\"off\" lay-verify=\"required|answer\" class=\"layui-input\" name='answeroptions' value=" + choice.replaceAll(" ","&nbsp;") + ">";
             // $(input).attr("name", "answeroptions");
             // $(input).val(choice);
             $(div).append(input);
