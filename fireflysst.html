@@ -64,8 +64,8 @@
                 $("#pre").hide();
                 var params = $("#fireflysst-form").serializeJson();
                  fireflySSTCurrentTypedata(params);
-                var fireFlydata = currentSSTData();
-                if (!fireFlydata) {
+                var fireFlySSTData = currentSSTData();
+                if (!fireFlySSTData) {
                     $("#question-form").hide();
                     layer.msg('当前分类下不存在该题目', {icon: 0}, function () {
                         // layer.msg('提示框关闭后的回调');
@@ -74,7 +74,7 @@
                 }else{
                     $("#question-form").show();
                 }
-                var content = fireFlySSTTranslateData(fireFlydata,params);
+                var content = fireFlySSTTranslateData(fireFlySSTData,params);
                 $("#question-div").html(content);
                 if (isSSTLast()) {
                     $("#next").hide();
@@ -86,7 +86,7 @@
                 }else{
                     $("#gotoarea").show();
                 }
-                checkFav(fireFlydata.num, favType);
+                checkFav(fireFlySSTData.id, favType);
                 form.render();
                 return false;
             }
@@ -97,8 +97,8 @@
                     return false;
                 }
                 var params = $("#fireflysst-form").serializeJson();
-                var fireFlydata = sstNextQuest();
-                var content = fireFlySSTTranslateData(fireFlydata,params);
+                var fireFlySSTData = sstNextQuest();
+                var content = fireFlySSTTranslateData(fireFlySSTData,params);
                 if (isSSTLast()) {
                     $("#next").hide();
                 }
@@ -106,7 +106,7 @@
                 if (!isSSTFirst()) {
                     $("#pre").show();
                 }
-                checkFav(fireFlydata.num, favType);
+                checkFav(fireFlySSTData.num, favType);
                 form.render();
                 return false;
             },
@@ -118,8 +118,8 @@
                 }
                 var params = $("#fireflysst-form").serializeJson();
                 // var content = fireFlyPreQuest();
-                var fireFlydata = sstPreQuest();
-                var content = fireFlySSTTranslateData(fireFlydata,params);
+                var fireFlySSTData = sstPreQuest();
+                var content = fireFlySSTTranslateData(fireFlySSTData,params);
                 if (isSSTFirst()) {
                     $("#pre").hide();
                 }
@@ -127,7 +127,7 @@
                     $("#next").show();
                 }
                 $("#question-div").html(content);
-                checkFav(fireFlydata.num, favType);
+                checkFav(fireFlySSTData.id, favType);
                 form.render();
                 return false;
             },
@@ -139,14 +139,14 @@
 
                 } else {
                     setSSTIndex(parseInt(qIndex));
-                    var fireFlydata = currentSSTData();
-                    if (!fireFlydata) {
+                    var fireFlySSTData = currentSSTData();
+                    if (!fireFlySSTData) {
                         layer.msg('超出题目数量范围', {icon: 0}, function () {
                         });
                         return false;
                     }
                     var params = $("#fireflysst-form").serializeJson();
-                    var content = fireFlySSTTranslateData(fireFlydata,params);
+                    var content = fireFlySSTTranslateData(fireFlySSTData,params);
                     if (isSSTFirst()) {
                         $("#pre").hide();
                     } else {
@@ -158,7 +158,7 @@
                         $("#next").hide();
                     }
                     $("#question-div").html(content);
-                    checkFav(fireFlydata.num, favType);
+                    checkFav(fireFlySSTData.id, favType);
                     form.render();
                     return false;
                 }
@@ -174,7 +174,7 @@
                 var isContains = containsValue(fireFlySSTData.num, favType);
                 if (isContains) {
                     layer.confirm('是否删除收藏？', {icon: 3}, function () {
-                        removeFromLocalStorage(fireFlySSTData.num, favType);
+                        removeFromLocalStorage(fireFlySSTData.id, favType);
                         layer.msg('操作完成', {icon: 0}, function () {
                         });
                         checkFav(fireFlySSTData.num, favType);
@@ -183,7 +183,7 @@
 
                 } else {
                     layer.confirm('是否添加到收藏？', {icon: 3}, function () {
-                        add2LocalStorage("fireflysst", fireFlySSTData.num, favType)
+                        add2LocalStorage("fireflysst", fireFlySSTData.id, favType)
                         layer.msg('操作完成', {icon: 0}, function () {
                         });
                         checkFav(fireFlySSTData.num, favType);
