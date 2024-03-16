@@ -7,7 +7,7 @@ function fireFlyInit() {
     $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fireflywfd.txt?access_token=2fd4d53480c117fa597505cebeceee9d", function (response) {
         //fireFlyList = JSON.parse(response);
         // fireFlyList = response;
-        var result=decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
         fireFlyList = JSON.parse(result);
         for (let i = 0; i < fireFlyList.length; i++) {
             var fireFlyData = fireFlyList[i];
@@ -18,14 +18,48 @@ function fireFlyInit() {
 
 function fireFlyGetdata(param) {
     var qNum = param.qNum;//题号
+    var type = param.type;//类型
+    var localstoragedata;
     fireFlyIndex = 0;
-    if (qNum) {
-        fireFlyCurrentList = new Array();
-        fireFlyCurrentList.push(fireFlyMap.get(qNum + ""))
+    fireFlyCurrentList = new Array();
+    switch (type) {
+        case "1":
+            fireFlyCurrentList = fireFlyList;
+            if (qNum) {
+                fireFlyCurrentList.push(fireFlyMap.get(qNum + ""));
+                return fireFlyCurrentList[0];
+            }
+            break;
+        case "2":
+            var content = getFromLocalStorage("fireflywfd");
+            if (content) {
+                var json = JSON.parse(content);
+                localstoragedata = json.nums;
+            }
+            break;
+    }
+
+    if (localstoragedata) {
+        //如果有数据
+        localstoragedata.forEach(function (item) {
+            if (qNum && qNum != item) {
+
+            } else {
+                if (!item) {
+                    qNums.splice(index, 1);
+                } else {
+                    var fibrwData = fireFlyMap.get(parseInt(item));
+                    if (fibrwData) {
+                        fireFlyCurrentList.push(fibrwData);
+                    }
+                }
+            }
+        });
         return fireFlyCurrentList[0];
     }
-    console.log(fireFlyList.length);
-    fireFlyCurrentList = fireFlyList;
+
+    //   console.log(fireFlyList.length);
+    //  fireFlyCurrentList = fireFlyList;
     return fireFlyCurrentList[fireFlyIndex];
 }
 
@@ -131,6 +165,7 @@ function currentFireFlyData() {
 function setNeedFirstLetter() {
     isFullContent = !isFullContent;
 }
+
 function isNeedFirstLetter() {
     return isFullContent;
 }
