@@ -12,7 +12,7 @@
     <style>
         @font-face {
             font-family: AaManYuShouXieTi;
-            src: url("./font/AaManYuShouXieTi3.ttf");
+            src: url("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/font/AaManYuShouXieTi3.ttf?access_token=2fd4d53480c117fa597505cebeceee9d");
         }
     </style>
 </head>
@@ -40,10 +40,10 @@
     </div>
 </div>
 <script src="https://cdn.staticfile.net/layui/2.9.4/layui.min.js" type="text/javascript"></script>
-<script src="https://gitee.com/jackiechan/ptepractise/raw/main/js/fibrwprocess.js" type="text/javascript"></script>
-<script src="https://gitee.com/jackiechan/ptepractise/raw/main/js/fibrprocess.js" type="text/javascript"></script>
-<script src="https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflywfd.js" type="text/javascript"></script>
-<script src="https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflysst.js" type="text/javascript"></script>
+<!--<script src="https://gitee.com/jackiechan/ptepractise/raw/main/js/fibrwprocess.js" type="text/javascript"></script>-->
+<!--<script src="https://gitee.com/jackiechan/ptepractise/raw/main/js/fibrprocess.js" type="text/javascript"></script>-->
+<!--<script src="https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflywfd.js" type="text/javascript"></script>-->
+<!--<script src="https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflysst.js" type="text/javascript"></script>-->
 <script src="https://gitee.com/jackiechan/ptepractise/raw/main/js/utils.js" type="text/javascript"></script>
 <script type="text/javascript">
     //JS
@@ -52,8 +52,13 @@
         var layer = layui.layer;
         var util = layui.util;
         $ = layui.$;
+        var alljs = getAlljs();
+        alljs.forEach(function (url) {
+            loadScript(url);
+        });
+        createMenu();
     });
-    createMenu();
+
     function openRight(url) {
         $.ajax({
             type:"get",
@@ -69,6 +74,15 @@
         // $("#main").load(url)
     }
 
+    function loadScript(url) {
+        // 创建一个新的script标签
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = url;
+
+        // 将script标签添加到HTML中的head部分
+        document.head.appendChild(script);
+    }
 </script>
 </body>
 </html>

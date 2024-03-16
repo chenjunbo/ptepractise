@@ -62,6 +62,11 @@
                 var params = $("#fireflysst-form").serializeJson();
                  fireflySSTCurrentTypedata(params);
                 var fireFlydata = currentSSTData();
+                if (!fireFlydata) {
+                    layer.msg('当前分类下不存在该题目', {icon: 0}, function () {
+                        // layer.msg('提示框关闭后的回调');
+                    });
+                }
                 var content = fireFlySSTTranslateData(fireFlydata,params);
                 $("#question-div").html(content);
                 if (isSSTLast()) {
