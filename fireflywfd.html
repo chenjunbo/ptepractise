@@ -85,7 +85,7 @@
                         // layer.msg('提示框关闭后的回调');
                     });
                     return false;
-                }else{
+                } else {
                     $("#question-form").show();
                 }
                 var content = fireFlyTranslateData(fireFlydata);
@@ -98,7 +98,7 @@
                 }
                 if (getFireFlyTotalNum() == 1) {
                     $("#gotoarea").hide();
-                }else{
+                } else {
                     $("#gotoarea").show();
                 }
                 checkFav(fireFlydata.qNum, favType);
@@ -106,7 +106,9 @@
                 return false;
             }
             , next: function (obj, event) {
-                return nextWfdQuestion(obj, event,favType);
+                var result = nextWfdQuestion(obj, event, favType);
+                form.render();
+                return result;
             },
             pre: function (obj, event) {
                 event.preventDefault();
@@ -152,14 +154,14 @@
                             attr = "border: 3px solid red;" + attr;
                             $(currentInput).attr("style", attr);
                             isWrong = true;
-                        }else{
+                        } else {
                             $(currentInput).attr("style", "text-align:left; width:100px");
                         }
                     }
                 })
                 if (!isWrong) {
-                    layer.msg('全部正确,考试必过!', {icon: 0,time:800}, function () {
-                        nextWfdQuestion(obj, event,form);
+                    layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
+                        nextWfdQuestion(obj, event, favType);
                     });
 
                 } else {
@@ -278,7 +280,7 @@
         $(event.target).attr("style", "text-align:left; width:100px");
     }
 
-    function nextWfdQuestion(obj,event,form,favType) {
+    function nextWfdQuestion(obj, event, form, favType) {
         event.preventDefault();
         if (isFireFlyLast()) {
             $("#next").hide();
@@ -296,7 +298,7 @@
             $("#pre").show();
         }
         checkFav(fireFlydata.qNum, favType);
-        form.render();
+
         return false;
     }
 </script>
