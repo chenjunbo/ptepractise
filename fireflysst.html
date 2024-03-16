@@ -171,7 +171,7 @@
                     });
                     return false;
                 }
-                var isContains = containsValue(fireFlySSTData.num, favType);
+                var isContains = containsValue(fireFlySSTData.id, favType);
                 if (isContains) {
                     layer.confirm('是否删除收藏？', {icon: 3}, function () {
                         removeFromLocalStorage(fireFlySSTData.id, favType);
