@@ -13,6 +13,7 @@
                     <option value="2">C哥阅读拖拽黄色题目</option>
                     <option value="3">C哥阅读拖拽白色题目</option>
                     <option value="4">C哥阅读拖拽全部题目</option>
+                    <option value="7">阅读拖拽收藏夹</option>
 <!--                    <option value="5">自定义题目1</option>-->
 <!--                    <option value="6">自定义题目2</option>-->
                 </select>
@@ -41,6 +42,8 @@
             <button class="layui-btn" id="fibrnext" lay-header-event="fibrnext" hidden="hidden">下一题</button>
             <button class="layui-btn" id="fibrshowanswer" lay-header-event="fibrshowanswer" hidden="hidden">显示/隐藏答案
             </button>
+            <button class="layui-btn" id="adddeletefav" lay-header-event="adddeletefav" hidden="hidden">添加到收藏
+            </button>
             <div class="layui-inline" id="gotoarea">
                 <div class="layui-input-inline" style="width: 100px;">
                     <input type="number" id="qindex" name="price_min" placeholder="第几题" autocomplete="off"
@@ -63,6 +66,7 @@
         var layer = layui.layer;
         var form = layui.form;
         var util = layui.util;
+        var favType = "fibr";
         fibrInit();
         form.render();
         $("#fibranswer-area").hide();
@@ -98,10 +102,11 @@
                 }else{
                     $("#gotoarea").show();
                 }
+                checkFav(fibrdata.num, favType);
                 form.render();
                 return false;
             }, fibrnext: function (obj, event) {
-                var result = nextFibRQuestion(obj, event);
+                var result = nextFibRQuestion(obj, event,favType);
                 form.render();
                 return result;
             },
@@ -124,6 +129,7 @@
                 $("#fibrquestion-div").html(content);
                 fillAnswer(fibrdata);
                 fillOptions(fibrdata);
+                checkFav(fibrdata.num, favType);
                 form.render();
                 return false;
             },
@@ -151,7 +157,7 @@
                 if (!isWrong) {
                     layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
                         // layer.msg('提示框关闭后的回调');
-                        nextFibRQuestion(obj, event);
+                        nextFibRQuestion(obj, event,favType);
                         form.render();
                     });
                 } else {
@@ -196,10 +202,41 @@
                     $("#fibrquestion-div").html(content);
                     fillAnswer(fibrdata);
                     fillOptions(fibrdata);
+                    checkFav(fibrdata.num, favType);
                     form.render();
                     return false;
                 }
 
+
+            },
+            adddeletefav: function (obj, event) {
+                event.preventDefault();
+                var fibrdata = currentFibRData();
+                if (!fibrdata) {
+                    layer.msg('题目无效', {icon: 0}, function () {
+                    });
+                    return false;
+                }
+                var isContains = containsValue(fibrdata.num, favType);
+                if (isContains) {
+                    layer.confirm('是否删除收藏？', {icon: 3}, function () {
+                        removeFromLocalStorage(fibrdata.num, favType);
+                        layer.msg('操作完成', {icon: 0}, function () {
+                        });
+                        checkFav(fibrdata.num, favType);
+                    }, function () {
+                    });
+
+                } else {
+                    layer.confirm('是否添加到收藏？', {icon: 3}, function () {
+                        add2LocalStorage("fibrblue", fibrdata.num, favType)
+                        layer.msg('操作完成', {icon: 0}, function () {
+                        });
+                        checkFav(fibrdata.num, favType);
+                    }, function () {
+                    });
+
+                }
 
             }
         });
@@ -348,7 +385,7 @@
         //如果没有id则不动
     }
 
-    function nextFibRQuestion(obj, event) {
+    function nextFibRQuestion(obj, event,favType) {
         event.preventDefault();
         if (isFibRLast()) {
             $("#fibrnext").hide();
@@ -366,7 +403,7 @@
         if (!isFibRFirst()) {
             $("#fibrpre").show();
         }
-
+        checkFav(fibrdata.num, favType);
         return false;
     }
 </script>

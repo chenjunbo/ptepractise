@@ -33,6 +33,7 @@ function fibRCurrentTypedata(param) {
     var filePath;
     fibrIndex = 0;
     fibrCurrentList = new Array();
+    var localstoragedata;
     switch (type) {
         case "1":
             //C哥蓝色数据
@@ -58,7 +59,13 @@ function fibRCurrentTypedata(param) {
             //自定义数据
             filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/cge_fib_r_zidingyi2.txt?access_token=2fd4d53480c117fa597505cebeceee9d"
             break;
-
+        case "7":
+            var content = getFromLocalStorage("fibrwblue");
+            if (content) {
+                var json = JSON.parse(content);
+                localstoragedata = json.nums;
+            }
+            break;
     }
     //当前数据
     if (filePath) {
@@ -85,7 +92,27 @@ function fibRCurrentTypedata(param) {
 
         });
         $.ajaxSettings.async = true;
+    }else if (localstoragedata) {
+        //如果有数据
+        localstoragedata.forEach(function (item) {
+            if (qNum && qNum != item) {
+
+            } else {
+                if (!item) {
+                    qNums.splice(fibrIndex, 1);
+                } else {
+                    var fibrData = fibrCnMap.get(parseInt(item));
+                    if (!fibrData) {
+                        fibrData = fibrEnMap.get(parseInt(item));
+                    }
+                    if (fibrData) {
+                        fibrCurrentList.push(fibrData);
+                    }
+                }
+            }
+        });
     }
+
     console.log(fibrCurrentList.length);
     // return fibrwTranslateData();
     return fibrCurrentList;
