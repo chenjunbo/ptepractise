@@ -31,3 +31,13 @@ function createMenu() {
     })
     $("#left-menu").html(str);
 }
+
+function getAlljs() {
+    var js=[
+        "https://gitee.com/jackiechan/ptepractise/raw/main/js/fibrwprocess.js",
+        "https://gitee.com/jackiechan/ptepractise/raw/main/js/fibrprocess.js",
+        "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflywfd.js",
+        "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflysst.js"
+    ]
+    return js;
+}
