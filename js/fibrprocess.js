@@ -66,6 +66,9 @@ function fibRCurrentTypedata(param) {
                 localstoragedata = json.nums;
             }
             break;
+        case "8":
+            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/xjfib_r_withoutc.txt?access_token=2fd4d53480c117fa597505cebeceee9d"
+            break
     }
     //当前数据
     if (filePath) {
