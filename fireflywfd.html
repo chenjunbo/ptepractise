@@ -137,6 +137,7 @@
                 var allInputs = $("input[name='answerinputs'][id]");
                 console.log(allInputs);
                 var isWrong = false;
+                var fireflywfd = currentFireFlyData();
                 allInputs.each(function (index, currentInput) {
                     var id = $(currentInput).attr("id");
                     if (id && id.startsWith("answerblank")) {
@@ -160,6 +161,7 @@
                     }
                 })
                 if (!isWrong) {
+                    addRightOrFalt(fireflywfd.id, "right", localStorageType);
                     layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
                         if (!isFireFlyLast()) {
                             nextWfdQuestion(obj, event, localStorageType);
@@ -168,6 +170,7 @@
                     });
 
                 } else {
+                    addRightOrFalt(fireflywfd.id, "right", localStorageType);
                     layer.msg('答案不小心写错了哟!', {icon: 0}, function () {
                     });
                 }
