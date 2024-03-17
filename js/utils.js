@@ -188,6 +188,6 @@ function setRightAndFaltNum(qNum, localStroageType) {
     if (!faltNum) {
         faltNum = "0";
     }
-    var content = "<span style=\"color: #00b050; font-family: Arial, sans-serif;\">正确:</span><span style=\"color: red; font-family: Arial, sans-serif;\">" + rightNum + "</span><span style=\"font-family: Arial, sans-serif;\">次/</span><span style=\"color: #00b050; font-family: Arial, sans-serif;\">错误:</span><span style=\"color: red; font-family: Arial, sans-serif;\">" + faltNum + "</span><span style=\"font-family: Arial, sans-serif;\">次</span>";
+    var content = "<span style=\"color: #00b050; font-size: 16px font-family: Arial, sans-serif;\">正确:</span><span style=\"color: red; font-size: 16px;font-family: Arial, sans-serif;\">" + rightNum + "</span><span style=\"color: #00b050; font-size: 16px;font-family: Arial, sans-serif;\">错误:</span><span style=\"color: red; font-size: 16px;font-family: Arial, sans-serif;\">" + faltNum + "</span>";
     $("#rightandfalt").html(content);
 }
