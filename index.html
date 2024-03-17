@@ -47,6 +47,7 @@
         alljs.forEach(function (url) {
             loadScript(url);
         });
+        initOthers();
         createMenu();
     });
     function openRight(url) {
@@ -70,7 +71,7 @@
         // 将script标签添加到HTML中的head部分
         document.head.appendChild(script);
     }
-    initOthers();
+
 </script>
 </body>
 </html>
