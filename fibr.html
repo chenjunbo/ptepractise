@@ -145,7 +145,8 @@
                     var id = $(currentInput).attr("id");
                     if (id && id.startsWith("option") && (id.endsWith("-"))) {
                         var val = $(currentInput).val();
-                        val = val.replaceAll(" ", "").replaceAll("nbsp;", "");
+                        val = val.replaceAll("nbsp;", "");
+                        val = val.replaceAll(" ", "");
                         var realanswer = $(currentInput).attr("realanswer");
                         realanswer=realanswer.replaceAll(" ","").replaceAll("&nbsp;", "");
                         console.log(val+"====>"+realanswer);
