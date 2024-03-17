@@ -145,7 +145,9 @@
                     var id = $(currentInput).attr("id");
                     if (id && id.startsWith("option") && (id.endsWith("-"))) {
                         var val = $(currentInput).val();
+                        val = val.replaceAll(" ", "").replaceAll("nbsp;", "");
                         var realanswer = $(currentInput).attr("realanswer");
+                        realanswer=realanswer.replaceAll(" ","").replaceAl("nbsp;", "");
                         if (val != realanswer) {
                             var attr = $(currentInput).attr("style");
                             attr = "border: 1px solid red;" + attr;
