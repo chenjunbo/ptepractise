@@ -161,3 +161,20 @@ function checkFav(qNum, type) {
 function initOthers() {
     isNeedLoadFont = false;
 }
+
+/**
+ *
+ * @param qNum 题号
+ * @param rightorfalt 正确"right" 错误"falt"
+ * @param localStroageType 题型类型
+ */
+function addRightOrFalt(qNum, rightorfalt, localStroageType) {
+    var num = window.localStorage.getItem(qNum+rightorfalt+localStroageType);
+    if (!num) {
+       // window.localStorage.setItem(qNum + rightorfalt + localStroageType, 1);
+        num = 1;
+    }else{
+        num = parseInt(num) + 1;
+    }
+    window.localStorage.setItem(qNum + rightorfalt + localStroageType, num);
+}

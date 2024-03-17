@@ -69,7 +69,7 @@
         var form = layui.form;
         var util = layui.util;
         fireFlyInit();
-        var favType = "fireflywfd";
+        var localStorageType = "fireflywfd";
         form.render();
         $("#check").click(function () {
             setNeedFirstLetter();
@@ -101,12 +101,12 @@
                 } else {
                     $("#gotoarea").show();
                 }
-                checkFav(fireFlydata.qNum, favType);
+                checkFav(fireFlydata.qNum, localStorageType);
                 form.render();
                 return false;
             }
             , next: function (obj, event) {
-                var result = nextWfdQuestion(obj, event, favType);
+                var result = nextWfdQuestion(obj, event, localStorageType);
                 form.render();
                 return result;
             },
@@ -128,7 +128,7 @@
                 }
                 $("#question-div").html(content);
                 fillAnswer(fireFlydata);
-                checkFav(fireFlydata.qNum, favType);
+                checkFav(fireFlydata.qNum, localStorageType);
                 form.render();
                 return false;
             },
@@ -162,7 +162,7 @@
                 if (!isWrong) {
                     layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
                         if (!isFireFlyLast()) {
-                            nextWfdQuestion(obj, event, favType);
+                            nextWfdQuestion(obj, event, localStorageType);
                             form.render();
                         }
                     });
@@ -207,7 +207,7 @@
                     }
                     $("#question-div").html(content);
                     fillAnswer(fireFlydata);
-                    checkFav(fireFlydata.qNum, favType);
+                    checkFav(fireFlydata.qNum, localStorageType);
                     form.render();
                     return false;
                 }
@@ -220,22 +220,22 @@
                     });
                     return false;
                 }
-                var isContains = containsValue(fireFlydata.qNum, favType);
+                var isContains = containsValue(fireFlydata.qNum, localStorageType);
                 if (isContains) {
                     layer.confirm('是否删除收藏？', {icon: 3}, function () {
-                        removeFromLocalStorage(fireFlydata.qNum, favType);
+                        removeFromLocalStorage(fireFlydata.qNum, localStorageType);
                         layer.msg('操作完成', {icon: 0}, function () {
                         });
-                        checkFav(fireFlydata.qNum, favType);
+                        checkFav(fireFlydata.qNum, localStorageType);
                     }, function () {
                     });
 
                 } else {
                     layer.confirm('是否添加到收藏？', {icon: 3}, function () {
-                        add2LocalStorage("fireflywfd", fireFlydata.qNum, favType)
+                        add2LocalStorage("fireflywfd", fireFlydata.qNum, localStorageType)
                         layer.msg('操作完成', {icon: 0}, function () {
                         });
-                        checkFav(fireFlydata.qNum, favType);
+                        checkFav(fireFlydata.qNum, localStorageType);
                     }, function () {
                     });
 
@@ -283,7 +283,7 @@
         $(event.target).attr("style", "text-align:left; width:100px");
     }
 
-    function nextWfdQuestion(obj, event, form, favType) {
+    function nextWfdQuestion(obj, event, form, localStorageType) {
         event.preventDefault();
         if (isFireFlyLast()) {
             $("#next").hide();
@@ -300,7 +300,7 @@
         if (!isFireFlyFirst()) {
             $("#pre").show();
         }
-        checkFav(fireFlydata.qNum, favType);
+        checkFav(fireFlydata.qNum, localStorageType);
 
         return false;
     }
