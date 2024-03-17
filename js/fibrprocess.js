@@ -5,7 +5,7 @@ const fibrEnMap = new Map();
 var fibrIndex = 0;//当前第几条
 
 function fibrInit() {
-    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fibrallquestions.txt?access_token=2fd4d53480c117fa597505cebeceee9d", function (response) {
+    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fibrallquestions.txt?access_token=3e3bdbbf6e6121d831ec1e0d2317e8c4", function (response) {
         //fibrCnList = JSON.parse(response);
        // fibrCnList = response;
         var result=decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
@@ -15,7 +15,7 @@ function fibrInit() {
             fibrCnMap.set(fibrData.num, fibrData);
         }
     })
-    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fibrallquestionsen.txt?access_token=2fd4d53480c117fa597505cebeceee9d", function (response) {
+    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fibrallquestionsen.txt?access_token=3e3bdbbf6e6121d831ec1e0d2317e8c4", function (response) {
         // fibrEnList = JSON.parse(response);
        // fibrEnList = response;
         var result=decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
@@ -37,27 +37,27 @@ function fibRCurrentTypedata(param) {
     switch (type) {
         case "1":
             //C哥蓝色数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/cge_fib_r_lan.txt?access_token=2fd4d53480c117fa597505cebeceee9d"
+            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/cge_fib_r_lan.txt?access_token=3e3bdbbf6e6121d831ec1e0d2317e8c4"
             break;
         case "2":
             //C哥黄色数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/cge_fib_r_huang.txt?access_token=2fd4d53480c117fa597505cebeceee9d"
+            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/cge_fib_r_huang.txt?access_token=3e3bdbbf6e6121d831ec1e0d2317e8c4"
             break;
         case "3":
             //C哥白色数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/cge_fib_r_bai.txt?access_token=2fd4d53480c117fa597505cebeceee9d"
+            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/cge_fib_r_bai.txt?access_token=3e3bdbbf6e6121d831ec1e0d2317e8c4"
             break;
         case "4":
             //C哥所有数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/cge_fib_r_all.txt?access_token=2fd4d53480c117fa597505cebeceee9d"
+            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/cge_fib_r_all.txt?access_token=3e3bdbbf6e6121d831ec1e0d2317e8c4"
             break;
         case "5":
             //自定义数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/cge_fib_r_zidingyi.txt?access_token=2fd4d53480c117fa597505cebeceee9d"
+            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/cge_fib_r_zidingyi.txt?access_token=3e3bdbbf6e6121d831ec1e0d2317e8c4"
             break;
         case "6":
             //自定义数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/cge_fib_r_zidingyi2.txt?access_token=2fd4d53480c117fa597505cebeceee9d"
+            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/cge_fib_r_zidingyi2.txt?access_token=3e3bdbbf6e6121d831ec1e0d2317e8c4"
             break;
         case "7":
             var content = getFromLocalStorage("fibrblue");
@@ -67,7 +67,7 @@ function fibRCurrentTypedata(param) {
             }
             break;
         case "8":
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/xjfib_r_withoutc.txt?access_token=2fd4d53480c117fa597505cebeceee9d"
+            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/xjfib_r_withoutc.txt?access_token=3e3bdbbf6e6121d831ec1e0d2317e8c4"
             break
     }
     //当前数据

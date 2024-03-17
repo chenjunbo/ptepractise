@@ -15,23 +15,23 @@ function createMenu() {
     var allPages = [
         {
             "menuName": "FIB-RW阅读下拉",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibrw.html?access_token=2fd4d53480c117fa597505cebeceee9d"
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibrw.html?access_token=3e3bdbbf6e6121d831ec1e0d2317e8c4"
         },
         {
             "menuName": "FIB-R阅读拖拽",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibr.html?access_token=2fd4d53480c117fa597505cebeceee9d"
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibr.html?access_token=3e3bdbbf6e6121d831ec1e0d2317e8c4"
         },
         {
             "menuName": "WFD",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflywfd.html?access_token=2fd4d53480c117fa597505cebeceee9d"
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflywfd.html?access_token=3e3bdbbf6e6121d831ec1e0d2317e8c4"
         },
         {
             "menuName": "SST",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflysst.html?access_token=2fd4d53480c117fa597505cebeceee9d"
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflysst.html?access_token=3e3bdbbf6e6121d831ec1e0d2317e8c4"
         },
         {
             "menuName": "生成PDF",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/createpdf.html?access_token=2fd4d53480c117fa597505cebeceee9d"
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/createpdf.html?access_token=3e3bdbbf6e6121d831ec1e0d2317e8c4"
         }
 
     ]
@@ -46,7 +46,7 @@ function createMenu() {
 
     if (isNeedLoadFont) {
         // 字体文件的URL
-        const fontURL = 'https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/font%2FAaManYuShouXieTi3.ttf?access_token=2fd4d53480c117fa597505cebeceee9d';
+        const fontURL = 'https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/font%2FAaManYuShouXieTi3.ttf?access_token=3e3bdbbf6e6121d831ec1e0d2317e8c4';
 
         // 创建一个新的FontFace对象
         const fontFace = new FontFace('AaManYuShouXieTi', `url(${fontURL})`, {

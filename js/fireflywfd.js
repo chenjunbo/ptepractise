@@ -4,7 +4,7 @@ var fireFlyIndex = 0;//当前第几条
 var isFullContent = true;
 
 function fireFlyInit() {
-    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fireflywfd.txt?access_token=2fd4d53480c117fa597505cebeceee9d", function (response) {
+    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fireflywfd.txt?access_token=3e3bdbbf6e6121d831ec1e0d2317e8c4", function (response) {
         var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
         fireFlyList = JSON.parse(result);
         for (let i = 0; i < fireFlyList.length; i++) {
