@@ -147,7 +147,7 @@
                         var val = $(currentInput).val();
                         val = val.replaceAll(" ", "").replaceAll("nbsp;", "");
                         var realanswer = $(currentInput).attr("realanswer");
-                        realanswer=realanswer.replaceAll(" ","").replaceAl("nbsp;", "");
+                        realanswer=realanswer.replaceAll(" ","").replaceAll("nbsp;", "");
                         if (val != realanswer) {
                             var attr = $(currentInput).attr("style");
                             attr = "border: 1px solid red;" + attr;
