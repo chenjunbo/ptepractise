@@ -286,7 +286,7 @@
             var option = options[key];
             var choice = option.choice;
             var id = option.id;
-            var textId = "option" + id + choice.replaceAll(" ", "");
+            var textId = "option" + id + choice.replaceAll(" ", "").replaceAll("'","");
             //var optionInput="<div class=\"layui-inline\" id=\""+textId+"\" style=\"font-size: 20px;margin: 10px\" draggable=\"true\" ondragstart=\"drag(event)\"></div>"
             var div = document.createElement("div");
             $(div).attr("class", "layui-inline");
