@@ -52,6 +52,9 @@
                 <div class="layui-input-inline" style="width: 100px;">
                     <button class="layui-btn" id="gotoindex" lay-header-event="gotoindex">跳转</button>
                 </div>
+                <div class="layui-input-inline" id="rightandfalt" style="width: 100px;">
+
+                </div>
             </div>
         </div>
 
@@ -63,13 +66,13 @@
 </div>
 
 <script type="text/javascript">
+    var localStorageType = "fireflywfd";
     layui.use(['table', 'layer', 'form', 'util'], function () {
         var table = layui.table;
         var layer = layui.layer;
         var form = layui.form;
         var util = layui.util;
         fireFlyInit();
-        var localStorageType = "fireflywfd";
         form.render();
         $("#check").click(function () {
             setNeedFirstLetter();
@@ -170,7 +173,7 @@
                     });
 
                 } else {
-                    addRightOrFalt(fireflywfd.qNum, "right", localStorageType);
+                    addRightOrFalt(fireflywfd.qNum, "falt", localStorageType);
                     layer.msg('答案不小心写错了哟!', {icon: 0}, function () {
                     });
                 }
@@ -278,6 +281,7 @@
         var cn = fireFlydata.cn;
         var answercontent = "</br>" + "</br>" + en + "</br>" + "</br>" + cn;
         $("#answer-area").html(answercontent);
+        setRightAndFaltNum(fireFlydata.qNum, localStorageType);
     }
 
     function resetwrongcolor(event) {

@@ -53,6 +53,9 @@
                 <div class="layui-input-inline" style="width: 100px;">
                     <button class="layui-btn" id="gotoindex" lay-header-event="gotoindex">跳转</button>
                 </div>
+                <div class="layui-input-inline" id="rightandfalt" style="width: 100px;">
+
+                </div>
             </div>
         </div>
 
@@ -62,12 +65,12 @@
 <pre class="layui-code answer-area" lay-options="{}" id="fibranswer-area" style="font-size: 18px;font-family: Arial">
 </pre>
 <script type="text/javascript">
+    var localStorageType = "fibr";
     layui.use(['table', 'layer', 'form', 'util'], function () {
         var table = layui.table;
         var layer = layui.layer;
         var form = layui.form;
         var util = layui.util;
-        var localStorageType = "fibr";
         fibrInit();
         form.render();
         $("#fibranswer-area").hide();
@@ -177,7 +180,7 @@
                     });
                 } else {
                     console.log("答案检查错误");
-                    addRightOrFalt(fibrdata.num, "right", localStorageType);
+                    addRightOrFalt(fibrdata.num, "falt", localStorageType);
                     layer.msg('答案不小心选错了哟!', {icon: 0}, function () {
                         // layer.msg('提示框关闭后的回调');
                     });
@@ -316,6 +319,7 @@
         var explanation_in_locale = fibrdata.explanation_in_locale;
         var answercontent = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + explanation_in_locale;
         $("#fibranswer-area").html(answercontent);
+        setRightAndFaltNum(fibrdata.num, localStorageType);
     }
 
     function allowDrop(ev) {

@@ -178,3 +178,16 @@ function addRightOrFalt(qNum, rightorfalt, localStroageType) {
     }
     window.localStorage.setItem(qNum + rightorfalt + localStroageType, num);
 }
+
+function setRightAndFaltNum(qNum, localStroageType) {
+    var rightNum = window.localStorage.getItem(qNum + "right" + localStroageType);
+    if (!rightNum) {
+        rightNum = "0";
+    }
+    var faltNum = window.localStorage.getItem(qNum + "falt" + localStroageType);
+    if (!faltNum) {
+        faltNum = "0";
+    }
+    var content = "<span style=\"color: #00b050; font-family: Arial, sans-serif;\">正确:</span><span style=\"color: red; font-family: Arial, sans-serif;\">" + rightNum + "</span><span style=\"font-family: Arial, sans-serif;\">次/</span><span style=\"color: #00b050; font-family: Arial, sans-serif;\">错误:</span><span style=\"color: red; font-family: Arial, sans-serif;\">" + faltNum + "</span><span style=\"font-family: Arial, sans-serif;\">次</span>";
+    $("#rightandfalt").html(content);
+}
