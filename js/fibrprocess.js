@@ -137,6 +137,7 @@ function fibrTranslateData(fibrData) {
             var option = choice.choice;
             var parent = $("<div class=\"layui-inline\" > </div>");
             var divid = "div" + serNum + option;
+            divid = divid.replaceAll("'", "");
             var parentin = $("<div class=\"layui-input-inline\"  id=" + divid + "> </div>");
             var input = document.createElement("input");
             $(input).attr("type", "text");
