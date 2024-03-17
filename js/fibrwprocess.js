@@ -207,7 +207,7 @@ function createFibRwPdfHtml(parmas, serNum, fibrwdata) {
     $(anserDive).attr("class", "layui-form-item");
     var analysispre = document.createElement("pre");
     $(analysispre).attr("class", "answer-area");
-    $(analysispre).attr("style", "font-size: x-larger;word-wrap:break-word");
+    $(analysispre).attr("style", "font-size: 20px;font-family: Arial;word-wrap:break-word;");
 
 
     //内容
