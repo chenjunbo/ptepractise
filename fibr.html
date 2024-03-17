@@ -136,7 +136,7 @@
             },
             fibrcheckanswer: function (obj, event, form) {
                 event.preventDefault();
-                var allInputs = $("input[name='answeroptions']");
+                var allInputs = $("#fibrquestion-div input[name='answeroptions']");
                 // console.log(allInputs.length)
                 var isWrong = false;
                 if (!allInputs || allInputs.length == 0) {
