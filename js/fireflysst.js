@@ -3,10 +3,7 @@ let sstAllDataList;
 const sstMap = new Map();
 var sstIndex = 0;//当前第几条
 function fireFlySSTInit() {
-    // $.get("https://gitee.com/jackiechan/ptepractise/raw/main/data/fireflysst.txt", function (response) {
     $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fireflysst.txt?access_token=2fd4d53480c117fa597505cebeceee9d", function (response) {
-        //fibrCnList = JSON.parse(response);
-        // fibrCnList = response;
         var result=decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
         sstAllDataList= JSON.parse(result);
         for (let i = 0; i < sstAllDataList.length; i++) {
@@ -26,7 +23,6 @@ function fireflySSTCurrentTypedata(param) {
     switch (type) {
         case "1":
             //高频预测
-            // filePath = "https://gitee.com/jackiechan/ptepractise/raw/main/questions/fireflysstprediction.txt"
             filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fireflysstprediction.txt?access_token=2fd4d53480c117fa597505cebeceee9d"
             break;
         case "2":
@@ -152,8 +148,6 @@ function sstNextQuest() {
     if (sstIndex < sstCurrentList.length - 1) {
         sstIndex++;
     }
-    // var result = sstTranslateData();
-    // return result;
     return sstCurrentList[sstIndex];
 }
 

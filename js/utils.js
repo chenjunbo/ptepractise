@@ -39,9 +39,6 @@ function createMenu() {
         str += '<li class="layui-nav-item layui-nav-itemed">';
         //拼接每一个地址
         str += '<a class="" href="javascript:;" onclick="openRight(\'' + obj.url + '\')">' + obj.menuName + '</a>';
-        // if (obj.children.length > 0) {
-        //     makeMenu(obj.children)
-        // }
         str += '</li>'
     })
     $("#left-menu").html(str);
@@ -155,5 +152,9 @@ function checkFav(qNum, type) {
     } else {
         $("#adddeletefav").html("添加到收藏")
     }
+
+}
+
+function initOthers(){
 
 }

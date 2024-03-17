@@ -5,8 +5,6 @@ var isFullContent = true;
 
 function fireFlyInit() {
     $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fireflywfd.txt?access_token=2fd4d53480c117fa597505cebeceee9d", function (response) {
-        //fireFlyList = JSON.parse(response);
-        // fireFlyList = response;
         var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
         fireFlyList = JSON.parse(result);
         for (let i = 0; i < fireFlyList.length; i++) {
@@ -58,8 +56,6 @@ function fireFlyGetdata(param) {
         return fireFlyCurrentList[0];
     }
 
-    //   console.log(fireFlyList.length);
-    //  fireFlyCurrentList = fireFlyList;
     return fireFlyCurrentList[fireFlyIndex];
 }
 
@@ -117,8 +113,6 @@ function fireFlyNextQuest() {
     if (fireFlyIndex < fireFlyCurrentList.length - 1) {
         fireFlyIndex++;
     }
-    // var result = fireFlywTranslateData();
-    // return result;
     return fireFlyCurrentList[fireFlyIndex];
 }
 
@@ -126,8 +120,6 @@ function fireFlyPreQuest() {
     if (fireFlyIndex > 0) {
         fireFlyIndex--;
     }
-    // var result = fireFlywTranslateData();
-    // return result;
     return fireFlyCurrentList[fireFlyIndex];
 }
 
@@ -159,9 +151,6 @@ function currentFireFlyData() {
     return fireFlyCurrentList[fireFlyIndex];
 }
 
-// function changeFull() {
-//     isFullContent = !isFullContent;
-// }
 
 function setNeedFirstLetter() {
     isFullContent = !isFullContent;

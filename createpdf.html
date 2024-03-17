@@ -1,7 +1,7 @@
 <form action="#" class="layui-form" id="fibrwcreate-form">
     <div class="layui-form-item">
         <div class="layui-inline">
-            题目类型:
+            FIB-RW:
             <div class="layui-inline">
                 <select name="type" id="typeselection">
                     <option value="1">C哥阅读下拉蓝色题目</option>
@@ -22,7 +22,7 @@
                     <input type="checkbox" name="analysis" title="答案解析" checked>
                 </div>
             </div>
-            <button class="layui-btn" lay-header-event="createfibrwpdf">生成网页后通过浏览器的打印功能保存为pdf</button>
+            <button class="layui-btn" lay-header-event="createfibrwpdf">点击生成网页后通过浏览器的打印功能保存为pdf</button>
         </div>
     </div>
 </form>
@@ -34,7 +34,7 @@
 <form action="#" class="layui-form" id="fibrcreate-form">
     <div class="layui-form-item">
         <div class="layui-inline">
-            题目类型:
+            FIB-R:
             <div class="layui-inline">
                 <select name="type">
                     <option value="1">C哥阅读拖拽蓝色题目</option>
@@ -65,7 +65,7 @@
 <form action="#" class="layui-form" id="fireflysstcreate-form">
     <div class="layui-form-item">
         <div class="layui-inline">
-            题目类型:
+            SST:
             <div class="layui-inline">
                 <select name="type" >
                     <option value="1">萤火虫SST高频</option>
@@ -103,23 +103,23 @@
                 var newPage = document.implementation.createHTMLDocument('New Page');
                 // 在新文档中添加文本
                 var head = newPage.head;
-                // 获取当前URL
-                var currentUrl = window.location.href;
-
-                // 解析当前URL
-                var urlParts = currentUrl.split('/');
-
-            // 移除最后一部分，即当前文件或路径
-                urlParts.pop();
-
-                // 重新组合URL
-                var parentUrl = urlParts.join('/');
-
-                // 如果需要加上协议头和主机名，可以手动拼接
-                if (parentUrl.charAt(parentUrl.length - 1) !== '/') {
-                    parentUrl += '/';
-                }
-                console.log(parentUrl)
+            //     // 获取当前URL
+            //     var currentUrl = window.location.href;
+            //
+            //     // 解析当前URL
+            //     var urlParts = currentUrl.split('/');
+            //
+            // // 移除最后一部分，即当前文件或路径
+            //     urlParts.pop();
+            //
+            //     // 重新组合URL
+            //     var parentUrl = urlParts.join('/');
+            //
+            //     // 如果需要加上协议头和主机名，可以手动拼接
+            //     if (parentUrl.charAt(parentUrl.length - 1) !== '/') {
+            //         parentUrl += '/';
+            //     }
+            //     console.log(parentUrl)
                 // var params = JSON.stringify($("#fibrwcreate-form").serializeJson())
                 var params = $("#fibrwcreate-form").serializeJson();
                 var name = "C哥阅读下拉预测";
@@ -183,19 +183,6 @@
                 event.preventDefault();
                 var newPage = document.implementation.createHTMLDocument('New Page');
                 var head = newPage.head;
-                // 获取当前URL
-                var currentUrl = window.location.href;
-                // 解析当前URL
-                var urlParts = currentUrl.split('/');
-                // 移除最后一部分，即当前文件或路径
-                urlParts.pop();
-                // 重新组合URL
-                var parentUrl = urlParts.join('/');
-                // 如果需要加上协议头和主机名，可以手动拼接
-                if (parentUrl.charAt(parentUrl.length - 1) !== '/') {
-                    parentUrl += '/';
-                }
-                console.log(parentUrl)
                 //   var params = JSON.stringify($("#fibrcreate-form").serializeJson())
                 var params = $("#fibrcreate-form").serializeJson();
                 var name = "C哥阅读拖拽预测";
@@ -258,19 +245,6 @@
                 event.preventDefault();
                 var newPage = document.implementation.createHTMLDocument('New Page');
                 var head = newPage.head;
-                // 获取当前URL
-                var currentUrl = window.location.href;
-                // 解析当前URL
-                var urlParts = currentUrl.split('/');
-                // 移除最后一部分，即当前文件或路径
-                urlParts.pop();
-                // 重新组合URL
-                var parentUrl = urlParts.join('/');
-                // 如果需要加上协议头和主机名，可以手动拼接
-                if (parentUrl.charAt(parentUrl.length - 1) !== '/') {
-                    parentUrl += '/';
-                }
-                console.log(parentUrl)
                 //   var params = JSON.stringify($("#fibrcreate-form").serializeJson())
                 var params = $("#fireflysstcreate-form").serializeJson();
                 var name = "萤火虫sst预测";
@@ -306,8 +280,6 @@
                     var questionHtml = createFireFlySSTPdfHtml(params, (index + 1), item);
                     $(body).append(questionHtml);
                 })
-                // body.innerHTML = "ceshi neirong";
-
                 // 打开新页面并写入内容
                 var newWindow = window.open('', '_blank');
                 newWindow.document.write(newPage.documentElement.outerHTML);

@@ -117,7 +117,6 @@ function fibRCurrentTypedata(param) {
     }
 
     console.log(fibrCurrentList.length);
-    // return fibrwTranslateData();
     return fibrCurrentList;
 }
 
@@ -138,11 +137,8 @@ function fibrTranslateData(fibrData) {
             var option = choice.choice;
             var parent = $("<div class=\"layui-inline\" > </div>");
             var divid = "div" + serNum + option;
-            // var parentin = $("<div class=\"layui-input-inline\"   style='width: 100px;border-bottom: 1px solid #f00; height: 15px' ondrop='drop(event)' ondragover='allowDrop(event)' id=" + divid + "> </div>");
-            // var parentin = $("<div class=\"layui-input-inline\"  ondrop='drop(event)' ondragover='allowDrop(event)' id=" + divid + "> </div>");
             var parentin = $("<div class=\"layui-input-inline\"  id=" + divid + "> </div>");
             var input = document.createElement("input");
-            //var input="<input type=\"text\" disabled autocomplete=\"off\" lay-verify=\"required|answer\" class=\"layui-input\">";
             $(input).attr("type", "text");
             $(input).attr("disabled", "disabled");
             $(input).attr("autocomplete", "off");

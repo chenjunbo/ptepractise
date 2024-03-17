@@ -14,7 +14,6 @@ function fibrwInit() {
             // 处理响应数据
             var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
             cnList = JSON.parse(result);
-            // cnList = response;
             for (let i = 0; i < cnList.length; i++) {
                 var fibrwData = cnList[i];
                 cnMap.set(fibrwData.num, fibrwData);
@@ -33,7 +32,6 @@ function fibrwInit() {
             // 处理响应数据
             var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
             enList = JSON.parse(result);
-            //enList = response;
             for (let i = 0; i < enList.length; i++) {
                 var fibrwData = enList[i];
                 enMap.set(fibrwData.num, fibrwData);
@@ -43,28 +41,6 @@ function fibrwInit() {
             // 处理错误
         }
     });
-
-    // $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fibrwallquestions.txt", function (response) {
-    //     //cnList = JSON.parse(response);
-    //     var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
-    //     cnList = JSON.parse(result);
-    //     // cnList = response;
-    //     for (let i = 0; i < cnList.length; i++) {
-    //         var fibrwData = cnList[i];
-    //         cnMap.set(fibrwData.num, fibrwData);
-    //     }
-    // })
-    // $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fibrwallquestionsen.txt", function (response) {
-    //     // enList = JSON.parse(response);
-    //     var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
-    //     enList = JSON.parse(result);
-    //     //enList = response;
-    //     for (let i = 0; i < enList.length; i++) {
-    //         var fibrwData = enList[i];
-    //         enMap.set(fibrwData.num, fibrwData);
-    //     }
-    // })
-
 
     $.ajax({
         url: "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/阅读答案.txt?access_token=2fd4d53480c117fa597505cebeceee9d",
@@ -87,20 +63,6 @@ function fibrwInit() {
             // 处理错误
         }
     });
-    // $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/阅读答案.txt", function (response) {
-    //     let chineseContent = response.split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
-    //     chineseContent.forEach((item, index) => { // 删除空项
-    //
-    //         if (!item) {
-    //             chineseContent.splice(index, 1);
-    //         } else {
-    //             var splitString = item.split("#");
-    //             chineseContentMap.set(splitString[0] + "", splitString[1]);
-    //         }
-    //
-    //     })
-    //
-    // });
 }
 
 function fibRwCurrentTypedata(param) {
