@@ -52,7 +52,7 @@
                 <div class="layui-input-inline" style="width: 100px;">
                     <button class="layui-btn" id="gotoindex" lay-header-event="gotoindex">跳转</button>
                 </div>
-                <div class="layui-input-inline" id="rightandfalt" style="width: 100px;">
+                <div class="layui-input-inline" id="rightandfalt" style="justify-content: center;align-items: center;">
 
                 </div>
             </div>
@@ -177,6 +177,7 @@
                     layer.msg('答案不小心写错了哟!', {icon: 0}, function () {
                     });
                 }
+                setRightAndFaltNum(fireflywfd.qNum, localStorageType);
             },
             showanswer: function (obj, event) {
                 event.preventDefault();

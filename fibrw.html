@@ -47,7 +47,7 @@
                     <div class="layui-input-inline" style="width: 100px;">
                         <button class="layui-btn" id="gotoindex" lay-header-event="gotoindex">跳转</button>
                     </div>
-                    <div class="layui-input-inline" id="rightandfalt" style="width: 100px;">
+                    <div class="layui-input-inline" id="rightandfalt" style="justify-content: center;align-items: center;">
 
                     </div>
                 </div>
@@ -173,6 +173,7 @@
                         //添加错误次数
                     });
                 }
+                setRightAndFaltNum(fibrwdata.num, localStorageType);
             },
             showanswer: function (obj, event) {
                 event.preventDefault();
