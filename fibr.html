@@ -59,7 +59,7 @@
     </div>
 </form>
 
-<pre class="layui-code answer-area" lay-options="{}" id="fibranswer-area" style="font-size: x-large">
+<pre class="layui-code answer-area" lay-options="{}" id="fibranswer-area" style="font-size: 18px;font-family: Arial">
 </pre>
 <script type="text/javascript">
     layui.use(['table', 'layer', 'form', 'util'], function () {
@@ -305,7 +305,9 @@
     function fillAnswer(fibrdata) {
         $("#fibranswer-area").hide();
         var answerInText = fibrdata.answer_in_text;
-        $("#fibranswer-area").html(answerInText);
+        var explanation_in_locale = fibrdata.explanation_in_locale;
+        var answercontent = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + explanation_in_locale;
+        $("#fibranswer-area").html(answercontent);
     }
 
     function allowDrop(ev) {

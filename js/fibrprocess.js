@@ -164,14 +164,14 @@ function fibrTranslateData(fibrData) {
 
 function createFibRPdfHtml(parmas, serNum, fibrdata) {
     var highlight = parmas.highlight;//是否需要中文
-
+    var analysis = parmas.analysis;//是否需要解析
     var questionDiv = document.createElement("div");
     $(questionDiv).attr("style", "padding-left: 20px;padding-right: 20px;line-height: 30px;font-size: large");
     var anserDive = document.createElement("div");
     $(anserDive).attr("class", "layui-form-item");
     var analysispre = document.createElement("pre");
     $(analysispre).attr("class", "layui-code answer-area");
-    $(analysispre).attr("style", "font-size: large;background-color:#ecf8f2;");
+    $(analysispre).attr("style", "font-size: 18px;font-family: Arial;background-color:#ecf8f2;");
 
 
     //内容
@@ -216,6 +216,12 @@ function createFibRPdfHtml(parmas, serNum, fibrdata) {
     })
     $(questionDiv).append(text+"<br/>"+"<br/>");
     var answerInText =  allOptions.toString().substring(0, allOptions.toString().length-2);
+    if (analysis) {
+        var explanation_in_locale = fibrdata.explanation_in_locale;
+        if (explanation_in_locale) {
+            answerInText = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + explanation_in_locale;
+        }
+    }
     $(analysispre).html(answerInText);
     $(anserDive).append(analysispre);
     $(questionDiv).append(anserDive);
