@@ -161,7 +161,10 @@
                 })
                 if (!isWrong) {
                     layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
-                        nextWfdQuestion(obj, event, favType);
+                        if (!isFireFlyLast()) {
+                            nextWfdQuestion(obj, event, favType);
+                            form.render();
+                        }
                     });
 
                 } else {
