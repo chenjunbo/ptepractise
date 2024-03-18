@@ -88,7 +88,7 @@
 <form action="#" class="layui-form" id="pters-form">
     <div class="layui-form-item">
         <div class="layui-inline">
-            SST:
+            RS:
             <div class="layui-inline">
                 <select name="type" >
                     <option value="1">萤火虫RS高频</option>
@@ -110,6 +110,7 @@
         var util = layui.util;
         fibrwInit();
         fibrInit();
+        fireFlySSTInit();
         fireFlySSTInit();
         form.render();
         util.event('lay-header-event', {
