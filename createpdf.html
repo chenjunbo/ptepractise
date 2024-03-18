@@ -28,8 +28,6 @@
 </form>
 <br>
 <br>
-<br>
-<br>
 
 <form action="#" class="layui-form" id="fibrcreate-form">
     <div class="layui-form-item">
@@ -60,8 +58,7 @@
 </form>
 <br>
 <br>
-<br>
-<br>
+
 
 <form action="#" class="layui-form" id="fireflysstcreate-form">
     <div class="layui-form-item">
@@ -83,6 +80,23 @@
                 </div>
             </div>
             <button class="layui-btn" lay-header-event="fireflysstcreatepdf">点击生成网页后通过浏览器的打印功能保存为pdf</button>
+        </div>
+    </div>
+</form>
+<br/>
+<br/>
+<form action="#" class="layui-form" id="pters-form">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            SST:
+            <div class="layui-inline">
+                <select name="type" >
+                    <option value="1">萤火虫RS高频</option>
+<!--                    <option value="2">萤火虫SST已整理题库</option>-->
+<!--                    <option value="3">SST收藏夹</option>-->
+                </select>
+            </div>
+            <button class="layui-btn" lay-header-event="createrspdf">点击生成网页后通过浏览器的打印功能保存为pdf</button>
         </div>
     </div>
 </form>
@@ -286,6 +300,23 @@
                 newWindow.document.write(newPage.documentElement.outerHTML);
                 newWindow.document.close();
                 return false;
+            },
+            createrspdf: function (obj,event){
+                event.preventDefault();
+                var params = $("#fireflysstcreate-form").serializeJson();
+                var name = "";
+                switch (params.type) {
+                    case "1":
+                        name = "萤火虫RS高频预测";
+                        break;
+                    case "2":
+                        name = "xjRS周预测";
+                        break;
+                    case "3":
+                        name = "xjRS月预测";
+                        break;
+                }
+                fillPdf(name, currentFireflyRScontent());
             }
         })
     });
@@ -304,5 +335,30 @@
         });
         return serializeObj;
     };
+
+
+    function fillPdf(name, content) {
+        var newPage = document.implementation.createHTMLDocument('New Page');
+        var head = newPage.head;
+        head.innerHTML = "<meta charset=\"utf-8\">\n" +
+            "    <title>"+name+"</title>\n" +
+            "    <meta name=\"renderer\" content=\"webkit\">\n" +
+            "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n" +
+            "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
+            "    <link href='https://cdn.staticfile.net/layui/2.9.4/css/layui.css' rel=\"stylesheet\">\n" +
+            "    <style>\n" +
+            "        @font-face {\n" +
+            "            font-family: AaManYuShouXieTi;\n" +
+            "            src: url('https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/font%2FAaManYuShouXieTi3.ttf?access_token=c87299575627265144b7db286d3bf673');\n" +
+            "        }\n" +
+            "    </style>";
+        var body = newPage.body;
+        $(body).append(content);
+        // 打开新页面并写入内容
+        var newWindow = window.open('', '_blank');
+        newWindow.document.write(newPage.documentElement.outerHTML);
+        newWindow.document.close();
+
+    }
 
 </script>
