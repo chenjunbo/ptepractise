@@ -91,11 +91,11 @@ function fibRwCurrentTypedata(param) {
             break;
         case "5":
             //自定义数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/cge_fib_rw_zidingyi.txt?access_token=c87299575627265144b7db286d3bf673"
+            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/xjfibrwweek.txt?access_token=c87299575627265144b7db286d3bf673"
             break;
         case "6":
             //自定义数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/cge_fib_rw_zidingyi2.txt?access_token=c87299575627265144b7db286d3bf673"
+            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/xjfibrwmonth.txt?access_token=c87299575627265144b7db286d3bf673"
             break;
         case "7":
             var content = getFromLocalStorage("fibrwblue");
