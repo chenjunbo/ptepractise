@@ -22,7 +22,8 @@
                     <input type="checkbox" name="analysis" title="答案解析" checked>
                 </div>
             </div>
-            <button class="layui-btn" lay-header-event="createfibrwpdf">点击生成网页后通过浏览器的打印功能保存为pdf</button>
+            <button class="layui-btn" lay-header-event="createfibrwpdf">点击生成网页后通过浏览器的打印功能保存为pdf
+            </button>
         </div>
     </div>
 </form>
@@ -53,7 +54,8 @@
                     <input type="checkbox" name="analysis" title="答案解析" checked>
                 </div>
             </div>
-            <button class="layui-btn" lay-header-event="createfibrpdf">点击生成网页后通过浏览器的打印功能保存为pdf</button>
+            <button class="layui-btn" lay-header-event="createfibrpdf">点击生成网页后通过浏览器的打印功能保存为pdf
+            </button>
         </div>
     </div>
 </form>
@@ -66,7 +68,7 @@
         <div class="layui-inline">
             SST:
             <div class="layui-inline">
-                <select name="type" >
+                <select name="type">
                     <option value="1">萤火虫SST高频</option>
                     <option value="2">萤火虫SST已整理题库</option>
                     <option value="3">SST收藏夹</option>
@@ -80,7 +82,9 @@
                     <input type="checkbox" name="chinese" title="中文速记" checked>
                 </div>
             </div>
-            <button class="layui-btn" lay-header-event="fireflysstcreatepdf">点击生成网页后通过浏览器的打印功能保存为pdf</button>
+            <button class="layui-btn" lay-header-event="fireflysstcreatepdf">
+                点击生成网页后通过浏览器的打印功能保存为pdf
+            </button>
         </div>
     </div>
 </form>
@@ -91,13 +95,14 @@
         <div class="layui-inline">
             RS:
             <div class="layui-inline">
-                <select name="type" >
+                <select name="type">
                     <option value="1">萤火虫RS高频</option>
                     <option value="2">⭐️RS周预测</option>
                     <option value="3">⭐️RS月预测</option>
                 </select>
             </div>
-            <button class="layui-btn" lay-header-event="createrspdf">点击生成网页后通过浏览器的打印功能保存为pdf</button>
+            <button class="layui-btn" lay-header-event="createrspdf">点击生成网页后通过浏览器的打印功能保存为pdf
+            </button>
         </div>
     </div>
 </form>
@@ -108,13 +113,14 @@
         <div class="layui-inline">
             FIB-L:
             <div class="layui-inline">
-                <select name="type" >
+                <select name="type">
                     <option value="1">萤火虫FIBL高频</option>
                     <option value="2">⭐️FIB周预测</option>
                     <option value="3">⭐️FIB月预测</option>
                 </select>
             </div>
-            <button class="layui-btn" lay-header-event="createfiblpdf">点击生成网页后通过浏览器的打印功能保存为pdf</button>
+            <button class="layui-btn" lay-header-event="createfiblpdf">点击生成网页后通过浏览器的打印功能保存为pdf
+            </button>
         </div>
     </div>
 </form>
@@ -130,6 +136,7 @@
         fireFlySSTInit();
         fireFlyRSInit();
         xjrsInit();
+        ptefiblInit();
         form.render();
         util.event('lay-header-event', {
             createfibrwpdf: function (obj, event) { // 左侧菜单事件
@@ -137,23 +144,23 @@
                 var newPage = document.implementation.createHTMLDocument('New Page');
                 // 在新文档中添加文本
                 // var head = newPage.head;
-            //     // 获取当前URL
-            //     var currentUrl = window.location.href;
-            //
-            //     // 解析当前URL
-            //     var urlParts = currentUrl.split('/');
-            //
-            // // 移除最后一部分，即当前文件或路径
-            //     urlParts.pop();
-            //
-            //     // 重新组合URL
-            //     var parentUrl = urlParts.join('/');
-            //
-            //     // 如果需要加上协议头和主机名，可以手动拼接
-            //     if (parentUrl.charAt(parentUrl.length - 1) !== '/') {
-            //         parentUrl += '/';
-            //     }
-            //     console.log(parentUrl)
+                //     // 获取当前URL
+                //     var currentUrl = window.location.href;
+                //
+                //     // 解析当前URL
+                //     var urlParts = currentUrl.split('/');
+                //
+                // // 移除最后一部分，即当前文件或路径
+                //     urlParts.pop();
+                //
+                //     // 重新组合URL
+                //     var parentUrl = urlParts.join('/');
+                //
+                //     // 如果需要加上协议头和主机名，可以手动拼接
+                //     if (parentUrl.charAt(parentUrl.length - 1) !== '/') {
+                //         parentUrl += '/';
+                //     }
+                //     console.log(parentUrl)
                 // var params = JSON.stringify($("#fibrwcreate-form").serializeJson())
                 var params = $("#fibrwcreate-form").serializeJson();
                 var name = "C哥阅读下拉预测";
@@ -181,7 +188,7 @@
                         name = "阅读下拉收藏夹";
                         break;
                     case "8":
-                        name="xing️阅读下拉月预测除C哥之外题目"
+                        name = "xing️阅读下拉月预测除C哥之外题目"
                         break;
 
                 }
@@ -193,10 +200,10 @@
                     var questionHtml = createFibRwPdfHtml(params, (index + 1), item);
                     $(body).append(questionHtml);
                 })
-                fillPdf(newPage,name);
+                fillPdf(newPage, name);
                 return false;
             },
-            createfibrpdf: function (obj,event){
+            createfibrpdf: function (obj, event) {
                 event.preventDefault();
                 var newPage = document.implementation.createHTMLDocument('New Page');
                 var params = $("#fibrcreate-form").serializeJson();
@@ -225,7 +232,7 @@
                         name = "阅读拖拽收藏夹";
                         break;
                     case "8":
-                        name="xing️阅读拖拽月预测除C哥之外题目"
+                        name = "xing️阅读拖拽月预测除C哥之外题目"
                         break;
                 }
                 var body = newPage.body;
@@ -236,10 +243,10 @@
                     var questionHtml = createFibRPdfHtml(params, (index + 1), item);
                     $(body).append(questionHtml);
                 })
-                fillPdf(newPage,name);
+                fillPdf(newPage, name);
                 return false;
             },
-            fireflysstcreatepdf: function (obj,event){
+            fireflysstcreatepdf: function (obj, event) {
                 event.preventDefault();
                 var newPage = document.implementation.createHTMLDocument('New Page');
                 var params = $("#fireflysstcreate-form").serializeJson();
@@ -260,13 +267,13 @@
                 var currentTypedataList = fireflySSTCurrentTypedata(params);
                 currentTypedataList.forEach(function (item, index) {
                     var questionHtml = createFireFlySSTPdfHtml(params, (index + 1), item);
-                   $(body).append(questionHtml);
+                    $(body).append(questionHtml);
                 })
-                fillPdf(newPage,name);
+                fillPdf(newPage, name);
 
                 return false;
             },
-            createrspdf: function (obj,event){
+            createrspdf: function (obj, event) {
                 event.preventDefault();
                 var params = $("#pters-form").serializeJson();
                 var name = "";
@@ -288,7 +295,7 @@
                 }
                 fillPdf(newPage, name);
             },
-            createfiblpdf: function (obj,event){
+            createfiblpdf: function (obj, event) {
                 event.preventDefault();
                 var params = $("#pters-form").serializeJson();
                 var name = "";
@@ -299,7 +306,7 @@
                         name = "萤火虫FIBL高频";
                         var fireflyfiblList = currentFireflyfiblList();
                         fireflyfiblList.forEach(function (item, index) {
-                            var questionHtml = createFireFlySSTPdfHtml( (index + 1), item);
+                            var questionHtml = createFireFlySSTPdfHtml((index + 1), item);
                             $(body).append(questionHtml);
                         })
 
@@ -308,7 +315,7 @@
                         name = "xjFIBL周预测";
                         var xjfiblweekList = currentxjweekFibLList();
                         xjfiblweekList.forEach(function (item, index) {
-                            var questionHtml = createFireFlySSTPdfHtml( (index + 1), item);
+                            var questionHtml = createFireFlySSTPdfHtml((index + 1), item);
                             $(body).append(questionHtml);
                         })
                         break;
@@ -316,7 +323,7 @@
                         name = "xjFIBL月预测";
                         var xjfiblmonthList = currentxjmonthFibLList();
                         xjfiblmonthList.forEach(function (item, index) {
-                            var questionHtml = createFireFlySSTPdfHtml( (index + 1), item);
+                            var questionHtml = createFireFlySSTPdfHtml((index + 1), item);
                             $(body).append(questionHtml);
                         })
                         break;
@@ -342,11 +349,11 @@
     };
 
 
-    function fillPdf(newPage,name) {
+    function fillPdf(newPage, name) {
         //var newPage = document.implementation.createHTMLDocument('New Page');
         var head = newPage.head;
         head.innerHTML = "<meta charset=\"utf-8\">\n" +
-            "    <title>"+name+"</title>\n" +
+            "    <title>" + name + "</title>\n" +
             "    <meta name=\"renderer\" content=\"webkit\">\n" +
             "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n" +
             "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
