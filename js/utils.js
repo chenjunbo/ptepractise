@@ -69,7 +69,7 @@ function createMenu() {
 }
 
 function loadNotice() {
-    $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/notice.html?access_token=c87299575627265144b7db286d3bf673")
+    $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673")
 }
 function initOthers() {
     isNeedLoadFont = false;
