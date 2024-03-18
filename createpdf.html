@@ -101,7 +101,23 @@
         </div>
     </div>
 </form>
-
+<br>
+<br>
+<form action="#" class="layui-form" id="ptefibl-form">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            FIB-L:
+            <div class="layui-inline">
+                <select name="type" >
+                    <option value="1">萤火虫FIBL高频</option>
+                    <option value="2">⭐️FIB周预测</option>
+                    <option value="3">⭐️FIB月预测</option>
+                </select>
+            </div>
+            <button class="layui-btn" lay-header-event="createfiblpdf">点击生成网页后通过浏览器的打印功能保存为pdf</button>
+        </div>
+    </div>
+</form>
 
 <script type="text/javascript">
     layui.use(['table', 'layer', 'form', 'util'], function () {
@@ -169,18 +185,6 @@
                         break;
 
                 }
-                // head.innerHTML = "<meta charset=\"utf-8\">\n" +
-                //     "    <title>"+name+"</title>\n" +
-                //     "    <meta name=\"renderer\" content=\"webkit\">\n" +
-                //     "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n" +
-                //     "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-                //     "    <link href='https://cdn.staticfile.net/layui/2.9.4/css/layui.css' rel=\"stylesheet\">\n" +
-                //     "    <style>\n" +
-                //     "        @font-face {\n" +
-                //     "            font-family: AaManYuShouXieTi;\n" +
-                //     "            src: url('https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/font%2FAaManYuShouXieTi3.ttf?access_token=c87299575627265144b7db286d3bf673');\n" +
-                //     "        }\n" +
-                //     "    </style>";
                 var body = newPage.body;
 
                 var currentTypedataList = fibRwCurrentTypedata(params);
@@ -189,20 +193,12 @@
                     var questionHtml = createFibRwPdfHtml(params, (index + 1), item);
                     $(body).append(questionHtml);
                 })
-               // body.innerHTML = "ceshi neirong";
-
-                // 打开新页面并写入内容
-                // var newWindow = window.open('', '_blank');
-                // newWindow.document.write(newPage.documentElement.outerHTML);
-                // newWindow.document.close();
                 fillPdf(newPage,name);
                 return false;
             },
             createfibrpdf: function (obj,event){
                 event.preventDefault();
                 var newPage = document.implementation.createHTMLDocument('New Page');
-                // var head = newPage.head;
-                //   var params = JSON.stringify($("#fibrcreate-form").serializeJson())
                 var params = $("#fibrcreate-form").serializeJson();
                 var name = "C哥阅读拖拽预测";
                 switch (params.type) {
@@ -232,18 +228,6 @@
                         name="xing️阅读拖拽月预测除C哥之外题目"
                         break;
                 }
-                // head.innerHTML = "<meta charset=\"utf-8\">\n" +
-                //     "    <title>"+name+"</title>\n" +
-                //     "    <meta name=\"renderer\" content=\"webkit\">\n" +
-                //     "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n" +
-                //     "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-                //     "    <link href='https://cdn.staticfile.net/layui/2.9.4/css/layui.css' rel=\"stylesheet\">\n" +
-                //     "    <style>\n" +
-                //     "        @font-face {\n" +
-                //     "            font-family: AaManYuShouXieTi;\n" +
-                //     "            src: url('https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/font%2FAaManYuShouXieTi3.ttf?access_token=c87299575627265144b7db286d3bf673');\n" +
-                //     "        }\n" +
-                //     "    </style>";
                 var body = newPage.body;
 
                 var currentTypedataList = fibRCurrentTypedata(params);
@@ -252,20 +236,12 @@
                     var questionHtml = createFibRPdfHtml(params, (index + 1), item);
                     $(body).append(questionHtml);
                 })
-                // body.innerHTML = "ceshi neirong";
-
-                // 打开新页面并写入内容
-                // var newWindow = window.open('', '_blank');
-                // newWindow.document.write(newPage.documentElement.outerHTML);
-                // newWindow.document.close();
                 fillPdf(newPage,name);
                 return false;
             },
             fireflysstcreatepdf: function (obj,event){
                 event.preventDefault();
                 var newPage = document.implementation.createHTMLDocument('New Page');
-               // var head = newPage.head;
-                //   var params = JSON.stringify($("#fibrcreate-form").serializeJson())
                 var params = $("#fireflysstcreate-form").serializeJson();
                 var name = "萤火虫sst预测";
                 switch (params.type) {
@@ -280,28 +256,12 @@
                         name = "萤火虫SST收藏夹";
                         break;
                 }
-                // head.innerHTML = "<meta charset=\"utf-8\">\n" +
-                //     "    <title>"+name+"</title>\n" +
-                //     "    <meta name=\"renderer\" content=\"webkit\">\n" +
-                //     "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n" +
-                //     "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-                //     "    <link href='https://cdn.staticfile.net/layui/2.9.4/css/layui.css' rel=\"stylesheet\">\n" +
-                //     "    <style>\n" +
-                //     "        @font-face {\n" +
-                //     "            font-family: AaManYuShouXieTi;\n" +
-                //     "            src: url('https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/font%2FAaManYuShouXieTi3.ttf?access_token=c87299575627265144b7db286d3bf673');\n" +
-                //     "        }\n" +
-                //     "    </style>";
                 var body = newPage.body;
                 var currentTypedataList = fireflySSTCurrentTypedata(params);
                 currentTypedataList.forEach(function (item, index) {
                     var questionHtml = createFireFlySSTPdfHtml(params, (index + 1), item);
                    $(body).append(questionHtml);
                 })
-                // // 打开新页面并写入内容
-                // var newWindow = window.open('', '_blank');
-                // newWindow.document.write(newPage.documentElement.outerHTML);
-                // newWindow.document.close();
                 fillPdf(newPage,name);
 
                 return false;
@@ -324,6 +284,41 @@
                     case "3":
                         name = "xjRS月预测";
                         $(body).append(currentxjrsmonthconten());
+                        break;
+                }
+                fillPdf(newPage, name);
+            },
+            createfiblpdf: function (obj,event){
+                event.preventDefault();
+                var params = $("#pters-form").serializeJson();
+                var name = "";
+                var newPage = document.implementation.createHTMLDocument('New Page');
+                var body = newPage.body;
+                switch (params.type) {
+                    case "1":
+                        name = "萤火虫FIBL高频";
+                        var fireflyfiblList = currentFireflyfiblList();
+                        fireflyfiblList.forEach(function (item, index) {
+                            var questionHtml = createFireFlySSTPdfHtml( (index + 1), item);
+                            $(body).append(questionHtml);
+                        })
+
+                        break;
+                    case "2":
+                        name = "xjFIBL周预测";
+                        var xjfiblweekList = currentxjweekFibLList();
+                        xjfiblweekList.forEach(function (item, index) {
+                            var questionHtml = createFireFlySSTPdfHtml( (index + 1), item);
+                            $(body).append(questionHtml);
+                        })
+                        break;
+                    case "3":
+                        name = "xjFIBL月预测";
+                        var xjfiblmonthList = currentxjmonthFibLList();
+                        xjfiblmonthList.forEach(function (item, index) {
+                            var questionHtml = createFireFlySSTPdfHtml( (index + 1), item);
+                            $(body).append(questionHtml);
+                        })
                         break;
                 }
                 fillPdf(newPage, name);
