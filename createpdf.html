@@ -322,7 +322,7 @@
                 var newPage = document.implementation.createHTMLDocument('New Page');
                 var body = newPage.body;
                 $(body).append(currentFireflyRScontent());
-                fillPdf(name, newPage);
+                fillPdf(newPage, name);
             }
         })
     });
