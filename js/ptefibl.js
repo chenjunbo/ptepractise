@@ -30,7 +30,7 @@ function currentxjweekFibLList(){
 function currentxjmonthFibLList(){
     return xjfiblMonthList;
 }
-function createFireFlySSTPdfHtml(serNum, fiblData) {
+function createpteFilbPdf(serNum, fiblData) {
     var num = fiblData.num;
     var name = fiblData.name;
     var questionDiv = document.createElement("div");

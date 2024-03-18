@@ -297,7 +297,7 @@
             },
             createfiblpdf: function (obj, event) {
                 event.preventDefault();
-                var params = $("#pters-form").serializeJson();
+                var params = $("#ptefibl-form").serializeJson();
                 var name = "";
                 var newPage = document.implementation.createHTMLDocument('New Page');
                 var body = newPage.body;
@@ -306,7 +306,7 @@
                         name = "萤火虫FIBL高频";
                         var fireflyfiblList = currentFireflyfiblList();
                         fireflyfiblList.forEach(function (item, index) {
-                            var questionHtml = createFireFlySSTPdfHtml((index + 1), item);
+                            var questionHtml = createpteFilbPdf((index + 1), item);
                             $(body).append(questionHtml);
                         })
 
@@ -315,7 +315,7 @@
                         name = "xjFIBL周预测";
                         var xjfiblweekList = currentxjweekFibLList();
                         xjfiblweekList.forEach(function (item, index) {
-                            var questionHtml = createFireFlySSTPdfHtml((index + 1), item);
+                            var questionHtml = createpteFilbPdf((index + 1), item);
                             $(body).append(questionHtml);
                         })
                         break;
@@ -323,7 +323,7 @@
                         name = "xjFIBL月预测";
                         var xjfiblmonthList = currentxjmonthFibLList();
                         xjfiblmonthList.forEach(function (item, index) {
-                            var questionHtml = createFireFlySSTPdfHtml((index + 1), item);
+                            var questionHtml = createpteFilbPdf((index + 1), item);
                             $(body).append(questionHtml);
                         })
                         break;
