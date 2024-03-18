@@ -92,8 +92,8 @@
             <div class="layui-inline">
                 <select name="type" >
                     <option value="1">萤火虫RS高频</option>
-<!--                    <option value="2">萤火虫SST已整理题库</option>-->
-<!--                    <option value="3">SST收藏夹</option>-->
+                    <option value="2">⭐️RS周预测</option>
+                    <option value="3">⭐️RS月预测</option>
                 </select>
             </div>
             <button class="layui-btn" lay-header-event="createrspdf">点击生成网页后通过浏览器的打印功能保存为pdf</button>
@@ -112,6 +112,7 @@
         fibrInit();
         fireFlySSTInit();
         fireFlyRSInit();
+        xjrsInit();
         form.render();
         util.event('lay-header-event', {
             createfibrwpdf: function (obj, event) { // 左侧菜单事件
@@ -308,20 +309,22 @@
                 event.preventDefault();
                 var params = $("#fireflysstcreate-form").serializeJson();
                 var name = "";
+                var newPage = document.implementation.createHTMLDocument('New Page');
+                var body = newPage.body;
                 switch (params.type) {
                     case "1":
                         name = "萤火虫RS高频预测";
+                        $(body).append(currentFireflyRScontent());
                         break;
                     case "2":
                         name = "xjRS周预测";
+                        $(body).append(currentxjrsweekconten());
                         break;
                     case "3":
                         name = "xjRS月预测";
+                        $(body).append(currentxjrsmonthconten());
                         break;
                 }
-                var newPage = document.implementation.createHTMLDocument('New Page');
-                var body = newPage.body;
-                $(body).append(currentFireflyRScontent());
                 fillPdf(newPage, name);
             }
         })
