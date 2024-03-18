@@ -259,8 +259,8 @@
             },
             fireflysstcreatepdf: function (obj,event){
                 event.preventDefault();
-                // var newPage = document.implementation.createHTMLDocument('New Page');
-                // var head = newPage.head;
+                var newPage = document.implementation.createHTMLDocument('New Page');
+               // var head = newPage.head;
                 //   var params = JSON.stringify($("#fibrcreate-form").serializeJson())
                 var params = $("#fireflysstcreate-form").serializeJson();
                 var name = "萤火虫sst预测";
@@ -288,21 +288,17 @@
                 //     "            src: url('https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/font%2FAaManYuShouXieTi3.ttf?access_token=c87299575627265144b7db286d3bf673');\n" +
                 //     "        }\n" +
                 //     "    </style>";
-                // var body = newPage.body;
-
+                var body = newPage.body;
                 var currentTypedataList = fireflySSTCurrentTypedata(params);
-                var content = "";
                 currentTypedataList.forEach(function (item, index) {
-                    //生成内容数据,添加到网页中
                     var questionHtml = createFireFlySSTPdfHtml(params, (index + 1), item);
-                    content = content + questionHtml;
-                  //  $(body).append(questionHtml);
+                   $(body).append(questionHtml);
                 })
-                // 打开新页面并写入内容
+                // // 打开新页面并写入内容
                 // var newWindow = window.open('', '_blank');
                 // newWindow.document.write(newPage.documentElement.outerHTML);
                 // newWindow.document.close();
-                fillPdf(name, content);
+                fillPdf(newPage,name);
 
                 return false;
             },
@@ -321,7 +317,10 @@
                         name = "xjRS月预测";
                         break;
                 }
-                fillPdf(name, currentFireflyRScontent());
+                var newPage = document.implementation.createHTMLDocument('New Page');
+                var body = newPage.body;
+                $(body).append(currentFireflyRScontent());
+                fillPdf(name, newPage);
             }
         })
     });
@@ -342,8 +341,8 @@
     };
 
 
-    function fillPdf(name, content) {
-        var newPage = document.implementation.createHTMLDocument('New Page');
+    function fillPdf(newPage,name) {
+        //var newPage = document.implementation.createHTMLDocument('New Page');
         var head = newPage.head;
         head.innerHTML = "<meta charset=\"utf-8\">\n" +
             "    <title>"+name+"</title>\n" +
@@ -357,8 +356,8 @@
             "            src: url('https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/font%2FAaManYuShouXieTi3.ttf?access_token=c87299575627265144b7db286d3bf673');\n" +
             "        }\n" +
             "    </style>";
-        var body = newPage.body;
-        $(body).append(content);
+        // var body = newPage.body;
+        // $(body).append(content);
         // 打开新页面并写入内容
         var newWindow = window.open('', '_blank');
         newWindow.document.write(newPage.documentElement.outerHTML);
