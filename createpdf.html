@@ -259,8 +259,8 @@
             },
             fireflysstcreatepdf: function (obj,event){
                 event.preventDefault();
-                var newPage = document.implementation.createHTMLDocument('New Page');
-                var head = newPage.head;
+                // var newPage = document.implementation.createHTMLDocument('New Page');
+                // var head = newPage.head;
                 //   var params = JSON.stringify($("#fibrcreate-form").serializeJson())
                 var params = $("#fireflysstcreate-form").serializeJson();
                 var name = "萤火虫sst预测";
@@ -276,30 +276,34 @@
                         name = "萤火虫SST收藏夹";
                         break;
                 }
-                head.innerHTML = "<meta charset=\"utf-8\">\n" +
-                    "    <title>"+name+"</title>\n" +
-                    "    <meta name=\"renderer\" content=\"webkit\">\n" +
-                    "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n" +
-                    "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-                    "    <link href='https://cdn.staticfile.net/layui/2.9.4/css/layui.css' rel=\"stylesheet\">\n" +
-                    "    <style>\n" +
-                    "        @font-face {\n" +
-                    "            font-family: AaManYuShouXieTi;\n" +
-                    "            src: url('https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/font%2FAaManYuShouXieTi3.ttf?access_token=c87299575627265144b7db286d3bf673');\n" +
-                    "        }\n" +
-                    "    </style>";
-                var body = newPage.body;
+                // head.innerHTML = "<meta charset=\"utf-8\">\n" +
+                //     "    <title>"+name+"</title>\n" +
+                //     "    <meta name=\"renderer\" content=\"webkit\">\n" +
+                //     "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n" +
+                //     "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
+                //     "    <link href='https://cdn.staticfile.net/layui/2.9.4/css/layui.css' rel=\"stylesheet\">\n" +
+                //     "    <style>\n" +
+                //     "        @font-face {\n" +
+                //     "            font-family: AaManYuShouXieTi;\n" +
+                //     "            src: url('https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/font%2FAaManYuShouXieTi3.ttf?access_token=c87299575627265144b7db286d3bf673');\n" +
+                //     "        }\n" +
+                //     "    </style>";
+                // var body = newPage.body;
 
                 var currentTypedataList = fireflySSTCurrentTypedata(params);
+                var content = "";
                 currentTypedataList.forEach(function (item, index) {
                     //生成内容数据,添加到网页中
                     var questionHtml = createFireFlySSTPdfHtml(params, (index + 1), item);
-                    $(body).append(questionHtml);
+                    content = content + questionHtml;
+                  //  $(body).append(questionHtml);
                 })
                 // 打开新页面并写入内容
-                var newWindow = window.open('', '_blank');
-                newWindow.document.write(newPage.documentElement.outerHTML);
-                newWindow.document.close();
+                // var newWindow = window.open('', '_blank');
+                // newWindow.document.write(newPage.documentElement.outerHTML);
+                // newWindow.document.close();
+                fillPdf(name, content);
+
                 return false;
             },
             createrspdf: function (obj,event){
