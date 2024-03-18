@@ -124,6 +124,21 @@
         </div>
     </div>
 </form>
+<br>
+<form action="#" class="layui-form" id="pteasq-form">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            ASQ:
+            <div class="layui-inline">
+                <select name="type">
+                    <option value="1">萤火虫ASQ高频</option>
+                </select>
+            </div>
+            <button class="layui-btn" lay-header-event="createasqpdf">点击生成网页后通过浏览器的打印功能保存为pdf
+            </button>
+        </div>
+    </div>
+</form>
 
 <script type="text/javascript">
     layui.use(['table', 'layer', 'form', 'util'], function () {
@@ -136,6 +151,7 @@
         fireFlySSTInit();
         fireFlyRSInit();
         xjrsInit();
+        fireFlyASQInit();
         ptefiblInit();
         form.render();
         util.event('lay-header-event', {
@@ -326,6 +342,20 @@
                             var questionHtml = createpteFilbPdf((index + 1), item);
                             $(body).append(questionHtml);
                         })
+                        break;
+                }
+                fillPdf(newPage, name);
+            },
+            createasqpdf: function (obj, event) {
+                event.preventDefault();
+                var params = $("#pteasq-form").serializeJson();
+                var name = "";
+                var newPage = document.implementation.createHTMLDocument('New Page');
+                var body = newPage.body;
+                switch (params.type) {
+                    case "1":
+                        name = "萤火虫ASQ高频预测";
+                        $(body).append(currentFireflyASQcontent());
                         break;
                 }
                 fillPdf(newPage, name);
