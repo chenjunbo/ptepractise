@@ -65,7 +65,14 @@ function createMenu() {
         });
 
     }
+    loadNotice();
+}
 
+function loadNotice() {
+    $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/notice.html?access_token=c87299575627265144b7db286d3bf673")
+}
+function initOthers() {
+    isNeedLoadFont = false;
 }
 
 function getAlljs() {
@@ -160,10 +167,6 @@ function checkFav(qNum, type) {
         $("#adddeletefav").html("添加到收藏")
     }
 
-}
-
-function initOthers() {
-    isNeedLoadFont = false;
 }
 
 /**
