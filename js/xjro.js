@@ -170,7 +170,7 @@ function xjroTranslateData(xjrodata){
             $(parentin).attr("name", "answeroptions");
             // $(input).attr("style", "text-align:center");
             $(parentin).attr("draggable", "true")
-            $(parentin).attr("ondragstart", "rodrag(event)")
+            $(parentin).attr("ondragstart", "rodrag2(event)")
             $(parentin).attr("realanswer", serNum);
             $(parentin).html(option)
             // parentin.append(input);
@@ -199,7 +199,43 @@ function rodrag(ev) {
  * @param ev
  */
 function rodrop2(ev) {
-
+    ev.preventDefault();
+    var sourceid = ev.dataTransfer.getData("Text");//被拖拽的组件的id
+    console.log(sourceid);
+    var target = ev.target;//目标区域的id
+    var id = target.id;
+    //放到自己的前面
+    if (sourceid.startsWith("jieguoqu")) {
+        //如果是自己的兄弟位置过来的,把兄弟先移除再放到自己前面
+        $("#sourceid").remove();
+        $(target).before($("#sourceid"));
+    }else if (sourceid.startsWith("div")) {
+        //如果是来自选项区域的,从选项区域隐藏后创建新的div放到自己前面
+        //代表是从内容中其它位置移动过来的
+        //获取到移动过来的数据
+        var value = $("#" + sourceid).html();
+        newData = value;
+        //清除原先位置的数据
+        //  $("#" + sourceid).html("");
+        //设置到新的位置
+        //  $(target).val(value);
+        //移除之前的位置的id
+        // $("#" + data).removeAttr("id");
+        //把id设置给新的位置
+        //  $(target).attr("id", data);
+        var resultdivin = $("<div style='margin-top: 10px;border: 1px solid red;padding-left: 5px'> </div>");
+        $(resultdivin).attr("ondrop", "rodrop2(event)");//设置组件放到自己身上时候的操作
+        $(resultdivin).attr("ondragover", "roallowDrop(event)");
+        $(resultdivin).attr("draggable", "true");
+        $(resultdivin).attr("ondragstart", "rodrag(event)");
+        $(resultdivin).attr("id", "jieguoqu" + sourceid);
+        $(resultdivin).html(value)
+        $("#resultdiv").append(resultdivin);
+        // return;
+        var height = $("#parasdiv" ).height();//获取之前的高度
+        $("#" + sourceid).hide();
+        $("#parasdiv").height(height);//重新设置高度.避免变矮
+    }
 }
 
 /**
