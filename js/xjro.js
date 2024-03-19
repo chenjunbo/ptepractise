@@ -263,7 +263,7 @@ function rodrop1(ev) {
     //如果有id说明是有内容,并且只能是从答案的结果区拖动回来
     if (sourceid && sourceid.startsWith("jieguoqu")) {
         //获取到需要显示的选项的在原始位置的id
-        var newid = sourceid.substring(sourceid.indexOf("jieguoqu")+1, sourceid.length - 1);
+        var newid = sourceid.substring(sourceid.indexOf("jieguoqu")+8, sourceid.length);
         //显示原始区域
         $("#" + newid).show();
         //移除当前被拖动的
