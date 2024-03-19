@@ -376,7 +376,6 @@ function nextXjRoQuestion(obj, event,localStorageType) {
     if (isXjRoLast()) {
         $("#next").hide();
     }
-    $("#question-div").html(content);
     fillAnswer(xjrodata);
     if (!isXjRoFirst()) {
         $("#pre").show();
@@ -411,7 +410,6 @@ function ropre(localStorageType) {
     if (!isXjRoLast()) {
         $("#next").show();
     }
-    $("#question-div").html(content);
     fillAnswer(xjrodata);
     checkFav(xjrodata.num, localStorageType);
 }
