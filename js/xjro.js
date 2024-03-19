@@ -155,7 +155,7 @@ function xjroTranslateData(xjrodata){
             var serNum = choice.order;//顺序
             var option = choice.para;//顺序
             var divid = "div" + serNum;
-            var parentin = $("<div class=\"layui-input\"  id=" + divid + "> </div>");
+            var parentin = $("<div  id=" + divid + "> </div>");
             // var input = document.createElement("input");
             // $(parentin).attr("type", "text");
             // $(parentin).attr("value", option);
@@ -172,7 +172,7 @@ function xjroTranslateData(xjrodata){
             $(parentin).attr("realanswer", serNum);
             $(parentin).html(option)
             // parentin.append(input);
-            $("#question-div").append(parentin)
+            $("#parasdiv").append(parentin)
         }
     }
     // fibrIndex++;
