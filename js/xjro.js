@@ -465,7 +465,6 @@ function rocheckanswer(form,obj,event,localStorageType) {
             // layer.msg('提示框关闭后的回调');
             if (!isXjRoLast()) {
                 nextXjRoQuestion(obj, event,localStorageType);
-                form.render();
             }
         });
     } else {

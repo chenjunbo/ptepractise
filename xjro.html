@@ -106,7 +106,10 @@
             },
             checkanswer: function (obj, event) {
                 event.preventDefault();
-               rocheckanswer(form,obj,event,localStorageType)
+               rocheckanswer(obj,event,localStorageType)
+                var height = $("#parasdiv").height();
+                $("#resultdiv").height(height);
+                form.render();
             },
             showanswer: function (obj, event) {
                 event.preventDefault();
