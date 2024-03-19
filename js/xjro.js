@@ -170,7 +170,7 @@ function xjroTranslateData(xjrodata){
             $(parentin).attr("name", "answeroptions");
             // $(input).attr("style", "text-align:center");
             $(parentin).attr("draggable", "true")
-            $(parentin).attr("ondragstart", "rodrag2(event)")
+            $(parentin).attr("ondragstart", "rodrag(event)")
             $(parentin).attr("realanswer", serNum);
             $(parentin).html(option)
             // parentin.append(input);
