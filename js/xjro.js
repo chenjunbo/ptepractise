@@ -194,6 +194,7 @@ function roallowDrop(ev) {
 
 function rodrag(ev) {
     ev.dataTransfer.setData("Text", ev.target.id);
+    $(ev.dataTransfer).attr("style", "margin-top: 10px;border: 1px solid blue;padding-left: 5px");
 }
 
 /*
@@ -220,20 +221,12 @@ function rodrop2(ev) {
         //代表是从内容中其它位置移动过来的
         //获取到移动过来的数据
         var value = $("#" + sourceid).html();
-        newData = value;
-        //清除原先位置的数据
-        //  $("#" + sourceid).html("");
-        //设置到新的位置
-        //  $(target).val(value);
-        //移除之前的位置的id
-        // $("#" + data).removeAttr("id");
-        //把id设置给新的位置
-        //  $(target).attr("id", data);
-        var resultdivin = $("<div style='margin-top: 10px;border: 1px solid red;padding-left: 5px'> </div>");
+        var resultdivin = $("<div style='margin-top: 10px;border: 1px solid blue;padding-left: 5px'> </div>");
         $(resultdivin).attr("ondrop", "rodrop2(event)");//设置组件放到自己身上时候的操作
         $(resultdivin).attr("ondragover", "roallowDrop(event)");
         $(resultdivin).attr("draggable", "true");
         $(resultdivin).attr("ondragstart", "rodrag(event)");
+        $(resultdivin).attr("jieguorealanswer", $("#" + sourceid).attr("realanswer"));
         $(resultdivin).attr("id", "jieguoqu" + sourceid);
         $(resultdivin).html(value)
         $(target).before(resultdivin);
@@ -255,7 +248,6 @@ function rodrop(ev) {
     var target = ev.target;//目标区域的id
     var id = target.id;
     //移除未填写的答案的红框,不管有没有
-    $(ev.dataTransfer).attr("style", "text-align:center");
     console.log(id)
     if (sourceid.startsWith("div")) {//从选项区域移动过来的
         //代表是从内容中其它位置移动过来的
@@ -275,6 +267,7 @@ function rodrop(ev) {
         $(resultdivin).attr("ondragover", "roallowDrop(event)");
         $(resultdivin).attr("draggable", "true");
         $(resultdivin).attr("ondragstart", "rodrag(event)");
+        $(resultdivin).attr("jieguorealanswer", $("#" + sourceid).attr("realanswer"));
         $(resultdivin).attr("id", "jieguoqu" + sourceid);
         $(resultdivin).html(value)
         $("#resultdiv").append(resultdivin);
@@ -416,25 +409,40 @@ function ropre(localStorageType) {
 
 function rocheckanswer(form,obj,event,localStorageType) {
     var xjrodata = currentXjRoData();
-    var content = JSON.stringify($("#question-form").serializeJson());
-    var result = $("#question-form").serializeJson();
     var isWrong = false;
-    for (var ans in result) {
-        if (!ans || !ans.startsWith("answer")) {
-            continue;
-        }
-        console.log(result[ans]);
-        var answer = result[ans];
-        var select = $("#" + ans);
-        console.log($(select))
-        if (!answer || answer.startsWith("false")) {
-            // $(allSelects[i]).addClass("layui-form-danger");
-            $(select).removeClass();
-            $(select).attr("class", "layui-form-danger");
+    //获取选项区数据
+    var parasdivElements = $("#parasdiv div");
+    parasdivElements.each(function (index, currentdiv) {
+        if ($(currentdiv).is(":hidden")) {
+            //隐藏的说明已经放过去了
+        }else{
+            //说明没放过去
             isWrong = true;
+            //设置颜色
+            $(currentdiv).attr("style", "margin-top: 10px;border: 1px solid red;padding-left: 5px");
+            layer.msg('需要全部排序!', {icon: 0}, function () {
+                // layer.msg('提示框关闭后的回调');
+                //添加错误次数
+            });
+            return;
         }
+    })
+    var val = xjrodata.answer_in_text;//答案顺序
+    val = val.replace(/\s+/g, "");
+    var allAnswers = val.split(",");//所有答案
+    //获取结果区数据
+    var resultdivElements = $("#resultdiv div");
+    //遍历所有的选项,拿到每一个的应该是几,然后看看和答案对应位置的数据是不是一致
 
-    }
+    resultdivElements.each(function (index,currentElement){
+        var answer = allAnswers[index];
+        var jieguorealanswer = $(currentElement).attr("jieguorealanswer");
+        if (answer != jieguorealanswer) {
+            isWrong = true;
+            $(currentElement).attr("style", "margin-top: 10px;border: 1px solid red;padding-left: 5px");
+        }
+    })
+
     if (!isWrong) {
         addRightOrFalt(xjrodata.num, "right", localStorageType);
         layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
