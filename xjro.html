@@ -109,7 +109,9 @@
                rocheckanswer(obj,event,localStorageType)
                 var height = $("#parasdiv").height();
                 $("#resultdiv").height(height);
+                setRightAndFaltNum(xjrodata.num, localStorageType);
                 form.render();
+                return false;
             },
             showanswer: function (obj, event) {
                 event.preventDefault();

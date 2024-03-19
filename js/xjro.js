@@ -473,7 +473,7 @@ function rocheckanswer(form,obj,event,localStorageType) {
             //添加错误次数
         });
     }
-    setRightAndFaltNum(xjrodata.num, localStorageType);
+
 }
 
 function showroanswerarea() {
