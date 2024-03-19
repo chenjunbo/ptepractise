@@ -375,7 +375,6 @@ function nextXjRoQuestion(obj, event,localStorageType) {
         $("#pre").show();
     }
     checkFav(xjrodata.num, localStorageType);
-    return false;
 }
 function fillAnswer(xjrodata,localStorageType) {
     $("#xjroanswer").hide();
