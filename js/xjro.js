@@ -228,7 +228,7 @@ function rodrop(ev) {
        // $("#" + data).removeAttr("id");
         //把id设置给新的位置
         //  $(target).attr("id", data);
-        var resultdivin = $("<div style='margin-top: 10px;border: 1px solid red;padding-left: 5px'  id=" + divid + "> </div>");
+        var resultdivin = $("<div style='margin-top: 10px;border: 1px solid red;padding-left: 5px'> </div>");
         $(resultdivin).attr("ondrop", "rodrop2(event)");//设置组件放到自己身上时候的操作
         $(resultdivin).attr("ondragover", "roallowDrop(event)");
         $(resultdivin).attr("draggable", "true");
