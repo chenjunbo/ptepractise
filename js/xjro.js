@@ -47,7 +47,7 @@ function xjroCurrentTypedata(param) {
     var qNum = param.qNum;//题号
     var type = param.type;//类型
     var filePath;
-    index = 0;
+    xjroindex = 0;
     currentROList = new Array();
     var localstoragedata;
     switch (type) {
