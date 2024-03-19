@@ -192,10 +192,7 @@ function rodrag(ev) {
 }
 
 /*
-            $(parentin).attr("ondrop", "rodrop(event)");
-            $(parentin).attr("ondragover", "roallowDrop(event)");
-            $(parentin).attr("draggable", "true");
-            $(parentin).attr("ondragstart", "rodrag(event)");
+
  */
 /**
  * 移动到答案区已经存在的答案上面
@@ -211,28 +208,34 @@ function rodrop2(ev) {
  */
 function rodrop(ev) {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("Text");
-    console.log(data);
-    var target = ev.target;
+    var sourceid = ev.dataTransfer.getData("Text");//被拖拽的组件的id
+    console.log(sourceid);
+    var target = ev.target;//目标区域的id
     var id = target.id;
     //移除未填写的答案的红框,不管有没有
     $(ev.dataTransfer).attr("style", "text-align:center");
     console.log(id)
-    var newData = $("#" + data).children("input").val();
-    if (data.endsWith("-")) {
+    if (sourceid.startsWith("div")) {//从选项区域移动过来的
         //代表是从内容中其它位置移动过来的
         //获取到移动过来的数据
-        var value = $("#" + data).val();
+        var value = $("#" + sourceid).html();
         newData = value;
         //清除原先位置的数据
-        $("#" + data).val("");
+        $("#" + sourceid).html("");
         //设置到新的位置
         //  $(target).val(value);
         //移除之前的位置的id
-        $("#" + data).removeAttr("id");
+       // $("#" + data).removeAttr("id");
         //把id设置给新的位置
         //  $(target).attr("id", data);
-        data = data.substring(0, data.length - 1);
+        var resultdivin = $("<div style='margin-top: 10px;border: 1px solid red;padding-left: 5px'  id=" + divid + "> </div>");
+        $(resultdivin).attr("ondrop", "rodrop2(event)");//设置组件放到自己身上时候的操作
+        $(resultdivin).attr("ondragover", "roallowDrop(event)");
+        $(resultdivin).attr("draggable", "true");
+        $(resultdivin).attr("ondragstart", "rodrag(event)");
+        $(resultdivin).attr("id", "jieguoqu" + sourceid);
+        $(resultdivin).html(value)
+        $("#resultdiv").append(resultdivin);
         // return;
     }
     //将要放的新内容
@@ -252,9 +255,8 @@ function rodrop(ev) {
         $("#" + newid).show();
         //设置新数据
     }
-    $(target).attr("id", data + "-");
-    $(target).val(newData)
-    $("#" + data).hide();
+
+    $("#" + sourceid).hide();
 }
 
 /**
@@ -265,17 +267,17 @@ function rodrop1(ev) {
     ev.preventDefault();
     //往回拖的答案
     var dataTransfer = ev.dataTransfer;
-    var data = dataTransfer.getData("Text");
-    console.log(data);
+    var sourceid = dataTransfer.getData("Text");
+    console.log(sourceid);
     //如果有id说明是有内容
-    if (data && data.startsWith("option")) {
+    if (sourceid && sourceid.startsWith("option")) {
         //获取到需要显示的选项的id
-        var newid = data.substring(0, data.length - 1);
+        var newid = sourceid.substring(0, sourceid.length - 1);
         //显示
         $("#" + newid).show();
         //移除自己的id
-        $("#" + data).val("");//清除内容
-        $("#" + data).removeAttr("id");
+        $("#" + sourceid).val("");//清除内容
+        $("#" + sourceid).removeAttr("id");
     }
     //如果没有id则不动
 }
