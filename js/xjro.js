@@ -237,9 +237,9 @@ function rodrop(ev) {
         $(resultdivin).html(value)
         $("#resultdiv").append(resultdivin);
         // return;
-        var height = $("#" + parasdiv).height();//获取之前的高度
+        var height = $("#parasdiv" ).height();//获取之前的高度
         $("#" + sourceid).hide();
-        $("#" + parasdiv).height(height);//重新设置高度.避免变矮
+        $("#parasdiv").height(height);//重新设置高度.避免变矮
     } else if (sourceid.startsWith("jieguoqu")) {
         //代表在结果区域内移动自己
         //先把自己移除,再把自己加到后面
