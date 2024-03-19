@@ -162,7 +162,7 @@ function xjroTranslateData(xjrodata){
             var serNum = choice.order;//顺序
             var option = choice.para;//顺序
             var divid = "div" + serNum;
-            var parentin = $("<div style='margin-top: 10px;border: 1px solid red;padding-left: 5px'  id=" + divid + "> </div>");
+            var parentin = $("<div style='margin-top: 10px;border: 1px solid blue;padding-left: 5px'  id=" + divid + "> </div>");
             // var input = document.createElement("input");
             // $(parentin).attr("type", "text");
             // $(parentin).attr("value", option);
@@ -434,6 +434,13 @@ function rocheckanswer(form,obj,event,localStorageType) {
     }
 
     var val = xjrodata.answer_in_text;//答案顺序
+    var orderIdMap = new Map();
+    var paras = xjrodata.paras;
+    paras.forEach(function (item){
+        var order = item.order;
+        var id = item.id;
+        orderIdMap.set(order + "", id + "");
+    })
     val = val.replace(/\s+/g, "");
     var allAnswers = val.split(",");//所有答案
     //获取结果区数据
@@ -443,7 +450,8 @@ function rocheckanswer(form,obj,event,localStorageType) {
     resultdivElements.each(function (index,currentElement){
         var answer = allAnswers[index];
         var jieguorealanswer = $(currentElement).attr("jieguorealanswer");
-        if (answer != jieguorealanswer) {
+        var id = orderIdMap.get(jieguorealanswer+"");
+        if (answer != id) {
             isWrong = true;
             $(currentElement).attr("style", "margin-top: 10px;border: 1px solid red;padding-left: 5px");
         }
