@@ -414,7 +414,7 @@ function ropre(localStorageType) {
     checkFav(xjrodata.num, localStorageType);
 }
 
-function rocheckanswer(obj,event,localStorageType) {
+function rocheckanswer(form,obj,event,localStorageType) {
     var xjrodata = currentXjRoData();
     var content = JSON.stringify($("#question-form").serializeJson());
     var result = $("#question-form").serializeJson();
@@ -490,7 +490,7 @@ function rogotoindex(localStorageType) {
         $("#question-div").html(content);
         fillAnswer(xjrodata);
         checkFav(xjrodata.num, localStorageType);
-        form.render();
+
         return false;
     }
 }

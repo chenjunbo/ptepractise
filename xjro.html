@@ -100,7 +100,7 @@
             },
             checkanswer: function (obj, event) {
                 event.preventDefault();
-               rocheckanswer(obj,event,localStorageType)
+               rocheckanswer(form,obj,event,localStorageType)
             },
             showanswer: function (obj, event) {
                 event.preventDefault();
@@ -109,6 +109,7 @@
             gotoindex: function (obj, event) {
                 event.preventDefault();
                 rogotoindex(localStorageType);
+                form.render();
                 return false;
             },
             adddeletefav: function (obj, event) {
