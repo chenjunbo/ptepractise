@@ -182,6 +182,8 @@ function xjroTranslateData(xjrodata){
     }
     $("#resultdiv").height($("#parasdiv").height());
     // fibrIndex++;
+    $("#parasdiv").show();
+    $("#resultdiv").show();
     return title ;
 }
 
