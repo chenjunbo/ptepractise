@@ -141,10 +141,10 @@ function xjroCurrentTypedata(param) {
 
 
 function xjroTranslateData(xjrodata){
-    var nameWithoutNum = fibrData.name_without_num;
+    var nameWithoutNum = xjrodata.name_without_num;
     nameWithoutNum = nameWithoutNum.replaceAll(" ", "&nbsp;");
-    var num = fibrData.num;
-    var paras = fibrData.paras;
+    var num = xjrodata.num;
+    var paras = xjrodata.paras;
     var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (fibrIndex + 1) + "题/共" + (fibrCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "</label></div>";
     $("#question-div").append(title);
     // shuffle(paras);
