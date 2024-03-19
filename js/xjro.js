@@ -15,7 +15,7 @@ function xjroInit() {
             cnxjroList = JSON.parse(result);
             for (let i = 0; i < cnxjroList.length; i++) {
                 var xjrodata = cnxjroList[i];
-                cnxjroMap.set(xjrodata.num, xjrodata);
+                cnxjroMap.set(xjrodata.num+"", xjrodata);
             }
         },
         error: function (xhr, status, error) {
@@ -33,7 +33,7 @@ function xjroInit() {
             enxjroList = JSON.parse(result);
             for (let i = 0; i < enxjroList.length; i++) {
                 var xjrodata = enxjroList[i];
-                enxjroMap.set(xjrodata.num, xjrodata);
+                enxjroMap.set(xjrodata.num+"", xjrodata);
             }
         },
         error: function (xhr, status, error) {
@@ -99,9 +99,9 @@ function xjroCurrentTypedata(param) {
                     if (!item) {
                         qNums.splice(index, 1);
                     } else {
-                        var xjroData = cnxjroMap.get(parseInt(item));
+                        var xjroData = cnxjroMap.get(item+"");
                         if (!xjroData) {
-                            xjroData = enxjroMap.get(parseInt(item));
+                            xjroData = enxjroMap.get(item+"");
                         }
                         if (xjroData) {
                             currentROList.push(xjroData);
@@ -121,9 +121,9 @@ function xjroCurrentTypedata(param) {
                 if (!item) {
                     localstoragedata.splice(index, 1);
                 } else {
-                    var xjroData = cnxjroMap.get(parseInt(item));
+                    var xjroData = cnxjroMap.get(item+"");
                     if (!xjroData) {
-                        xjroData = enxjroMap.get(parseInt(item));
+                        xjroData = enxjroMap.get(item+"");
                     }
                     if (xjroData) {
                         currentROList.push(xjroData);
