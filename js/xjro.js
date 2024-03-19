@@ -174,7 +174,7 @@ function xjroTranslateData(xjrodata){
             $(parentin).attr("realanswer", serNum);
             $(parentin).html(option)
             // parentin.append(input);
-            $(parent).append(parentin)
+            $("#parasdiv").append(parentin)
         }
     }
     // fibrIndex++;
