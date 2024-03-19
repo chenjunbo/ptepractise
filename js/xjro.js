@@ -155,22 +155,23 @@ function xjroTranslateData(xjrodata){
             var serNum = choice.order;//顺序
             var option = choice.para;//顺序
             var divid = "div" + serNum;
-            var parentin = $("<div class=\"layui-input-inline\"  id=" + divid + "> </div>");
-            var input = document.createElement("input");
-            $(input).attr("type", "text");
-            $(input).attr("value", option);
-            $(input).attr("disabled", "disabled");
-            $(input).attr("autocomplete", "off");
-            $(input).attr("lay-verify", "answer");
-            $(input).attr("class", "layui-input");
-            $(input).attr("name", "answeroptions");
-            $(input).attr("style", "text-align:center");
-            $(input).attr("ondrop", "rodrop(event)");
-            $(input).attr("ondragover", "roallowDrop(event)");
-            $(input).attr("draggable", "true");
-            $(input).attr("ondragstart", "rodrag(event)");
-            $(input).attr("realanswer", serNum);
-            parentin.append(input);
+            var parentin = $("<div class=\"layui-input\"  id=" + divid + "> </div>");
+            // var input = document.createElement("input");
+            // $(parentin).attr("type", "text");
+            // $(parentin).attr("value", option);
+            // $(parentin).attr("disabled", "disabled");
+            // $(input).attr("autocomplete", "off");
+            // $(input).attr("lay-verify", "answer");
+            // $(input).attr("class", "layui-input");
+            $(parentin).attr("name", "answeroptions");
+            // $(input).attr("style", "text-align:center");
+            $(parentin).attr("ondrop", "rodrop(event)");
+            $(parentin).attr("ondragover", "roallowDrop(event)");
+            $(parentin).attr("draggable", "true");
+            $(parentin).attr("ondragstart", "rodrag(event)");
+            $(parentin).attr("realanswer", serNum);
+            $(parentin).html(option)
+            // parentin.append(input);
             $("#question-div").append(parentin)
         }
     }
