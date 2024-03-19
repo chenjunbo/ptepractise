@@ -179,7 +179,7 @@ function xjroTranslateData(xjrodata){
             $("#parasdiv").append(parentin)
         }
     }
-    $("#resultdiv").height = $("#parasdiv").height;
+    $("#resultdiv").height($("#parasdiv").height());
     // fibrIndex++;
     return title ;
 }
