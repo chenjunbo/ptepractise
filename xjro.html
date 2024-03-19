@@ -306,7 +306,7 @@
     function fillAnswer(xjrodata) {
         $("#xjroanswer").hide();
         var answerInText = xjrodata.answer_in_text;
-        var originalText = xjrodata.originalText;
+        var originalText = xjrodata.original_text;
         var answercontent = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + originalText;
         $("#xjroanswer").html(answercontent);
         setRightAndFaltNum(xjrodata.num, localStorageType);
