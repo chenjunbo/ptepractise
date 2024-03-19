@@ -180,7 +180,8 @@ function xjroTranslateData(xjrodata){
             $("#parasdiv").append(parentin)
         }
     }
-    $("#resultdiv").height($("#parasdiv").height());
+    var height = $("#parasdiv").height();
+    $("#resultdiv").height(height);
     // fibrIndex++;
     $("#parasdiv").show();
     $("#resultdiv").show();
