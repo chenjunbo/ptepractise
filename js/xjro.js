@@ -262,7 +262,7 @@ function rodrop(ev) {
        // $("#" + data).removeAttr("id");
         //把id设置给新的位置
         //  $(target).attr("id", data);
-        var resultdivin = $("<div style='margin-top: 10px;border: 1px solid red;padding-left: 5px'> </div>");
+        var resultdivin = $("<div style='margin-top: 10px;border: 1px solid blue;padding-left: 5px'> </div>");
         $(resultdivin).attr("ondrop", "rodrop2(event)");//设置组件放到自己身上时候的操作
         $(resultdivin).attr("ondragover", "roallowDrop(event)");
         $(resultdivin).attr("draggable", "true");
@@ -410,6 +410,7 @@ function ropre(localStorageType) {
 function rocheckanswer(form,obj,event,localStorageType) {
     var xjrodata = currentXjRoData();
     var isWrong = false;
+    var isEmpty = false;
     //获取选项区数据
     var parasdivElements = $("#parasdiv div");
     parasdivElements.each(function (index, currentdiv) {
@@ -417,16 +418,21 @@ function rocheckanswer(form,obj,event,localStorageType) {
             //隐藏的说明已经放过去了
         }else{
             //说明没放过去
-            isWrong = true;
+            isEmpty = true;
             //设置颜色
             $(currentdiv).attr("style", "margin-top: 10px;border: 1px solid red;padding-left: 5px");
-            layer.msg('需要全部排序!', {icon: 0}, function () {
-                // layer.msg('提示框关闭后的回调');
-                //添加错误次数
-            });
-            return;
+
         }
     })
+    if (isEmpty) {
+        layer.msg('需要全部排序!', {icon: 0}, function () {
+            // layer.msg('提示框关闭后的回调');
+            //添加错误次数
+        });
+        form.render();
+        return;
+    }
+
     var val = xjrodata.answer_in_text;//答案顺序
     val = val.replace(/\s+/g, "");
     var allAnswers = val.split(",");//所有答案
