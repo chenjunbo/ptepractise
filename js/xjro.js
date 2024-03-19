@@ -147,7 +147,7 @@ function xjroTranslateData(xjrodata){
     var paras = xjrodata.paras;
     $("#question-div").children().remove();
     var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (fibrIndex + 1) + "题/共" + (currentROList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "</label></div>";
-    var parent = "<div class=\"layui-inline\" style=\"width: 40%\" id=\"parasdiv\"></div>";
+    var parent = "<div class=\"layui-inline\" style=\"width: 45%; border: 1px solid red\" id=\"parasdiv\"></div>";
     $("#question-div").append(title);
     $("#question-div").append(parent);
     // shuffle(paras);
@@ -157,7 +157,7 @@ function xjroTranslateData(xjrodata){
             var serNum = choice.order;//顺序
             var option = choice.para;//顺序
             var divid = "div" + serNum;
-            var parentin = $("<div  id=" + divid + "> </div>");
+            var parentin = $("<div style='margin-top: 10px'  id=" + divid + "> </div>");
             // var input = document.createElement("input");
             // $(parentin).attr("type", "text");
             // $(parentin).attr("value", option);
