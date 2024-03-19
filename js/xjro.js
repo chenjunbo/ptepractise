@@ -344,7 +344,7 @@ function rosearch(localStorageType) {
     }
     var content = xjroTranslateData(xjrodata);
     // $("#question-div").html(content);
-    fillAnswer(xjrodata);
+    fillAnswer(xjrodata,localStorageType);
     if (isXjRoLast()) {
         $("#next").hide();
     } else {
@@ -370,7 +370,7 @@ function nextXjRoQuestion(obj, event,localStorageType) {
     if (isXjRoLast()) {
         $("#next").hide();
     }
-    fillAnswer(xjrodata);
+    fillAnswer(xjrodata,localStorageType);
     if (!isXjRoFirst()) {
         $("#pre").show();
     }
@@ -404,7 +404,7 @@ function ropre(localStorageType) {
     if (!isXjRoLast()) {
         $("#next").show();
     }
-    fillAnswer(xjrodata);
+    fillAnswer(xjrodata,localStorageType);
     checkFav(xjrodata.num, localStorageType);
 }
 
@@ -510,7 +510,7 @@ function rogotoindex(localStorageType) {
             $("#next").hide();
         }
         // $("#question-div").html(content);
-        fillAnswer(xjrodata);
+        fillAnswer(xjrodata,localStorageType);
         checkFav(xjrodata.num, localStorageType);
 
         return false;
