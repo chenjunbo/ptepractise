@@ -208,7 +208,7 @@ function rodrop2(ev) {
     //放到自己的前面
     if (sourceid.startsWith("jieguoqu")) {
         //如果是自己的兄弟位置过来的,把兄弟先移除再放到自己前面
-        $("#"+sourceid).remove();
+        // $("#"+sourceid).remove();
         $(target).before($("#"+sourceid));
     }else if (sourceid.startsWith("div")) {
         //如果是来自选项区域的,从选项区域隐藏后创建新的div放到自己前面
@@ -280,7 +280,7 @@ function rodrop(ev) {
     } else if (sourceid.startsWith("jieguoqu")) {
         //代表在结果区域内移动自己
         //先把自己移除,再把自己加到后面
-        $("#" + sourceid).remove();
+        // $("#" + sourceid).remove();
         $("#resultdiv").append($("#" + sourceid));
     }
 
