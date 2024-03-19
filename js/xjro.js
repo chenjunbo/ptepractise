@@ -43,7 +43,7 @@ function xjroInit() {
 }
 
 
-function fibRwCurrentTypedata(param) {
+function xjroCurrentTypedata(param) {
     var qNum = param.qNum;//题号
     var type = param.type;//类型
     var filePath;
