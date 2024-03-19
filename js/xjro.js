@@ -487,7 +487,7 @@ function rogotoindex(localStorageType) {
         } else {
             $("#next").hide();
         }
-        $("#question-div").html(content);
+        // $("#question-div").html(content);
         fillAnswer(xjrodata);
         checkFav(xjrodata.num, localStorageType);
 
