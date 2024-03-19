@@ -221,7 +221,7 @@ function rodrop(ev) {
         var value = $("#" + sourceid).html();
         newData = value;
         //清除原先位置的数据
-        $("#" + sourceid).html("");
+      //  $("#" + sourceid).html("");
         //设置到新的位置
         //  $(target).val(value);
         //移除之前的位置的id
@@ -237,26 +237,17 @@ function rodrop(ev) {
         $(resultdivin).html(value)
         $("#resultdiv").append(resultdivin);
         // return;
-    }
-    //将要放的新内容
-    console.log(newData);
-    if (id.startsWith("option")) {
-        // //代表往一个答案里放答案
-        // //先找到父亲,把自己移除
-        // var parent = $(target).parent();
-        // //加回到选项区
-        // $("#fibroptions").append(target);
-        // parent.append(document.getElementById(data));
-        //根据当前id找到之前的input
-        var newid = id.substring(0, id.length - 1);
-        console.log(newid);
-        //将现在的数据放回去
-        var currentValue = $("#" + id).val;
-        $("#" + newid).show();
-        //设置新数据
+        var height = $("#" + parasdiv).height();//获取之前的高度
+        $("#" + sourceid).hide();
+        $("#" + parasdiv).height(height);//重新设置高度.避免变矮
+    } else if (sourceid.startsWith("jieguoqu")) {
+        //代表在结果区域内移动自己
+        //先把自己移除,再把自己加到后面
+        $("#" + sourceid).remove();
+        $("#resultdiv").append($("#" + sourceid));
     }
 
-    $("#" + sourceid).hide();
+
 }
 
 /**
@@ -269,15 +260,14 @@ function rodrop1(ev) {
     var dataTransfer = ev.dataTransfer;
     var sourceid = dataTransfer.getData("Text");
     console.log(sourceid);
-    //如果有id说明是有内容
-    if (sourceid && sourceid.startsWith("option")) {
-        //获取到需要显示的选项的id
-        var newid = sourceid.substring(0, sourceid.length - 1);
-        //显示
+    //如果有id说明是有内容,并且只能是从答案的结果区拖动回来
+    if (sourceid && sourceid.startsWith("jieguoqu")) {
+        //获取到需要显示的选项的在原始位置的id
+        var newid = sourceid.substring(sourceid.indexOf("jieguoqu")+1, sourceid.length - 1);
+        //显示原始区域
         $("#" + newid).show();
-        //移除自己的id
-        $("#" + sourceid).val("");//清除内容
-        $("#" + sourceid).removeAttr("id");
+        //移除当前被拖动的
+        $("#" + sourceid).remove();
     }
     //如果没有id则不动
 }
