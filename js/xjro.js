@@ -145,6 +145,7 @@ function xjroTranslateData(xjrodata){
     nameWithoutNum = nameWithoutNum.replaceAll(" ", "&nbsp;");
     var num = xjrodata.num;
     var paras = xjrodata.paras;
+    $("#question-div").children().remove();
     var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (fibrIndex + 1) + "题/共" + (currentROList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "</label></div>";
     $("#question-div").append(title);
     // shuffle(paras);
@@ -157,6 +158,7 @@ function xjroTranslateData(xjrodata){
             var parentin = $("<div class=\"layui-input-inline\"  id=" + divid + "> </div>");
             var input = document.createElement("input");
             $(input).attr("type", "text");
+            $(input).attr("value", option);
             $(input).attr("disabled", "disabled");
             $(input).attr("autocomplete", "off");
             $(input).attr("lay-verify", "answer");
@@ -173,7 +175,7 @@ function xjroTranslateData(xjrodata){
         }
     }
     // fibrIndex++;
-    return title + text;
+    return title ;
 }
 
 
