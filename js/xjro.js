@@ -418,3 +418,18 @@ function currentXjRoData() {
 function currentXjRoListData() {
     return currentROList;
 }
+$.fn.serializeJson = function () {
+    var serializeObj = {};
+    var array = this.serializeArray();
+    $.each(array, function () {
+        if (serializeObj[this.name] !== undefined) {
+            if (!serializeObj[this.name].push) {
+                serializeObj[this.name] = [serializeObj[this.name]];
+            }
+            serializeObj[this.name].push(this.value || '');
+        } else {
+            serializeObj[this.name] = this.value || '';
+        }
+    });
+    return serializeObj;
+}
