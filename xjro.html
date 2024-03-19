@@ -84,17 +84,23 @@
                 // alert("aaaaa" + json)
                 event.preventDefault();
                 rosearch(localStorageType);
+                var height = $("#parasdiv").height();
+                $("#resultdiv").height(height);
                 form.render();
                 return false;
             },
             next: function (obj, event) {
                 var result = nextXjRoQuestion(obj, event,localStorageType);
+                var height = $("#parasdiv").height();
+                $("#resultdiv").height(height);
                 form.render();
                 return result;
             },
             pre: function (obj, event) {
                 event.preventDefault();
                 ropre(localStorageType);
+                var height = $("#parasdiv").height();
+                $("#resultdiv").height(height);
                 form.render();
                 return false;
             },
