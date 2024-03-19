@@ -145,9 +145,9 @@ function xjroTranslateData(xjrodata){
     nameWithoutNum = nameWithoutNum.replaceAll(" ", "&nbsp;");
     var num = xjrodata.num;
     var paras = xjrodata.paras;
-    $("#question-div").remove("#biaotiquyu");
-    $("#parasdiv").children().remove();
-    $("#resultdiv").children().remove();
+    $("#question-div").children("#biaotiquyu").remove();
+    $("#parasdiv").html("")
+    $("#resultdiv").html("")
     var title = "<div class=\"layui-form-item\" id='biaotiquyu'><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (fibrIndex + 1) + "题/共" + (currentROList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "</label></div>";
     // var parent = "<div class=\"layui-inline\" style=\"width: 45%; border:1px solid blue;\" id=\"parasdiv\" ondrop=\"rodrop1(event)\" ondragover=\"roallowDrop(event)\"></div>";
     // var resultdiv = "<div class=\"layui-inline\" style=\"width: 45%; border:1px solid blue;margin-left: 20px;\" id=\"resultdiv\" ondrop=\"rodrop(event)\" ondragover=\"roallowDrop(event)\"></div>";
