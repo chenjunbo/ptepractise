@@ -141,7 +141,39 @@ function xjroCurrentTypedata(param) {
 
 
 function xjroTranslateData(xjrodata){
-
+    var nameWithoutNum = fibrData.name_without_num;
+    nameWithoutNum = nameWithoutNum.replaceAll(" ", "&nbsp;");
+    var num = fibrData.num;
+    var paras = fibrData.paras;
+    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (fibrIndex + 1) + "题/共" + (fibrCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "</label></div>";
+    $("#question-div").append(title);
+    // shuffle(paras);
+    for (var key in paras) {
+        var choice = paras[key];
+        if (choice) {
+            var serNum = choice.order;//顺序
+            var option = choice.para;//顺序
+            var divid = "div" + serNum;
+            var parentin = $("<div class=\"layui-input-inline\"  id=" + divid + "> </div>");
+            var input = document.createElement("input");
+            $(input).attr("type", "text");
+            $(input).attr("disabled", "disabled");
+            $(input).attr("autocomplete", "off");
+            $(input).attr("lay-verify", "answer");
+            $(input).attr("class", "layui-input");
+            $(input).attr("name", "answeroptions");
+            $(input).attr("style", "text-align:center");
+            $(input).attr("ondrop", "rodrop(event)");
+            $(input).attr("ondragover", "roallowDrop(event)");
+            $(input).attr("draggable", "true");
+            $(input).attr("ondragstart", "rodrag(event)");
+            $(input).attr("realanswer", serNum);
+            parentin.append(input);
+            $("#question-div").append(parentin)
+        }
+    }
+    // fibrIndex++;
+    return title + text;
 }
 
 
@@ -162,6 +194,196 @@ function xjroPreQuest() {
     // var result = xjroTranslateData();
     // return result;
     return currentROList[xjroindex];
+}
+
+
+function rosearch(localStorageType) {
+    $("#pre").hide();
+    // var content = fibRwGetdata($("#xjrosearch-form").serializeJson());
+    xjroCurrentTypedata($("#xjrosearch-form").serializeJson())
+    var xjrodata = currentXjRoData();
+    if (!xjrodata) {
+        $("#question-form").hide();
+        layer.msg('当前分类下不存在该题目', {icon: 0}, function () {
+            // layer.msg('提示框关闭后的回调');
+        });
+        return false;
+    } else {
+        $("#question-form").show();
+    }
+    var content = xjroTranslateData(xjrodata);
+    // $("#question-div").html(content);
+    fillAnswer(xjrodata);
+    if (isXjRoLast()) {
+        $("#next").hide();
+    } else {
+        $("#next").show();
+    }
+    if (getXjRoTotalNum() == 1) {
+        $("#gotoarea").hide();
+    } else {
+        $("#gotoarea").show();
+    }
+    checkFav(xjrodata.num, localStorageType);
+}
+
+function nextXjRoQuestion(obj, event,localStorageType) {
+    event.preventDefault();
+    if (isXjRoLast()) {
+        $("#next").hide();
+        return false;
+    }
+
+    var xjrodata = xjroNextQuest();
+    var content = xjroTranslateData(xjrodata);
+    if (isXjRoLast()) {
+        $("#next").hide();
+    }
+    $("#question-div").html(content);
+    fillAnswer(xjrodata);
+    if (!isXjRoFirst()) {
+        $("#pre").show();
+    }
+    checkFav(xjrodata.num, localStorageType);
+    return false;
+}
+function fillAnswer(xjrodata,localStorageType) {
+    $("#xjroanswer").hide();
+    var answerInText = xjrodata.answer_in_text;
+    var originalText = xjrodata.original_text;
+    var explanation_in_locale = xjrodata.explanation_in_locale;
+    var answercontent = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + originalText+ "</br>" + "</br>" + explanation_in_locale;
+    $("#xjroanswer").html(answercontent);
+    setRightAndFaltNum(xjrodata.num, localStorageType);
+}
+
+function ropre(localStorageType) {
+    if (isXjRoFirst()) {
+        $("#pre").hide();
+        return false;
+    }
+
+    var xjrodata = xjroPreQuest();
+    var content = xjroTranslateData(xjrodata);
+    if (isXjRoFirst()) {
+        $("#pre").hide();
+    }
+    if (!isXjRoLast()) {
+        $("#next").show();
+    }
+    $("#question-div").html(content);
+    fillAnswer(xjrodata);
+    checkFav(xjrodata.num, localStorageType);
+}
+
+function rocheckanswer(obj,event,localStorageType) {
+    var xjrodata = currentXjRoData();
+    var content = JSON.stringify($("#question-form").serializeJson());
+    var result = $("#question-form").serializeJson();
+    var isWrong = false;
+    for (var ans in result) {
+        if (!ans || !ans.startsWith("answer")) {
+            continue;
+        }
+        console.log(result[ans]);
+        var answer = result[ans];
+        var select = $("#" + ans);
+        console.log($(select))
+        if (!answer || answer.startsWith("false")) {
+            // $(allSelects[i]).addClass("layui-form-danger");
+            $(select).removeClass();
+            $(select).attr("class", "layui-form-danger");
+            isWrong = true;
+        }
+
+    }
+    if (!isWrong) {
+        addRightOrFalt(xjrodata.num, "right", localStorageType);
+        layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
+            //添加正确次数,添加错误次数
+            // layer.msg('提示框关闭后的回调');
+            if (!isXjRoLast()) {
+                nextXjRoQuestion(obj, event,localStorageType);
+                form.render();
+            }
+        });
+    } else {
+        addRightOrFalt(xjrodata.num, "falt", localStorageType);
+        layer.msg('答案不小心选错了哟!', {icon: 0}, function () {
+            // layer.msg('提示框关闭后的回调');
+            //添加错误次数
+        });
+    }
+    setRightAndFaltNum(xjrodata.num, localStorageType);
+}
+
+function showroanswerarea() {
+    if ($("#xjroanswer").is(":hidden")) {
+        $("#xjroanswer").show();
+    } else {
+        $("#xjroanswer").hide();
+    }
+}
+
+function rogotoindex(localStorageType) {
+    var qIndex = $("#qindex").val();//想要跳转的题目
+    console.log(qIndex);
+    if (!qIndex || qIndex <= 0 || qIndex > getXjRoTotalNum) {
+
+    } else {
+        setXjRoIndex(parseInt(qIndex));
+        var xjrodata = currentXjRoData();
+        if (!xjrodata) {
+            layer.msg('超出题目数量范围', {icon: 0}, function () {
+            });
+            return false;
+        }
+        var content = xjroTranslateData(xjrodata);
+        if (isXjRoFirst()) {
+            $("#pre").hide();
+        } else {
+            $("#pre").show();
+        }
+        if (!isXjRoLast()) {
+            $("#next").show();
+        } else {
+            $("#next").hide();
+        }
+        $("#question-div").html(content);
+        fillAnswer(xjrodata);
+        checkFav(xjrodata.num, localStorageType);
+        form.render();
+        return false;
+    }
+}
+
+function roadddeletefav(localStorageType) {
+    var xjrodata = currentXjRoData();
+    if (!xjrodata) {
+        layer.msg('题目无效', {icon: 0}, function () {
+        });
+        return false;
+    }
+    var isContains = containsValue(xjrodata.num, localStorageType);
+    if (isContains) {
+        layer.confirm('是否删除收藏？', {icon: 3}, function () {
+            removeFromLocalStorage(xjrodata.num, localStorageType);
+            layer.msg('操作完成', {icon: 0}, function () {
+            });
+            checkFav(xjrodata.num, localStorageType);
+        }, function () {
+        });
+
+    } else {
+        layer.confirm('是否添加到收藏？', {icon: 3}, function () {
+            add2LocalStorage("fibrwblue", xjrodata.num, localStorageType)
+            layer.msg('操作完成', {icon: 0}, function () {
+            });
+            checkFav(xjrodata.num, localStorageType);
+        }, function () {
+        });
+
+    }
 }
 
 function isXjRoFirst() {

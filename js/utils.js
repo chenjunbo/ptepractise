@@ -199,3 +199,19 @@ function setRightAndFaltNum(qNum, localStroageType) {
     var content = "<span style=\"color: #00b050;font-size: 18px; font-family: Arial, sans-serif;\">正确:</span><span style=\"color: red; font-size: 18px; font-family: Arial, sans-serif;\">"+rightNum+"</span><span style=\"font-family: Arial, sans-serif; font-size: 18px;\">次&nbsp;&nbsp;</span><span style=\"color: #00b050; font-family: Arial, sans-serif;font-size: 18px;\">错误:</span><span style=\"color: red; font-family: Arial, sans-serif;font-size: 18px;\">"+faltNum+"</span><span style=\"font-family: Arial, sans-serif;font-size: 18px;\">次</span>";
     $("#rightandfalt").html(content);
 }
+
+$.fn.serializeJson = function () {
+    var serializeObj = {};
+    var array = this.serializeArray();
+    $.each(array, function () {
+        if (serializeObj[this.name] !== undefined) {
+            if (!serializeObj[this.name].push) {
+                serializeObj[this.name] = [serializeObj[this.name]];
+            }
+            serializeObj[this.name].push(this.value || '');
+        } else {
+            serializeObj[this.name] = this.value || '';
+        }
+    });
+    return serializeObj;
+};
