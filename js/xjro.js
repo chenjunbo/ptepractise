@@ -140,6 +140,11 @@ function xjroCurrentTypedata(param) {
 
 
 
+function xjroTranslateData(xjrodata){
+
+}
+
+
 
 function xjroNextQuest() {
     if (xjroindex < currentROList.length - 1) {
