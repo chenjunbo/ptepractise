@@ -200,6 +200,7 @@ function rodrag(ev) {
  */
 function rodrop2(ev) {
     ev.preventDefault();
+    ev.stopPropagation();
     var sourceid = ev.dataTransfer.getData("Text");//被拖拽的组件的id
     console.log(sourceid);
     var target = ev.target;//目标区域的id
@@ -230,7 +231,7 @@ function rodrop2(ev) {
         $(resultdivin).attr("ondragstart", "rodrag(event)");
         $(resultdivin).attr("id", "jieguoqu" + sourceid);
         $(resultdivin).html(value)
-        $("#resultdiv").append(resultdivin);
+        $(target).before(resultdivin);
         // return;
         var height = $("#parasdiv" ).height();//获取之前的高度
         $("#" + sourceid).hide();
