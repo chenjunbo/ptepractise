@@ -147,7 +147,7 @@ function xjroTranslateData(xjrodata){
     var paras = xjrodata.paras;
     $("#question-div").children().remove();
     var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (fibrIndex + 1) + "题/共" + (currentROList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "</label></div>";
-    $("#question-div").append(title);
+    $("#question-div").prepend(title);
     // shuffle(paras);
     for (var key in paras) {
         var choice = paras[key];
