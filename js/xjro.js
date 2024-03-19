@@ -384,6 +384,9 @@ function fillAnswer(xjrodata,localStorageType) {
     var answerInText = xjrodata.answer_in_text;
     var originalText = xjrodata.original_text;
     var explanation_in_locale = xjrodata.explanation_in_locale;
+    if (!explanation_in_locale) {
+        explanation_in_locale = "本题目无顺口溜";
+    }
     var answercontent = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + originalText+ "</br>" + "</br>" + explanation_in_locale;
     $("#xjroanswer").html(answercontent);
     setRightAndFaltNum(xjrodata.num, localStorageType);
