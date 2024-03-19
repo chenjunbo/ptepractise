@@ -207,8 +207,8 @@ function rodrop2(ev) {
     //放到自己的前面
     if (sourceid.startsWith("jieguoqu")) {
         //如果是自己的兄弟位置过来的,把兄弟先移除再放到自己前面
-        $("#sourceid").remove();
-        $(target).before($("#sourceid"));
+        $("#"+sourceid).remove();
+        $(target).before($("#"+sourceid));
     }else if (sourceid.startsWith("div")) {
         //如果是来自选项区域的,从选项区域隐藏后创建新的div放到自己前面
         //代表是从内容中其它位置移动过来的
