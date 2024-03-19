@@ -148,7 +148,7 @@ function xjroTranslateData(xjrodata){
     $("#question-div").children().remove();
     var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (fibrIndex + 1) + "题/共" + (currentROList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "</label></div>";
     var parent = "<div class=\"layui-inline\" style=\"width: 45%; border:1px solid blue;\" id=\"parasdiv\" ondrop=\"rodrop1(event)\" ondragover=\"roallowDrop(event)\"></div>";
-    var resultdiv = "<div class=\"layui-inline\" style=\"width: 45%; border:1px solid blue;\" id=\"resultdiv\" ondrop=\"rodrop1(event)\" ondragover=\"roallowDrop(event)\"></div>";
+    var resultdiv = "<div class=\"layui-inline\" style=\"width: 45%; border:1px solid blue;margin-left: 20px;\" id=\"resultdiv\" ondrop=\"rodrop(event)\" ondragover=\"roallowDrop(event)\"></div>";
     $("#question-div").append(title);
     $("#question-div").append(parent);
     $("#question-div").append(resultdiv);
@@ -169,10 +169,8 @@ function xjroTranslateData(xjrodata){
             // $(input).attr("class", "layui-input");
             $(parentin).attr("name", "answeroptions");
             // $(input).attr("style", "text-align:center");
-            $(parentin).attr("ondrop", "rodrop(event)");
-            $(parentin).attr("ondragover", "roallowDrop(event)");
-            $(parentin).attr("draggable", "true");
-            $(parentin).attr("ondragstart", "rodrag(event)");
+            $(parentin).attr("draggable", "true")
+            $(parentin).attr("ondragstart", "rodrag(event)")
             $(parentin).attr("realanswer", serNum);
             $(parentin).html(option)
             // parentin.append(input);
@@ -184,6 +182,103 @@ function xjroTranslateData(xjrodata){
     return title ;
 }
 
+
+function roallowDrop(ev) {
+    ev.preventDefault();
+}
+
+function rodrag(ev) {
+    ev.dataTransfer.setData("Text", ev.target.id);
+}
+
+/*
+            $(parentin).attr("ondrop", "rodrop(event)");
+            $(parentin).attr("ondragover", "roallowDrop(event)");
+            $(parentin).attr("draggable", "true");
+            $(parentin).attr("ondragstart", "rodrag(event)");
+ */
+/**
+ * 移动到答案区已经存在的答案上面
+ * @param ev
+ */
+function rodrop2(ev) {
+
+}
+
+/**
+ * 答案区接收拖拽的操作
+ * @param ev
+ */
+function rodrop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("Text");
+    console.log(data);
+    var target = ev.target;
+    var id = target.id;
+    //移除未填写的答案的红框,不管有没有
+    $(ev.dataTransfer).attr("style", "text-align:center");
+    console.log(id)
+    var newData = $("#" + data).children("input").val();
+    if (data.endsWith("-")) {
+        //代表是从内容中其它位置移动过来的
+        //获取到移动过来的数据
+        var value = $("#" + data).val();
+        newData = value;
+        //清除原先位置的数据
+        $("#" + data).val("");
+        //设置到新的位置
+        //  $(target).val(value);
+        //移除之前的位置的id
+        $("#" + data).removeAttr("id");
+        //把id设置给新的位置
+        //  $(target).attr("id", data);
+        data = data.substring(0, data.length - 1);
+        // return;
+    }
+    //将要放的新内容
+    console.log(newData);
+    if (id.startsWith("option")) {
+        // //代表往一个答案里放答案
+        // //先找到父亲,把自己移除
+        // var parent = $(target).parent();
+        // //加回到选项区
+        // $("#fibroptions").append(target);
+        // parent.append(document.getElementById(data));
+        //根据当前id找到之前的input
+        var newid = id.substring(0, id.length - 1);
+        console.log(newid);
+        //将现在的数据放回去
+        var currentValue = $("#" + id).val;
+        $("#" + newid).show();
+        //设置新数据
+    }
+    $(target).attr("id", data + "-");
+    $(target).val(newData)
+    $("#" + data).hide();
+}
+
+/**
+ * 放回选项区
+ * @param ev
+ */
+function rodrop1(ev) {
+    ev.preventDefault();
+    //往回拖的答案
+    var dataTransfer = ev.dataTransfer;
+    var data = dataTransfer.getData("Text");
+    console.log(data);
+    //如果有id说明是有内容
+    if (data && data.startsWith("option")) {
+        //获取到需要显示的选项的id
+        var newid = data.substring(0, data.length - 1);
+        //显示
+        $("#" + newid).show();
+        //移除自己的id
+        $("#" + data).val("");//清除内容
+        $("#" + data).removeAttr("id");
+    }
+    //如果没有id则不动
+}
 
 
 function xjroNextQuest() {
