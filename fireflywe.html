@@ -1,0 +1,93 @@
+<form action="#" class="layui-form" id="fireflywe-form">
+    <div class="layui-form-item">
+        <label>题号:</label>
+        <div class="layui-inline">
+            <input id="qNumInput" type="number" name="qNum" autocomplete="off" placeholder="请输入题号"
+                   class="layui-input">
+        </div>
+        <div class="layui-inline">
+            题目类型:
+            <div class="layui-inline">
+                <select name="type" id="typeselection">
+                    <option value="1">萤火虫WE高频</option>
+                    <option value="2">萤火虫WE已整理题库</option>
+                    <option value="3">WE收藏夹</option>
+                </select>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="color: red">可选选项:</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="view" title="观点(仅供参考" checked>
+                    <input type="checkbox" name="example" title="范文(仅供参考)">
+                </div>
+            </div>
+            <button class="layui-btn" lay-header-event="fireflywesearch">先点这里加载(搜索)题目</button>
+        </div>
+    </div>
+</form>
+
+
+<form class="layui-form" action="" id="question-form">
+    <div id="question-div" style="padding-left: 20px;padding-right: 20px;line-height: 30px;font-size: large"></div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block" style="padding-top: 30px">
+            <button class="layui-btn" id="pre" lay-header-event="pre" hidden="hidden">上一题</button>
+            <button class="layui-btn" id="next" lay-header-event="next" hidden="hidden">下一题</button>
+            <button class="layui-btn" id="adddeletefav" lay-header-event="adddeletefav" hidden="hidden">添加到收藏
+            </button>
+            <div class="layui-inline" id="gotoarea">
+                <div class="layui-input-inline" style="width: 100px;">
+                    <input type="number" id="qindex" name="price_min" placeholder="第几题" autocomplete="off"
+                           class="layui-input" min="0" step="1" lay-affix="number">
+                </div>
+                <div class="layui-input-inline" style="width: 100px;">
+                    <button class="layui-btn" id="gotoindex" lay-header-event="gotoindex">跳转</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<script type="text/javascript">
+    layui.use(['table', 'layer', 'form', 'util'], function () {
+        var form = layui.form;
+        var util = layui.util;
+        fireFlySSTInit();
+        var localStorageType = "fireflywe";
+        form.render();
+        util.event('lay-header-event', {
+            fireflywesearch: function (obj, event) { // 左侧菜单事件
+                event.preventDefault();
+                wesearch(localStorageType)
+                form.render();
+                return false;
+            }
+            , next: function (obj, event) {
+                event.preventDefault();
+                getwenextQuestin(localStorageType);
+                form.render();
+                return false;
+            },
+            pre: function (obj, event) {
+                event.preventDefault();
+                getwePreQuestion(localStorageType);
+                form.render();
+                return false;
+            },
+            gotoindex: function (obj, event) {
+                event.preventDefault();
+                wegotoIndex(localStorageType);
+                form.render();
+                return false;
+            },
+            adddeletefav: function (obj, event) {
+                event.preventDefault();
+                addeletewefav(localStorageType);
+            }
+        });
+    })
+
+
+</script>
