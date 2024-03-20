@@ -335,26 +335,27 @@
                 return false;
             },fireflywfdcreatepdf: function (obj, event) {
                 event.preventDefault();
-                var newPage = document.implementation.createHTMLDocument('New Page');
-                var params = $("#fireflywfdcreate-form").serializeJson();
-                var name = "萤火虫WFD预测";
+                var url = "";
                 switch (params.type) {
+                    case "-1":
+                        name = "萤火虫WFD注音正序版";
+
+                        break;
+                    case "-2":
+                        name = "萤火虫WFD注音倒序版";
+
+                        break;
                     case "1":
                         name = "萤火虫WFD首字母版";
+
                         break;
 
                     case "2":
                         name = "萤火虫WFD分类版";
+
                         break;
                 }
-                var body = newPage.body;
-                var currentTypedataList = fireflySSTCurrentTypedata(params);
-                currentTypedataList.forEach(function (item, index) {
-                    var questionHtml = createFireFlySSTPdfHtml(params, (index + 1), item);
-                    $(body).append(questionHtml);
-                })
-                fillPdf(newPage, name);
-
+                window.open(url, '_blank');
                 return false;
             },
             fireflywecreatepdf: function (obj, event) {
