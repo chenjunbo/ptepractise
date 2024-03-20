@@ -163,7 +163,7 @@ function xjroTranslateData(xjrodata){
             var serNum = choice.order;//顺序
             var option = choice.para;//顺序
             var divid = "div" + serNum;
-            var parentin = $("<div style='margin-top: 10px;border: 1px solid blue;padding-left: 5px'  id=" + divid + "> </div>");
+            var parentin = $("<div style='margin-top: 5px;border: 1px solid blue;padding-left: 5px'  id=" + divid + "> </div>");
             // var input = document.createElement("input");
             // $(parentin).attr("type", "text");
             // $(parentin).attr("value", option);
@@ -180,7 +180,7 @@ function xjroTranslateData(xjrodata){
             // parentin.append(input);
             $("#parasdiv").append(parentin)
            var height1 = $(parentin).height();
-            height = height + height1;
+            height = height + height1+7;
         }
     }
    // var height = $("#parasdiv").height();
