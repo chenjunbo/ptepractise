@@ -1,16 +1,17 @@
-let fireFlyWFDList, fireFlyWFDCurrentList,categoryIdDataList;
+let fireFlyWFDList, fireFlyWFDCurrentList, categoryIdDataList, allQnums;
 const fireFlyWFDMap = new Map();
-const firecategoryWFDMap = new Map();
 var fireFlyWFDIndex = 0;//当前第几条
 var isFullContent = true;
 
 function fireFlyWFDInit(form) {
     $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/wfd/fireflywfd.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
         var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        allQnums = new Array();
         fireFlyWFDList = JSON.parse(result);
         for (let i = 0; i < fireFlyWFDList.length; i++) {
             var fireFlyWFDData = fireFlyWFDList[i];
             fireFlyWFDMap.set(fireFlyWFDData.qNum + "", fireFlyWFDData);
+            allQnums.push(fireFlyWFDData.qNum + "");//保存所有id
         }
     })
     if (form) {
@@ -19,7 +20,7 @@ function fireFlyWFDInit(form) {
             categoryIdDataList = JSON.parse(result);
             for (key in categoryIdDataList) {
                 //分类名称,根据名称添加分类
-                var option="<option value=\""+key+"\">"+key+"</option>";
+                var option = "<option value=\"" + key + "\">" + key + "</option>";
                 $("#typeselection").append(option);
             }
             form.render();
@@ -52,7 +53,7 @@ function fireFlyGetWFDdata(param) {
             //按照分类来获取数据
             var wfdIds = categoryIdDataList[type];
             if (wfdIds) {
-                wfdIds.forEach(function (num){
+                wfdIds.forEach(function (num) {
                     if (num) {
                         fireFlyWFDCurrentList.push(fireFlyWFDMap.get(num + ""));
                     }
@@ -71,7 +72,7 @@ function fireFlyGetWFDdata(param) {
                 if (!item) {
                     localstoragedata.splice(index, 1);
                 } else {
-                    var fibrwData = fireFlyWFDMap.get(item+"");
+                    var fibrwData = fireFlyWFDMap.get(item + "");
                     if (fibrwData) {
                         fireFlyWFDCurrentList.push(fibrwData);
                     }
@@ -146,6 +147,18 @@ function fireFlyWFDPreQuest() {
         fireFlyWFDIndex--;
     }
     return fireFlyWFDCurrentList[fireFlyWFDIndex];
+}
+
+
+function wfdrandomlucky() {
+    fireFlyWFDIndex = 0;
+    shuffle(allQnums);
+    fireFlyWFDCurrentList.splice(0, fireFlyWFDCurrentList.length);
+    var nums = Math.random() * (5 - 3) + 3;
+    for (var i = 0; i < nums; i++) {
+        fireFlyWFDCurrentList.push(allQnums[i]);
+    }
+    return fireFlyWFDCurrentList[0];
 }
 
 function isFireFlyWFDFirst() {

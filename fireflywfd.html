@@ -18,6 +18,7 @@
                 </select>
             </div>
             <button class="layui-btn" lay-header-event="search">先点这里加载(搜索)题目</button>
+            <button class="layui-btn" lay-header-event="testlucky">试试手气</button>
         </div>
     </div>
 
@@ -91,6 +92,28 @@
                 } else {
                     $("#question-form").show();
                 }
+                var content = fireFlyWFDTranslateData(fireFlydata);
+                $("#question-div").html(content);
+                fillAnswer(fireFlydata);
+                if (isFireFlyWFDLast()) {
+                    $("#next").hide();
+                } else {
+                    $("#next").show();
+                }
+                if (getFireFlyWFDTotalNum() == 1) {
+                    $("#gotoarea").hide();
+                } else {
+                    $("#gotoarea").show();
+                }
+                checkFav(fireFlydata.qNum, localStorageType);
+                form.render();
+                return false;
+            },
+            testlucky: function (obj,event){
+                event.preventDefault();
+                $("#pre").hide();
+                $("#question-form").show();
+                var fireFlydata = wfdrandomlucky();
                 var content = fireFlyWFDTranslateData(fireFlydata);
                 $("#question-div").html(content);
                 fillAnswer(fireFlydata);
