@@ -90,6 +90,7 @@ function getAlljs() {
         "https://gitee.com/jackiechan/ptepractise/raw/main/js/ptefibl.js",
         "https://gitee.com/jackiechan/ptepractise/raw/main/js/pteasq.js",
         "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjro.js",
+        "https://gitee.com/jackiechan/ptepractise/raw/main/js/we.js",
         "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflyrs.js"
     ]
     return js;
