@@ -81,7 +81,7 @@
             search: function (obj, event) { // 左侧菜单事件
                 event.preventDefault();
                 $("#pre").hide();
-                var fireFlydata = fireFlyGetdata($("#search-form").serializeJson())
+                var fireFlydata = fireFlyGetWFDdata($("#search-form").serializeJson())
                 if (!fireFlydata) {
                     $("#question-form").hide();
                     layer.msg('当前分类下不存在该题目', {icon: 0}, function () {
@@ -91,15 +91,15 @@
                 } else {
                     $("#question-form").show();
                 }
-                var content = fireFlyTranslateData(fireFlydata);
+                var content = fireFlyWFDTranslateData(fireFlydata);
                 $("#question-div").html(content);
                 fillAnswer(fireFlydata);
-                if (isFireFlyLast()) {
+                if (isFireFlyWFDLast()) {
                     $("#next").hide();
                 } else {
                     $("#next").show();
                 }
-                if (getFireFlyTotalNum() == 1) {
+                if (getFireFlyWFDTotalNum() == 1) {
                     $("#gotoarea").hide();
                 } else {
                     $("#gotoarea").show();
@@ -115,18 +115,18 @@
             },
             pre: function (obj, event) {
                 event.preventDefault();
-                if (isFireFlyFirst()) {
+                if (isFireFlyWFDFirst()) {
                     $("#pre").hide();
                     return false;
                 }
 
-                // var content = fireFlyPreQuest();
-                var fireFlydata = fireFlyPreQuest();
-                var content = fireFlyTranslateData(fireFlydata);
-                if (isFireFlyFirst()) {
+                // var content = fireFlyWFDPreQuest();
+                var fireFlydata = fireFlyWFDPreQuest();
+                var content = fireFlyWFDTranslateData(fireFlydata);
+                if (isFireFlyWFDFirst()) {
                     $("#pre").hide();
                 }
-                if (!isFireFlyLast()) {
+                if (!isFireFlyWFDLast()) {
                     $("#next").show();
                 }
                 $("#question-div").html(content);
@@ -140,7 +140,7 @@
                 var allInputs = $("input[name='answerinputs'][id]");
                 console.log(allInputs);
                 var isWrong = false;
-                var fireflywfd = currentFireFlyData();
+                var fireflywfd = currentFireFlyWFDData();
                 allInputs.each(function (index, currentInput) {
                     var id = $(currentInput).attr("id");
                     if (id && id.startsWith("answerblank")) {
@@ -166,7 +166,7 @@
                 if (!isWrong) {
                     addRightOrFalt(fireflywfd.qNum, "right", localStorageType);
                     layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
-                        if (!isFireFlyLast()) {
+                        if (!isFireFlyWFDLast()) {
                             nextWfdQuestion(obj, event, localStorageType);
                             form.render();
                         }
@@ -191,23 +191,23 @@
                 event.preventDefault();
                 var qIndex = $("#qindex").val();//想要跳转的题目
                 console.log(qIndex);
-                if (!qIndex || qIndex <= 0 || qIndex > getFireFlyTotalNum) {
+                if (!qIndex || qIndex <= 0 || qIndex > getFireFlyWFDTotalNum) {
 
                 } else {
-                    setFireFlyIndex(parseInt(qIndex));
-                    var fireFlydata = currentFireFlyData();
+                    setFireFlyWFDIndex(parseInt(qIndex));
+                    var fireFlydata = currentFireFlyWFDData();
                     if (!fireFlydata) {
                         layer.msg('超出题目数量范围', {icon: 0}, function () {
                         });
                         return false;
                     }
-                    var content = fireFlyTranslateData(fireFlydata);
-                    if (isFireFlyFirst()) {
+                    var content = fireFlyWFDTranslateData(fireFlydata);
+                    if (isFireFlyWFDFirst()) {
                         $("#pre").hide();
                     } else {
                         $("#pre").show();
                     }
-                    if (!isFireFlyLast()) {
+                    if (!isFireFlyWFDLast()) {
                         $("#next").show();
                     } else {
                         $("#next").hide();
@@ -221,7 +221,7 @@
             },
             adddeletefav: function (obj, event) {
                 event.preventDefault();
-                var fireFlydata = currentFireFlyData();
+                var fireFlydata = currentFireFlyWFDData();
                 if (!fireFlydata) {
                     layer.msg('题目无效', {icon: 0}, function () {
                     });
@@ -293,19 +293,19 @@
 
     function nextWfdQuestion(obj, event, form, localStorageType) {
         event.preventDefault();
-        if (isFireFlyLast()) {
+        if (isFireFlyWFDLast()) {
             $("#next").hide();
             return false;
         }
 
-        var fireFlydata = fireFlyNextQuest();
-        var content = fireFlyTranslateData(fireFlydata);
-        if (isFireFlyLast()) {
+        var fireFlydata = fireFlyWFDNextQuest();
+        var content = fireFlyWFDTranslateData(fireFlydata);
+        if (isFireFlyWFDLast()) {
             $("#next").hide();
         }
         $("#question-div").html(content);
         fillAnswer(fireFlydata);
-        if (!isFireFlyFirst()) {
+        if (!isFireFlyWFDFirst()) {
             $("#pre").show();
         }
         checkFav(fireFlydata.qNum, localStorageType);

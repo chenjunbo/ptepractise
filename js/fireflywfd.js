@@ -1,32 +1,41 @@
-let fireFlyList, fireFlyCurrentList;
-const fireFlyMap = new Map();
-var fireFlyIndex = 0;//当前第几条
+let fireFlyWFDList, fireFlyWFDCurrentList,categoryIdDataList;
+const fireFlyWFDMap = new Map();
+const firecategoryWFDMap = new Map();
+var fireFlyWFDIndex = 0;//当前第几条
 var isFullContent = true;
 
-function fireFlyInit() {
+function fireFlyWFDInit() {
     $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/wfd/fireflywfd.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
         var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
-        fireFlyList = JSON.parse(result);
-        for (let i = 0; i < fireFlyList.length; i++) {
-            var fireFlyData = fireFlyList[i];
-            fireFlyMap.set(fireFlyData.qNum + "", fireFlyData);
+        fireFlyWFDList = JSON.parse(result);
+        for (let i = 0; i < fireFlyWFDList.length; i++) {
+            var fireFlyWFDData = fireFlyWFDList[i];
+            fireFlyWFDMap.set(fireFlyWFDData.qNum + "", fireFlyWFDData);
+        }
+    })
+    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/wfd/wfdcategoryid.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
+        var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        categoryIdDataList = JSON.parse(result);
+        for (let i = 0; i < categoryIdDataList.length; i++) {
+            var fireFlyWFDData = fireFlyWFDList[i];
+            console.log(fireFlyWFDData);
         }
     })
 }
 
-function fireFlyGetdata(param) {
+function fireFlyGetWFDdata(param) {
     var qNum = param.qNum;//题号
     var type = param.type;//类型
     var localstoragedata;
-    fireFlyIndex = 0;
-    fireFlyCurrentList = new Array();
+    fireFlyWFDIndex = 0;
+    fireFlyWFDCurrentList = new Array();
     switch (type) {
         case "1":
             if (qNum) {
-                fireFlyCurrentList.push(fireFlyMap.get(qNum + ""));
-                return fireFlyCurrentList[0];
+                fireFlyWFDCurrentList.push(fireFlyWFDMap.get(qNum + ""));
+                return fireFlyWFDCurrentList[0];
             }
-            fireFlyCurrentList = fireFlyList;
+            fireFlyWFDCurrentList = fireFlyWFDList;
             break;
         case "2":
             var content = getFromLocalStorage("fireflywfd");
@@ -46,25 +55,25 @@ function fireFlyGetdata(param) {
                 if (!item) {
                     localstoragedata.splice(index, 1);
                 } else {
-                    var fibrwData = fireFlyMap.get(item+"");
+                    var fibrwData = fireFlyWFDMap.get(item+"");
                     if (fibrwData) {
-                        fireFlyCurrentList.push(fibrwData);
+                        fireFlyWFDCurrentList.push(fibrwData);
                     }
                 }
             }
         });
-        return fireFlyCurrentList[0];
+        return fireFlyWFDCurrentList[0];
     }
 
-    return fireFlyCurrentList[fireFlyIndex];
+    return fireFlyWFDCurrentList[fireFlyWFDIndex];
 }
 
 
-function fireFlyTranslateData(fireFlyData) {
-    var num = fireFlyData.qNum;
-    var text = fireFlyData.en;
-    var cn = fireFlyData.cn;
-    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (fireFlyIndex + 1) + "题/共" + (fireFlyCurrentList.length) + "题, 题号:" + num + "</label></div>"
+function fireFlyWFDTranslateData(fireFlyWFDData) {
+    var num = fireFlyWFDData.qNum;
+    var text = fireFlyWFDData.en;
+    var cn = fireFlyWFDData.cn;
+    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (fireFlyWFDIndex + 1) + "题/共" + (fireFlyWFDCurrentList.length) + "题, 题号:" + num + "</label></div>"
     var lastIndex = text.lastIndexOf(".");
     if (lastIndex != -1) {
         text = text.substring(0, lastIndex);
@@ -109,46 +118,46 @@ function fireFlyTranslateData(fireFlyData) {
     return title + text + chinese;
 }
 
-function fireFlyNextQuest() {
-    if (fireFlyIndex < fireFlyCurrentList.length - 1) {
-        fireFlyIndex++;
+function fireFlyWFDNextQuest() {
+    if (fireFlyWFDIndex < fireFlyWFDCurrentList.length - 1) {
+        fireFlyWFDIndex++;
     }
-    return fireFlyCurrentList[fireFlyIndex];
+    return fireFlyWFDCurrentList[fireFlyWFDIndex];
 }
 
-function fireFlyPreQuest() {
-    if (fireFlyIndex > 0) {
-        fireFlyIndex--;
+function fireFlyWFDPreQuest() {
+    if (fireFlyWFDIndex > 0) {
+        fireFlyWFDIndex--;
     }
-    return fireFlyCurrentList[fireFlyIndex];
+    return fireFlyWFDCurrentList[fireFlyWFDIndex];
 }
 
-function isFireFlyFirst() {
-    return fireFlyIndex == 0;
+function isFireFlyWFDFirst() {
+    return fireFlyWFDIndex == 0;
 }
 
-function isFireFlyLast() {
-    return fireFlyIndex == fireFlyCurrentList.length - 1;
+function isFireFlyWFDLast() {
+    return fireFlyWFDIndex == fireFlyWFDCurrentList.length - 1;
 }
 
 function shuffle(arr) {
     arr.sort(() => Math.random() - 0.5);
 }
 
-function getFireFlyIndex() {
-    return fireFlyIndex;
+function getFireFlyWFDIndex() {
+    return fireFlyWFDIndex;
 }
 
-function getFireFlyTotalNum() {
-    return fireFlyCurrentList.length;
+function getFireFlyWFDTotalNum() {
+    return fireFlyWFDCurrentList.length;
 }
 
-function setFireFlyIndex(qindex) {
-    fireFlyIndex = qindex - 1;
+function setFireFlyWFDIndex(qindex) {
+    fireFlyWFDIndex = qindex - 1;
 }
 
-function currentFireFlyData() {
-    return fireFlyCurrentList[fireFlyIndex];
+function currentFireFlyWFDData() {
+    return fireFlyWFDCurrentList[fireFlyWFDIndex];
 }
 
 

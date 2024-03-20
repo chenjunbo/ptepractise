@@ -116,6 +116,24 @@
 </form>
 <br/>
 <br/>
+<form action="#" class="layui-form" id="fireflywfdcreate-form">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <span style="font-size: 16px; color: red">&nbsp;&nbsp;&nbsp;&nbsp;WFD:</span>
+            <div class="layui-inline">
+                <select name="type">
+                    <option value="1">萤火虫WFD首字母</option>
+                    <option value="2">萤火虫WFD分类版</option>
+                </select>
+            </div>
+            <button class="layui-btn" lay-header-event="fireflywfdcreatepdf">
+                点击生成网页后通过浏览器的打印功能保存为pdf
+            </button>
+        </div>
+    </div>
+</form>
+<br/>
+<br/>
 <form action="#" class="layui-form" id="pters-form">
     <div class="layui-form-item">
         <div class="layui-inline">
@@ -304,6 +322,29 @@
                         break;
                     case "3":
                         name = "萤火虫SST收藏夹";
+                        break;
+                }
+                var body = newPage.body;
+                var currentTypedataList = fireflySSTCurrentTypedata(params);
+                currentTypedataList.forEach(function (item, index) {
+                    var questionHtml = createFireFlySSTPdfHtml(params, (index + 1), item);
+                    $(body).append(questionHtml);
+                })
+                fillPdf(newPage, name);
+
+                return false;
+            },fireflywfdcreatepdf: function (obj, event) {
+                event.preventDefault();
+                var newPage = document.implementation.createHTMLDocument('New Page');
+                var params = $("#fireflywfdcreate-form").serializeJson();
+                var name = "萤火虫WFD预测";
+                switch (params.type) {
+                    case "1":
+                        name = "萤火虫WFD首字母版";
+                        break;
+
+                    case "2":
+                        name = "萤火虫WFD分类版";
                         break;
                 }
                 var body = newPage.body;
