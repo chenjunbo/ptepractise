@@ -99,6 +99,9 @@ function fireFlyWFDTranslateData(fireFlyWFDData) {
     var parent = $("<div class=\"layui-inline\" > </div>");
     for (var idx in allWords) {
         var word = allWords[idx];
+        if (!word) {
+            continue;
+        }
         word = word.replace(" ", "");
         word = word.replace(",", "");
         var firstLetter = word.substring(0, 1);
