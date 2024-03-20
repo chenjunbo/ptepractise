@@ -156,6 +156,7 @@ function xjroTranslateData(xjrodata){
     // $("#question-div").append(parent);
     // $("#question-div").append(resultdiv);
     // shuffle(paras);
+    var height;
     for (var key in paras) {
         var choice = paras[key];
         if (choice) {
@@ -178,9 +179,11 @@ function xjroTranslateData(xjrodata){
             $(parentin).html(option)
             // parentin.append(input);
             $("#parasdiv").append(parentin)
+            height += $(parentin).height();
         }
     }
-    var height = $("#parasdiv").height();
+   // var height = $("#parasdiv").height();
+    $("#parasdiv").height(height);
     $("#resultdiv").height(height);
     // fibrIndex++;
     $("#parasdiv").show();
