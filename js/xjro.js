@@ -358,8 +358,7 @@ function rosearch(localStorageType) {
     checkFav(xjrodata.num, localStorageType);
 }
 
-function nextXjRoQuestion(obj, event,localStorageType) {
-    event.preventDefault();
+function nextXjRoQuestion(obj,localStorageType) {
     if (isXjRoLast()) {
         $("#next").hide();
         return false;
@@ -407,7 +406,7 @@ function ropre(localStorageType) {
     checkFav(xjrodata.num, localStorageType);
 }
 
-function rocheckanswer(form,obj,event,localStorageType) {
+function rocheckanswer(obj,localStorageType) {
     var xjrodata = currentXjRoData();
     var isWrong = false;
     var isEmpty = false;
@@ -429,7 +428,6 @@ function rocheckanswer(form,obj,event,localStorageType) {
             // layer.msg('提示框关闭后的回调');
             //添加错误次数
         });
-        form.render();
         return;
     }
 
@@ -463,7 +461,7 @@ function rocheckanswer(form,obj,event,localStorageType) {
             //添加正确次数,添加错误次数
             // layer.msg('提示框关闭后的回调');
             if (!isXjRoLast()) {
-                nextXjRoQuestion(obj, event,localStorageType);
+                nextXjRoQuestion(obj,localStorageType);
             }
         });
     } else {
