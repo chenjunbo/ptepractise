@@ -100,10 +100,10 @@ function fireFlyWeTranslateData(fireflyWeData,params){
     var example = params.example;
     var view = params.view;
     if (view) {
-        text = text + "<br>观点:"+ "<br>"  + fireflyWeData.views;
+        text = text + "<br>观点:" + "<br>" + "<pre className=\"answer-area\" lay-options=\"{}\" style=\"font-size: 20px;font-family: Arial\">" + fireflyWeData.views + "</pre>";
     }
     if (example) {
-        text = text + "<br>范文:"+ "<br>"  + fireflyWeData.example;
+        text = text + "<br>范文:" + "<br>" + fireflyWeData.example;
     }
 
     return text;
@@ -251,7 +251,7 @@ function createFireFlyWePdfHtml(params, serNum, fireflyWeData) {
     var example = params.example;
     var view = params.view;
     if (view) {
-        text = text + "<br>观点:"+ "<br>"  + fireflyWeData.views;
+        text = text + "<br>观点:" + "<br>" + "<pre className=\"answer-area\" lay-options=\"{}\" style=\"font-size: 20px;font-family: Arial\">" + fireflyWeData.views + "</pre>";
     }
     if (example) {
         text = text + "<br>范文:"+ "<br>"  + fireflyWeData.example;
