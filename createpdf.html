@@ -122,6 +122,8 @@
             <span style="font-size: 16px; color: red">&nbsp;&nbsp;&nbsp;&nbsp;WFD:</span>
             <div class="layui-inline">
                 <select name="type">
+                    <option value="-1">萤火虫WFD注音正序版</option>
+                    <option value="-2">萤火虫WFD注音倒序版</option>
                     <option value="1">萤火虫WFD首字母</option>
                     <option value="2">萤火虫WFD分类版</option>
                 </select>
@@ -338,21 +340,21 @@
                 var url = "";
                 switch (params.type) {
                     case "-1":
-                        name = "萤火虫WFD注音正序版";
-
+                      //  name = "萤火虫WFD注音正序版";
+                    url="https://gitee.com/jackiechan/ptepractise/raw/main/pdf/萤火虫WFD注音正序.pdf"
                         break;
                     case "-2":
-                        name = "萤火虫WFD注音倒序版";
-
+                        //name = "萤火虫WFD注音倒序版";
+                        url="https://gitee.com/jackiechan/ptepractise/raw/main/pdf/萤火虫WFD注音倒序.pdf"
                         break;
                     case "1":
-                        name = "萤火虫WFD首字母版";
-
+                      //  name = "萤火虫WFD首字母版";
+                        url="https://gitee.com/jackiechan/ptepractise/raw/main/pdf/萤火虫WFD首字母.pdf"
                         break;
 
                     case "2":
-                        name = "萤火虫WFD分类版";
-
+                       // name = "萤火虫WFD分类版";
+                        url="https://gitee.com/jackiechan/ptepractise/raw/main/pdf/萤火虫WFD分类版.pdf"
                         break;
                 }
                 window.open(url, '_blank');
