@@ -156,7 +156,7 @@ function xjroTranslateData(xjrodata){
     // $("#question-div").append(parent);
     // $("#question-div").append(resultdiv);
     // shuffle(paras);
-    var height;
+    var height=0;
     for (var key in paras) {
         var choice = paras[key];
         if (choice) {
@@ -179,7 +179,8 @@ function xjroTranslateData(xjrodata){
             $(parentin).html(option)
             // parentin.append(input);
             $("#parasdiv").append(parentin)
-            height += $(parentin).height();
+           var height1 = $(parentin).height();
+            height = height + height1;
         }
     }
    // var height = $("#parasdiv").height();
