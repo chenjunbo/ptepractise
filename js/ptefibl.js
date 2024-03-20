@@ -1,15 +1,15 @@
 var xjfiblweekList, xjfiblMonthList, fireflygfiblList;
 function ptefiblInit() {
-    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fireflyfibl.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
+    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fibl/fireflyfibl.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
         var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
         fireflygfiblList= JSON.parse(result);
     })
-    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/xjfiblweekdata.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
+    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fibl/xjfiblweekdata.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
         var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
         xjfiblweekList= JSON.parse(result);
     })
 
-    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/xjfiblmonthdata.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
+    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fibl/xjfiblmonthdata.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
         var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
         xjfiblMonthList= JSON.parse(result);
     })
