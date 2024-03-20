@@ -337,6 +337,7 @@
                 return false;
             },fireflywfdcreatepdf: function (obj, event) {
                 event.preventDefault();
+                var params = $("#fireflywfdcreate-form").serializeJson();
                 var url = "";
                 switch (params.type) {
                     case "-1":
