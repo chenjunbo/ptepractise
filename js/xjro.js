@@ -200,7 +200,6 @@ function roallowDrop(ev) {
 
 function rodrag(ev) {
     ev.dataTransfer.setData("Text", ev.target.id);
-    $(ev.target).attr("style", "margin-top: 10px;border: 1px solid blue;padding-left: 5px");
 }
 
 /*
@@ -457,6 +456,8 @@ function rocheckanswer(obj,localStorageType) {
         if (answer != id) {
             isWrong = true;
             $(currentElement).attr("style", "margin-top: 5px;border: 1px solid red;padding-left: 5px");
+        }else{
+            $(currentElement).attr("style", "margin-top: 10px;border: 1px solid blue;padding-left: 5px");
         }
     })
 
