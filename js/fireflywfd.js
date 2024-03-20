@@ -156,7 +156,7 @@ function wfdrandomlucky() {
     fireFlyWFDCurrentList = new Array();
     var nums = Math.random() * (5 - 3) + 3;
     for (var i = 0; i < nums; i++) {
-        fireFlyWFDCurrentList.push(allQnums[i]);
+        fireFlyWFDCurrentList.push(fireFlyWFDMap.get(allQnums[i]));
     }
     return fireFlyWFDCurrentList[0];
 }
