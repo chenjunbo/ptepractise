@@ -249,10 +249,9 @@ function createFireFlyWePdfHtml(params, serNum, fireflyWeData) {
     var questionDiv = document.createElement("div");
     $(questionDiv).attr("style", "padding-left: 20px;padding-right: 20px;line-height: 30px;font-size: larger");
     var h3 = document.createElement("h3");
-    h3.innerHTML = serNum + "." + "&nbsp;" + "&nbsp;" + name + "&nbsp;" + "&nbsp;题号:" + num + "<br/>" ;
+    h3.innerHTML = serNum + "." + "&nbsp;" + "&nbsp;" + name + "&nbsp;" + "&nbsp;题号:" + num + "<br/>"+ "<br/>"+fireflyWeData.question+"<br>" ;
     $(questionDiv).append(h3);
     var text = "";
-    text = text + title+"<br>"  +fireflyWeData.question+"<br>";
     var example = params.example;
     var view = params.view;
     if (view) {
