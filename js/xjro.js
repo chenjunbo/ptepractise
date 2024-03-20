@@ -161,6 +161,7 @@ function xjroTranslateData(xjrodata){
         var choice = paras[key];
         if (choice) {
             var serNum = choice.order;//顺序
+            var id = choice.order;//顺序
             var option = choice.para;//顺序
             var divid = "div" + serNum;
             var parentin = $("<div style='margin-top: 5px;border: 1px solid blue;padding-left: 5px'  id=" + divid + "> </div>");
@@ -176,7 +177,7 @@ function xjroTranslateData(xjrodata){
             $(parentin).attr("draggable", "true")
             $(parentin).attr("ondragstart", "rodrag(event)")
             $(parentin).attr("realanswer", serNum);
-            $(parentin).html(option)
+            $(parentin).html(id+". "+option)
             // parentin.append(input);
             $("#parasdiv").append(parentin)
            var height1 = $(parentin).height();
