@@ -33,6 +33,10 @@ function createMenu() {
             "menuName": "SST",
             "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflysst.html?access_token=c87299575627265144b7db286d3bf673"
         },
+        {
+            "menuName": "WE",
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflywe.html?access_token=c87299575627265144b7db286d3bf673"
+        },
 
         {
             "menuName": "生成PDF",
