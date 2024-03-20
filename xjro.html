@@ -91,7 +91,7 @@
             },
             next: function (obj, event) {
                 event.preventDefault();
-                var result = nextXjRoQuestion(obj, event,localStorageType);
+                var result = nextXjRoQuestion(obj,localStorageType);
                 var height = $("#parasdiv").height();
                 $("#resultdiv").height(height);
                 form.render();
@@ -110,7 +110,6 @@
                rocheckanswer(obj,localStorageType)
                 var height = $("#parasdiv").height();
                 $("#resultdiv").height(height);
-                setRightAndFaltNum(xjrodata.num, localStorageType);
                 form.render();
                 return false;
             },
