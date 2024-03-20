@@ -79,6 +79,10 @@ function createMenu() {
 
 function loadNotice() {
     $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673")
+    layer.confirm('我会阅读首页更新日志,获取更新的功能', {icon: 3}, function () {
+
+    }, function () {
+    });
 }
 function initOthers() {
     isNeedLoadFont = false;
