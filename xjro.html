@@ -84,32 +84,24 @@
                 // alert("aaaaa" + json)
                 event.preventDefault();
                 rosearch(localStorageType);
-                var height = $("#parasdiv").height();
-                $("#resultdiv").height(height);
                 form.render();
                 return false;
             },
             next: function (obj, event) {
                 event.preventDefault();
                 var result = nextXjRoQuestion(obj,localStorageType);
-                var height = $("#parasdiv").height();
-                $("#resultdiv").height(height);
                 form.render();
                 return result;
             },
             pre: function (obj, event) {
                 event.preventDefault();
                 ropre(localStorageType);
-                var height = $("#parasdiv").height();
-                $("#resultdiv").height(height);
                 form.render();
                 return false;
             },
             checkanswer: function (obj, event) {
                 event.preventDefault();
                rocheckanswer(obj,localStorageType)
-                var height = $("#parasdiv").height();
-                $("#resultdiv").height(height);
                 form.render();
                 return false;
             },

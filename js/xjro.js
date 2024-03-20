@@ -226,7 +226,7 @@ function rodrop2(ev) {
         //代表是从内容中其它位置移动过来的
         //获取到移动过来的数据
         var value = $("#" + sourceid).html();
-        var resultdivin = $("<div style='margin-top: 10px;border: 1px solid blue;padding-left: 5px'> </div>");
+        var resultdivin = $("<div style='margin-top: 5px;border: 1px solid blue;padding-left: 5px'> </div>");
         $(resultdivin).attr("ondrop", "rodrop2(event)");//设置组件放到自己身上时候的操作
         $(resultdivin).attr("ondragover", "roallowDrop(event)");
         $(resultdivin).attr("draggable", "true");
@@ -267,7 +267,7 @@ function rodrop(ev) {
        // $("#" + data).removeAttr("id");
         //把id设置给新的位置
         //  $(target).attr("id", data);
-        var resultdivin = $("<div style='margin-top: 10px;border: 1px solid blue;padding-left: 5px'> </div>");
+        var resultdivin = $("<div style='margin-top: 5px;border: 1px solid blue;padding-left: 5px'> </div>");
         $(resultdivin).attr("ondrop", "rodrop2(event)");//设置组件放到自己身上时候的操作
         $(resultdivin).attr("ondragover", "roallowDrop(event)");
         $(resultdivin).attr("draggable", "true");
@@ -423,7 +423,7 @@ function rocheckanswer(obj,localStorageType) {
             //说明没放过去
             isEmpty = true;
             //设置颜色
-            $(currentdiv).attr("style", "margin-top: 10px;border: 1px solid red;padding-left: 5px");
+            $(currentdiv).attr("style", "margin-top: 5px;border: 1px solid red;padding-left: 5px");
 
         }
     })
@@ -455,7 +455,7 @@ function rocheckanswer(obj,localStorageType) {
         var id = orderIdMap.get(jieguorealanswer+"");
         if (answer != id) {
             isWrong = true;
-            $(currentElement).attr("style", "margin-top: 10px;border: 1px solid red;padding-left: 5px");
+            $(currentElement).attr("style", "margin-top: 5px;border: 1px solid red;padding-left: 5px");
         }
     })
 
