@@ -19,7 +19,7 @@ function fireFlyWFDInit() {
         for (key in categoryIdDataList) {
             //分类名称,根据名称添加分类
             var option="<option value=\""+key+"\">"+key+"</option>";
-            $("#typeselection").append($(option));
+            $("#typeselection").append(option);
         }
     })
 }
