@@ -90,6 +90,32 @@
 </form>
 <br/>
 <br/>
+<form action="#" class="layui-form" id="fireflywecreate-form">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <span style="font-size: 16px; color: red">&nbsp;&nbsp;&nbsp;&nbsp;SST:</span>
+            <div class="layui-inline">
+                <select name="type">
+                    <option value="1">萤火虫WE高频</option>
+                    <option value="2">萤火虫WE已整理题库</option>
+                    <option value="3">WE收藏夹</option>
+                </select>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="color: red">可选选项:</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="view" title="观点(仅供参考" checked>
+                    <input type="checkbox" name="example" title="范文(仅供参考)">
+                </div>
+            </div>
+            <button class="layui-btn" lay-header-event="fireflywecreatepdf">
+                点击生成网页后通过浏览器的打印功能保存为pdf
+            </button>
+        </div>
+    </div>
+</form>
+<br/>
+<br/>
 <form action="#" class="layui-form" id="pters-form">
     <div class="layui-form-item">
         <div class="layui-inline">
@@ -153,6 +179,7 @@
         xjrsInit();
         fireFlyASQInit();
         ptefiblInit();
+        fireFlyWeInit();
         form.render();
         util.event('lay-header-event', {
             createfibrwpdf: function (obj, event) { // 左侧菜单事件
@@ -287,6 +314,31 @@
                 })
                 fillPdf(newPage, name);
 
+                return false;
+            },
+            fireflywecreatepdf: function (obj, event) {
+                event.preventDefault();
+                var newPage = document.implementation.createHTMLDocument('New Page');
+                var params = $("#fireflywecreate-form").serializeJson();
+                var name = "萤火虫sst预测";
+                switch (params.type) {
+                    case "1":
+                        name = "萤火虫WE高频预测";
+                        break;
+                    case "2":
+                        name = "萤火虫WE已整理预测";
+                        break;
+                    case "3":
+                        name = "萤火虫WE收藏夹";
+                        break;
+                }
+                var body = newPage.body;
+                var currentTypedataList = fireflyWeCurrentTypedata(params);
+                currentTypedataList.forEach(function (item, index) {
+                    var questionHtml = createFireFlyWePdfHtml(params, (index + 1), item);
+                    $(body).append(questionHtml);
+                })
+                fillPdf(newPage, name);
                 return false;
             },
             createrspdf: function (obj, event) {

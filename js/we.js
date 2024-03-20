@@ -100,10 +100,14 @@ function fireFlyWeTranslateData(fireflyWeData,params){
     var example = params.example;
     var view = params.view;
     if (view) {
-        text = text + "<br>观点:" + "<br>" + "<pre className=\"answer-area\" lay-options=\"{}\" style=\"font-size: 20px;font-family: Arial\">" + fireflyWeData.views + "</pre>";
+        text = text + "<br>观点:(仅供参考)" + "<br>" + "<pre className=\"answer-area\" lay-options=\"{}\" style=\"font-size: 20px;font-family: Arial\">" + fireflyWeData.views + "</pre>";
     }
     if (example) {
-        text = text + "<br>范文:" + "<br>" + fireflyWeData.example;
+        var exampleContent = fireflyWeData.example;
+        if (!exampleContent) {
+            exampleContent="暂无范文"
+        }
+        text = text +"<br/>"+ "<br/>范文(仅供参考):" + "<br>" + exampleContent;
     }
 
     return text;
@@ -251,10 +255,14 @@ function createFireFlyWePdfHtml(params, serNum, fireflyWeData) {
     var example = params.example;
     var view = params.view;
     if (view) {
-        text = text + "<br>观点:" + "<br>" + "<pre className=\"answer-area\" lay-options=\"{}\" style=\"font-size: 20px;font-family: Arial\">" + fireflyWeData.views + "</pre>";
+        text = text + "<br>观点(仅供参考):" + "<br>" + "<pre className=\"answer-area\" lay-options=\"{}\" style=\"font-size: 20px;font-family: Arial\">" + fireflyWeData.views + "</pre>";
     }
     if (example) {
-        text = text + "<br>范文:"+ "<br>"  + fireflyWeData.example;
+        var exampleContent = fireflyWeData.example;
+        if (!exampleContent) {
+            exampleContent="暂无范文"
+        }
+        text = text +"<br/>"+ "<br/>范文(仅供参考):" + "<br>" + exampleContent;
     }
     text = text + "<br/>"+ "<br/>";
 
