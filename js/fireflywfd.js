@@ -153,7 +153,7 @@ function fireFlyWFDPreQuest() {
 function wfdrandomlucky() {
     fireFlyWFDIndex = 0;
     shuffle(allQnums);
-    fireFlyWFDCurrentList.splice(0, fireFlyWFDCurrentList.length);
+    fireFlyWFDCurrentList = new Array();
     var nums = Math.random() * (5 - 3) + 3;
     for (var i = 0; i < nums; i++) {
         fireFlyWFDCurrentList.push(allQnums[i]);
