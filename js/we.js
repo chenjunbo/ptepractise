@@ -252,6 +252,7 @@ function createFireFlyWePdfHtml(params, serNum, fireflyWeData) {
     h3.innerHTML = serNum + "." + "&nbsp;" + "&nbsp;" + name + "&nbsp;" + "&nbsp;题号:" + num + "<br/>" ;
     $(questionDiv).append(h3);
     var text = "";
+    text = text + title+"<br>"  +fireflyWeData.question+"<br>";
     var example = params.example;
     var view = params.view;
     if (view) {
