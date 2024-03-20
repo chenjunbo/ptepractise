@@ -113,8 +113,8 @@ function fireFlyWeTranslateData(fireflyWeData,params){
 function wesearch(localStorageType) {
     $("#pre").hide();
     var params = $("#fireflywe-form").serializeJson();
-    fireflySSTCurrentTypedata(params);
-    var fireFlyWeData = currentSSTData();
+    fireflyWeCurrentTypedata(params);
+    var fireFlyWeData = currentWeData();
     if (!fireFlyWeData) {
         $("#question-form").hide();
         layer.msg('当前分类下不存在该题目', {icon: 0}, function () {
