@@ -387,7 +387,7 @@ function fillAnswer(xjrodata,localStorageType) {
     if (!explanation_in_locale) {
         explanation_in_locale = "本题目无顺口溜";
     }
-    explanation_in_locale= "<span style= color: red>"+ explanation_in_locale+"</span>"
+    explanation_in_locale= "<span style= \"color: red\">"+ explanation_in_locale+"</span>"
 
     var answercontent = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + explanation_in_locale + "</br>" + "</br>" + originalText;
     $("#xjroanswer").html(answercontent);
