@@ -4,7 +4,7 @@ const firecategoryWFDMap = new Map();
 var fireFlyWFDIndex = 0;//当前第几条
 var isFullContent = true;
 
-function fireFlyWFDInit() {
+function fireFlyWFDInit(form) {
     $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/wfd/fireflywfd.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
         var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
         fireFlyWFDList = JSON.parse(result);
@@ -13,15 +13,18 @@ function fireFlyWFDInit() {
             fireFlyWFDMap.set(fireFlyWFDData.qNum + "", fireFlyWFDData);
         }
     })
-    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/wfd/wfdcategoryid.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
-        var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
-        categoryIdDataList = JSON.parse(result);
-        for (key in categoryIdDataList) {
-            //分类名称,根据名称添加分类
-            var option="<option value=\""+key+"\">"+key+"</option>";
-            $("#typeselection").append(option);
-        }
-    })
+    if (form) {
+        $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/wfd/wfdcategoryid.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
+            var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+            categoryIdDataList = JSON.parse(result);
+            for (key in categoryIdDataList) {
+                //分类名称,根据名称添加分类
+                var option="<option value=\""+key+"\">"+key+"</option>";
+                $("#typeselection").append(option);
+            }
+            form.render();
+        });
+    }
 }
 
 function fireFlyGetWFDdata(param) {
