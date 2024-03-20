@@ -160,8 +160,8 @@ function xjroTranslateData(xjrodata){
     for (var key in paras) {
         var choice = paras[key];
         if (choice) {
-            var serNum = choice.order;//顺序
-            var id = choice.order;//顺序
+            var serNum = choice.order;//答案顺序
+            var id = choice.id;//默认
             var option = choice.para;//顺序
             var divid = "div" + serNum;
             var parentin = $("<div style='margin-top: 5px;border: 1px solid blue;padding-left: 5px'  id=" + divid + "> </div>");
