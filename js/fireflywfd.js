@@ -45,6 +45,18 @@ function fireFlyGetWFDdata(param) {
                 localstoragedata = json.nums;
             }
             break;
+        default:
+            //按照分类来获取数据
+            var wfdIds = categoryIdDataList[type];
+            if (wfdIds) {
+                wfdIds.forEach(function (num){
+                    if (num) {
+                        fireFlyWFDCurrentList.push(fireFlyWFDMap.get(num + ""));
+                    }
+                })
+            }
+            return fireFlyWFDCurrentList[0];
+            break;
     }
 
     if (localstoragedata) {
