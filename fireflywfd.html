@@ -100,7 +100,7 @@
                 }
                 var content = fireFlyWFDTranslateData(fireFlydata);
                 $("#question-div").html(content);
-                fillAnswer(fireFlydata);
+                fillfireflyWfdAnswer(fireFlydata);
                 if (isFireFlyWFDLast()) {
                     $("#next").hide();
                 } else {
@@ -131,7 +131,7 @@
                 }
                 var content = fireFlyWFDTranslateData(fireFlydata);
                 $("#question-div").html(content);
-                fillAnswer(fireFlydata);
+                fillfireflyWfdAnswer(fireFlydata);
                 if (isFireFlyWFDLast()) {
                     $("#next").hide();
                 } else {
@@ -200,7 +200,7 @@
                     $("#next").show();
                 }
                 $("#question-div").html(content);
-                fillAnswer(fireFlydata);
+                fillfireflyWfdAnswer(fireFlydata);
                 checkFav(fireFlydata.qNum, localStorageType);
                 form.render();
                 return false;
@@ -283,7 +283,7 @@
                         $("#next").hide();
                     }
                     $("#question-div").html(content);
-                    fillAnswer(fireFlydata);
+                    fillfireflyWfdAnswer(fireFlydata);
                     checkFav(fireFlydata.qNum, localStorageType);
                     form.render();
                     return false;
@@ -346,7 +346,7 @@
         return serializeObj;
     };
 
-    function fillAnswer(fireFlydata) {
+    function fillfireflyWfdAnswer(fireFlydata) {
         $("#answer-area").hide();
         var en = fireFlydata.en;
         var cn = fireFlydata.cn;
@@ -374,7 +374,7 @@
             $("#next").hide();
         }
         $("#question-div").html(content);
-        fillAnswer(fireFlydata);
+        fillfireflyWfdAnswer(fireFlydata);
         if (!isFireFlyWFDFirst()) {
             $("#pre").show();
         }

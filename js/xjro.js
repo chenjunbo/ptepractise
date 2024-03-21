@@ -385,7 +385,7 @@ function rosearch(localStorageType) {
     }
     var content = xjroTranslateData(xjrodata);
     // $("#question-div").html(content);
-    fillAnswer(xjrodata,localStorageType);
+    fillXjroAnswer(xjrodata,localStorageType);
     if (isXjRoLast()) {
         $("#next").hide();
     } else {
@@ -397,6 +397,7 @@ function rosearch(localStorageType) {
         $("#gotoarea").show();
     }
     checkFav(xjrodata.num, localStorageType);
+    
 }
 
 function testlucky(localStorageType){
@@ -414,7 +415,7 @@ function testlucky(localStorageType){
     }
     var content = xjroTranslateData(xjrodata);
     // $("#question-div").html(content);
-    fillAnswer(xjrodata,localStorageType);
+    fillXjroAnswer(xjrodata,localStorageType);
     if (isXjRoLast()) {
         $("#next").hide();
     } else {
@@ -471,13 +472,13 @@ function nextXjRoQuestion(obj,localStorageType) {
     if (isXjRoLast()) {
         $("#next").hide();
     }
-    fillAnswer(xjrodata,localStorageType);
+    fillXjroAnswer(xjrodata,localStorageType);
     if (!isXjRoFirst()) {
         $("#pre").show();
     }
     checkFav(xjrodata.num, localStorageType);
 }
-function fillAnswer(xjrodata,localStorageType) {
+function fillXjroAnswer(xjrodata,localStorageType) {
     $("#xjroanswer").hide();
     var answerInText = xjrodata.answer_in_text;
     var originalText = xjrodata.original_text;
@@ -506,7 +507,7 @@ function ropre(localStorageType) {
     if (!isXjRoLast()) {
         $("#next").show();
     }
-    fillAnswer(xjrodata,localStorageType);
+    fillXjroAnswer(xjrodata,localStorageType);
     checkFav(xjrodata.num, localStorageType);
 }
 
@@ -613,7 +614,7 @@ function rogotoindex(localStorageType) {
             $("#next").hide();
         }
         // $("#question-div").html(content);
-        fillAnswer(xjrodata,localStorageType);
+        fillXjroAnswer(xjrodata,localStorageType);
         checkFav(xjrodata.num, localStorageType);
 
         return false;

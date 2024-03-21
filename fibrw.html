@@ -97,7 +97,7 @@
                 }
                 var content = fibrwTranslateData(fibrwdata);
                 $("#question-div").html(content);
-                fillAnswer(fibrwdata);
+                fillfibrwAnswer(fibrwdata);
                 if (isFibRwLast()) {
                     $("#next").hide();
                 } else {
@@ -129,7 +129,7 @@
                 }
                 var content = fibrwTranslateData(fibrwdata);
                 $("#question-div").html(content);
-                fillAnswer(fibrwdata);
+                fillfibrwAnswer(fibrwdata);
                 if (isFibRwLast()) {
                     $("#next").hide();
                 } else {
@@ -200,7 +200,7 @@
                     $("#next").show();
                 }
                 $("#question-div").html(content);
-                fillAnswer(fibrwdata);
+                fillfibrwAnswer(fibrwdata);
                 checkFav(fibrwdata.num, localStorageType);
                 form.render();
                 return false;
@@ -280,7 +280,7 @@
                         $("#next").hide();
                     }
                     $("#question-div").html(content);
-                    fillAnswer(fibrwdata);
+                    fillfibrwAnswer(fibrwdata);
                     checkFav(fibrwdata.num, localStorageType);
                     form.render();
                     return false;
@@ -347,7 +347,7 @@
         return serializeObj;
     };
 
-    function fillAnswer(fibrwdata) {
+    function fillfibrwAnswer(fibrwdata) {
         var chinese = getChinese(fibrwdata.num + "");
         var chinesespan = $("#chinesespan");
         if (chinesespan) {
@@ -384,7 +384,7 @@
             $("#next").hide();
         }
         $("#question-div").html(content);
-        fillAnswer(fibrwdata);
+        fillfibrwAnswer(fibrwdata);
         if (!isFibRwFirst()) {
             $("#pre").show();
         }
