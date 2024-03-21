@@ -270,7 +270,7 @@ function getAllQuestionNumFromLocalStorageByFalt(localStroageType) {
         }
     });
     const sortedEntries = Array.from(countMap).sort(([keyA, valueA], [keyB, valueB]) => {
-        return valueA - valueB; // 或者使用其他比较算法来确定排序优先级
+        return valueB - valueA; // 或者使用其他比较算法来确定排序优先级
     });
     console.log(sortedEntries);
 }
