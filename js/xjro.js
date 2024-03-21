@@ -526,6 +526,7 @@ function rocheckanswer(obj,localStorageType) {
             //设置颜色
             $(currentdiv).attr("style", "margin-top: 5px;border: 1px solid red;padding-left: 5px");
 
+
         }
     })
     if (isEmpty) {
@@ -533,6 +534,8 @@ function rocheckanswer(obj,localStorageType) {
             // layer.msg('提示框关闭后的回调');
             //添加错误次数
         });
+        addRightOrFalt(xjrodata.num, "falt", localStorageType);
+        setRightAndFaltNum(xjrodata.num, localStorageType);
         return;
     }
 
@@ -572,11 +575,12 @@ function rocheckanswer(obj,localStorageType) {
             }
         });
     } else {
-        addRightOrFalt(xjrodata.num, "falt", localStorageType);
         layer.msg('答案不小心选错了哟!', {icon: 0}, function () {
             // layer.msg('提示框关闭后的回调');
             //添加错误次数
         });
+        addRightOrFalt(xjrodata.num, "falt", localStorageType);
+        setRightAndFaltNum(xjrodata.num, localStorageType);
     }
 
 }
