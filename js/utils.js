@@ -115,7 +115,7 @@ function getAlljs() {
         "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjro.js?time="+time,
         "https://gitee.com/jackiechan/ptepractise/raw/main/js/we.js?time="+time,
         "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflyrs.js?time="+time,
-        "https://gitee.com/jackiechan/ptepractise/raw/main/js/utils.js?time="+time
+        "https://gitee.com/jackiechan/ptepractise/raw/main/js/utils2.js?time="+time
     ]
     return js;
 }
