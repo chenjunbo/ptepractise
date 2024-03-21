@@ -53,7 +53,7 @@ function fireFlyGetWFDdata(param) {
             var faltIds = getAllQuestionNumFromLocalStorageByFalt("fireflywfd");
             if (faltIds) {
                 faltIds.forEach((qNum,index)=>{
-                    fireFlyWFDCurrentList.push(fireFlyWFDMap.get(num + ""));
+                    fireFlyWFDCurrentList.push(fireFlyWFDMap.get(qNum + ""));
                 })
             }
 
