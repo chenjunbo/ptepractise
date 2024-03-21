@@ -1,5 +1,5 @@
 var fibrCurrentList;
-let fibrCnList, fibrEnList,fibrIdsList;
+let fibrCnList, fibrEnList, fibrIdsList;
 var fibrIdsSet = new Set();
 const fibrCnMap = new Map();
 const fibrEnMap = new Map();
@@ -8,24 +8,24 @@ var fibrIndex = 0;//当前第几条
 function fibrInit() {
     $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fibr/fibrallquestions.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
         //fibrCnList = JSON.parse(response);
-       // fibrCnList = response;
-        var result=decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
-        fibrCnList= JSON.parse(result);
+        // fibrCnList = response;
+        var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        fibrCnList = JSON.parse(result);
         for (let i = 0; i < fibrCnList.length; i++) {
             var fibrData = fibrCnList[i];
             fibrCnMap.set(fibrData.num, fibrData);
-            fibrIdsSet.add(fibrData.num );
+            fibrIdsSet.add(fibrData.num);
         }
     })
     $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fibr/fibrallquestionsen.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
         // fibrEnList = JSON.parse(response);
-       // fibrEnList = response;
-        var result=decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
-        fibrEnList= JSON.parse(result);
+        // fibrEnList = response;
+        var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        fibrEnList = JSON.parse(result);
         for (let i = 0; i < fibrEnList.length; i++) {
             var fibrData = fibrEnList[i];
             fibrEnMap.set(fibrData.num, fibrData);
-            fibrIdsSet.add(fibrData.num );
+            fibrIdsSet.add(fibrData.num);
         }
     })
 }
@@ -74,9 +74,20 @@ function fibRCurrentTypedata(param) {
             break
 
         case "9":
-            getAllQuestionNumFromLocalStorageByFalt("fibrw");
+            var faltIds = getAllQuestionNumFromLocalStorageByFalt("fibrw");
+            if (faltIds) {
+                faltIds.forEach((qNum,index)=>{
+                    var fibrData = fibrCnMap.get(parseInt(qNum));
+                    if (!fibrData) {
+                        fibrData = fibrEnMap.get(parseInt(qNum));
+                    }
+                    if (fibrData) {
+                        fibrCurrentList.push(fibrData);
+                    }
+                })
+            }
 
-            break
+            break;
     }
     //当前数据
     if (filePath) {
@@ -103,7 +114,7 @@ function fibRCurrentTypedata(param) {
 
         });
         $.ajaxSettings.async = true;
-    }else if (localstoragedata) {
+    } else if (localstoragedata) {
         //如果有数据
         localstoragedata.forEach(function (item) {
             if (qNum && qNum != item) {
@@ -136,7 +147,7 @@ function fibrTranslateData(fibrData) {
     var num = fibrData.num;
     var text = fibrData.text;
     var choices = fibrData.choices;
-    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (fibrIndex + 1) + "题/共"+(fibrCurrentList.length)+"题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "</label></div>"
+    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (fibrIndex + 1) + "题/共" + (fibrCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "</label></div>"
     shuffle(choices);
     for (var key in choices) {
         var choice = choices[key];
@@ -206,7 +217,7 @@ function createFibRPdfHtml(parmas, serNum, fibrdata) {
             var eachChoice = choice.choice;
             allOptions.append(eachChoice);
             allOptions.append(" , ");
-            if (highlight && "none"!=id) {
+            if (highlight && "none" != id) {
                 stringBuffer.append("<span style=\"font-family:Arial;font-style:italic;color:red;\">");
                 stringBuffer.append(eachChoice);
                 stringBuffer.append("</span>")
@@ -222,8 +233,8 @@ function createFibRPdfHtml(parmas, serNum, fibrdata) {
             text = text.replace("{{" + id + "}}", stringBuffer.toString());
         }
     })
-    $(questionDiv).append(text+"<br/>"+"<br/>");
-    var answerInText =  allOptions.toString().substring(0, allOptions.toString().length-2);
+    $(questionDiv).append(text + "<br/>" + "<br/>");
+    var answerInText = allOptions.toString().substring(0, allOptions.toString().length - 2);
     if (analysis) {
         var explanation_in_locale = fibrdata.explanation_in_locale;
         if (explanation_in_locale) {
@@ -238,7 +249,7 @@ function createFibRPdfHtml(parmas, serNum, fibrdata) {
 }
 
 function fibrRandomLucky() {
-    if (!fibrIdsList||fibrIdsList.length==0) {
+    if (!fibrIdsList || fibrIdsList.length == 0) {
         fibrIdsList = Array.from(fibrIdsSet);
     }
     fibrIndex = 0;
@@ -292,9 +303,11 @@ function getFibRfibrIndex() {
 function getFibRTotalNum() {
     return fibrCurrentList.length;
 }
+
 function setFibRIndex(qindex) {
     fibrIndex = qindex - 1;
 }
+
 function currentFibRData() {
-    return  fibrCurrentList[fibrIndex];
+    return fibrCurrentList[fibrIndex];
 }
