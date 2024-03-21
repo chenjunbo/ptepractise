@@ -20,6 +20,7 @@
                 </select>
             </div>
             <button class="layui-btn" lay-header-event="search">先点这里加载(搜索)题目</button>
+            <button class="layui-btn" lay-header-event="testlucky">试试手气(玩的就是心跳)</button>
         </div>
     </div>
 </form>
@@ -89,6 +90,29 @@
                 } else {
                     $("#question-form").show();
                 }
+                var content = fibrwTranslateData(fibrwdata);
+                $("#question-div").html(content);
+                fillAnswer(fibrwdata);
+                if (isFibRwLast()) {
+                    $("#next").hide();
+                } else {
+                    $("#next").show();
+                }
+                if (getFibRwTotalNum() == 1) {
+                    $("#gotoarea").hide();
+                } else {
+                    $("#gotoarea").show();
+                }
+                checkFav(fibrwdata.num, localStorageType);
+                form.render();
+                return false;
+            },testlucky: function (obj, event) { // 左侧菜单事件
+                //  var json = JSON.stringify($("#search-form").serializeJson())
+                // alert("aaaaa" + json)
+                event.preventDefault();
+                $("#pre").hide();
+                // var content = fibRwGetdata($("#search-form").serializeJson());
+                var fibrwdata = fibrwRandomLucky();
                 var content = fibrwTranslateData(fibrwdata);
                 $("#question-div").html(content);
                 fillAnswer(fibrwdata);

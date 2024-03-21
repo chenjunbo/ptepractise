@@ -1,6 +1,7 @@
 var currentList;
-let cnList, enList;
+let cnList, enList,fibrwIdsList;;
 const cnMap = new Map();
+var fibrwIdsSet = new Set();
 const chineseContentMap = new Map();//存放中文注释的
 const enMap = new Map();
 var index = 0;//当前第几条
@@ -17,6 +18,7 @@ function fibrwInit() {
             for (let i = 0; i < cnList.length; i++) {
                 var fibrwData = cnList[i];
                 cnMap.set(fibrwData.num, fibrwData);
+                fibrwIdsSet.add(fibrwData.num);
             }
         },
         error: function (xhr, status, error) {
@@ -35,6 +37,7 @@ function fibrwInit() {
             for (let i = 0; i < enList.length; i++) {
                 var fibrwData = enList[i];
                 enMap.set(fibrwData.num, fibrwData);
+                fibrwIdsSet.add(fibrwData.num);
             }
         },
         error: function (xhr, status, error) {
@@ -286,7 +289,23 @@ function createFibRwPdfHtml(parmas, serNum, fibrwdata) {
     return questionDiv;
 
 }
-
+function fibrwRandomLucky() {
+    if (!fibrwIdsList) {
+        fibrwIdsList = Array.from(fibrwIdsSet);
+    }
+    index = 0;
+    currentList = new Array();
+    shuffle(fibrwIdsList);
+    var nums = Math.floor(Math.random() * (6 - 5 + 1)) + 5;
+    for (var i = 0; i < nums; i++) {
+        var fibrwdata = cnMap.get(fibr2IdsList[i]);
+        if (!fibrwdata) {
+            fibrwdata = enMap.get(fibr2IdsList[i]);
+        }
+        currentList.push(fibrwdata);
+    }
+    return currentList[0];
+}
 
 function fibrwNextQuest() {
     if (index < currentList.length - 1) {
