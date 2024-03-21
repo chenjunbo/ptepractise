@@ -1,0 +1,61 @@
+<div class="layui-inline">
+    <input id="files" type="file" name="qNum" autocomplete="off" placeholder="请选择文本文件"
+           class="layui-input">
+    <input id="colnum" type="number" name="spiltnum" autocomplete="off" placeholder="几行为一组"
+           class="layui-input">
+    <button class="layui-btn" lay-header-event="shuff" onclick="readFile()">打乱顺序</button>
+</div>
+<div class="layui-inline">
+    <textarea class="layui-input" rows="50" id="result"></textarea>
+</div>
+<script type="text/javascript">
+
+    function readFile() {
+        var sourceFiles = $("#files").files[0];
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            const content = e.target.result;
+            console.log(content);
+            shuff(content)
+        };
+
+        reader.onerror = (e) => {
+            console.error('Error reading file:', e.target.error);
+        };
+
+        reader.readAsText(sourceFiles);
+    }
+
+    function shuffArray(content) {
+        var colNum = $("#colnum").val();
+        if (!colNum || colNum <= 0) {
+            colNum = 1;
+        }
+
+        let code = content.split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+        code.forEach((item, index) => { // 删除空项
+            if (!item) {
+                code.splice(index, 1);
+            }
+        })
+        var resultList = new Array();
+        var tempString = "";
+        code.forEach((item,index)=>{
+            if (index == 0||index%colNum!=0) {
+                tempString = tempString + item + "\n";
+            }
+            else if (index % colNum == 0) {
+                resultList.push(tempString);
+                tempString = "";
+                tempString = tempString + item + "\n";
+            }
+        })
+
+        resultList.sort(() => Math.random() - 0.5);
+        var resultString = resultList.toString();
+        $("#result").html(resultList);
+
+    }
+
+</script>
