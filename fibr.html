@@ -35,7 +35,7 @@
 
     </div>
 
-    <div class="layui-form-item" style="padding-top: 30px;" hidden="hidden">
+    <div class="layui-form-item" style="padding-top: 30px;">
         <div class="layui-input-block">
             <button type="submit" class="layui-btn" lay-submit lay-header-event="fibrcheckanswer" lay-filter="demo1"
                     hidden="hidden">
@@ -74,6 +74,7 @@
         var layer = layui.layer;
         var form = layui.form;
         var util = layui.util;
+        $("#fibrquestion-form").hide();
         fibrInit();
         form.render();
         $("#fibranswer-area").hide();
