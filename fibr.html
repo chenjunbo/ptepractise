@@ -15,18 +15,19 @@
                     <option value="4">C哥阅读拖拽全部题目</option>
                     <option value="8">⭐️阅读拖拽月预测除C哥预测其他题</option>
                     <option value="7">阅读拖拽收藏夹</option>
-<!--                    <option value="5">自定义题目1</option>-->
-<!--                    <option value="6">自定义题目2</option>-->
+                    <!--                    <option value="5">自定义题目1</option>-->
+                    <!--                    <option value="6">自定义题目2</option>-->
                 </select>
             </div>
             <button class="layui-btn" lay-header-event="fibrsearch">先点这里加载(搜索)题目</button>
             <button class="layui-btn" lay-header-event="testlucky">试试手气(纯属娱乐)</button>
+            <button class="layui-btn" lay-header-event="deleteallrightorfalt">清理本题型的所有对错记录</button>
         </div>
     </div>
 </form>
 
 
-<form class="layui-form" action="" id="fibrquestion-form">
+<form class="layui-form" action="" id="fibrquestion-form" hidden="hidden">
     <div id="fibrquestion-div" style="padding-left: 20px;padding-right: 20px; line-height: 50px;font-size: large"></div>
 
     <div class="layui-inline" id="fibroptions" ondrop="drop1(event)" ondragover="allowDrop(event)"
@@ -34,7 +35,7 @@
 
     </div>
 
-    <div class="layui-form-item" style="padding-top: 30px">
+    <div class="layui-form-item" style="padding-top: 30px;" hidden="hidden">
         <div class="layui-input-block">
             <button type="submit" class="layui-btn" lay-submit lay-header-event="fibrcheckanswer" lay-filter="demo1"
                     hidden="hidden">
@@ -53,9 +54,10 @@
                 </div>
                 <div class="layui-input-inline" style="width: 100px;">
                     <button class="layui-btn" id="gotoindex" lay-header-event="gotoindex">跳转</button>
+                    <button class="layui-btn" id="clearrightorfalt" lay-header-event="clearrightorfalt">清理对错记录</button>
                 </div>
-                <div class="layui-input-inline" id="rightandfalt" style="justify-content: center;vertical-align: middle;align-items: center;">
-
+                <div class="layui-input-inline" id="rightandfalt"
+                     style="justify-content: center;vertical-align: middle;align-items: center;">
                 </div>
             </div>
         </div>
@@ -90,7 +92,7 @@
                         // layer.msg('提示框关闭后的回调');
                     });
                     return false;
-                }else{
+                } else {
                     $("#fibrquestion-form").show();
                 }
                 var content = fibrTranslateData(fibrdata);
@@ -102,16 +104,16 @@
                 } else {
                     $("#fibrnext").show();
                 }
-                if (getFibRTotalNum()==1) {
+                if (getFibRTotalNum() == 1) {
                     $("#gotoarea").hide();
-                }else{
+                } else {
                     $("#gotoarea").show();
                 }
                 checkFav(fibrdata.num, localStorageType);
                 form.render();
                 return false;
             },
-            testlucky:function (obj, event){
+            testlucky: function (obj, event) {
                 event.preventDefault();
                 $("#fibrpre").hide();
                 // var content = fibRwGetdata($("#search-form").serializeJson());
@@ -123,7 +125,7 @@
                         // layer.msg('提示框关闭后的回调');
                     });
                     return false;
-                }else{
+                } else {
                     $("#fibrquestion-form").show();
                 }
                 var content = fibrTranslateData(fibrdata);
@@ -135,17 +137,34 @@
                 } else {
                     $("#fibrnext").show();
                 }
-                if (getFibRTotalNum()==1) {
+                if (getFibRTotalNum() == 1) {
                     $("#gotoarea").hide();
-                }else{
+                } else {
                     $("#gotoarea").show();
                 }
                 checkFav(fibrdata.num, localStorageType);
                 form.render();
                 return false;
             },
+            deleteallrightorfalt: function (obj, event) {
+                event.preventDefault();
+                //移除所有数据
+                clearAllFaltByType(localStorageType);
+                var fibrdata = currentFibRData();
+                if (fibrdata) {
+                    setRightAndFaltNum(qNum, localStroageType);
+                }
+            },
+            clearrightorfalt: function (obj, event) {
+                event.preventDefault();
+                var fibrdata = currentFibRData();
+                if (fibrdata) {
+                    deleteRightOrFaltByQnum(fibrdata.num, localStorageType);
+                    setRightAndFaltNum(qNum, localStroageType);
+                }
+            },
             fibrnext: function (obj, event) {
-                var result = nextFibRQuestion(obj, event,localStorageType);
+                var result = nextFibRQuestion(obj, event, localStorageType);
                 form.render();
                 return result;
             },
@@ -189,16 +208,16 @@
                         val = val.replace(" ", "");
                         val = val.replace(/\s+/g, "");
                         var realanswer = $(currentInput).attr("realanswer");
-                        realanswer=realanswer.replaceAll(" ","").replaceAll("&nbsp;", "");
-                        realanswer=realanswer.replaceAll(/\s+/g,"");
-                        console.log(val+"====>"+realanswer);
+                        realanswer = realanswer.replaceAll(" ", "").replaceAll("&nbsp;", "");
+                        realanswer = realanswer.replaceAll(/\s+/g, "");
+                        console.log(val + "====>" + realanswer);
                         if (val != realanswer) {
                             var attr = $(currentInput).attr("style");
                             attr = "border: 1px solid red;" + attr;
                             $(currentInput).attr("style", attr);
                             isWrong = true;
                         }
-                    }else {
+                    } else {
                         isWrong = true;
                     }
                 });
@@ -208,7 +227,7 @@
                     layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
                         // layer.msg('提示框关闭后的回调');
                         if (!isFibRLast()) {
-                            nextFibRQuestion(obj, event,localStorageType);
+                            nextFibRQuestion(obj, event, localStorageType);
                             //form.render();
                         }
 
@@ -333,7 +352,7 @@
             var option = options[key];
             var choice = option.choice;
             var id = option.id;
-            var textId = "option" + id + choice.replaceAll(" ", "").replaceAll("'","");
+            var textId = "option" + id + choice.replaceAll(" ", "").replaceAll("'", "");
             //var optionInput="<div class=\"layui-inline\" id=\""+textId+"\" style=\"font-size: 20px;margin: 10px\" draggable=\"true\" ondragstart=\"drag(event)\"></div>"
             var div = document.createElement("div");
             $(div).attr("class", "layui-inline");
@@ -342,7 +361,7 @@
             $(div).attr("style", "font-size: large ;margin: 10px;border:1px solid blue")
             $(div).attr("draggable", "true")
             $(div).attr("ondragstart", "drag(event)")
-            var input = "<input  type=\"text\" style='text-align:center' disabled autocomplete=\"off\" lay-verify=\"required|answer\" class=\"layui-input\" name='answeroptions' value=" + choice.replaceAll(" ","&nbsp;") + ">";
+            var input = "<input  type=\"text\" style='text-align:center' disabled autocomplete=\"off\" lay-verify=\"required|answer\" class=\"layui-input\" name='answeroptions' value=" + choice.replaceAll(" ", "&nbsp;") + ">";
             $(div).append(input);
             $("#fibroptions").append(div);
         }
@@ -441,7 +460,7 @@
         //如果没有id则不动
     }
 
-    function nextFibRQuestion(obj, event,localStorageType) {
+    function nextFibRQuestion(obj, event, localStorageType) {
         event.preventDefault();
         if (isFibRLast()) {
             $("#fibrnext").hide();

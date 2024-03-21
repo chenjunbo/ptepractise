@@ -171,6 +171,9 @@ function getFromLocalStorage(key) {
     return value;
 }
 
+function removeFromLocalStorage(key) {
+    window.localStorage.removeItem(key);
+}
 /**
  * 检查某个题号在不在localstorage,注意题哈需要添加类型区分,避免不同类型题目题号一样,value是这个题号在另外一个localstorage中的key
  * @param qNum
@@ -189,6 +192,15 @@ function checkFav(qNum, type) {
 
 }
 
+function clearAllFaltByType(localStorageType){
+    removeFromLocalStorage(localStorageType + "falt");
+    const keys = Object.keys(window.localStorage);
+    keys.forEach((key) => {
+        if (key.endsWith("falt" + localStorageType) || key.endsWith("right" + localStorageType)) {
+            removeFromLocalStorage(key);
+        }
+    });
+}
 /**
  *
  * @param qNum 题号
@@ -204,6 +216,11 @@ function addRightOrFalt(qNum, rightorfalt, localStroageType) {
         num = parseInt(num) + 1;
     }
     window.localStorage.setItem(qNum + rightorfalt + localStroageType, num);
+}
+
+function deleteRightOrFaltByQnum(qNum,localStroageType) {
+    window.localStorage.removeItem(qNum + "right" + localStroageType);
+    window.localStorage.removeItem(qNum + "falt" + localStroageType);
 }
 
 function setRightAndFaltNum(qNum, localStroageType) {
