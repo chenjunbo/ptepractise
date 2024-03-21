@@ -417,16 +417,18 @@ function deleteallrorightorfalt(localStorageType) {
     //移除所有数据
     layer.confirm('是否删清空本题型的对错记录？', {icon: 3}, function () {
         clearAllFaltByType(localStorageType);
+       try {
+           var xjrodata = currentXjRoData();
+           if (xjrodata) {
+               setRightAndFaltNum(xjrodata.num, localStorageType);
+           }
+       }catch (e) {
 
+       }
         layer.msg('操作完成', {icon: 0}, function () {
         });
     }, function () {
-        return
     });
-    var xjrodata = currentXjRoData();
-    if (xjrodata) {
-        setRightAndFaltNum(xjrodata.num, localStorageType);
-    }
 }
 
 function clearrorightorfalt(localStorageType) {
