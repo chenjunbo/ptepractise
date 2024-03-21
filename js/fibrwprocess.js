@@ -298,9 +298,9 @@ function fibrwRandomLucky() {
     shuffle(fibrwIdsList);
     var nums = Math.floor(Math.random() * (6 - 5 + 1)) + 5;
     for (var i = 0; i < nums; i++) {
-        var fibrwdata = cnMap.get(fibr2IdsList[i]);
+        var fibrwdata = cnMap.get(fibrwIdsList[i]);
         if (!fibrwdata) {
-            fibrwdata = enMap.get(fibr2IdsList[i]);
+            fibrwdata = enMap.get(fibrwIdsList[i]);
         }
         currentList.push(fibrwdata);
     }
