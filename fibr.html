@@ -20,6 +20,7 @@
                 </select>
             </div>
             <button class="layui-btn" lay-header-event="fibrsearch">先点这里加载(搜索)题目</button>
+            <button class="layui-btn" lay-header-event="testlucky">试试手气(纯属娱乐)</button>
         </div>
     </div>
 </form>
@@ -109,7 +110,32 @@
                 checkFav(fibrdata.num, localStorageType);
                 form.render();
                 return false;
-            }, fibrnext: function (obj, event) {
+            },
+            testlucky:function (obj, event){
+                event.preventDefault();
+                $("#fibrpre").hide();
+                // var content = fibRwGetdata($("#search-form").serializeJson());
+                fibRCurrentTypedata($("#fibrsearch-form").serializeJson());
+                var fibrdata = fibrRandomLucky();
+                var content = fibrTranslateData(fibrdata);
+                $("#fibrquestion-div").html(content);
+                fillAnswer(fibrdata);
+                fillOptions(fibrdata);
+                if (isFibRLast()) {
+                    $("#fibrnext").hide();
+                } else {
+                    $("#fibrnext").show();
+                }
+                if (getFibRTotalNum()==1) {
+                    $("#gotoarea").hide();
+                }else{
+                    $("#gotoarea").show();
+                }
+                checkFav(fibrdata.num, localStorageType);
+                form.render();
+                return false;
+            },
+            fibrnext: function (obj, event) {
                 var result = nextFibRQuestion(obj, event,localStorageType);
                 form.render();
                 return result;

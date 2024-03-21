@@ -1,5 +1,6 @@
 var fibrCurrentList;
-let fibrCnList, fibrEnList;
+let fibrCnList, fibrEnList,fibrIdsList;
+var fibrIdsSet = new Set();
 const fibrCnMap = new Map();
 const fibrEnMap = new Map();
 var fibrIndex = 0;//当前第几条
@@ -13,6 +14,7 @@ function fibrInit() {
         for (let i = 0; i < fibrCnList.length; i++) {
             var fibrData = fibrCnList[i];
             fibrCnMap.set(fibrData.num, fibrData);
+            fibrIdsSet.add(fibrData.num + "");
         }
     })
     $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fibr/fibrallquestionsen.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
@@ -23,6 +25,7 @@ function fibrInit() {
         for (let i = 0; i < fibrEnList.length; i++) {
             var fibrData = fibrEnList[i];
             fibrEnMap.set(fibrData.num, fibrData);
+            fibrIdsSet.add(fibrData.num + "");
         }
     })
 }
@@ -227,6 +230,24 @@ function createFibRPdfHtml(parmas, serNum, fibrdata) {
     $(questionDiv).append(anserDive);
     $(questionDiv).append("<br/>");
     return questionDiv;
+}
+
+function fibrRandomLucky() {
+    if (!fibrIdsList) {
+        fibrIdsList = Array.from(fibrIdsSet);
+    }
+    fibrIndex = 0;
+    fibrCurrentList = new Array();
+    shuffle(fibrIdsList);
+    var nums = Math.floor(Math.random() * (5 - 4 + 1)) + 4;
+    for (var i = 0; i < nums; i++) {
+        var fibrdata = cnMap.get(fibrIdsList[i]);
+        if (!fibrdata) {
+            fibrdata = enMap.get(fibrIdsList[i]);
+        }
+        fibrCurrentList.push(fibrdata);
+    }
+    return fibrCurrentList[0];
 }
 
 function fibrNextQuest() {
