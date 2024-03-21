@@ -103,17 +103,19 @@ function initOthers() {
 }
 
 function getAlljs() {
+    var time = new Date().getTime();
     var js = [
-        "https://gitee.com/jackiechan/ptepractise/raw/main/js/fibrwprocess.js",
-        "https://gitee.com/jackiechan/ptepractise/raw/main/js/fibrprocess.js",
-        "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflywfd.js",
-        "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflysst.js",
-        "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjrs.js",
-        "https://gitee.com/jackiechan/ptepractise/raw/main/js/ptefibl.js",
-        "https://gitee.com/jackiechan/ptepractise/raw/main/js/pteasq.js",
-        "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjro.js",
-        "https://gitee.com/jackiechan/ptepractise/raw/main/js/we.js",
-        "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflyrs.js"
+        "https://gitee.com/jackiechan/ptepractise/raw/main/js/fibrwprocess.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/main/js/fibrprocess.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflywfd.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflysst.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjrs.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/main/js/ptefibl.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/main/js/pteasq.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjro.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/main/js/we.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflyrs.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/main/js/utils.js?time="+time
     ]
     return js;
 }
