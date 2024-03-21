@@ -11,7 +11,7 @@
 <script type="text/javascript">
 
     function readFile() {
-        var sourceFiles = $("#files").files[0];
+        var sourceFiles = document.getElementById("files").files[0];
         const reader = new FileReader();
 
         reader.onload = (e) => {
