@@ -1,5 +1,6 @@
 var currentROList;
-let cnxjroList, enxjroList;
+let cnxjroList, enxjroList, xjroIdsList;
+var xjroIdsSet = new Set();
 const cnxjroMap = new Map();
 const enxjroMap = new Map();
 var xjroindex = 0;//当前第几条
@@ -16,6 +17,7 @@ function xjroInit() {
             for (let i = 0; i < cnxjroList.length; i++) {
                 var xjrodata = cnxjroList[i];
                 cnxjroMap.set(xjrodata.num+"", xjrodata);
+                xjroIdsSet.add(xjrodata.num + "");
             }
         },
         error: function (xhr, status, error) {
@@ -34,6 +36,7 @@ function xjroInit() {
             for (let i = 0; i < enxjroList.length; i++) {
                 var xjrodata = enxjroList[i];
                 enxjroMap.set(xjrodata.num+"", xjrodata);
+                xjroIdsSet.add(xjrodata.num + "");
             }
         },
         error: function (xhr, status, error) {
@@ -193,6 +196,25 @@ function xjroTranslateData(xjrodata){
     return title ;
 }
 
+function xjroRandomLucky() {
+    if (!xjroIdsList) {
+        xjroIdsList = Array.from(xjroIdsSet);
+    }
+    xjroindex = 0;
+    currentROList= new Array();
+    shuffle(xjroIdsList);
+    var nums = Math.floor(Math.random() * (5 - 4 + 1)) + 4;
+    for (var i = 0; i < nums; i++) {
+        var xjrodata = cnxjroMap.get(xjroIdsList[i]);
+        if (!xjrodata) {
+            xjrodata = enxjroMap.get(xjroIdsList[i]);
+        }
+        currentROList.push(xjrodata);
+    }
+    return currentROList[0];
+}
+
+
 
 function roallowDrop(ev) {
     ev.preventDefault();
@@ -346,6 +368,26 @@ function rosearch(localStorageType) {
     } else {
         $("#question-form").show();
     }
+    var content = xjroTranslateData(xjrodata);
+    // $("#question-div").html(content);
+    fillAnswer(xjrodata,localStorageType);
+    if (isXjRoLast()) {
+        $("#next").hide();
+    } else {
+        $("#next").show();
+    }
+    if (getXjRoTotalNum() == 1) {
+        $("#gotoarea").hide();
+    } else {
+        $("#gotoarea").show();
+    }
+    checkFav(xjrodata.num, localStorageType);
+}
+
+function testlucky(localStorageType){
+    $("#pre").hide();
+    // var content = fibRwGetdata($("#xjrosearch-form").serializeJson());
+    var xjrodata = xjroRandomLucky();
     var content = xjroTranslateData(xjrodata);
     // $("#question-div").html(content);
     fillAnswer(xjrodata,localStorageType);
