@@ -220,7 +220,8 @@ function addRightOrFalt(qNum, rightorfalt, localStroageType) {
         num = parseInt(num) + 1;
     }
     window.localStorage.setItem(qNum + rightorfalt + localStroageType, num);
-    saveRightAndFaltByType(qNum, localStorageType + "rightorfalt");
+    saveRightAndFaltByType(qNum, localStorageType + "right");
+    saveRightAndFaltByType(qNum, localStorageType + "falt");
 }
 
 function saveRightAndFaltByType(qNum, key) {
