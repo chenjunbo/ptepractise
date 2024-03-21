@@ -41,20 +41,31 @@
         })
         var resultList = new Array();
         var tempString = "";
-        code.forEach((item,index)=>{
-            if (index == 0||index%colNum!=0) {
-                tempString = tempString + item + "\n";
-            }
-            else if (index % colNum == 0) {
-                resultList.push(tempString);
-                tempString = "";
-                tempString = tempString + item + "\n";
-            }
-        })
 
-        resultList.sort(() => Math.random() - 0.5);
-        var resultString = resultList.toString();
-        $("#result").html(resultList);
+        if (colNum == 1) {
+            code.sort(() => Math.random() - 0.5);
+            var resultString = code.toString();
+            $("#result").html(code);
+
+        }else{
+            code.forEach((item,index)=>{
+                if (index == 0||index%colNum!=0) {
+                    tempString = tempString + item + "\n";
+                }
+                else if (index % colNum == 0) {
+                    resultList.push(tempString);
+                    tempString = "";
+                    tempString = tempString + item + "\n";
+                }else if (index == code.length - 1) {
+                    resultList.push(tempString);
+                }
+            });
+
+            resultList.sort(() => Math.random() - 0.5);
+            var resultString = resultList.toString();
+            $("#result").html(resultList);
+        }
+
 
     }
 
