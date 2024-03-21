@@ -22,6 +22,7 @@
             </div>
             <button class="layui-btn" lay-header-event="xjrosearch">先点这里加载(搜索)题目</button>
             <button class="layui-btn" lay-header-event="testlucky">你猜这是干啥的</button>
+            <button class="layui-btn" lay-header-event="deleteallrightorfalt">清理本题型的所有对错记录</button>
         </div>
     </div>
 </form>
@@ -47,15 +48,19 @@
                 <button class="layui-btn" id="adddeletefav" lay-header-event="adddeletefav" hidden="hidden">添加到收藏
                 </button>
                 <div class="layui-inline" id="gotoarea">
-                    <div class="layui-input-inline" style="width: 100px;">
+                    <div class="layui-inline" style="width: 100px;">
                         <input type="number" id="qindex" name="price_min" placeholder="第几题" autocomplete="off"
                                class="layui-input" min="0" step="1" lay-affix="number">
                     </div>
-                    <div class="layui-input-inline" style="width: 100px;">
+                    <div class="layui-inline" style="width: 100px;">
                         <button class="layui-btn" id="gotoindex" lay-header-event="gotoindex">跳转</button>
                     </div>
-                    <div class="layui-input-inline" id="rightandfalt" style="justify-content: center;vertical-align: middle;align-items: center;">
+                    <div class="layui-inline" id="rightandfalt">
 
+                    </div>
+                    <div class="layui-inline">
+                        <button class="layui-btn" id="clearrightorfalt" lay-header-event="clearrightorfalt">清理对错记录
+                        </button>
                     </div>
                 </div>
         </div>
@@ -96,6 +101,14 @@
                 testlucky(localStorageType);
                 form.render();
                 return false;
+            },deleteallrightorfalt: function (obj, event) {
+                event.preventDefault();
+                deleteallrorightorfalt(localStorageType);
+            },
+            clearrightorfalt: function (obj, event) {
+                event.preventDefault();
+
+
             },
             next: function (obj, event) {
                 event.preventDefault();

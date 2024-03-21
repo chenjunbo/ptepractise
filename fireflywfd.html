@@ -19,6 +19,7 @@
             </div>
             <button class="layui-btn" lay-header-event="search">先点这里加载(搜索)题目</button>
             <button class="layui-btn" lay-header-event="testlucky">试试手气(纯属娱乐)</button>
+            <button class="layui-btn" lay-header-event="deleteallrightorfalt">清理本题型的所有对错记录</button>
         </div>
     </div>
 
@@ -46,15 +47,18 @@
             <button class="layui-btn" id="adddeletefav" lay-header-event="adddeletefav" hidden="hidden">添加到收藏
             </button>
             <div class="layui-inline" id="gotoarea">
-                <div class="layui-input-inline" style="width: 100px;">
+                <div class="layui-inline" style="width: 100px;">
                     <input type="number" id="qindex" name="price_min" placeholder="第几题" autocomplete="off"
                            class="layui-input" min="0" step="1" lay-affix="number">
                 </div>
-                <div class="layui-input-inline" style="width: 100px;">
+                <div class="layui-inline" style="width: 100px;">
                     <button class="layui-btn" id="gotoindex" lay-header-event="gotoindex">跳转</button>
                 </div>
-                <div class="layui-input-inline" id="rightandfalt" style="display: flex;justify-content: center;vertical-align: middle;align-items: center;">
-
+                <div class="layui-inline" id="rightandfalt" >
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn" id="clearrightorfalt" lay-header-event="clearrightorfalt">清理对错记录
+                    </button>
                 </div>
             </div>
         </div>
@@ -141,7 +145,35 @@
                 form.render();
                 return false;
             }
-            , next: function (obj, event) {
+            ,deleteallrightorfalt: function (obj, event) {
+                event.preventDefault();
+                //移除所有数据
+                layer.confirm('是否删清空本题型的对错记录？', {icon: 3}, function () {
+                    clearAllFaltByType(localStorageType);
+                    var fireFlydata = currentFireFlyWFDData();
+                    if (fireFlydata) {
+                        setRightAndFaltNum(fireFlydata.qNum, localStorageType);
+                    }
+                    layer.msg('操作完成', {icon: 0}, function () {
+                    });
+                }, function () {
+                });
+            },
+            clearrightorfalt: function (obj, event) {
+                event.preventDefault();
+
+                layer.confirm('是否删除本题的对错记录？', {icon: 3}, function () {
+                    var fireFlydata = currentFireFlyWFDData();
+                    if (fireFlydata) {
+                        deleteRightOrFaltByQnum(fireFlydata.qNum, localStorageType);
+                        setRightAndFaltNum(fireFlydata.qNum, localStorageType);
+                    }
+                    layer.msg('操作完成', {icon: 0}, function () {
+                    });
+                }, function () {
+                });
+            },
+            next: function (obj, event) {
                 var result = nextWfdQuestion(obj, event, localStorageType);
                 form.render();
                 return result;

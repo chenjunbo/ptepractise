@@ -413,6 +413,34 @@ function testlucky(localStorageType){
     checkFav(xjrodata.num, localStorageType);
 }
 
+function deleteallrorightorfalt(localStorageType) {
+    //移除所有数据
+    layer.confirm('是否删清空本题型的对错记录？', {icon: 3}, function () {
+        clearAllFaltByType(localStorageType);
+        var xjrodata = currentXjRoData();
+        if (xjrodata) {
+            setRightAndFaltNum(xjrodata.num, localStorageType);
+        }
+        layer.msg('操作完成', {icon: 0}, function () {
+        });
+    }, function () {
+    });
+}
+
+function clearrorightorfalt(localStorageType) {
+    layer.confirm('是否删除本题的对错记录？', {icon: 3}, function () {
+        var xjrodata = currentXjRoData();
+        if (xjrodata) {
+            deleteRightOrFaltByQnum(xjrodata.num, localStorageType);
+            setRightAndFaltNum(xjrodata.num, localStorageType);
+        }
+        layer.msg('操作完成', {icon: 0}, function () {
+        });
+    }, function () {
+    });
+}
+
+
 function nextXjRoQuestion(obj,localStorageType) {
     if (isXjRoLast()) {
         $("#next").hide();
