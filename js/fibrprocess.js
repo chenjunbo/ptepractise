@@ -241,9 +241,9 @@ function fibrRandomLucky() {
     shuffle(fibrIdsList);
     var nums = Math.floor(Math.random() * (5 - 4 + 1)) + 4;
     for (var i = 0; i < nums; i++) {
-        var fibrdata = cnMap.get(fibrIdsList[i]);
+        var fibrdata = fibrCnMap.get(fibrIdsList[i]);
         if (!fibrdata) {
-            fibrdata = enMap.get(fibrIdsList[i]);
+            fibrdata = fibrEnMap.get(fibrIdsList[i]);
         }
         fibrCurrentList.push(fibrdata);
     }
