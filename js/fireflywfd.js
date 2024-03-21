@@ -50,7 +50,7 @@ function fireFlyGetWFDdata(param) {
             }
             break;
         case "9":
-            var faltIds = getAllQuestionNumFromLocalStorageByFalt("fibrw");
+            var faltIds = getAllQuestionNumFromLocalStorageByFalt("fireflywfd");
             if (faltIds) {
                 faltIds.forEach((qNum,index)=>{
                     fireFlyWFDCurrentList.push(fireFlyWFDMap.get(num + ""));

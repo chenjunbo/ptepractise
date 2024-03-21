@@ -74,7 +74,7 @@ function fibRCurrentTypedata(param) {
             break
 
         case "9":
-            var faltIds = getAllQuestionNumFromLocalStorageByFalt("fibrw");
+            var faltIds = getAllQuestionNumFromLocalStorageByFalt("fibr");
             if (faltIds) {
                 faltIds.forEach((qNum,index)=>{
                     var fibrData = fibrCnMap.get(parseInt(qNum));

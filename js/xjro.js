@@ -89,7 +89,7 @@ function xjroCurrentTypedata(param) {
             filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/xjxj_ro_withoutc.txt?access_token=c87299575627265144b7db286d3bf673"
             break
         case "9":
-            var faltIds = getAllQuestionNumFromLocalStorageByFalt("fibrw");
+            var faltIds = getAllQuestionNumFromLocalStorageByFalt("xjroublue");
             if (faltIds) {
                 faltIds.forEach((qNum,index)=>{
                     var xjroData = cnxjroMap.get(qNum+"");
