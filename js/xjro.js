@@ -197,7 +197,7 @@ function xjroTranslateData(xjrodata){
 }
 
 function xjroRandomLucky() {
-    if (!xjroIdsList) {
+    if (!xjroIdsList||xjroIdsList.length==0) {
         xjroIdsList = Array.from(xjroIdsSet);
     }
     xjroindex = 0;

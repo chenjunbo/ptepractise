@@ -290,7 +290,7 @@ function createFibRwPdfHtml(parmas, serNum, fibrwdata) {
 
 }
 function fibrwRandomLucky() {
-    if (!fibrwIdsList) {
+    if (!fibrwIdsList||fibrwIdsList.length==0) {
         fibrwIdsList = Array.from(fibrwIdsSet);
     }
     index = 0;

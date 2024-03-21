@@ -233,7 +233,7 @@ function createFibRPdfHtml(parmas, serNum, fibrdata) {
 }
 
 function fibrRandomLucky() {
-    if (!fibrIdsList) {
+    if (!fibrIdsList||fibrIdsList.length==0) {
         fibrIdsList = Array.from(fibrIdsSet);
     }
     fibrIndex = 0;
