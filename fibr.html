@@ -152,7 +152,7 @@
             deleteallrightorfalt: function (obj, event) {
                 event.preventDefault();
                 //移除所有数据
-                layer.confirm('是否删除本题的对错记录？', {icon: 3}, function () {
+                layer.confirm('是否删清空本题型的对错记录？', {icon: 3}, function () {
                     clearAllFaltByType(localStorageType);
                     var fibrdata = currentFibRData();
                     if (fibrdata) {
