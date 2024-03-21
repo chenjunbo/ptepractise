@@ -273,8 +273,8 @@ function getAllQuestionNumFromLocalStorageByFalt(localStroageType) {
         return valueB - valueA; // 或者使用其他比较算法来确定排序优先级
     });
     var resultList = new Array();
-    sortedEntries.forEach((items,index=>{
-        resultList.push(items[0]);
-    }))
+    sortedEntries.forEach(function (item,index){
+        resultList.push(item[0]);
+    })
     return resultList;
 }
