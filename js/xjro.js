@@ -88,6 +88,21 @@ function xjroCurrentTypedata(param) {
         case "8":
             filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/xjxj_ro_withoutc.txt?access_token=c87299575627265144b7db286d3bf673"
             break
+        case "9":
+            var faltIds = getAllQuestionNumFromLocalStorageByFalt("fibrw");
+            if (faltIds) {
+                faltIds.forEach((qNum,index)=>{
+                    var xjroData = cnxjroMap.get(qNum+"");
+                    if (!xjroData) {
+                        xjroData = enxjroMap.get(qNum+"");
+                    }
+                    if (xjroData) {
+                        currentROList.push(xjroData);
+                    }
+                })
+            }
+
+            break;
 
     }
     //当前数据

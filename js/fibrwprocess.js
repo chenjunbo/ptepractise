@@ -109,7 +109,22 @@ function fibRwCurrentTypedata(param) {
             break;
         case "8":
             filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibrw/xjfib_rw_withoutc.txt?access_token=c87299575627265144b7db286d3bf673"
-            break
+            break;
+        case "9":
+            var faltIds = getAllQuestionNumFromLocalStorageByFalt("fibrw");
+            if (faltIds) {
+                faltIds.forEach((qNum,index)=>{
+                    var fibrwData = cnMap.get(parseInt(qNum));
+                    if (!fibrwData) {
+                        fibrwData = enMap.get(parseInt(qNum));
+                    }
+                    if (fibrwData) {
+                        currentList.push(fibrwData);
+                    }
+                })
+            }
+
+            break;
 
     }
     //当前数据

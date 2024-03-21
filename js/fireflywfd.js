@@ -49,6 +49,15 @@ function fireFlyGetWFDdata(param) {
                 localstoragedata = json.nums;
             }
             break;
+        case "9":
+            var faltIds = getAllQuestionNumFromLocalStorageByFalt("fibrw");
+            if (faltIds) {
+                faltIds.forEach((qNum,index)=>{
+                    fireFlyWFDCurrentList.push(fireFlyWFDMap.get(num + ""));
+                })
+            }
+
+            break;
         default:
             //按照分类来获取数据
             var wfdIds = categoryIdDataList[type];
