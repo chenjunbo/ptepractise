@@ -154,14 +154,16 @@
                 //移除所有数据
                 layer.confirm('是否删清空本题型的对错记录？', {icon: 3}, function () {
                     clearAllFaltByType(localStorageType);
-                    var fibrdata = currentFibRData();
-                    if (fibrdata) {
-                        setRightAndFaltNum(fibrdata.num, localStorageType);
-                    }
+
                     layer.msg('操作完成', {icon: 0}, function () {
                     });
                 }, function () {
+                    return
                 });
+                var fibrdata = currentFibRData();
+                if (fibrdata) {
+                    setRightAndFaltNum(fibrdata.num, localStorageType);
+                }
             },
             clearrightorfalt: function (obj, event) {
                 event.preventDefault();
