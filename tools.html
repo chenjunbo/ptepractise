@@ -44,6 +44,7 @@
 
         if (colNum == 1) {
             code.sort(() => Math.random() - 0.5);
+            code=code.join("\n")
             var resultString = code.toString();
             $("#result").html(code);
 
