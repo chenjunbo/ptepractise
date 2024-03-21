@@ -141,7 +141,7 @@ function fibrTranslateData(fibrData) {
             var parentin = $("<div class=\"layui-input-inline\"  id=" + divid + "> </div>");
             var input = document.createElement("input");
             $(input).attr("type", "text");
-            $(input).attr("disabled", "disabled");
+            //$(input).attr("disabled", "disabled");
             $(input).attr("autocomplete", "off");
             $(input).attr("lay-verify", "answer");
             $(input).attr("class", "layui-input");
