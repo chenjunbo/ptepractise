@@ -266,7 +266,7 @@ function getAllQuestionNumFromLocalStorageByFalt(localStroageType) {
     var countMap = new Map();
     keys.forEach((key) => {
         if (key.endsWith("falt" + localStorageType)) {
-            countMap.set(key, window.localStorage.getItem(key));
+            countMap.set(key.substring(0,key.indexOf("falt")), window.localStorage.getItem(key));
         }
     });
     const sortedEntries = Array.from(countMap).sort(([keyA, valueA], [keyB, valueB]) => {
