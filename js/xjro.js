@@ -388,6 +388,15 @@ function testlucky(localStorageType){
     $("#pre").hide();
     // var content = fibRwGetdata($("#xjrosearch-form").serializeJson());
     var xjrodata = xjroRandomLucky();
+    if (!xjrodata) {
+        $("#question-form").hide();
+        layer.msg('加载资源中,等一下点击或者刷新一下重新测试', {icon: 0}, function () {
+            // layer.msg('提示框关闭后的回调');
+        });
+        return false;
+    } else {
+        $("#question-form").show();
+    }
     var content = xjroTranslateData(xjrodata);
     // $("#question-div").html(content);
     fillAnswer(xjrodata,localStorageType);
