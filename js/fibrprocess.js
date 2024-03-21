@@ -72,6 +72,11 @@ function fibRCurrentTypedata(param) {
         case "8":
             filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibr/xjfib_r_withoutc.txt?access_token=c87299575627265144b7db286d3bf673"
             break
+
+        case 9:
+            getAllQuestionNumFromLocalStorageByFalt("fibrw");
+
+            break
     }
     //当前数据
     if (filePath) {

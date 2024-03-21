@@ -261,3 +261,16 @@ function setRightAndFaltNum(qNum, localStroageType) {
     $("#rightandfalt").html(content);
 }
 
+function getAllQuestionNumFromLocalStorageByFalt(localStroageType) {
+    const keys = Object.keys(window.localStorage);
+    var countMap = new Map();
+    keys.forEach((key) => {
+        if (key.endsWith("falt" + localStorageType)) {
+            countMap.set(key, window.localStorage.getItem(key));
+        }
+    });
+    const sortedEntries = Array.from(countMap).sort(([keyA, valueA], [keyB, valueB]) => {
+        return valueA - valueB; // 或者使用其他比较算法来确定排序优先级
+    });
+    console.log(sortedEntries);
+}
