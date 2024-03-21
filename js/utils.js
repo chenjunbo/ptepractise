@@ -89,6 +89,7 @@ function loadNotice() {
     }, function () {
     });
 }
+
 function initOthers() {
     isNeedLoadFont = false;
 }
@@ -174,6 +175,7 @@ function getFromLocalStorage(key) {
 function removeFromLocalStorage(key) {
     window.localStorage.removeItem(key);
 }
+
 /**
  * 检查某个题号在不在localstorage,注意题哈需要添加类型区分,避免不同类型题目题号一样,value是这个题号在另外一个localstorage中的key
  * @param qNum
@@ -192,8 +194,9 @@ function checkFav(qNum, type) {
 
 }
 
-function clearAllFaltByType(localStorageType){
+function clearAllFaltByType(localStorageType) {
     removeFromLocalStorage(localStorageType + "falt");
+    removeFromLocalStorage(localStorageType + "right");
     const keys = Object.keys(window.localStorage);
     keys.forEach((key) => {
         if (key.endsWith("falt" + localStorageType) || key.endsWith("right" + localStorageType)) {
@@ -201,6 +204,7 @@ function clearAllFaltByType(localStorageType){
         }
     });
 }
+
 /**
  *
  * @param qNum 题号
@@ -208,17 +212,37 @@ function clearAllFaltByType(localStorageType){
  * @param localStroageType 题型类型
  */
 function addRightOrFalt(qNum, rightorfalt, localStroageType) {
-    var num = window.localStorage.getItem(qNum+rightorfalt+localStroageType);
+    var num = window.localStorage.getItem(qNum + rightorfalt + localStroageType);
     if (!num) {
-       // window.localStorage.setItem(qNum + rightorfalt + localStroageType, 1);
+        // window.localStorage.setItem(qNum + rightorfalt + localStroageType, 1);
         num = 1;
-    }else{
+    } else {
         num = parseInt(num) + 1;
     }
     window.localStorage.setItem(qNum + rightorfalt + localStroageType, num);
+    saveRightAndFaltByType(qNum, localStorageType + "rightorfalt");
 }
 
-function deleteRightOrFaltByQnum(qNum,localStroageType) {
+function saveRightAndFaltByType(qNum, key) {
+    var data = window.localStorage.getItem(key);
+    if (!data) {
+        data = {"nums": [qNum]};
+        data = JSON.stringify(data);
+    } else {
+        var json = JSON.parse(data);
+        var array = json.nums;
+        const index = array.indexOf(qNum); // 找到要删除的元素的索引
+        if (index == -1) {
+            array.push(qNum);
+            json.nums = array;
+        }
+        data = JSON.stringify(json);
+    }
+    window.localStorage.setItem(key, data);
+}
+
+
+function deleteRightOrFaltByQnum(qNum, localStroageType) {
     window.localStorage.removeItem(qNum + "right" + localStroageType);
     window.localStorage.removeItem(qNum + "falt" + localStroageType);
 }
@@ -232,7 +256,7 @@ function setRightAndFaltNum(qNum, localStroageType) {
     if (!faltNum) {
         faltNum = "0";
     }
-    var content = "<span style=\"color: #00b050;font-size: 18px; font-family: Arial, sans-serif;\">正确:</span><span style=\"color: red; font-size: 18px; font-family: Arial, sans-serif;\">"+rightNum+"</span><span style=\"font-family: Arial, sans-serif; font-size: 18px;\">次&nbsp;&nbsp;</span><span style=\"color: #00b050; font-family: Arial, sans-serif;font-size: 18px;\">错误:</span><span style=\"color: red; font-family: Arial, sans-serif;font-size: 18px;\">"+faltNum+"</span><span style=\"font-family: Arial, sans-serif;font-size: 18px;\">次</span>";
+    var content = "<span style=\"color: #00b050;font-size: 18px; font-family: Arial, sans-serif;\">正确:</span><span style=\"color: red; font-size: 18px; font-family: Arial, sans-serif;\">" + rightNum + "</span><span style=\"font-family: Arial, sans-serif; font-size: 18px;\">次&nbsp;&nbsp;</span><span style=\"color: #00b050; font-family: Arial, sans-serif;font-size: 18px;\">错误:</span><span style=\"color: red; font-family: Arial, sans-serif;font-size: 18px;\">" + faltNum + "</span><span style=\"font-family: Arial, sans-serif;font-size: 18px;\">次</span>";
     $("#rightandfalt").html(content);
 }
 
