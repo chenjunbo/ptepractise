@@ -41,6 +41,10 @@ function createMenu() {
         {
             "menuName": "生成PDF",
             "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/createpdf.html?access_token=c87299575627265144b7db286d3bf673"
+        },
+        {
+            "menuName": "乱序小工具",
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/tools.html?access_token=c87299575627265144b7db286d3bf673"
         }
 
     ]
