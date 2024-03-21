@@ -14,7 +14,7 @@ function fibrInit() {
         for (let i = 0; i < fibrCnList.length; i++) {
             var fibrData = fibrCnList[i];
             fibrCnMap.set(fibrData.num, fibrData);
-            fibrIdsSet.add(fibrData.num + "");
+            fibrIdsSet.add(fibrData.num );
         }
     })
     $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fibr/fibrallquestionsen.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
@@ -25,7 +25,7 @@ function fibrInit() {
         for (let i = 0; i < fibrEnList.length; i++) {
             var fibrData = fibrEnList[i];
             fibrEnMap.set(fibrData.num, fibrData);
-            fibrIdsSet.add(fibrData.num + "");
+            fibrIdsSet.add(fibrData.num );
         }
     })
 }
