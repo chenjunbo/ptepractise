@@ -559,21 +559,22 @@ function checkfibranswerbyfibrwmodel(obj, event, fibrdata,form) {
         layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
             //添加正确次数,添加错误次数
             // layer.msg('提示框关闭后的回调');
+            if (!isFibRLast()) {
+                nextFibRQuestion(obj, event);
+            }
         });
-        if (!isFibRLast()) {
-            nextFibRQuestion(obj, event);
-        }
     } else {
         addRightOrFalt(fibrdata.num, "falt", localStorageType);
+        selcetlist.forEach((select)=>{
+            // $("#"+select).removeClass();
+            $("#"+select).parent().attr("style", "border: 1px solid red;");
+        })
         layer.msg('答案不小心选错了哟!', {icon: 0}, function () {
             // layer.msg('提示框关闭后的回调');
             //添加错误次数
         });
     }
-    selcetlist.forEach((select)=>{
-       // $("#"+select).removeClass();
-        $("#"+select).parent().attr("style", "border: 1px solid red;");
-    })
+
 }
 function checkfibranswerbyDefault(obj, event,fibrdata,form) {
     var allInputs = $("#fibrquestion-div input[name='answeroptions']");
