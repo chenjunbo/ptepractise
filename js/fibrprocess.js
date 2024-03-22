@@ -538,6 +538,7 @@ function checkfibranswerbyfibrwmodel(obj, event, fibrdata,form) {
     var content = JSON.stringify($("#fibrquestion-form").serializeJson());
     var result = $("#fibrquestion-form").serializeJson();
     var isWrong = false;
+    var selcetlist = new Array();
     for (var ans in result) {
         if (!ans || !ans.startsWith("answer")) {
             continue;
@@ -546,7 +547,6 @@ function checkfibranswerbyfibrwmodel(obj, event, fibrdata,form) {
         var answer = result[ans];//获取到当前选项对应的值
         var select = $("#" + ans);//根据select的name来查找select,因为name和id一样所以用#
         console.log($(select))
-        var selcetlist = new Array();
         if (!answer || !ans.endsWith(answer)) {//如果没有答案或者答案的值并不是select的结尾则认为是错的, 我们在生成数据的时候option的value就是代表这是第几个select的答案,select的name的结尾代表当前是第几个select
             // $(allSelects[i]).addClass("layui-form-danger");
             selcetlist.push(select);
