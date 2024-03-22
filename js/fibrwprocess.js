@@ -357,9 +357,7 @@ function fibrwUncompleted() {
         $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibrw/cge_fib_rw_all.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
             let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
             qNums.forEach((item, index) => { // 删除空项
-                if (qNum && qNum != item) {
 
-                } else {
                     if (!item) {
                         qNums.splice(index, 1);
                     } else {
@@ -373,8 +371,6 @@ function fibrwUncompleted() {
                         }
 
                     }
-                }
-
             })
             $("#question-div").html("不完整id:" + unCompletedList.join(","));
             $("#question-form").hide();
