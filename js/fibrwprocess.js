@@ -350,7 +350,7 @@ function fibrwPreQuest() {
 function fibrwUncompleted() {
     if (unCompletedList||unCompletedList.length>0) {
         $("#question-div").html("不完整id:" + unCompletedList.join(","));
-        $("#question-form").hide();
+        $("#operationtools").hide();
     } else {
         unCompletedList = new Array();
         $.ajaxSettings.async = false;
