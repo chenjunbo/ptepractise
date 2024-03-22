@@ -572,7 +572,7 @@ function checkfibranswerbyfibrwmodel(obj, event, fibrdata) {
         });
     }
 }
-function checkfibranswerbyDefault(obj, event,fibrdata) {
+function checkfibranswerbyDefault(obj, event,fibrdata,form) {
     var allInputs = $("#fibrquestion-div input[name='answeroptions']");
     // console.log(allInputs.length)
     var isWrong = false;
