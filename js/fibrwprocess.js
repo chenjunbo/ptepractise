@@ -373,6 +373,7 @@ function fibrwUncompleted() {
 
                     }
             })
+            $("#question-div").show();
             $("#question-div").html("不完整id:" + unCompletedList.join(","));
             $("#question-form").hide();
         });
