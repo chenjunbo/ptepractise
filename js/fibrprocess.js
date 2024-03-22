@@ -294,7 +294,7 @@ function fibrUncompleted() {
     if (fibrunCompletedList&&fibrunCompletedList.length>0) {
         $("#fibrquestion-form").show();
         $("#fibrquestion-div").show();
-        $("#fibrquestion-div").html("不完整id:" + fibrunCompletedList.join(", ")+"请根据id去猩际中单独查询");
+        $("#fibrquestion-div").html("不完整id:" + fibrunCompletedList.join(", ")+"请根据id去⭐️中单独查询");
         $("#operationtools").hide();
         $("#fibroptions").hide();
     } else {
@@ -320,7 +320,7 @@ function fibrUncompleted() {
             })
             $("#fibrquestion-form").show();
             $("#fibrquestion-div").show();
-            $("#fibrquestion-div").html("不完整id:" + fibrunCompletedList.join(", ")+"请根据id去猩际中单独查询");
+            $("#fibrquestion-div").html("不完整id:" + fibrunCompletedList.join(", ")+"请根据id去⭐️中单独查询");
             $("#operationtools").hide();
             $("#fibroptions").hide();
         });
