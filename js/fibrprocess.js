@@ -546,13 +546,10 @@ function checkfibranswerbyfibrwmodel(obj, event, fibrdata,form) {
         var answer = result[ans];//获取到当前选项对应的值
         var select = $("#" + ans);//根据select的name来查找select,因为name和id一样所以用#
         console.log($(select))
+        var selcetlist = new Array();
         if (!answer || !ans.endsWith(answer)) {//如果没有答案或者答案的值并不是select的结尾则认为是错的, 我们在生成数据的时候option的value就是代表这是第几个select的答案,select的name的结尾代表当前是第几个select
             // $(allSelects[i]).addClass("layui-form-danger");
-            var attr =   $(select).next().attr("class");
-            attr = "layui-form-danger " + attr;
-            $(select).next().attr("style", attr);
-            // $(select).next().attr("class", "layui-form-danger");
-            form.render();
+            selcetlist.push(select);
             isWrong = true;
         }
 
@@ -573,6 +570,11 @@ function checkfibranswerbyfibrwmodel(obj, event, fibrdata,form) {
             //添加错误次数
         });
     }
+    selcetlist.forEach((select)=>{
+        $(select).removeClass();
+        $(select).attr("class", "layui-form-danger");
+        form.render();
+    })
 }
 function checkfibranswerbyDefault(obj, event,fibrdata,form) {
     var allInputs = $("#fibrquestion-div input[name='answeroptions']");
