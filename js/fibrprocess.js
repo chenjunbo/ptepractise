@@ -559,9 +559,9 @@ function checkfibranswerbyfibrwmodel(obj, event, fibrdata,form) {
         layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
             //添加正确次数,添加错误次数
             // layer.msg('提示框关闭后的回调');
-            if (!isFibRLast()) {
-                nextFibRQuestion(obj, event);
-            }
+            // if (!isFibRLast()) {
+            //     nextFibRQuestion(obj, event);
+            // }
         });
     } else {
         addRightOrFalt(fibrdata.num, "falt", localStorageType);
