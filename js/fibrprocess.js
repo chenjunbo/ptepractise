@@ -185,6 +185,8 @@ function fibrTranslateData(fibrData) {
 
         }
     }
+    fillfibrAnswer(fibrdata);
+    fillfibrOptions(fibrdata);
     // fibrIndex++;
     return title + text;
 }
@@ -298,7 +300,8 @@ function fibrPreQuest() {
     event.preventDefault();
     $("#fibrpre").hide();
     // var content = fibRwGetdata($("#search-form").serializeJson());
-    fibRCurrentTypedata($("#fibrsearch-form").serializeJson());
+     $("#fibrsearch-form").serializeJson()
+    fibRCurrentTypedata();
     var fibrdata = currentFibRData()
     if (!fibrdata) {
         $("#fibrquestion-form").hide();
@@ -311,8 +314,8 @@ function fibrPreQuest() {
     }
     var content = fibrTranslateData(fibrdata);
     $("#fibrquestion-div").html(content);
-    fillfibrAnswer(fibrdata);
-    fillfibrOptions(fibrdata);
+    // fillfibrAnswer(fibrdata);
+    // fillfibrOptions(fibrdata);
     if (isFibRLast()) {
         $("#fibrnext").hide();
     } else {
@@ -343,8 +346,8 @@ function testfibrlucky(obj, event) {
     }
     var content = fibrTranslateData(fibrdata);
     $("#fibrquestion-div").html(content);
-    fillfibrAnswer(fibrdata);
-    fillfibrOptions(fibrdata);
+    // fillfibrAnswer(fibrdata);
+    // fillfibrOptions(fibrdata);
     if (isFibRLast()) {
         $("#fibrnext").hide();
     } else {
@@ -450,8 +453,8 @@ function fibrpre(obj, event) {
         $("#fibrnext").show();
     }
     $("#fibrquestion-div").html(content);
-    fillfibrAnswer(fibrdata);
-    fillfibrOptions(fibrdata);
+    // fillfibrAnswer(fibrdata);
+    // fillfibrOptions(fibrdata);
     checkFav(fibrdata.num, localStorageType);
 }
 
@@ -541,8 +544,8 @@ function firbgotoindex(obj, event) {
             $("#fibrnext").hide();
         }
         $("#fibrquestion-div").html(content);
-        fillfibrAnswer(fibrdata);
-        fillfibrOptions(fibrdata);
+        // fillfibrAnswer(fibrdata);
+        // fillfibrOptions(fibrdata);
         checkFav(fibrdata.num, localStorageType);
         form.render();
         return false;
@@ -717,8 +720,8 @@ function nextFibRQuestion(obj, event) {
         $("#fibrnext").hide();
     }
     $("#fibrquestion-div").html(content);
-    fillfibrAnswer(fibrdata);
-    fillfibrOptions(fibrdata);
+    // fillfibrAnswer(fibrdata);
+    // fillfibrOptions(fibrdata);
     if (!isFibRFirst()) {
         $("#fibrpre").show();
     }
