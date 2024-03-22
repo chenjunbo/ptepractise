@@ -21,6 +21,9 @@ function xjroInit() {
                 xjroIdsSet.add(xjrodata.num + "");
             }
             ++num;
+            if (num == 3) {
+                $("#uncompleted").show();
+            }
         },
         error: function (xhr, status, error) {
             // 处理错误
@@ -41,15 +44,16 @@ function xjroInit() {
                 xjroIdsSet.add(xjrodata.num + "");
             }
             ++num;
+            if (num == 3) {
+                $("#uncompleted").show();
+            }
 
         },
         error: function (xhr, status, error) {
             // 处理错误
         }
     });
-    if (num == 3) {
-        $("#uncompleted").show();
-    }
+
 }
 
 
