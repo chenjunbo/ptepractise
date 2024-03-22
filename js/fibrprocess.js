@@ -520,15 +520,15 @@ function fibrshowanswer(obj, event) {
     }
 }
 
-function fibrcheckanswer(obj, event) {
+function fibrcheckanswer(obj, event,form) {
     event.preventDefault();
     var fibrdata = currentFibRData()
     var serializeJson = $("#fibrsearch-form").serializeJson();
     var usefibrwmodel = serializeJson["usefibrwmodel"];
     if (usefibrwmodel) {
-        checkfibranswerbyfibrwmodel(obj, event, fibrdata)
+        checkfibranswerbyfibrwmodel(obj, event, fibrdata,form)
     } else {
-        checkfibranswerbyDefault(obj, event, fibrdata)
+        checkfibranswerbyDefault(obj, event, fibrdata,form)
     }
     setRightAndFaltNum(fibrdata.num, localStorageType)
 }
@@ -550,6 +550,7 @@ function checkfibranswerbyfibrwmodel(obj, event, fibrdata) {
             // $(allSelects[i]).addClass("layui-form-danger");
             $(select).removeClass();
             $(select).attr("class", "layui-form-danger");
+            form.render();
             isWrong = true;
         }
 
@@ -560,7 +561,7 @@ function checkfibranswerbyfibrwmodel(obj, event, fibrdata) {
             //添加正确次数,添加错误次数
             // layer.msg('提示框关闭后的回调');
             if (!isFibRLast()) {
-                nextFibRQuestion(obj, event, localStorageType);
+                nextFibRQuestion(obj, event);
             }
         });
     } else {
@@ -594,6 +595,7 @@ function checkfibranswerbyDefault(obj, event,fibrdata) {
                 attr = "border: 1px solid red;" + attr;
                 $(currentInput).attr("style", attr);
                 isWrong = true;
+                form.render();
             }
         } else {
             isWrong = true;
@@ -605,7 +607,7 @@ function checkfibranswerbyDefault(obj, event,fibrdata) {
         layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
             // layer.msg('提示框关闭后的回调');
             if (!isFibRLast()) {
-                nextFibRQuestion(obj, event, localStorageType);
+                nextFibRQuestion(obj, event);
                 //form.render();
             }
 
