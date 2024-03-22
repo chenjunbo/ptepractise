@@ -217,7 +217,7 @@ function fibrTranslateDataFibrwModel(fibrData) {
     var selectionList = new Array();
     for (var key in choices) {
         var choice = choices[key];
-        if (choice && "none" != choice) {
+        if (choice && "none" != choice.id) {
             selectionList.push(choice.id);
         }
     }
