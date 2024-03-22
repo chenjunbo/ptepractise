@@ -6,6 +6,7 @@ const enxjroMap = new Map();
 var xjroindex = 0;//当前第几条
 
 function xjroInit() {
+    var num = 1;
     $.ajax({
         url: "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/ro/roallquestions.txt?access_token=c87299575627265144b7db286d3bf673",
         type: "GET",
@@ -19,6 +20,7 @@ function xjroInit() {
                 cnxjroMap.set(xjrodata.num+"", xjrodata);
                 xjroIdsSet.add(xjrodata.num + "");
             }
+            ++num;
         },
         error: function (xhr, status, error) {
             // 处理错误
@@ -38,12 +40,16 @@ function xjroInit() {
                 enxjroMap.set(xjrodata.num+"", xjrodata);
                 xjroIdsSet.add(xjrodata.num + "");
             }
-            $("#uncompleted").show();
+            ++num;
+
         },
         error: function (xhr, status, error) {
             // 处理错误
         }
     });
+    if (num == 3) {
+        $("#uncompleted").show();
+    }
 }
 
 
@@ -666,7 +672,9 @@ function roadddeletefav(localStorageType) {
 function xjROUncompleted() {
     if (xjRounCompletedList&&xjRounCompletedList.length>0) {
         $("#question-form").show();
-        $("#question-div").html("不完整id:" + xjRounCompletedList.join(","));
+        $("#parasdiv").children().remove();
+        $("#resultdiv").children().remove();
+        $("#question-div").append("不完整id:" + xjRounCompletedList.join(","));
         $("#operationtools").hide();
     } else {
         xjRounCompletedList = new Array();
@@ -690,7 +698,9 @@ function xjROUncompleted() {
                 }
             })
             $("#question-form").show();
-            $("#question-div").html("不完整id:" + xjRounCompletedList.join(","));
+            $("#parasdiv").children().remove();
+            $("#resultdiv").children().remove();
+            $("#question-div").append("不完整id:" + xjRounCompletedList.join(","));
             $("#operationtools").hide();
         });
         $.ajaxSettings.async = true;
