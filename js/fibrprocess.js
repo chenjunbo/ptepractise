@@ -235,9 +235,9 @@ function fibrTranslateDataFibrwModel(fibrData) {
                 select.append($(" <option value=" + serNum + ">" + option+ "</option>"))
                 parentin.append(select);
                 parent.append(parentin);
-                text = text.replace("{{" + num + "}}", $(parent).html())
             }
         }
+        text = text.replace("{{" + num + "}}", $(parent).html())
     })
 
     // index++;
