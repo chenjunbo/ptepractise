@@ -1,12 +1,11 @@
 var currentROList;
-let cnxjroList, enxjroList, xjroIdsList,xjRounCompletedList;
+let cnxjroList, enxjroList, xjroIdsList, xjRounCompletedList;
 var xjroIdsSet = new Set();
 const cnxjroMap = new Map();
 const enxjroMap = new Map();
 var xjroindex = 0;//当前第几条
 
 function xjroInit() {
-    var num = 1;
     $.ajax({
         url: "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/ro/roallquestions.txt?access_token=c87299575627265144b7db286d3bf673",
         type: "GET",
@@ -17,12 +16,8 @@ function xjroInit() {
             cnxjroList = JSON.parse(result);
             for (let i = 0; i < cnxjroList.length; i++) {
                 var xjrodata = cnxjroList[i];
-                cnxjroMap.set(xjrodata.num+"", xjrodata);
+                cnxjroMap.set(xjrodata.num + "", xjrodata);
                 xjroIdsSet.add(xjrodata.num + "");
-            }
-            ++num;
-            if (num == 3) {
-                $("#uncompleted").show();
             }
         },
         error: function (xhr, status, error) {
@@ -40,13 +35,10 @@ function xjroInit() {
             enxjroList = JSON.parse(result);
             for (let i = 0; i < enxjroList.length; i++) {
                 var xjrodata = enxjroList[i];
-                enxjroMap.set(xjrodata.num+"", xjrodata);
+                enxjroMap.set(xjrodata.num + "", xjrodata);
                 xjroIdsSet.add(xjrodata.num + "");
             }
-            ++num;
-            if (num == 3) {
-                $("#uncompleted").show();
-            }
+            $("#uncompleted").show();
 
         },
         error: function (xhr, status, error) {
@@ -103,10 +95,10 @@ function xjroCurrentTypedata(param) {
         case "9":
             var faltIds = getAllQuestionNumFromLocalStorageByFalt("xjroublue");
             if (faltIds) {
-                faltIds.forEach((qNum,index)=>{
-                    var xjroData = cnxjroMap.get(qNum+"");
+                faltIds.forEach((qNum, index) => {
+                    var xjroData = cnxjroMap.get(qNum + "");
                     if (!xjroData) {
-                        xjroData = enxjroMap.get(qNum+"");
+                        xjroData = enxjroMap.get(qNum + "");
                     }
                     if (xjroData) {
                         currentROList.push(xjroData);
@@ -129,13 +121,13 @@ function xjroCurrentTypedata(param) {
                     if (!item) {
                         qNums.splice(index, 1);
                     } else {
-                        var xjroData = cnxjroMap.get(item+"");
+                        var xjroData = cnxjroMap.get(item + "");
                         if (!xjroData) {
-                            xjroData = enxjroMap.get(item+"");
+                            xjroData = enxjroMap.get(item + "");
                         }
                         if (xjroData) {
                             currentROList.push(xjroData);
-                        }else{
+                        } else {
                             if ("4" == type) {
                                 xjRounCompletedList.push(item);
                             }
@@ -155,9 +147,9 @@ function xjroCurrentTypedata(param) {
                 if (!item) {
                     localstoragedata.splice(index, 1);
                 } else {
-                    var xjroData = cnxjroMap.get(item+"");
+                    var xjroData = cnxjroMap.get(item + "");
                     if (!xjroData) {
-                        xjroData = enxjroMap.get(item+"");
+                        xjroData = enxjroMap.get(item + "");
                     }
                     if (xjroData) {
                         currentROList.push(xjroData);
@@ -173,8 +165,7 @@ function xjroCurrentTypedata(param) {
 }
 
 
-
-function xjroTranslateData(xjrodata){
+function xjroTranslateData(xjrodata) {
     var nameWithoutNum = xjrodata.name_without_num;
     nameWithoutNum = nameWithoutNum.replaceAll(" ", "&nbsp;");
     var num = xjrodata.num;
@@ -190,7 +181,7 @@ function xjroTranslateData(xjrodata){
     // $("#question-div").append(parent);
     // $("#question-div").append(resultdiv);
     // shuffle(paras);
-    var height=0;
+    var height = 0;
     for (var key in paras) {
         var choice = paras[key];
         if (choice) {
@@ -211,28 +202,28 @@ function xjroTranslateData(xjrodata){
             $(parentin).attr("draggable", "true")
             $(parentin).attr("ondragstart", "rodrag(event)")
             $(parentin).attr("realanswer", serNum);
-            $(parentin).html(id+". "+option)
+            $(parentin).html(id + ". " + option)
             // parentin.append(input);
             $("#parasdiv").append(parentin)
-           var height1 = $(parentin).height();
-            height = height + height1+7;
+            var height1 = $(parentin).height();
+            height = height + height1 + 7;
         }
     }
-   // var height = $("#parasdiv").height();
+    // var height = $("#parasdiv").height();
     $("#parasdiv").height(height);
     $("#resultdiv").height(height);
     // fibrIndex++;
     $("#parasdiv").show();
     $("#resultdiv").show();
-    return title ;
+    return title;
 }
 
 function xjroRandomLucky() {
-    if (!xjroIdsList||xjroIdsList.length==0) {
+    if (!xjroIdsList || xjroIdsList.length == 0) {
         xjroIdsList = Array.from(xjroIdsSet);
     }
     xjroindex = 0;
-    currentROList= new Array();
+    currentROList = new Array();
     shuffle(xjroIdsList);
     var nums = Math.floor(Math.random() * (5 - 4 + 1)) + 4;
     for (var i = 0; i < nums; i++) {
@@ -244,7 +235,6 @@ function xjroRandomLucky() {
     }
     return currentROList[0];
 }
-
 
 
 function roallowDrop(ev) {
@@ -273,8 +263,8 @@ function rodrop2(ev) {
     if (sourceid.startsWith("jieguoqu")) {
         //如果是自己的兄弟位置过来的,把兄弟先移除再放到自己前面
         // $("#"+sourceid).remove();
-        $(target).before($("#"+sourceid));
-    }else if (sourceid.startsWith("div")) {
+        $(target).before($("#" + sourceid));
+    } else if (sourceid.startsWith("div")) {
         //如果是来自选项区域的,从选项区域隐藏后创建新的div放到自己前面
         //代表是从内容中其它位置移动过来的
         //获取到移动过来的数据
@@ -289,7 +279,7 @@ function rodrop2(ev) {
         $(resultdivin).html(value)
         $(target).before(resultdivin);
         // return;
-        var height = $("#parasdiv" ).height();//获取之前的高度
+        var height = $("#parasdiv").height();//获取之前的高度
         $("#" + sourceid).hide();
         $("#parasdiv").height(height);//重新设置高度.避免变矮
     }
@@ -313,11 +303,11 @@ function rodrop(ev) {
         var value = $("#" + sourceid).html();
         newData = value;
         //清除原先位置的数据
-      //  $("#" + sourceid).html("");
+        //  $("#" + sourceid).html("");
         //设置到新的位置
         //  $(target).val(value);
         //移除之前的位置的id
-       // $("#" + data).removeAttr("id");
+        // $("#" + data).removeAttr("id");
         //把id设置给新的位置
         //  $(target).attr("id", data);
         var resultdivin = $("<div style='margin-top: 5px;border: 1px solid blue;padding-left: 5px'> </div>");
@@ -330,7 +320,7 @@ function rodrop(ev) {
         $(resultdivin).html(value)
         $("#resultdiv").append(resultdivin);
         // return;
-        var height = $("#parasdiv" ).height();//获取之前的高度
+        var height = $("#parasdiv").height();//获取之前的高度
         $("#" + sourceid).hide();
         $("#parasdiv").height(height);//重新设置高度.避免变矮
     } else if (sourceid.startsWith("jieguoqu")) {
@@ -356,7 +346,7 @@ function rodrop1(ev) {
     //如果有id说明是有内容,并且只能是从答案的结果区拖动回来
     if (sourceid && sourceid.startsWith("jieguoqu")) {
         //获取到需要显示的选项的在原始位置的id
-        var newid = sourceid.substring(sourceid.indexOf("jieguoqu")+8, sourceid.length);
+        var newid = sourceid.substring(sourceid.indexOf("jieguoqu") + 8, sourceid.length);
         //显示原始区域
         $("#" + newid).show();
         //移除当前被拖动的
@@ -401,7 +391,7 @@ function rosearch(localStorageType) {
     }
     var content = xjroTranslateData(xjrodata);
     // $("#question-div").html(content);
-    fillXjroAnswer(xjrodata,localStorageType);
+    fillXjroAnswer(xjrodata, localStorageType);
     if (isXjRoLast()) {
         $("#next").hide();
     } else {
@@ -413,10 +403,10 @@ function rosearch(localStorageType) {
         $("#gotoarea").show();
     }
     checkFav(xjrodata.num, localStorageType);
-    
+
 }
 
-function testlucky(localStorageType){
+function testlucky(localStorageType) {
     $("#pre").hide();
     // var content = fibRwGetdata($("#xjrosearch-form").serializeJson());
     var xjrodata = xjroRandomLucky();
@@ -431,7 +421,7 @@ function testlucky(localStorageType){
     }
     var content = xjroTranslateData(xjrodata);
     // $("#question-div").html(content);
-    fillXjroAnswer(xjrodata,localStorageType);
+    fillXjroAnswer(xjrodata, localStorageType);
     if (isXjRoLast()) {
         $("#next").hide();
     } else {
@@ -449,14 +439,14 @@ function deleteallrorightorfalt(localStorageType) {
     //移除所有数据
     layer.confirm('是否删清空本题型的对错记录？', {icon: 3}, function () {
         clearAllFaltByType(localStorageType);
-       try {
-           var xjrodata = currentXjRoData();
-           if (xjrodata) {
-               setRightAndFaltNum(xjrodata.num, localStorageType);
-           }
-       }catch (e) {
+        try {
+            var xjrodata = currentXjRoData();
+            if (xjrodata) {
+                setRightAndFaltNum(xjrodata.num, localStorageType);
+            }
+        } catch (e) {
 
-       }
+        }
         layer.msg('操作完成', {icon: 0}, function () {
         });
     }, function () {
@@ -477,7 +467,7 @@ function clearrorightorfalt(localStorageType) {
 }
 
 
-function nextXjRoQuestion(obj,localStorageType) {
+function nextXjRoQuestion(obj, localStorageType) {
     if (isXjRoLast()) {
         $("#next").hide();
         return false;
@@ -488,14 +478,15 @@ function nextXjRoQuestion(obj,localStorageType) {
     if (isXjRoLast()) {
         $("#next").hide();
     }
-    fillXjroAnswer(xjrodata,localStorageType);
+    fillXjroAnswer(xjrodata, localStorageType);
     $("#operationtools").show();
     if (!isXjRoFirst()) {
         $("#pre").show();
     }
     checkFav(xjrodata.num, localStorageType);
 }
-function fillXjroAnswer(xjrodata,localStorageType) {
+
+function fillXjroAnswer(xjrodata, localStorageType) {
     $("#operationtools").show();
     $("#xjroanswer").hide();
     var answerInText = xjrodata.answer_in_text;
@@ -504,7 +495,7 @@ function fillXjroAnswer(xjrodata,localStorageType) {
     if (!explanation_in_locale) {
         explanation_in_locale = "本题目无顺口溜";
     }
-    explanation_in_locale= "<span style= \"color: red\">"+ explanation_in_locale+"</span>"
+    explanation_in_locale = "<span style= \"color: red\">" + explanation_in_locale + "</span>"
 
     var answercontent = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + explanation_in_locale + "</br>" + "</br>" + originalText;
     $("#xjroanswer").html(answercontent);
@@ -525,11 +516,11 @@ function ropre(localStorageType) {
     if (!isXjRoLast()) {
         $("#next").show();
     }
-    fillXjroAnswer(xjrodata,localStorageType);
+    fillXjroAnswer(xjrodata, localStorageType);
     checkFav(xjrodata.num, localStorageType);
 }
 
-function rocheckanswer(obj,localStorageType) {
+function rocheckanswer(obj, localStorageType) {
     var xjrodata = currentXjRoData();
     var isWrong = false;
     var isEmpty = false;
@@ -538,7 +529,7 @@ function rocheckanswer(obj,localStorageType) {
     parasdivElements.each(function (index, currentdiv) {
         if ($(currentdiv).is(":hidden")) {
             //隐藏的说明已经放过去了
-        }else{
+        } else {
             //说明没放过去
             isEmpty = true;
             //设置颜色
@@ -560,7 +551,7 @@ function rocheckanswer(obj,localStorageType) {
     var val = xjrodata.answer_in_text;//答案顺序
     var orderIdMap = new Map();
     var paras = xjrodata.paras;
-    paras.forEach(function (item){
+    paras.forEach(function (item) {
         var order = item.order;
         var id = item.id;
         orderIdMap.set(order + "", id + "");
@@ -571,14 +562,14 @@ function rocheckanswer(obj,localStorageType) {
     var resultdivElements = $("#resultdiv div");
     //遍历所有的选项,拿到每一个的应该是几,然后看看和答案对应位置的数据是不是一致
 
-    resultdivElements.each(function (index,currentElement){
+    resultdivElements.each(function (index, currentElement) {
         var answer = allAnswers[index];
         var jieguorealanswer = $(currentElement).attr("jieguorealanswer");
-        var id = orderIdMap.get(jieguorealanswer+"");
+        var id = orderIdMap.get(jieguorealanswer + "");
         if (answer != id) {
             isWrong = true;
             $(currentElement).attr("style", "margin-top: 5px;border: 1px solid red;padding-left: 5px");
-        }else{
+        } else {
             $(currentElement).attr("style", "margin-top: 10px;border: 1px solid blue;padding-left: 5px");
         }
     })
@@ -589,7 +580,7 @@ function rocheckanswer(obj,localStorageType) {
             //添加正确次数,添加错误次数
             // layer.msg('提示框关闭后的回调');
             if (!isXjRoLast()) {
-                nextXjRoQuestion(obj,localStorageType);
+                nextXjRoQuestion(obj, localStorageType);
             }
         });
     } else {
@@ -636,7 +627,7 @@ function rogotoindex(localStorageType) {
             $("#next").hide();
         }
         // $("#question-div").html(content);
-        fillXjroAnswer(xjrodata,localStorageType);
+        fillXjroAnswer(xjrodata, localStorageType);
         checkFav(xjrodata.num, localStorageType);
 
         return false;
@@ -674,7 +665,7 @@ function roadddeletefav(localStorageType) {
 
 
 function xjROUncompleted() {
-    if (xjRounCompletedList&&xjRounCompletedList.length>0) {
+    if (xjRounCompletedList && xjRounCompletedList.length > 0) {
         $("#question-form").show();
         $("#parasdiv").children().remove();
         $("#resultdiv").children().remove();
@@ -712,7 +703,6 @@ function xjROUncompleted() {
 }
 
 
-
 function isXjRoFirst() {
     return xjroindex == 0;
 }
@@ -745,6 +735,7 @@ function currentXjRoData() {
 function currentXjRoListData() {
     return currentROList;
 }
+
 $.fn.serializeJson = function () {
     var serializeObj = {};
     var array = this.serializeArray();
