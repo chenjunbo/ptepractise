@@ -678,7 +678,7 @@ function xjROUncompleted() {
         $("#question-form").show();
         $("#parasdiv").children().remove();
         $("#resultdiv").children().remove();
-        $("#question-div").append("不完整id:" + xjRounCompletedList.join(","));
+        $("#question-div").append("<br/>不完整id:" + xjRounCompletedList.join(","));
         $("#operationtools").hide();
     } else {
         xjRounCompletedList = new Array();
@@ -704,7 +704,7 @@ function xjROUncompleted() {
             $("#question-form").show();
             $("#parasdiv").children().remove();
             $("#resultdiv").children().remove();
-            $("#question-div").append("不完整id:" + xjRounCompletedList.join(","));
+            $("#question-div").append("<br/>不完整id:" + xjRounCompletedList.join(","));
             $("#operationtools").hide();
         });
         $.ajaxSettings.async = true;
