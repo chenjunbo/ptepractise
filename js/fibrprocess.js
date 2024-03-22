@@ -149,6 +149,21 @@ function fibRCurrentTypedata(param) {
 
 
 function fibrTranslateData(fibrData) {
+    var serializeJson = $("#fibrsearch-form").serializeJson();
+    var usefibrwmodel = serializeJson["usefibrwmodel"];
+    var result;
+    if (usefibrwmodel) {
+        result = fibrTranslateDataFibrwModel(fibrData)
+    } else {
+        result = fibrTranslateDataDefault(fibrData);
+    }
+    fillfibrAnswer(fibrData);
+
+    // fibrIndex++;
+    return result;
+}
+
+function fibrTranslateDataDefault(fibrData) {
     //var fibrData = fibrCurrentList[fibrIndex];
     var nameWithoutNum = fibrData.name_without_num;
     nameWithoutNum = nameWithoutNum.replaceAll(" ", "&nbsp;");
@@ -185,11 +200,44 @@ function fibrTranslateData(fibrData) {
 
         }
     }
-    fillfibrAnswer(fibrData);
     fillfibrOptions(fibrData);
-    // fibrIndex++;
     return title + text;
 }
+
+function fibrTranslateDataFibrwModel(fibrData) {
+    //var fibrwData = currentList[index];
+    var nameWithoutNum = fibrwData.name_without_num;
+    nameWithoutNum = nameWithoutNum.replaceAll(" ", "&nbsp;");
+    var num = fibrwData.num;
+    var text = fibrwData.text;
+    var choices = fibrwData.choices.allData;
+    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (index + 1) + "题/共" + (currentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "</label></div>"
+    for (var key in choices) {
+        var choice = choices[key];
+        if (choice) {
+            shuffle(choice);
+            var parent = $("<div class=\"layui-inline\"> </div>");
+            var parentin = $("<div class=\"layui-input-inline\"> </div>");
+            var selectId = "answer" + key;
+            var select = $("<select name=" + selectId + " lay-verify=\"required|answer\" id=" + selectId + "><option value=\"\">请选择</option></select>");
+
+            for (var idx in choice) {
+                var current = choice[idx];
+                if (current) {
+                    var choice1 = current.choice;
+                    var correct = current.correct;
+                    select.append($(" <option value=" + correct + idx + ">" + choice1 + "</option>"))
+                }
+            }
+            parentin.append(select);
+            parent.append(parentin);
+            text = text.replace("{{" + key + "}}", $(parent).html())
+        }
+    }
+    // index++;
+    return title + text;
+}
+
 
 function createFibRPdfHtml(parmas, serNum, fibrdata) {
     var highlight = parmas.highlight;//是否需要中文
@@ -294,7 +342,7 @@ function fibrPreQuest() {
     return fibrCurrentList[fibrIndex];
 }
 
- function fibrsearch(obj, event) { // 左侧菜单事件
+function fibrsearch(obj, event) { // 左侧菜单事件
     // var json = JSON.stringify($("#fibrsearch-form").serializeJson())
     // alert("aaaaa" + json)
     event.preventDefault();
@@ -362,7 +410,6 @@ function testfibrlucky(obj, event) {
 }
 
 
-
 function deletefibrallrightorfalt(obj, event) {
     event.preventDefault();
     //移除所有数据
@@ -373,7 +420,7 @@ function deletefibrallrightorfalt(obj, event) {
             if (fibrdata) {
                 setRightAndFaltNum(fibrdata.num, localStorageType);
             }
-        }catch (e) {
+        } catch (e) {
 
         }
         layer.msg('操作完成', {icon: 0}, function () {
@@ -382,7 +429,7 @@ function deletefibrallrightorfalt(obj, event) {
     });
 }
 
- function clearfibrrightorfalt(obj, event) {
+function clearfibrrightorfalt(obj, event) {
     event.preventDefault();
     layer.confirm('是否删除本题的对错记录？', {icon: 3}, function () {
         var fibrdata = currentFibRData();
@@ -469,8 +516,21 @@ function fibrshowanswer(obj, event) {
 
 function fibrcheckanswer(obj, event) {
     event.preventDefault();
-    var allInputs = $("#fibrquestion-div input[name='answeroptions']");
     var fibrdata = currentFibRData()
+    var serializeJson = $("#fibrsearch-form").serializeJson();
+    var usefibrwmodel = serializeJson["usefibrwmodel"];
+    if (usefibrwmodel) {
+
+    } else {
+        checkfibranswerbyDefault(obj, event, fibrdata)
+    }
+
+
+    setRightAndFaltNum(fibrdata.num, localStorageType)
+}
+
+function checkfibranswerbyDefault(obj, event,fibrdata) {
+    var allInputs = $("#fibrquestion-div input[name='answeroptions']");
     // console.log(allInputs.length)
     var isWrong = false;
     if (!allInputs || allInputs.length == 0) {
@@ -515,7 +575,6 @@ function fibrcheckanswer(obj, event) {
             // layer.msg('提示框关闭后的回调');
         });
     }
-    setRightAndFaltNum(fibrdata.num, localStorageType)
 }
 
 function firbgotoindex(obj, event) {
