@@ -300,7 +300,7 @@
                 var isContains = containsValue(fireFlydata.qNum, localStorageType);
                 if (isContains) {
                     layer.confirm('是否删除收藏？', {icon: 3}, function () {
-                        removeFromLocalStorage(fireFlydata.qNum, localStorageType);
+                        removeFavFromLocalStorage(fireFlydata.qNum, localStorageType);
                         layer.msg('操作完成', {icon: 0}, function () {
                         });
                         checkFav(fireFlydata.qNum, localStorageType);

@@ -222,7 +222,7 @@ function addeletewefav(localStorageType) {
     var isContains = containsValue(fireFlyWeData.id, localStorageType);
     if (isContains) {
         layer.confirm('是否删除收藏？', {icon: 3}, function () {
-            removeFromLocalStorage(fireFlyWeData.id, localStorageType);
+            removeFavFromLocalStorage(fireFlyWeData.id, localStorageType);
             layer.msg('操作完成', {icon: 0}, function () {
             });
             checkFav(fireFlyWeData.id, localStorageType);

@@ -145,7 +145,7 @@ function add2LocalStorage(key, qNum, type) {
     window.localStorage.setItem(key, data);
 }
 
-function removeFromLocalStorage(qNum, type) {
+function removeFavFromLocalStorage(qNum, type) {
     //数据保存的key
     var key = window.localStorage.getItem(qNum + type);
     var data = window.localStorage.getItem(key);

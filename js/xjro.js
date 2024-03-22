@@ -644,7 +644,7 @@ function roadddeletefav(localStorageType) {
     var isContains = containsValue(xjrodata.num, localStorageType);
     if (isContains) {
         layer.confirm('是否删除收藏？', {icon: 3}, function () {
-            removeFromLocalStorage(xjrodata.num, localStorageType);
+            removeFavFromLocalStorage(xjrodata.num, localStorageType);
             layer.msg('操作完成', {icon: 0}, function () {
             });
             checkFav(xjrodata.num, localStorageType);

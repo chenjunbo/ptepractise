@@ -669,7 +669,7 @@ function adddeletefibrfav(obj, event) {
     var isContains = containsValue(fibrdata.num, localStorageType);
     if (isContains) {
         layer.confirm('是否删除收藏？', {icon: 3}, function () {
-            removeFromLocalStorage(fibrdata.num, localStorageType);
+            removeFavFromLocalStorage(fibrdata.num, localStorageType);
             layer.msg('操作完成', {icon: 0}, function () {
             });
             checkFav(fibrdata.num, localStorageType);
