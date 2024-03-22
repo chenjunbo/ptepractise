@@ -533,8 +533,8 @@ function fibrcheckanswer(obj, event,form) {
     setRightAndFaltNum(fibrdata.num, localStorageType)
 }
 
-function checkfibranswerbyfibrwmodel(obj, event, fibrdata) {
-    var fibrdata = currentFibRData();
+function checkfibranswerbyfibrwmodel(obj, event, fibrdata,form) {
+    //var fibrdata = currentFibRData();
     var content = JSON.stringify($("#fibrquestion-form").serializeJson());
     var result = $("#fibrquestion-form").serializeJson();
     var isWrong = false;
