@@ -80,7 +80,6 @@
 <script type="text/javascript">
     var localStorageType = "fibr";
     layui.use(['table', 'layer', 'form', 'util'], function () {
-        var table = layui.table;
         var layer = layui.layer;
         var form = layui.form;
         var util = layui.util;
@@ -120,7 +119,7 @@
             },
             fibrcheckanswer: function (obj, event) {
                 fibrcheckanswer(obj, event,form);
-               // form.render();
+               form.render();
                 return false;
             },
             fibrshowanswer: function (obj, event) {
