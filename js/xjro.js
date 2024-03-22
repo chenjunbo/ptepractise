@@ -690,9 +690,9 @@ function xjROUncompleted() {
                 if (!item) {
                     qNums.splice(index, 1);
                 } else {
-                    var xjrodata = cnxjroMap.get(parseInt(item));
+                    var xjrodata = cnxjroMap.get(item);
                     if (!xjrodata) {
-                        xjrodata = enxjroMap.get(parseInt(item));
+                        xjrodata = enxjroMap.get(item);
                     }
                     if (xjrodata) {
                     } else {
