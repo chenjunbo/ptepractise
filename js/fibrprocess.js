@@ -718,7 +718,7 @@ function nextFibRQuestion(obj, event) {
     }
     $("#fibrquestion-div").html(content);
     fillfibrAnswer(fibrdata);
-    fillOptions(fibrdata);
+    fillfibrOptions(fibrdata);
     if (!isFibRFirst()) {
         $("#fibrpre").show();
     }
