@@ -676,11 +676,11 @@ function xjROUncompleted() {
                 if (!item) {
                     qNums.splice(index, 1);
                 } else {
-                    var fibrwData = cnxjroMap.get(parseInt(item));
-                    if (!fibrwData) {
-                        fibrwData = enxjroMap.get(parseInt(item));
+                    var xjrodata = cnxjroMap.get(parseInt(item));
+                    if (!xjrodata) {
+                        xjrodata = enxjroMap.get(parseInt(item));
                     }
-                    if (fibrwData) {
+                    if (xjrodata) {
                     } else {
                         xjRounCompletedList.push(item);
                     }

@@ -292,7 +292,7 @@ function fibrPreQuest() {
 function fibrUncompleted() {
     if (fibrunCompletedList&&fibrunCompletedList.length>0) {
         $("#question-form").show();
-        $("#question-div").html("不完整id:" + fibrunCompletedList.join(","));
+        $("#fibrquestion-div").html("不完整id:" + fibrunCompletedList.join(","));
         $("#operationtools").hide();
     } else {
         fibrunCompletedList = new Array();
@@ -316,7 +316,7 @@ function fibrUncompleted() {
                 }
             })
             $("#question-form").show();
-            $("#question-div").html("不完整id:" + fibrunCompletedList.join(","));
+            $("#fibrquestion-div").html("不完整id:" + fibrunCompletedList.join(","));
             $("#operationtools").hide();
         });
         $.ajaxSettings.async = true;
