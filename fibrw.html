@@ -95,7 +95,7 @@
                     return false;
                 } else {
                     $("#question-form").show();
-                    $("#operationtools").show();
+
                 }
                 var content = fibrwTranslateData(fibrwdata);
                 $("#question-div").html(content);
@@ -355,6 +355,7 @@
     };
 
     function fillfibrwAnswer(fibrwdata) {
+        $("#operationtools").show();
         var chinese = getChinese(fibrwdata.num + "");
         var chinesespan = $("#chinesespan");
         if (chinesespan) {
