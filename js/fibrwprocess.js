@@ -377,7 +377,6 @@ function fibrwUncompleted() {
         });
         $.ajaxSettings.async = true;
     }
-    return unCompletedList.join(",")
 }
 
 
