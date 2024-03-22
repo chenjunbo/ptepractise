@@ -184,7 +184,8 @@
                 });
             },
             uncompleted: function (obj, event) {
-
+                event.preventDefault();
+                fibrUncompleted();
             },
             fibrnext: function (obj, event) {
                 var result = nextFibRQuestion(obj, event, localStorageType);
