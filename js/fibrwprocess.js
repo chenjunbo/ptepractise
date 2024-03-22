@@ -1,5 +1,5 @@
 var currentList;
-let cnList, enList, fibrwIdsList, unCompletedList;
+let cnList, enList, fibrwIdsList, fibrwunCompletedList;
 const cnMap = new Map();
 var fibrwIdsSet = new Set();
 const chineseContentMap = new Map();//存放中文注释的
@@ -89,7 +89,7 @@ function fibRwCurrentTypedata(param) {
             filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibrw/cge_fib_rw_bai.txt?access_token=c87299575627265144b7db286d3bf673"
             break;
         case "4":
-            unCompletedList = new Array();
+            fibrwunCompletedList = new Array();
             //C哥所有数据
             filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibrw/cge_fib_rw_all.txt?access_token=c87299575627265144b7db286d3bf673"
             break;
@@ -148,7 +148,7 @@ function fibRwCurrentTypedata(param) {
                             currentList.push(fibrwData);
                         } else {
                             if ("4" == type) {
-                                unCompletedList.push(item);
+                                fibrwunCompletedList.push(item);
                             }
                         }
 
@@ -348,12 +348,12 @@ function fibrwPreQuest() {
 }
 
 function fibrwUncompleted() {
-    if (unCompletedList&&unCompletedList.length>0) {
+    if (fibrwunCompletedList&&fibrwunCompletedList.length>0) {
         $("#question-form").show();
-        $("#question-div").html("不完整id:" + unCompletedList.join(","));
+        $("#question-div").html("不完整id:" + fibrwunCompletedList.join(","));
         $("#operationtools").hide();
     } else {
-        unCompletedList = new Array();
+        fibrwunCompletedList = new Array();
         $.ajaxSettings.async = false;
         $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibrw/cge_fib_rw_all.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
             let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
@@ -368,13 +368,13 @@ function fibrwUncompleted() {
                         }
                         if (fibrwData) {
                         } else {
-                            unCompletedList.push(item);
+                            fibrwunCompletedList.push(item);
                         }
 
                     }
             })
             $("#question-form").show();
-            $("#question-div").html("不完整id:" + unCompletedList.join(","));
+            $("#question-div").html("不完整id:" + fibrwunCompletedList.join(","));
             $("#operationtools").hide();
         });
         $.ajaxSettings.async = true;

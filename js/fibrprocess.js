@@ -1,5 +1,5 @@
 var fibrCurrentList;
-let fibrCnList, fibrEnList, fibrIdsList;
+let fibrCnList, fibrEnList, fibrIdsList,fibrunCompletedList;
 var fibrIdsSet = new Set();
 const fibrCnMap = new Map();
 const fibrEnMap = new Map();
@@ -52,6 +52,7 @@ function fibRCurrentTypedata(param) {
             break;
         case "4":
             //C哥所有数据
+            fibrunCompletedList = new Array();
             filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibr/cge_fib_r_all.txt?access_token=c87299575627265144b7db286d3bf673"
             break;
         case "5":
@@ -107,6 +108,10 @@ function fibRCurrentTypedata(param) {
                         }
                         if (fibrData) {
                             fibrCurrentList.push(fibrData);
+                        }else {
+                            if ("4" == type) {
+                                fibrunCompletedList.push(item);
+                            }
                         }
                     }
                 }
@@ -283,6 +288,41 @@ function fibrPreQuest() {
     // return result;
     return fibrCurrentList[fibrIndex];
 }
+
+function fibrUncompleted() {
+    if (fibrunCompletedList&&fibrunCompletedList.length>0) {
+        $("#question-form").show();
+        $("#question-div").html("不完整id:" + fibrunCompletedList.join(","));
+        $("#operationtools").hide();
+    } else {
+        fibrunCompletedList = new Array();
+        $.ajaxSettings.async = false;
+        $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibr/cge_fib_r_all.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
+            let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            qNums.forEach((item, index) => { // 删除空项
+
+                if (!item) {
+                    qNums.splice(index, 1);
+                } else {
+                    var fibrwData = fibrCnMap.get(parseInt(item));
+                    if (!fibrwData) {
+                        fibrwData = fibrEnMap.get(parseInt(item));
+                    }
+                    if (fibrwData) {
+                    } else {
+                        fibrunCompletedList.push(item);
+                    }
+
+                }
+            })
+            $("#question-form").show();
+            $("#question-div").html("不完整id:" + fibrunCompletedList.join(","));
+            $("#operationtools").hide();
+        });
+        $.ajaxSettings.async = true;
+    }
+}
+
 
 function isFibRFirst() {
     return fibrIndex == 0;

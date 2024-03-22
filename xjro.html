@@ -24,6 +24,7 @@
             <button class="layui-btn" lay-header-event="xjrosearch">先点这里加载(搜索)题目</button>
             <button class="layui-btn" lay-header-event="testlucky">你猜这是干啥的</button>
             <button class="layui-btn" lay-header-event="deleteallrightorfalt">清理本题型的所有对错记录</button>
+            <button class="layui-btn" lay-header-event="uncompleted">不完整题目</button>
         </div>
     </div>
 </form>
@@ -37,7 +38,7 @@
 
     </div>
 
-    <div class="layui-form-item">
+    <div class="layui-form-item" id="operationtools">
         <div class="layui-input-block" style="padding-top: 30px">
             <button type="submit" class="layui-btn" lay-submit lay-header-event="checkanswer" lay-filter="demo1"
                     hidden="hidden">
@@ -109,6 +110,9 @@
             clearrightorfalt: function (obj, event) {
                 event.preventDefault();
                 clearrorightorfalt(localStorageType);
+            },
+            uncompleted: function (obj, event) {
+                xjROUncompleted();
             },
             next: function (obj, event) {
                 event.preventDefault();

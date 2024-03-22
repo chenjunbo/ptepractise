@@ -1,5 +1,5 @@
 var currentROList;
-let cnxjroList, enxjroList, xjroIdsList;
+let cnxjroList, enxjroList, xjroIdsList,xjRounCompletedList;
 var xjroIdsSet = new Set();
 const cnxjroMap = new Map();
 const enxjroMap = new Map();
@@ -68,6 +68,7 @@ function xjroCurrentTypedata(param) {
             break;
         case "4":
             //C哥所有数据
+            xjRounCompletedList = new Array();
             filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/cge_xj_ro_all.txt?access_token=c87299575627265144b7db286d3bf673"
             break;
         case "5":
@@ -123,6 +124,10 @@ function xjroCurrentTypedata(param) {
                         }
                         if (xjroData) {
                             currentROList.push(xjroData);
+                        }else{
+                            if ("4" == type) {
+                                xjRounCompletedList.push(item);
+                            }
                         }
                     }
                 }
@@ -479,6 +484,7 @@ function nextXjRoQuestion(obj,localStorageType) {
     checkFav(xjrodata.num, localStorageType);
 }
 function fillXjroAnswer(xjrodata,localStorageType) {
+    $("#operationtools").show();
     $("#xjroanswer").hide();
     var answerInText = xjrodata.answer_in_text;
     var originalText = xjrodata.original_text;
@@ -653,6 +659,43 @@ function roadddeletefav(localStorageType) {
 
     }
 }
+
+
+function xjROUncompleted() {
+    if (xjRounCompletedList&&xjRounCompletedList.length>0) {
+        $("#question-form").show();
+        $("#question-div").html("不完整id:" + xjRounCompletedList.join(","));
+        $("#operationtools").hide();
+    } else {
+        xjRounCompletedList = new Array();
+        $.ajaxSettings.async = false;
+        $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/cge_xj_ro_all.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
+            let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            qNums.forEach((item, index) => { // 删除空项
+
+                if (!item) {
+                    qNums.splice(index, 1);
+                } else {
+                    var fibrwData = cnxjroMap.get(parseInt(item));
+                    if (!fibrwData) {
+                        fibrwData = enxjroMap.get(parseInt(item));
+                    }
+                    if (fibrwData) {
+                    } else {
+                        xjRounCompletedList.push(item);
+                    }
+
+                }
+            })
+            $("#question-form").show();
+            $("#question-div").html("不完整id:" + xjRounCompletedList.join(","));
+            $("#operationtools").hide();
+        });
+        $.ajaxSettings.async = true;
+    }
+}
+
+
 
 function isXjRoFirst() {
     return xjroindex == 0;

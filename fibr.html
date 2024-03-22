@@ -23,6 +23,7 @@
             <button class="layui-btn" lay-header-event="fibrsearch">先点这里加载(搜索)题目</button>
             <button class="layui-btn" lay-header-event="testlucky">试试手气(纯属娱乐)</button>
             <button class="layui-btn" lay-header-event="deleteallrightorfalt">清理本题型的所有对错记录</button>
+            <button class="layui-btn" lay-header-event="uncompleted">不完整题目</button>
         </div>
     </div>
 </form>
@@ -36,7 +37,7 @@
 
     </div>
 
-    <div class="layui-form-item" style="padding-top: 30px;">
+    <div class="layui-form-item" style="padding-top: 30px;"id="operationtools">
         <div class="layui-input-block">
             <button type="submit" class="layui-btn" lay-submit lay-header-event="fibrcheckanswer" lay-filter="demo1"
                     hidden="hidden">
@@ -181,6 +182,9 @@
                     });
                 }, function () {
                 });
+            },
+            uncompleted: function (obj, event) {
+
             },
             fibrnext: function (obj, event) {
                 var result = nextFibRQuestion(obj, event, localStorageType);
@@ -388,6 +392,7 @@
     }
 
     function fillfibrAnswer(fibrdata) {
+        $("#operationtools").show();
         $("#fibranswer-area").hide();
         var answerInText = fibrdata.answer_in_text;
         var explanation_in_locale = fibrdata.explanation_in_locale;
