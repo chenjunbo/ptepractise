@@ -213,7 +213,7 @@ function fibrTranslateDataFibrwModel(fibrData) {
     var num = fibrData.num;
     var text = fibrData.text;
     var choices = fibrData.choices;
-    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (index + 1) + "题/共" + (fibrCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "</label></div>"
+    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (fibrIndex + 1) + "题/共" + (fibrCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "</label></div>"
     var selectionList = new Array();
     for (var key in choices) {
         var choice = choices[key];
