@@ -223,6 +223,8 @@ function fibrTranslateDataFibrwModel(fibrData) {
     }
     selectionList.forEach((num,index)=>{
         shuffle(choices);
+        var selectId = "answer" + num;
+        var select = $("<select name=" + selectId + " lay-verify=\"required|answer\" id=" + selectId + "><option value=\"\">请选择</option></select>");
         for (var key in choices) {
             var choice = choices[key];
             if (choice) {
@@ -230,17 +232,7 @@ function fibrTranslateDataFibrwModel(fibrData) {
                 var option = choice.choice;
                 var parent = $("<div class=\"layui-inline\"> </div>");
                 var parentin = $("<div class=\"layui-input-inline\"> </div>");
-                var selectId = "answer" + num;
-                var select = $("<select name=" + selectId + " lay-verify=\"required|answer\" id=" + selectId + "><option value=\"\">请选择</option></select>");
-
-                for (var idx in choice) {
-                    var current = choice[idx];
-                    if (current) {
-                        var id = current.id;
-                        var choice1 = current.choice;
-                        select.append($(" <option value=" + id + ">" + choice1 + "</option>"))
-                    }
-                }
+                select.append($(" <option value=" + serNum + ">" + option+ "</option>"))
                 parentin.append(select);
                 parent.append(parentin);
                 text = text.replace("{{" + num + "}}", $(parent).html())
