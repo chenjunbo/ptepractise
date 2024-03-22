@@ -118,12 +118,7 @@
                 return false;
             },
             fibrcheckanswer: function (obj, event) {
-                var result = fibrcheckanswer(obj, event, form);
-                if (!result) {
-                    if (!isFibRLast()) {
-                        nextFibRQuestion(obj, event);
-                    }
-                }
+                fibrcheckanswer(obj, event,form);
                form.render();
                 return false;
             },

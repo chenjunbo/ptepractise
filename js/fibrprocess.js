@@ -559,9 +559,9 @@ function checkfibranswerbyfibrwmodel(obj, event, fibrdata,form) {
         layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
             //添加正确次数,添加错误次数
             // layer.msg('提示框关闭后的回调');
-            // if (!isFibRLast()) {
-            //     nextFibRQuestion(obj, event);
-            // }
+            if (!isFibRLast()) {
+                nextFibRQuestion(obj, event);
+            }
         });
     } else {
         addRightOrFalt(fibrdata.num, "falt", localStorageType);
@@ -574,7 +574,7 @@ function checkfibranswerbyfibrwmodel(obj, event, fibrdata,form) {
             //添加错误次数
         });
     }
-    return isWrong;
+
 }
 function checkfibranswerbyDefault(obj, event,fibrdata,form) {
     var allInputs = $("#fibrquestion-div input[name='answeroptions']");
@@ -610,10 +610,10 @@ function checkfibranswerbyDefault(obj, event,fibrdata,form) {
         addRightOrFalt(fibrdata.num, "right", localStorageType);
         layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
             // layer.msg('提示框关闭后的回调');
-            // if (!isFibRLast()) {
-            //     nextFibRQuestion(obj, event);
-            //     //form.render();
-            // }
+            if (!isFibRLast()) {
+                nextFibRQuestion(obj, event);
+                //form.render();
+            }
 
         });
     } else {
@@ -623,7 +623,6 @@ function checkfibranswerbyDefault(obj, event,fibrdata,form) {
             // layer.msg('提示框关闭后的回调');
         });
     }
-    return isWrong;
 }
 
 function firbgotoindex(obj, event) {
