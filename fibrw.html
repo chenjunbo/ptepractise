@@ -179,9 +179,9 @@
                 });
             },
             uncompleted: function (obj, event) {
-                var content = "不完整题目ID: " + fibrwUncompleted();
-                $("#question-div").html(content);
-                $("#question-form").hide();
+                event.preventDefault();
+                 fibrwUncompleted();
+
             },
             next: function (obj, event) {
                 var result = nextFibRwQuestion(obj, event, localStorageType);

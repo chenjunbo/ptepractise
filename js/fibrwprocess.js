@@ -146,7 +146,7 @@ function fibRwCurrentTypedata(param) {
                         }
                         if (fibrwData) {
                             currentList.push(fibrwData);
-                        }else{
+                        } else {
                             if ("4" == type) {
                                 unCompletedList.push(item);
                             }
@@ -349,7 +349,8 @@ function fibrwPreQuest() {
 
 function fibrwUncompleted() {
     if (unCompletedList) {
-        return unCompletedList.join(",");
+        $("#question-div").html("不完整id:" + unCompletedList.join(","));
+        $("#question-form").hide();
     } else {
         unCompletedList = new Array();
         $.ajaxSettings.async = false;
@@ -368,17 +369,19 @@ function fibrwUncompleted() {
                         }
                         if (fibrwData) {
                         } else {
-                                unCompletedList.push(item);
+                            unCompletedList.push(item);
                         }
 
                     }
                 }
-            })
 
+            })
+            $("#question-div").html("不完整id:" + unCompletedList.join(","));
+            $("#question-form").hide();
         });
         $.ajaxSettings.async = true;
     }
-    return  unCompletedList.join(",")
+    return unCompletedList.join(",")
 }
 
 
