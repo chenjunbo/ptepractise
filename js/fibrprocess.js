@@ -291,9 +291,10 @@ function fibrPreQuest() {
 
 function fibrUncompleted() {
     if (fibrunCompletedList&&fibrunCompletedList.length>0) {
-        $("#question-form").show();
+        $("#fibrquestion-form").show();
         $("#fibrquestion-div").html("不完整id:" + fibrunCompletedList.join(","));
         $("#operationtools").hide();
+        $("#fibroptions").hide();
     } else {
         fibrunCompletedList = new Array();
         $.ajaxSettings.async = false;
@@ -315,9 +316,10 @@ function fibrUncompleted() {
 
                 }
             })
-            $("#question-form").show();
+            $("#fibrquestion-form").show();
             $("#fibrquestion-div").html("不完整id:" + fibrunCompletedList.join(","));
             $("#operationtools").hide();
+            $("#fibroptions").hide();
         });
         $.ajaxSettings.async = true;
     }
