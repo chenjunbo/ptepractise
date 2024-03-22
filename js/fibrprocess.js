@@ -27,6 +27,7 @@ function fibrInit() {
             fibrEnMap.set(fibrData.num, fibrData);
             fibrIdsSet.add(fibrData.num);
         }
+        $("#uncompleted").show();
     })
 }
 

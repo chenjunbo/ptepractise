@@ -39,6 +39,7 @@ function fibrwInit() {
                 enMap.set(fibrwData.num, fibrwData);
                 fibrwIdsSet.add(fibrwData.num);
             }
+            $("#uncompleted").show();
         },
         error: function (xhr, status, error) {
             // 处理错误

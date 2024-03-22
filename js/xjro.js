@@ -38,6 +38,7 @@ function xjroInit() {
                 enxjroMap.set(xjrodata.num+"", xjrodata);
                 xjroIdsSet.add(xjrodata.num + "");
             }
+            $("#uncompleted").show();
         },
         error: function (xhr, status, error) {
             // 处理错误
