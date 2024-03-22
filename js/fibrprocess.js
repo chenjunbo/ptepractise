@@ -185,8 +185,8 @@ function fibrTranslateData(fibrData) {
 
         }
     }
-    fillfibrAnswer(fibrdata);
-    fillfibrOptions(fibrdata);
+    fillfibrAnswer(fibrData);
+    fillfibrOptions(fibrData);
     // fibrIndex++;
     return title + text;
 }
