@@ -534,7 +534,7 @@ function fibrcheckanswer(obj, event) {
 }
 
 function checkfibranswerbyfibrwmodel(obj, event, fibrdata) {
-    var fibrdata = currentFibRWData();
+    var fibrdata = currentFibRData();
     var content = JSON.stringify($("#fibrquestion-form").serializeJson());
     var result = $("#fibrquestion-form").serializeJson();
     var isWrong = false;
