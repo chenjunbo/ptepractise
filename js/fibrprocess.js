@@ -571,8 +571,8 @@ function checkfibranswerbyfibrwmodel(obj, event, fibrdata,form) {
         });
     }
     selcetlist.forEach((select)=>{
-        $("#"+select).removeClass();
-        $("#"+select).attr("class", "layui-form-danger");
+       // $("#"+select).removeClass();
+        $("#"+select).parent().attr("style", "border: 1px solid red;");
     })
 }
 function checkfibranswerbyDefault(obj, event,fibrdata,form) {
