@@ -32,7 +32,7 @@
 <form class="layui-form" action="" id="fibrquestion-form">
     <div id="fibrquestion-div" style="padding-left: 20px;padding-right: 20px; line-height: 50px;font-size: large"></div>
 
-    <div class="layui-inline" id="fibroptions" ondrop="drop1(event)" ondragover="allowDrop(event)"
+    <div class="layui-inline" id="fibroptions" ondrop="fibrdrop1(event)" ondragover="fibrallowDrop(event)"
          style="border: 1px solid green;margin-top:60px;text-align:center;">
 
     </div>
@@ -405,7 +405,7 @@
         setRightAndFaltNum(fibrdata.num, localStorageType);
     }
 
-    function allowDrop(ev) {
+    function fibrallowDrop(ev) {
         ev.preventDefault();
     }
 
@@ -417,7 +417,7 @@
      * 题目中的区域
      * @param ev
      */
-    function drop(ev) {
+    function fibrdrop(ev) {
         ev.preventDefault();
         var data = ev.dataTransfer.getData("Text");
         console.log(data);
@@ -469,7 +469,7 @@
      * 所有选项区域
      * @param ev
      */
-    function drop1(ev) {
+    function fibrdrop1(ev) {
         ev.preventDefault();
         //往回拖的答案
         var dataTransfer = ev.dataTransfer;

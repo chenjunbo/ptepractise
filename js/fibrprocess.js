@@ -172,8 +172,8 @@ function fibrTranslateData(fibrData) {
             $(input).attr("class", "layui-input");
             $(input).attr("name", "answeroptions");
             $(input).attr("style", "text-align:center");
-            $(input).attr("ondrop", "drop(event)");
-            $(input).attr("ondragover", "allowDrop(event)");
+            $(input).attr("ondrop", "fibrdrop(event)");
+            $(input).attr("ondragover", "fibrallowDrop(event)");
             $(input).attr("draggable", "true");
             $(input).attr("ondragstart", "drag(event)");
             $(input).attr("realanswer", option);
