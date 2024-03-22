@@ -1,5 +1,5 @@
 var currentList;
-let cnList, enList,fibrwIdsList;;
+let cnList, enList, fibrwIdsList, unCompletedList;
 const cnMap = new Map();
 var fibrwIdsSet = new Set();
 const chineseContentMap = new Map();//存放中文注释的
@@ -89,6 +89,7 @@ function fibRwCurrentTypedata(param) {
             filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibrw/cge_fib_rw_bai.txt?access_token=c87299575627265144b7db286d3bf673"
             break;
         case "4":
+            unCompletedList = new Array();
             //C哥所有数据
             filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibrw/cge_fib_rw_all.txt?access_token=c87299575627265144b7db286d3bf673"
             break;
@@ -113,7 +114,7 @@ function fibRwCurrentTypedata(param) {
         case "9":
             var faltIds = getAllQuestionNumFromLocalStorageByFalt("fibrw");
             if (faltIds) {
-                faltIds.forEach((qNum,index)=>{
+                faltIds.forEach((qNum, index) => {
                     var fibrwData = cnMap.get(parseInt(qNum));
                     if (!fibrwData) {
                         fibrwData = enMap.get(parseInt(qNum));
@@ -145,7 +146,12 @@ function fibRwCurrentTypedata(param) {
                         }
                         if (fibrwData) {
                             currentList.push(fibrwData);
+                        }else{
+                            if ("4" == type) {
+                                unCompletedList.push(item);
+                            }
                         }
+
                     }
                 }
             })
@@ -304,8 +310,9 @@ function createFibRwPdfHtml(parmas, serNum, fibrwdata) {
     return questionDiv;
 
 }
+
 function fibrwRandomLucky() {
-    if (!fibrwIdsList||fibrwIdsList.length==0) {
+    if (!fibrwIdsList || fibrwIdsList.length == 0) {
         fibrwIdsList = Array.from(fibrwIdsSet);
     }
     index = 0;
@@ -339,6 +346,41 @@ function fibrwPreQuest() {
     // return result;
     return currentList[index];
 }
+
+function fibrwUncompleted() {
+    if (unCompletedList) {
+        return unCompletedList.join(",");
+    } else {
+        unCompletedList = new Array();
+        $.ajaxSettings.async = false;
+        $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibrw/cge_fib_rw_all.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
+            let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            qNums.forEach((item, index) => { // 删除空项
+                if (qNum && qNum != item) {
+
+                } else {
+                    if (!item) {
+                        qNums.splice(index, 1);
+                    } else {
+                        var fibrwData = cnMap.get(parseInt(item));
+                        if (!fibrwData) {
+                            fibrwData = enMap.get(parseInt(item));
+                        }
+                        if (fibrwData) {
+                        } else {
+                                unCompletedList.push(item);
+                        }
+
+                    }
+                }
+            })
+
+        });
+        $.ajaxSettings.async = true;
+    }
+    return  unCompletedList.join(",")
+}
+
 
 function isFibRwFirst() {
     return index == 0;
