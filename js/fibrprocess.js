@@ -720,7 +720,6 @@ function fillfibrOptions(fibrData) {
 function fillfibrAnswer(fibrdata) {
     $("#operationtools").show();
     $("#fibranswer-area").hide();
-    $("#fibroptions").show();
     var answerInText = fibrdata.answer_in_text;
     var explanation_in_locale = fibrdata.explanation_in_locale;
     var answercontent = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + explanation_in_locale;
