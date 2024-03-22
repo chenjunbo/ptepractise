@@ -300,8 +300,8 @@ function fibrPreQuest() {
     event.preventDefault();
     $("#fibrpre").hide();
     // var content = fibRwGetdata($("#search-form").serializeJson());
-     $("#fibrsearch-form").serializeJson()
-    fibRCurrentTypedata();
+
+    fibRCurrentTypedata($("#fibrsearch-form").serializeJson());
     var fibrdata = currentFibRData()
     if (!fibrdata) {
         $("#fibrquestion-form").hide();
