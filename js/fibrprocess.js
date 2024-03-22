@@ -154,8 +154,10 @@ function fibrTranslateData(fibrData) {
     var result;
     if (usefibrwmodel) {
         result = fibrTranslateDataFibrwModel(fibrData)
+        $("#fibroptions").hide();
     } else {
         result = fibrTranslateDataDefault(fibrData);
+        $("#fibroptions").show();
     }
     fillfibrAnswer(fibrData);
 
@@ -241,7 +243,7 @@ function fibrTranslateDataFibrwModel(fibrData) {
                 }
                 parentin.append(select);
                 parent.append(parentin);
-                text = text.replace("{{" + key + "}}", $(parent).html())
+                text = text.replace("{{" + num + "}}", $(parent).html())
             }
         }
     })
