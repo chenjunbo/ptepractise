@@ -348,7 +348,7 @@ function fibrwPreQuest() {
 }
 
 function fibrwUncompleted() {
-    if (unCompletedList) {
+    if (unCompletedList||unCompletedList.length>0) {
         $("#question-div").html("不完整id:" + unCompletedList.join(","));
         $("#question-form").hide();
     } else {
