@@ -205,12 +205,12 @@ function fibrTranslateDataDefault(fibrData) {
 }
 
 function fibrTranslateDataFibrwModel(fibrData) {
-    //var fibrwData = currentList[index];
-    var nameWithoutNum = fibrwData.name_without_num;
+    //var fibrData = currentList[index];
+    var nameWithoutNum = fibrData.name_without_num;
     nameWithoutNum = nameWithoutNum.replaceAll(" ", "&nbsp;");
-    var num = fibrwData.num;
-    var text = fibrwData.text;
-    var choices = fibrwData.choices.allData;
+    var num = fibrData.num;
+    var text = fibrData.text;
+    var choices = fibrData.choices.allData;
     var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (index + 1) + "题/共" + (currentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "</label></div>"
     var selectionList = new Array();
     for (var key in choices) {
@@ -473,11 +473,11 @@ function fibrUncompleted() {
                 if (!item) {
                     qNums.splice(index, 1);
                 } else {
-                    var fibrwData = fibrCnMap.get(parseInt(item));
-                    if (!fibrwData) {
-                        fibrwData = fibrEnMap.get(parseInt(item));
+                    var fibrData = fibrCnMap.get(parseInt(item));
+                    if (!fibrData) {
+                        fibrData = fibrEnMap.get(parseInt(item));
                     }
-                    if (fibrwData) {
+                    if (fibrData) {
                     } else {
                         fibrunCompletedList.push(item);
                     }
