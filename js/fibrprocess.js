@@ -212,28 +212,40 @@ function fibrTranslateDataFibrwModel(fibrData) {
     var text = fibrwData.text;
     var choices = fibrwData.choices.allData;
     var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (index + 1) + "题/共" + (currentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "</label></div>"
+    var selectionList = new Array();
     for (var key in choices) {
         var choice = choices[key];
         if (choice) {
-            shuffle(choice);
-            var parent = $("<div class=\"layui-inline\"> </div>");
-            var parentin = $("<div class=\"layui-input-inline\"> </div>");
-            var selectId = "answer" + key;
-            var select = $("<select name=" + selectId + " lay-verify=\"required|answer\" id=" + selectId + "><option value=\"\">请选择</option></select>");
-
-            for (var idx in choice) {
-                var current = choice[idx];
-                if (current) {
-                    var choice1 = current.choice;
-                    var correct = current.correct;
-                    select.append($(" <option value=" + correct + idx + ">" + choice1 + "</option>"))
-                }
-            }
-            parentin.append(select);
-            parent.append(parentin);
-            text = text.replace("{{" + key + "}}", $(parent).html())
+            selectionList.push(choice.id);
         }
     }
+    selectionList.forEach((num,index)=>{
+        shuffle(choices);
+        for (var key in choices) {
+            var choice = choices[key];
+            if (choice) {
+                var serNum = choice.id;
+                var option = choice.choice;
+                var parent = $("<div class=\"layui-inline\"> </div>");
+                var parentin = $("<div class=\"layui-input-inline\"> </div>");
+                var selectId = "answer" + num;
+                var select = $("<select name=" + selectId + " lay-verify=\"required|answer\" id=" + selectId + "><option value=\"\">请选择</option></select>");
+
+                for (var idx in choice) {
+                    var current = choice[idx];
+                    if (current) {
+                        var id = current.id;
+                        var choice1 = current.choice;
+                        select.append($(" <option value=" + id + ">" + choice1 + "</option>"))
+                    }
+                }
+                parentin.append(select);
+                parent.append(parentin);
+                text = text.replace("{{" + key + "}}", $(parent).html())
+            }
+        }
+    })
+
     // index++;
     return title + text;
 }
@@ -520,15 +532,51 @@ function fibrcheckanswer(obj, event) {
     var serializeJson = $("#fibrsearch-form").serializeJson();
     var usefibrwmodel = serializeJson["usefibrwmodel"];
     if (usefibrwmodel) {
-
+        checkfibranswerbyfibrwmodel(obj, event, fibrdata)
     } else {
         checkfibranswerbyDefault(obj, event, fibrdata)
     }
-
-
     setRightAndFaltNum(fibrdata.num, localStorageType)
 }
 
+function checkfibranswerbyfibrwmodel(obj, event, fibrdata) {
+    var fibrdata = currentFibRWData();
+    var content = JSON.stringify($("#fibrquestion-form").serializeJson());
+    var result = $("#fibrquestion-form").serializeJson();
+    var isWrong = false;
+    for (var ans in result) {
+        if (!ans || !ans.startsWith("answer")) {
+            continue;
+        }
+        console.log(result[ans]);
+        var answer = result[ans];//获取到当前选项对应的值
+        var select = $("#" + ans);//根据select的name来查找select,因为name和id一样所以用#
+        console.log($(select))
+        if (!answer || !ans.endsWith(answer)) {//如果没有答案或者答案的值并不是select的结尾则认为是错的, 我们在生成数据的时候option的value就是代表这是第几个select的答案,select的name的结尾代表当前是第几个select
+            // $(allSelects[i]).addClass("layui-form-danger");
+            $(select).removeClass();
+            $(select).attr("class", "layui-form-danger");
+            isWrong = true;
+        }
+
+    }
+    if (!isWrong) {
+        addRightOrFalt(fibrdata.num, "right", localStorageType);
+        layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
+            //添加正确次数,添加错误次数
+            // layer.msg('提示框关闭后的回调');
+            if (!isFibRLast()) {
+                nextFibRQuestion(obj, event, localStorageType);
+            }
+        });
+    } else {
+        addRightOrFalt(fibrdata.num, "falt", localStorageType);
+        layer.msg('答案不小心选错了哟!', {icon: 0}, function () {
+            // layer.msg('提示框关闭后的回调');
+            //添加错误次数
+        });
+    }
+}
 function checkfibranswerbyDefault(obj, event,fibrdata) {
     var allInputs = $("#fibrquestion-div input[name='answeroptions']");
     // console.log(allInputs.length)
