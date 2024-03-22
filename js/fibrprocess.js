@@ -225,19 +225,20 @@ function fibrTranslateDataFibrwModel(fibrData) {
         shuffle(choices);
         var selectId = "answer" + num;
         var select = $("<select name=" + selectId + " lay-verify=\"required|answer\" id=" + selectId + "><option value=\"\">请选择</option></select>");
-        // var parent = $("<div class=\"layui-inline\"> </div>");
-        var parentin = $("<div class=\"layui-input-inline\"> </div>");
+        var parent = $("<div class=\"layui-inline\"> </div>");
+        // var parentin = $("<div class=\"layui-input-inline\"> </div>");
         for (var key in choices) {
             var choice = choices[key];
             if (choice) {
                 var serNum = choice.id;
                 var option = choice.choice;
                 select.append($(" <option value=" + serNum + ">" + option+ "</option>"))
-                parentin.append(select);
+                // parentin.append(select);
+                parent.append(select);
                 // parent.append(parentin);
             }
         }
-        text = text.replace("{{" + num + "}}", $(parentin).html())
+        text = text.replace("{{" + num + "}}", $(parent).html())
     })
 
     // index++;
