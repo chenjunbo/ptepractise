@@ -478,6 +478,7 @@ function nextXjRoQuestion(obj,localStorageType) {
         $("#next").hide();
     }
     fillXjroAnswer(xjrodata,localStorageType);
+    $("#operationtools").show();
     if (!isXjRoFirst()) {
         $("#pre").show();
     }
