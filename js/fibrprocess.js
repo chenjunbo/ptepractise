@@ -549,7 +549,10 @@ function checkfibranswerbyfibrwmodel(obj, event, fibrdata,form) {
         if (!answer || !ans.endsWith(answer)) {//如果没有答案或者答案的值并不是select的结尾则认为是错的, 我们在生成数据的时候option的value就是代表这是第几个select的答案,select的name的结尾代表当前是第几个select
             // $(allSelects[i]).addClass("layui-form-danger");
             $(select).removeClass();
-            $(select).attr("class", "layui-form-danger");
+            var attr = $(select).attr("style");
+            attr = "border: 1px solid red;" + attr;
+            $(select).attr("style", attr);
+            // $(select).attr("class", "layui-form-danger");
             form.render();
             isWrong = true;
         }
