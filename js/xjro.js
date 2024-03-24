@@ -496,7 +496,7 @@ function fillXjroAnswer(xjrodata, localStorageType) {
         explanation_in_locale = "本题目无顺口溜";
     }
     explanation_in_locale = "<span style= \"color: red\">" + explanation_in_locale + "</span>";
-    var answercontent = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + explanation_in_locale + "</br>" + "</br>" + originalText+"<br/>";
+    var answercontent = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + explanation_in_locale + "</br>" + "</br>" + originalText+"<br/>"+"<br/>"+"<br/>";
 
     var param = $("#xjrosearch-form").serializeJson();
     var needChinese = param.chinese;
