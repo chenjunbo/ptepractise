@@ -95,7 +95,7 @@ function fireFlySSTTranslateData(fireflySSTData,params){
     var num = fireflySSTData.id;
     var name = fireflySSTData.title;
     var text = "";
-    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (sstIndex + 1) + "题/共" + (sstCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + name + "&nbsp;&nbsp;<span style=\"color: red\" id=\"timer\"></span>"+"</label></div>"
+    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (sstIndex + 1) + "题/共" + (sstCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + name +  "&nbsp;&nbsp;</label>"+"<span style=\"color: red\" id=\"timer\"></span>"+"</div>"
     text = text + title;
     var simpleanswer = params.simpleanswer;
     var keyword = params.keyword;
