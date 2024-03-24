@@ -220,7 +220,7 @@ function xjroTranslateData(xjrodata) {
 
 
 function createxjroPdfHtml(parmas, serNum, xjroData) {
-    var needchinese = parmas.chinese;//是否需要中文
+    var shunkouliu = parmas.shunkouliu;//是否需要中文
 
     var questionDiv = document.createElement("div");
     $(questionDiv).attr("style", "padding-left: 20px;padding-right: 20px;line-height: 30px;font-size: large;width:90%;");
@@ -246,8 +246,16 @@ function createxjroPdfHtml(parmas, serNum, xjroData) {
             text=text+content+"<br/>"
         });
     }else{
-        text=xjroData.text;
+        text=xjroData.text+"<br/>";
     }
+    if (shunkouliu) {
+        var explanation_in_locale = xjrodata.explanation_in_locale;
+        if (!explanation_in_locale) {
+            explanation_in_locale = "本题目无顺口溜";
+        }
+        text = text + explanation_in_locale;
+    }
+
     $(questionDiv).append(text + "<br/>" + "<br/>");
 
     return questionDiv;
