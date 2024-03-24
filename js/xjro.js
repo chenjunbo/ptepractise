@@ -253,7 +253,7 @@ function createxjroPdfHtml(parmas, serNum, xjroData) {
         if (!explanation_in_locale) {
             explanation_in_locale = "本题目无顺口溜";
         }
-        text = text + "<br/>" + "<br/>"+"<span style='color: red'>顺口溜:</span>" + "<br/>"+explanation_in_locale;
+        text = text + "<br/>" +"<span style='color: red'>顺口溜:</span>" + "<br/>"+explanation_in_locale;
     }
 
     $(questionDiv).append(text + "<br/>" + "<br/>");
