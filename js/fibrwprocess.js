@@ -193,7 +193,7 @@ function fibrwTranslateData(fibrwData) {
     var num = fibrwData.num;
     var text = fibrwData.text;
     var choices = fibrwData.choices.allData;
-    var title = "<div class=\"layui-form-item\"><div class=\"layui-inline\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (index + 1) + "题/共" + (currentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div></div>"
+    var title = "<div class=\"layui-form-item\"><div class=\"layui-inline\"><label  style=\"white-space:nowrap\">第" + (index + 1) + "题/共" + (currentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div></div>"
     for (var key in choices) {
         var choice = choices[key];
         if (choice) {
