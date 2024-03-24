@@ -99,7 +99,7 @@ function fireFlyWFDTranslateData(fireFlyWFDData) {
     var num = fireFlyWFDData.qNum;
     var text = fireFlyWFDData.en;
     var cn = fireFlyWFDData.cn;
-    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (fireFlyWFDIndex + 1) + "题/共" + (fireFlyWFDCurrentList.length) + "题, 题号:" + num +  "&nbsp;&nbsp;</label>"+"<span style=\"color: red\" id=\"timer\"></span>"+"</div>"
+    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (fireFlyWFDIndex + 1) + "题/共" + (fireFlyWFDCurrentList.length) + "题, 题号:" + num +  "&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div>"
     var lastIndex = text.lastIndexOf(".");
     if (lastIndex != -1) {
         text = text.substring(0, lastIndex);

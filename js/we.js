@@ -95,7 +95,7 @@ function fireFlyWeTranslateData(fireflyWeData,params){
     var num = fireflyWeData.id;
     var name = fireflyWeData.title;
     var text = "";
-    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (weIndex + 1) + "题/共" + (weCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + name +  "&nbsp;&nbsp;</label>"+"<span style=\"color: red\" id=\"timer\"></span>"+"</div>"
+    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (weIndex + 1) + "题/共" + (weCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + name +  "&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div>"
     text = text + title+"<br>"  +fireflyWeData.question+"<br>";
     var example = params.example;
     var view = params.view;

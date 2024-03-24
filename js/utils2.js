@@ -1,6 +1,4 @@
-
 function startTimer() {
-    const timerDisplay = $("#timer");
     let hours = 0;
     let minutes = 0;
     let seconds = 0;
@@ -22,6 +20,6 @@ function startTimer() {
         seconds = seconds < 10 ? '0' + seconds : seconds;
 
         // 更新显示的时间
-        timerDisplay.html(hours + ':' + minutes + ':' + seconds);
+        $("#timer").html(hours + ':' + minutes + ':' + seconds);
     }, 1000);
 }
