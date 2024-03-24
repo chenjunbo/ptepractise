@@ -1,8 +1,7 @@
+var interval;
 function startTimer() {
-    var interval;
     if (interval) {
         clearInterval(interval);
-        interval = null;
     }
     var hours = 0;
     var minutes = 0;
