@@ -95,7 +95,7 @@ function fireFlyWeTranslateData(fireflyWeData,params){
     var num = fireflyWeData.id;
     var name = fireflyWeData.title;
     var text = "";
-    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (weIndex + 1) + "题/共" + (weCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + name + "</label></div>"
+    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (weIndex + 1) + "题/共" + (weCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + name + "&nbsp;&nbsp;<span style=\"color: red\" id=\"timer\"></span>"+"</label></div>"
     text = text + title+"<br>"  +fireflyWeData.question+"<br>";
     var example = params.example;
     var view = params.view;
@@ -109,7 +109,7 @@ function fireFlyWeTranslateData(fireflyWeData,params){
         }
         text = text +"<br/>"+ "<br/>范文(仅供参考):" + "<br>" + exampleContent;
     }
-
+    startTimer();
     return text;
 }
 

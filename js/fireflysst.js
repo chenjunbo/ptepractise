@@ -95,7 +95,7 @@ function fireFlySSTTranslateData(fireflySSTData,params){
     var num = fireflySSTData.id;
     var name = fireflySSTData.title;
     var text = "";
-    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (sstIndex + 1) + "题/共" + (sstCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + name + "</label></div>"
+    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (sstIndex + 1) + "题/共" + (sstCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + name + "&nbsp;&nbsp;<span style=\"color: red\" id=\"timer\"></span>"+"</label></div>"
     text = text + title;
     var simpleanswer = params.simpleanswer;
     var keyword = params.keyword;
@@ -109,7 +109,7 @@ function fireFlySSTTranslateData(fireflySSTData,params){
     if (chinese) {
         text = text + "<br>中文速记:" + "<br>" + "<span style=\"font-size:16px;font-family:AaManYuShouXieTi;color:red;\">"+fireflySSTData.chineseContent+"</span>";
     }
-
+    startTimer();
     return text;
 }
 
