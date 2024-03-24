@@ -495,9 +495,23 @@ function fillXjroAnswer(xjrodata, localStorageType) {
     if (!explanation_in_locale) {
         explanation_in_locale = "本题目无顺口溜";
     }
-    explanation_in_locale = "<span style= \"color: red\">" + explanation_in_locale + "</span>"
+    explanation_in_locale = "<span style= \"color: red\">" + explanation_in_locale + "</span>";
+    var answercontent = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + explanation_in_locale + "</br>" + "</br>" + originalText+"<br/>";
 
-    var answercontent = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + explanation_in_locale + "</br>" + "</br>" + originalText;
+    var param = $("#xjrosearch-form").serializeJson();
+    var needChinese = param.chinese;
+    if (needChinese) {
+        var contents = xjrodata.contents;
+        if (contents&&contents.length>0) {
+            contents.forEach((eachContent)=>{
+                var content = eachContent.content;
+                answercontent=answercontent+content+"<br/>"
+            });
+        }
+
+
+    }
+
     $("#xjroanswer").html(answercontent);
     setRightAndFaltNum(xjrodata.num, localStorageType);
 }
