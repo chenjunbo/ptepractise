@@ -1,9 +1,14 @@
 function startTimer() {
+    var interval;
+    if (interval) {
+        clearInterval(interval);
+        interval = null;
+    }
     var hours = 0;
     var minutes = 0;
     var seconds = 0;
     var showhours="", showminutes="", showseconds="";
-    setInterval(() => {
+    interval= setInterval(() => {
         seconds++; // 增加秒数
         if (seconds >= 60) {
             seconds = 0; // 重置秒数
