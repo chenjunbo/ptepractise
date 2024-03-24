@@ -119,6 +119,10 @@
                     <option value="1">萤火虫WE高频</option>
                     <option value="2">萤火虫WE已整理题库</option>
                     <option value="3">WE收藏夹</option>
+                    <option value="4">WE模板1</option>
+                    <option value="5">WE模板2</option>
+                    <option value="6">WE模板3</option>
+                    <option value="7">WE万能句</option>
                 </select>
             </div>
             <div class="layui-inline">
@@ -377,6 +381,18 @@
                     case "3":
                         name = "萤火虫WE收藏夹";
                         break;
+                    case "4":
+                        window.open("https://gitee.com/jackiechan/ptepractise/raw/main/pdf/we模板1.pdf", '_blank');
+                        return ;
+                    case "5":
+                        window.open("https://gitee.com/jackiechan/ptepractise/raw/main/pdf/we模板2.pdf", '_blank');
+                        return;
+                    case "6":
+                        window.open("https://gitee.com/jackiechan/ptepractise/raw/main/pdf/we模板3.pdf", '_blank');
+                        return;
+                    case "7":
+                        window.open("https://gitee.com/jackiechan/ptepractise/raw/main/pdf/WE万能句.pdf", '_blank');
+                        return;
                 }
                 var body = newPage.body;
                 var currentTypedataList = fireflyWeCurrentTypedata(params);
