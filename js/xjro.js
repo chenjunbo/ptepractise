@@ -173,7 +173,7 @@ function xjroTranslateData(xjrodata) {
     $("#question-div").children("#biaotiquyu").remove();
     $("#parasdiv").html("")
     $("#resultdiv").html("")
-    var title = "<div class=\"layui-form-item\" id='biaotiquyu'><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (xjroindex + 1) + "题/共" + (currentROList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "&nbsp;&nbsp;</label></div>";
+    var title = "<div class=\"layui-form-item\" id='biaotiquyu'><div class=\"layui-inline\"><label  style=\"white-space:nowrap\">第" + (xjroindex + 1) + "题/共" + (currentROList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div></div>";
     // var parent = "<div class=\"layui-inline\" style=\"width: 45%; border:1px solid blue;\" id=\"parasdiv\" ondrop=\"rodrop1(event)\" ondragover=\"roallowDrop(event)\"></div>";
     // var resultdiv = "<div class=\"layui-inline\" style=\"width: 45%; border:1px solid blue;margin-left: 20px;\" id=\"resultdiv\" ondrop=\"rodrop(event)\" ondragover=\"roallowDrop(event)\"></div>";
 
