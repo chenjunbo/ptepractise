@@ -172,7 +172,7 @@ function fibrTranslateDataDefault(fibrData) {
     var num = fibrData.num;
     var text = fibrData.text;
     var choices = fibrData.choices;
-    var title = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">第" + (fibrIndex + 1) + "题/共" + (fibrCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div>"
+    var title = "<div class=\"layui-form-item\"><div class=\"layui-inline\"><label  style=\"white-space:nowrap\">第" + (fibrIndex + 1) + "题/共" + (fibrCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div></div>"
     shuffle(choices);
     for (var key in choices) {
         var choice = choices[key];
@@ -214,7 +214,7 @@ function fibrTranslateDataFibrwModel(fibrData) {
     var text = fibrData.text;
     var choices = fibrData.choices;
 
-    var title = "<div class=\"layui-form-item\"><label  style=\"white-space:nowrap\">第" + (fibrIndex + 1) + "题/共" + (fibrCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum +  "&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div>"
+    var title = "<div class=\"layui-form-item\"><div class=\"layui-inline\"><label  style=\"white-space:nowrap\">第" + (fibrIndex + 1) + "题/共" + (fibrCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum +  "&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div></div>"
     var selectionList = new Array();
     for (var key in choices) {
         var choice = choices[key];
