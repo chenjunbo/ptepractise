@@ -249,7 +249,7 @@ function createxjroPdfHtml(parmas, serNum, xjroData) {
         text=xjroData.text+"<br/>";
     }
     if (shunkouliu) {
-        var explanation_in_locale = xjrodata.explanation_in_locale;
+        var explanation_in_locale = xjroData.explanation_in_locale;
         if (!explanation_in_locale) {
             explanation_in_locale = "本题目无顺口溜";
         }
