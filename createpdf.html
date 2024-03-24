@@ -81,6 +81,30 @@
 </form>
 <br>
 <br>
+<form action="#" class="layui-form" id="xjrocreate-form">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            &nbsp;&nbsp;&nbsp;RO:
+            <div class="layui-inline">
+                <select name="type" id="xjrotypeselection">
+                    <option value="1">C哥阅读RO蓝色题目</option>
+                    <option value="2">C哥阅读RO黄色题目</option>
+                    <option value="3">C哥阅读RO白色题目</option>
+                    <option value="4">C哥阅读RO全部题目</option>
+                    <!--                    <option value="5">自定义题目1</option>-->
+                    <!--                    <option value="6">自定义题目2</option>-->
+                    <option value="8">⭐️阅读RO月预测除C哥预测其他题</option>
+                    <option value="7">阅读RO收藏夹</option>
+                    <option value="9">错题集</option>
+
+                </select>
+            </div>
+            <button class="layui-btn" lay-header-event="createxjropdf">点击生成网页后通过浏览器的打印功能保存为pdf
+            </button>
+        </div>
+    </div>
+</form>
+<br>
 
 
 <form action="#" class="layui-form" id="fireflysstcreate-form">
@@ -270,6 +294,47 @@
                 })
                 fillPdf(newPage, name);
                 return false;
+            }, createxjropdf: function (obj, event) {
+                event.preventDefault();
+                var newPage = document.implementation.createHTMLDocument('New Page');
+                var params = $("#fibrcreate-form").serializeJson();
+                var name = "C哥阅读拖拽预测";
+                switch (params.type) {
+                    case "1":
+                        name = "C哥阅读RO蓝色题目";
+                        break;
+
+                    case "2":
+                        name = "C哥阅读RO黄色题目";
+                        break;
+                    case "3":
+                        name = "C哥阅读RO白色题目";
+                        break;
+                    case "4":
+                        name = "C哥阅读RO全部题目";
+                        break;
+                    case "7":
+                        name = "阅读RO收藏夹";
+                        break;
+                    case "8":
+                        name = "⭐️阅读RO月预测除C哥预测其他题"
+                        break;
+                    case "8":
+                        name = "RO错题集"
+                        break;
+                }
+                var body = newPage.body;
+
+                var currentTypedataList = xjroCurrentTypedata(params);
+                currentTypedataList.forEach(function (item, index) {
+                    //生成内容数据,添加到网页中
+                    var questionHtml = createxjroPdfHtml(params, (index + 1), item);
+                    $(body).append(questionHtml);
+                })
+                fillPdf(newPage, name);
+                return false;
+
+
             },
             createfibrpdf: function (obj, event) {
                 event.preventDefault();
