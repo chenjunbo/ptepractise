@@ -2,7 +2,7 @@ function startTimer() {
     let hours = 0;
     let minutes = 0;
     let seconds = 0;
-    var showhours, showminutes, showseconds;
+    var showhours="", showminutes="", showseconds="";
     setInterval(() => {
         seconds++; // 增加秒数
         if (seconds >= 60) {
