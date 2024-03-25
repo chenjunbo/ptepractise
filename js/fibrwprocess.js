@@ -310,8 +310,15 @@ function createFibRwPdfHtml(parmas, serNum, fibrwdata) {
         var contents = fibrwdata.contents;
         if (contents&&contents.length>0) {
             contents.forEach((eachContent)=>{
-                var content = eachContent.content;
-                answerInText=answerInText+"<br/>"+content+"<br/>"
+                var type = eachContent.type;
+                if (type == "option") {
+
+                }else{
+                    var content = eachContent.content;
+                    if (content != "选项") {
+                        answercontent=answercontent+"<br/>"+content+"<br/>";
+                    }
+                }
             });
         }
     }
