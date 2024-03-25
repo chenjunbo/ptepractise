@@ -388,8 +388,8 @@
         if (needTrans) {
             var contents = fibrwdata.contents;
             if (contents && contents.length > 0) {
+                answercontent = answercontent + "<br/>" + "翻译:" + "<br/>"
                 contents.forEach((eachContent) => {
-                    answercontent = answercontent + "<br/>" + "翻译:" + "<br/>"
                     contents.forEach((eachContent) => {
                         var type = eachContent.type;
                         if (type == "option" || type == "caption") {
