@@ -316,7 +316,7 @@ function createFibRwPdfHtml(parmas, serNum, fibrwdata) {
                 }else{
                     var content = eachContent.content;
                     if (content != "选项"||content != "选项:") {
-                        answercontent=answercontent+"<br/>"+content+"<br/>";
+                        answerInText=answerInText+"<br/>"+content+"<br/>";
                     }
                 }
             });
