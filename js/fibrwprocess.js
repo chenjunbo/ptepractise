@@ -5,6 +5,7 @@ var fibrwIdsSet = new Set();
 const chineseContentMap = new Map();//存放中文注释的
 const enMap = new Map();
 var index = 0;//当前第几条
+var localStorageType = "fibrw";
 
 function fibrwInit() {
     $.ajax({
@@ -72,6 +73,7 @@ function fibrwInit() {
 function fibRwCurrentTypedata(param) {
     var qNum = param.qNum;//题号
     var type = param.type;//类型
+    var onlyundo = param.type;//类型
     var filePath;
     index = 0;
     currentList = new Array();
@@ -103,6 +105,7 @@ function fibRwCurrentTypedata(param) {
             filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibrw/xjfibrwmonth.txt?access_token=c87299575627265144b7db286d3bf673"
             break;
         case "7":
+            onlyundo = "";
             var content = getFromLocalStorage("fibrwblue");
             if (content) {
                 var json = JSON.parse(content);
@@ -113,9 +116,11 @@ function fibRwCurrentTypedata(param) {
             filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibrw/xjfib_rw_withoutc.txt?access_token=c87299575627265144b7db286d3bf673"
             break;
         case "9":
-            var faltIds = getAllQuestionNumFromLocalStorageByFalt("fibrw");
+            onlyundo = "";
+            var faltIds = getAllQuestionNumFromLocalStorageByFalt(localStorageType);
             if (faltIds) {
                 faltIds.forEach((qNum, index) => {
+                    getFromLocalStorage()
                     var fibrwData = cnMap.get(parseInt(qNum));
                     if (!fibrwData) {
                         fibrwData = enMap.get(parseInt(qNum));
@@ -141,18 +146,38 @@ function fibRwCurrentTypedata(param) {
                     if (!item) {
                         qNums.splice(index, 1);
                     } else {
-                        var fibrwData = cnMap.get(parseInt(item));
-                        if (!fibrwData) {
-                            fibrwData = enMap.get(parseInt(item));
-                        }
-                        if (fibrwData) {
-                            currentList.push(fibrwData);
+                        //检查是不是选择了仅做未做的题目
+                        if (onlyundo) {
+                            var rightLocal = getFromLocalStorage(item + "right" + localStorageType);
+                            var faltlocal = getFromLocalStorage(item + "falt" + localStorageType);
+                            if (rightLocal || faltlocal) {
+                                //已经做了,不处理
+                            } else {
+                                var fibrwData = cnMap.get(parseInt(item));
+                                if (!fibrwData) {
+                                    fibrwData = enMap.get(parseInt(item));
+                                }
+                                if (fibrwData) {
+                                    currentList.push(fibrwData);
+                                } else {
+                                    if ("4" == type) {
+                                        fibrwunCompletedList.push(item);
+                                    }
+                                }
+                            }
                         } else {
-                            if ("4" == type) {
-                                fibrwunCompletedList.push(item);
+                            var fibrwData = cnMap.get(parseInt(item));
+                            if (!fibrwData) {
+                                fibrwData = enMap.get(parseInt(item));
+                            }
+                            if (fibrwData) {
+                                currentList.push(fibrwData);
+                            } else {
+                                if ("4" == type) {
+                                    fibrwunCompletedList.push(item);
+                                }
                             }
                         }
-
                     }
                 }
             })
@@ -308,15 +333,15 @@ function createFibRwPdfHtml(parmas, serNum, fibrwdata) {
     }
     if (needtrans) {
         var contents = fibrwdata.contents;
-        if (contents&&contents.length>0) {
-            answerInText=answerInText+"<br/>"+ "<br/>"+ "<br/>"+"翻译:"+"<br/>"
-            contents.forEach((eachContent,index)=>{
+        if (contents && contents.length > 0) {
+            answerInText = answerInText + "<br/>" + "<br/>" + "<br/>" + "翻译:" + "<br/>"
+            contents.forEach((eachContent, index) => {
                 var type = eachContent.type;
-                if (type == "option"||type=="caption") {
+                if (type == "option" || type == "caption") {
 
-                }else{
+                } else {
                     var content = eachContent.content;
-                        answerInText=answerInText+"<br/>"+content+"<br/>";
+                    answerInText = answerInText + "<br/>" + content + "<br/>";
                 }
             });
         }
@@ -367,9 +392,9 @@ function fibrwPreQuest() {
 }
 
 function fibrwUncompleted() {
-    if (fibrwunCompletedList&&fibrwunCompletedList.length>0) {
+    if (fibrwunCompletedList && fibrwunCompletedList.length > 0) {
         $("#question-form").show();
-        $("#question-div").html("不完整id:" + fibrwunCompletedList.join(", ")+"请根据id去⭐️中单独查询");
+        $("#question-div").html("不完整id:" + fibrwunCompletedList.join(", ") + "请根据id去⭐️中单独查询");
         $("#operationtools").hide();
     } else {
         fibrwunCompletedList = new Array();
@@ -378,22 +403,22 @@ function fibrwUncompleted() {
             let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
             qNums.forEach((item, index) => { // 删除空项
 
-                    if (!item) {
-                        qNums.splice(index, 1);
-                    } else {
-                        var fibrwData = cnMap.get(parseInt(item));
-                        if (!fibrwData) {
-                            fibrwData = enMap.get(parseInt(item));
-                        }
-                        if (fibrwData) {
-                        } else {
-                            fibrwunCompletedList.push(item);
-                        }
-
+                if (!item) {
+                    qNums.splice(index, 1);
+                } else {
+                    var fibrwData = cnMap.get(parseInt(item));
+                    if (!fibrwData) {
+                        fibrwData = enMap.get(parseInt(item));
                     }
+                    if (fibrwData) {
+                    } else {
+                        fibrwunCompletedList.push(item);
+                    }
+
+                }
             })
             $("#question-form").show();
-            $("#question-div").html("不完整id:" + fibrwunCompletedList.join(", ")+"请根据id去⭐️中单独查询");
+            $("#question-div").html("不完整id:" + fibrwunCompletedList.join(", ") + "请根据id去⭐️中单独查询");
             $("#operationtools").hide();
         });
         $.ajaxSettings.async = true;
