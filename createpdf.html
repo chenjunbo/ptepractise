@@ -32,6 +32,8 @@
                     <option value="5">⭐阅读下拉周预测</option>
                     <option value="6">⭐阅读下拉月预测</option>
                     <option value="7">阅读下拉收藏夹</option>
+                    <option value="100">⭐阅读FIBRW全题库答案比例</option>
+                    <option value="101">⭐阅读FIBRW答案比例数EN九百题库</option>
                 </select>
             </div>
             <div class="layui-inline">
@@ -198,6 +200,7 @@
                     <option value="1">萤火虫FIBL高频</option>
                     <option value="2">⭐️FIB周预测</option>
                     <option value="3">⭐️FIB月预测</option>
+                    <option value="100">⭐️FIB听力单词频率</option>
                 </select>
             </div>
             <button class="layui-btn" lay-header-event="createfiblpdf">点击生成网页后通过浏览器的打印功能保存为pdf
@@ -289,6 +292,14 @@
                     case "8":
                         name = "xing️阅读下拉月预测除C哥之外题目"
                         break;
+                    case "100":
+                        //fibrw答案比例
+                        window.open("https://kdocs.cn/l/cfhVRWRNzRUk", '_blank');
+                        return ;
+                    case "101":
+                        //fibrw答案比例en
+                        window.open("https://kdocs.cn/l/ciAzNLjcDMoW", '_blank');
+                        return;
 
                 }
                 var body = newPage.body;
@@ -529,6 +540,10 @@
                             $(body).append(questionHtml);
                         })
                         break;
+                    case "100":
+                        //FIBL听力单词频率
+                        window.open("https://kdocs.cn/l/cfNwyDVTkg9r", '_blank');
+                        return;
                 }
                 fillPdf(newPage, name);
             },
