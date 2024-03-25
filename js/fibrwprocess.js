@@ -306,7 +306,7 @@ function createFibRwPdfHtml(parmas, serNum, fibrwdata) {
             answerInText = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + explanation_in_locale;
         }
     }
-    if (needchinese) {
+    if (needtrans) {
         var contents = fibrwdata.contents;
         if (contents&&contents.length>0) {
             answerInText=answerInText+"<br/>"+ "<br/>"+ "<br/>"+"翻译:"+"<br/>"
