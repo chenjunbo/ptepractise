@@ -20,6 +20,12 @@
                     <option value="9">错题集</option>
                 </select>
             </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="color: red">可选选项:</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="trans" title="全文翻译">
+                </div>
+            </div>
             <button class="layui-btn" lay-header-event="search">先点这里加载(搜索)题目</button>
             <button class="layui-btn" lay-header-event="testlucky">试试手气(玩的就是心跳)</button>
             <button class="layui-btn" lay-header-event="deleteallrightorfalt">清理本题型的所有对错记录</button>
@@ -376,6 +382,20 @@
         var answerInText = fibrwdata.answer_in_text;
         var explanation_in_locale = fibrwdata.explanation_in_locale;
         var answercontent = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + explanation_in_locale;
+
+        var params = $("#search-form").serializeJson();
+        var needTrans = params.trans;
+        if (needTrans) {
+            var contents = xjroData.contents;
+            if (contents&&contents.length>0) {
+                contents.forEach((eachContent)=>{
+                    var content = eachContent.content;
+                    answercontent=answercontent+"<br/>"+content+"<br/>"
+                });
+            }
+        }
+
+
         $("#answer-area").html(answercontent);
         setRightAndFaltNum(fibrwdata.num, localStorageType);
     }

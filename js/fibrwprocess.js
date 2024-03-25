@@ -226,6 +226,7 @@ function createFibRwPdfHtml(parmas, serNum, fibrwdata) {
     var analysis = parmas.analysis;//是否需要解析
     var needchinese = parmas.needchinese;//是否需要中文
     var highlight = parmas.highlight;//是否需要中文
+    var needtrans = parmas.trans;//是否需要全文翻译
 
     var questionDiv = document.createElement("div");
     $(questionDiv).attr("style", "padding-left: 20px;padding-right: 20px;line-height: 30px;font-size: large;width:90%;");
@@ -305,6 +306,16 @@ function createFibRwPdfHtml(parmas, serNum, fibrwdata) {
             answerInText = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + explanation_in_locale;
         }
     }
+    if (needchinese) {
+        var contents = xjroData.contents;
+        if (contents&&contents.length>0) {
+            contents.forEach((eachContent)=>{
+                var content = eachContent.content;
+                answerInText=answerInText+"<br/>"+content+"<br/>"
+            });
+        }
+    }
+
     $(analysispre).html(answerInText);
     $(anserDive).append(analysispre);
     $(questionDiv).append(anserDive);
