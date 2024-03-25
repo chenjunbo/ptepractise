@@ -2,7 +2,7 @@ let fireFlyWFDList, fireFlyWFDCurrentList, categoryIdDataList, allQnums;
 const fireFlyWFDMap = new Map();
 var fireFlyWFDIndex = 0;//当前第几条
 var isFullContent = true;
-
+var localStorageType = "fireflywfd";
 function fireFlyWFDInit(form) {
     $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/wfd/fireflywfd.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
         var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
@@ -31,6 +31,7 @@ function fireFlyWFDInit(form) {
 function fireFlyGetWFDdata(param) {
     var qNum = param.qNum;//题号
     var type = param.type;//类型
+    var onlyundo = param.onlyundo;//仅未做
     var localstoragedata;
     fireFlyWFDIndex = 0;
     fireFlyWFDCurrentList = new Array();
@@ -40,17 +41,31 @@ function fireFlyGetWFDdata(param) {
                 fireFlyWFDCurrentList.push(fireFlyWFDMap.get(qNum + ""));
                 return fireFlyWFDCurrentList[0];
             }
-            fireFlyWFDCurrentList = fireFlyWFDList;
+            if (onlyundo) {
+                allQnums.forEach((item)=>{
+                    var rightLocal = getFromLocalStorage(item + "right" + localStorageType);
+                    var faltlocal = getFromLocalStorage(item + "falt" + localStorageType);
+                    if (rightLocal || faltlocal) {
+                        //已经做了,不处理
+                    }else{
+                        fireFlyWFDCurrentList.push(fireFlyWFDMap.get(item + ""));
+                        return fireFlyWFDCurrentList[0];
+                    }
+                })
+
+            }else{
+                fireFlyWFDCurrentList = fireFlyWFDList;
+            }
             break;
         case "2":
-            var content = getFromLocalStorage("fireflywfd");
+            var content = getFromLocalStorage(localStorageType);
             if (content) {
                 var json = JSON.parse(content);
                 localstoragedata = json.nums;
             }
             break;
         case "9":
-            var faltIds = getAllQuestionNumFromLocalStorageByFalt("fireflywfd");
+            var faltIds = getAllQuestionNumFromLocalStorageByFalt(localStorageType);
             if (faltIds) {
                 faltIds.forEach((qNum,index)=>{
                     fireFlyWFDCurrentList.push(fireFlyWFDMap.get(qNum + ""));

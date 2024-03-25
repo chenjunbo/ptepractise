@@ -4,7 +4,7 @@ var xjroIdsSet = new Set();
 const cnxjroMap = new Map();
 const enxjroMap = new Map();
 var xjroindex = 0;//当前第几条
-
+var localStorageType = "xjroublue";
 function xjroInit() {
     $.ajax({
         url: "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/ro/roallquestions.txt?access_token=c87299575627265144b7db286d3bf673",
@@ -52,6 +52,7 @@ function xjroInit() {
 function xjroCurrentTypedata(param) {
     var qNum = param.qNum;//题号
     var type = param.type;//类型
+    var onlyundo = param.onlyundo;//仅未做
     var filePath;
     xjroindex = 0;
     currentROList = new Array();
@@ -121,17 +122,40 @@ function xjroCurrentTypedata(param) {
                     if (!item) {
                         qNums.splice(index, 1);
                     } else {
-                        var xjroData = cnxjroMap.get(item + "");
-                        if (!xjroData) {
-                            xjroData = enxjroMap.get(item + "");
-                        }
-                        if (xjroData) {
-                            currentROList.push(xjroData);
-                        } else {
-                            if ("4" == type) {
-                                xjRounCompletedList.push(item);
+                        if (onlyundo) {
+                            var rightLocal = getFromLocalStorage(item + "right" + localStorageType);
+                            var faltlocal = getFromLocalStorage(item + "falt" + localStorageType);
+                            if (rightLocal || faltlocal) {
+                                //已经做了,不处理
+                            }else{
+
+                                var xjroData = cnxjroMap.get(item + "");
+                                if (!xjroData) {
+                                    xjroData = enxjroMap.get(item + "");
+                                }
+                                if (xjroData) {
+                                    currentROList.push(xjroData);
+                                } else {
+                                    if ("4" == type) {
+                                        xjRounCompletedList.push(item);
+                                    }
+                                }
+                            }
+                        }else{
+
+                            var xjroData = cnxjroMap.get(item + "");
+                            if (!xjroData) {
+                                xjroData = enxjroMap.get(item + "");
+                            }
+                            if (xjroData) {
+                                currentROList.push(xjroData);
+                            } else {
+                                if ("4" == type) {
+                                    xjRounCompletedList.push(item);
+                                }
                             }
                         }
+
                     }
                 }
             })

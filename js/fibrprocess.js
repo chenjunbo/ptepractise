@@ -36,6 +36,7 @@ function fibrInit() {
 function fibRCurrentTypedata(param) {
     var qNum = param.qNum;//题号
     var type = param.type;//类型
+    var onlyundo = param.onlyundo;//仅未做
     var filePath;
     fibrIndex = 0;
     fibrCurrentList = new Array();
@@ -105,17 +106,39 @@ function fibRCurrentTypedata(param) {
                     if (!item) {
                         qNums.splice(fibrIndex, 1);
                     } else {
-                        var fibrData = fibrCnMap.get(parseInt(item));
-                        if (!fibrData) {
-                            fibrData = fibrEnMap.get(parseInt(item));
-                        }
-                        if (fibrData) {
-                            fibrCurrentList.push(fibrData);
-                        } else {
-                            if ("4" == type) {
-                                fibrunCompletedList.push(item);
+                        if (onlyundo) {
+                            var rightLocal = getFromLocalStorage(item + "right" + localStorageType);
+                            var faltlocal = getFromLocalStorage(item + "falt" + localStorageType);
+                            if (rightLocal || faltlocal) {
+                                //已经做了,不处理
+                            }else{
+                                var fibrData = fibrCnMap.get(parseInt(item));
+                                if (!fibrData) {
+                                    fibrData = fibrEnMap.get(parseInt(item));
+                                }
+                                if (fibrData) {
+                                    fibrCurrentList.push(fibrData);
+                                } else {
+                                    if ("4" == type) {
+                                        fibrunCompletedList.push(item);
+                                    }
+                                }
+                            }
+                        }else{
+                            var fibrData = fibrCnMap.get(parseInt(item));
+                            if (!fibrData) {
+                                fibrData = fibrEnMap.get(parseInt(item));
+                            }
+                            if (fibrData) {
+                                fibrCurrentList.push(fibrData);
+                            } else {
+                                if ("4" == type) {
+                                    fibrunCompletedList.push(item);
+                                }
                             }
                         }
+
+
                     }
                 }
             })
