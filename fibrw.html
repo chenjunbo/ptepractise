@@ -389,7 +389,6 @@
             var contents = fibrwdata.contents;
             if (contents && contents.length > 0) {
                 answercontent = answercontent + "<br/>" + "<br/>"+ "<br/>"+ "翻译:" + "<br/>"
-                contents.forEach((eachContent) => {
                     contents.forEach((eachContent) => {
                         var type = eachContent.type;
                         if (type == "option" || type == "caption") {
@@ -398,7 +397,6 @@
                             answercontent = answercontent + "<br/>" + content + "<br/>";
                         }
                     });
-                });
             }
         }
         $("#answer-area").html(answercontent);
