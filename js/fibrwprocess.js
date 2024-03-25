@@ -309,15 +309,14 @@ function createFibRwPdfHtml(parmas, serNum, fibrwdata) {
     if (needchinese) {
         var contents = fibrwdata.contents;
         if (contents&&contents.length>0) {
+            answerInText=answerInText+"<br/>"+"翻译:"+"<br/>"
             contents.forEach((eachContent)=>{
                 var type = eachContent.type;
-                if (type == "option") {
+                if (type == "option"||type=="caption") {
 
                 }else{
                     var content = eachContent.content;
-                    if (content != "选项"||content != "选项:") {
                         answerInText=answerInText+"<br/>"+content+"<br/>";
-                    }
                 }
             });
         }

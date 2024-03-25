@@ -152,7 +152,7 @@
                 checkFav(fibrwdata.num, localStorageType);
                 form.render();
                 return false;
-            }, 
+            },
             deleteallrightorfalt: function (obj, event) {
                 event.preventDefault();
                 //移除所有数据
@@ -163,7 +163,7 @@
                         if (fibrwdata) {
                             setRightAndFaltNum(fibrwdata.num, localStorageType);
                         }
-                    }catch (e){
+                    } catch (e) {
 
                     }
                     layer.msg('操作完成', {icon: 0}, function () {
@@ -188,7 +188,7 @@
             },
             uncompleted: function (obj, event) {
                 event.preventDefault();
-                 fibrwUncompleted();
+                fibrwUncompleted();
 
             },
             next: function (obj, event) {
@@ -387,19 +387,17 @@
         var needTrans = params.trans;
         if (needTrans) {
             var contents = fibrwdata.contents;
-            if (contents&&contents.length>0) {
-                contents.forEach((eachContent)=>{
-                    var type = eachContent.type;
-                    if (type == "option") {
-
-                    }else{
-                        var content = eachContent.content;
-                        if (content != "选项"||content != "选项:") {
-                            answercontent=answercontent+"<br/>"+content+"<br/>";
+            if (contents && contents.length > 0) {
+                contents.forEach((eachContent) => {
+                    answercontent = answercontent + "<br/>" + "翻译:" + "<br/>"
+                    contents.forEach((eachContent) => {
+                        var type = eachContent.type;
+                        if (type == "option" || type == "caption") {
+                        } else {
+                            var content = eachContent.content;
+                            answercontent = answercontent + "<br/>" + content + "<br/>";
                         }
-                    }
-
-
+                    });
                 });
             }
         }
