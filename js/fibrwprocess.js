@@ -307,7 +307,7 @@ function createFibRwPdfHtml(parmas, serNum, fibrwdata) {
         }
     }
     if (needchinese) {
-        var contents = xjroData.contents;
+        var contents = fibrwdata.contents;
         if (contents&&contents.length>0) {
             contents.forEach((eachContent)=>{
                 var content = eachContent.content;
