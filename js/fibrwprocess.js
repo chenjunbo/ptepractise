@@ -73,7 +73,7 @@ function fibrwInit() {
 function fibRwCurrentTypedata(param) {
     var qNum = param.qNum;//题号
     var type = param.type;//类型
-    var onlyundo = param.type;//类型
+    var onlyundo = param.onlyundo;//类型
     var filePath;
     index = 0;
     currentList = new Array();
