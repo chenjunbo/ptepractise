@@ -309,7 +309,7 @@ function createFibRwPdfHtml(parmas, serNum, fibrwdata) {
     if (needchinese) {
         var contents = fibrwdata.contents;
         if (contents&&contents.length>0) {
-            answerInText=answerInText+"<br/>"+"翻译:"+"<br/>"+ "<br/>"+ "<br/>"
+            answerInText=answerInText+"<br/>"+ "<br/>"+ "<br/>"+"翻译:"+"<br/>"
             contents.forEach((eachContent)=>{
                 var type = eachContent.type;
                 if (type == "option"||type=="caption") {
