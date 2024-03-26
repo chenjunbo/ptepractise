@@ -185,6 +185,7 @@
                     <option value="2">⭐️RS周预测</option>
                     <option value="3">⭐️RS月预测</option>
                     <option value="4">⭐️RS全题目</option>
+                    <option value="5">⭐️RS全题目题号排序</option>
                 </select>
             </div>
             <button class="layui-btn" lay-header-event="createrspdf">点击生成网页后通过浏览器的打印功能保存为pdf
@@ -515,6 +516,10 @@
                     case "4":
                         name = "xjRS全题目";
                         $(body).append(currentxjrsallcontent());
+                        break;
+                    case "5":
+                        name = "xjRS全题目题号排序";
+                        $(body).append(currentxjrsallcontentdesc());
                         break;
                 }
                 fillPdf(newPage, name);
