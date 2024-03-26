@@ -183,6 +183,7 @@
                     <option value="1">萤火虫RS高频</option>
                     <option value="2">⭐️RS周预测</option>
                     <option value="3">⭐️RS月预测</option>
+                    <option value="4">⭐️RS全题目</option>
                 </select>
             </div>
             <button class="layui-btn" lay-header-event="createrspdf">点击生成网页后通过浏览器的打印功能保存为pdf
@@ -505,6 +506,10 @@
                     case "3":
                         name = "xjRS月预测";
                         $(body).append(currentxjrsmonthconten());
+                        break;
+                    case "3":
+                        name = "xjRS全题目";
+                        $(body).append(currentxjrsallcontent());
                         break;
                 }
                 fillPdf(newPage, name);
