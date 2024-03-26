@@ -132,6 +132,12 @@ function fibRwCurrentTypedata(param) {
             }
 
             break;
+        case "10":
+            currentList = cnList;
+            break;
+        case "11":
+            currentList = enList;
+            break;
 
     }
     //当前数据

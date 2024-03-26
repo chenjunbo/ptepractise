@@ -93,6 +93,13 @@ function fibRCurrentTypedata(param) {
             }
 
             break;
+
+        case "10":
+            fibrCurrentList=fibrCnList;
+            break;
+        case "11":
+            fibrCurrentList = fibrEnList;
+            break;
     }
     //当前数据
     if (filePath) {
