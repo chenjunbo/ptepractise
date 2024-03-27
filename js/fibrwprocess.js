@@ -54,8 +54,7 @@ function fibrwInit() {
         success: function (response) {
             var chineseContent = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content))))))))); // 根据换行或者回车进行识别
             var json = JSON.parse(chineseContent);
-               var keys = Object.keys(json);
-               for (var key in keys)
+               for (var key in json)
                    chineseContentMap.set(key, json[key])
 
             // let chineseContent = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content))))))))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
