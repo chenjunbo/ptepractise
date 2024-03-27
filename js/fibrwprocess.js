@@ -2,7 +2,7 @@ var currentList;
 let cnList, enList, fibrwIdsList, fibrwunCompletedList;
 const cnMap = new Map();
 var fibrwIdsSet = new Set();
-const chineseContentMap = new Map();//存放中文注释的
+let chineseContentMap = new Map();//存放中文注释的
 const enMap = new Map();
 var index = 0;//当前第几条
 var localStorageType = "fibrw";
@@ -52,17 +52,18 @@ function fibrwInit() {
         type: "GET",
         crossDomain: true, // 设置为true，则不发送Origin头部
         success: function (response) {
-            let chineseContent = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content))))))))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
-            chineseContent.forEach((item, index) => { // 删除空项
+            chineseContentMap = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content))))))))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            // let chineseContent = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content))))))))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            // chineseContent.forEach((item, index) => { // 删除空项
+            //
+            //     if (!item) {
+            //         chineseContent.splice(index, 1);
+            //     } else {
+            //         var splitString = item.split("#");
+            //         chineseContentMap.set(splitString[0] + "", splitString[1]);
+            //     }
 
-                if (!item) {
-                    chineseContent.splice(index, 1);
-                } else {
-                    var splitString = item.split("#");
-                    chineseContentMap.set(splitString[0] + "", splitString[1]);
-                }
-
-            })
+            // })
         },
         error: function (xhr, status, error) {
             // 处理错误
