@@ -457,6 +457,8 @@
                 event.preventDefault();
                 var params = $("#fireflywfdcreate-form").serializeJson();
                 var url = "";
+                var newPage = document.implementation.createHTMLDocument('New Page');
+                var name = "萤火虫wfd预测";
                 switch (params.type) {
                     case "-1":
                       //  name = "萤火虫WFD注音正序版";
@@ -480,9 +482,12 @@
                         url="https://gitee.com/jackiechan/ptepractise/raw/main/pdf/wfd萤火虫大西瓜相似句.pdf"
                         break;
                     case "4":
-                       // name = "萤火虫WFD分类版";
+                       // name = "纯文本";
                         url="https://gitee.com/jackiechan/ptepractise/raw/main/data/wfd/yhcwfdplaintxt.txt"
-                        break;
+                        var body = newPage.body;
+                        body.append(getWFDPlainTxt());
+                        fillPdf(newPage, name);
+                        return ;
                 }
                 window.open(url, '_blank');
                 return false;
@@ -491,7 +496,7 @@
                 event.preventDefault();
                 var newPage = document.implementation.createHTMLDocument('New Page');
                 var params = $("#fireflywecreate-form").serializeJson();
-                var name = "萤火虫sst预测";
+                var name = "萤火虫we预测";
                 switch (params.type) {
                     case "1":
                         name = "萤火虫WE高频预测";
