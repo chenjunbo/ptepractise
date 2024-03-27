@@ -52,7 +52,11 @@ function fibrwInit() {
         type: "GET",
         crossDomain: true, // 设置为true，则不发送Origin头部
         success: function (response) {
-            chineseContentMap = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content))))))))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            var chineseContent = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content))))))))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            for (var key in chineseContent) {
+                chineseContentMap.set(key, chineseContent[key]);
+            }
+
             // let chineseContent = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content))))))))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
             // chineseContent.forEach((item, index) => { // 删除空项
             //
