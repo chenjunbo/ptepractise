@@ -486,7 +486,7 @@
                        // name = "纯文本";
                         url="https://gitee.com/jackiechan/ptepractise/raw/main/data/wfd/yhcwfdplaintxt.txt"
                         var body = newPage.body;
-                        body.append(getWFDPlainTxt());
+                        body.innerHTML=getWFDPlainTxt();
                         fillPdf(newPage, name);
                         return ;
                 }
