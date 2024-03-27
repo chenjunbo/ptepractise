@@ -24,10 +24,6 @@ An introduction is an essential element of presentation.
 简介是演讲的基本要素。
 Certain scientific principles must be learned verbally or by logical deduction.
 某些科学原理必须要通过口头教学或逻辑推理来学习。
-Convincing evidence to support this theory is hard to obtain.
-支持这一理论的令人信服的证据很难获得。
-Daily practice can build confidence and improve skills.
-每天的练习可以建立自信，提高技能。
 Everyone must evacuate the premises during the fire drill.
 在消防演习期间，每个人都必须撤离场地。
 Many experts think that the world climate is constantly changing.
@@ -228,8 +224,12 @@ Trees benefit the city by soaking up the rainwater that runs off the roads.
 树木通过吸收从道路上流下的雨水的方式来助益城市。
 The commissioner will apportion the funds among all the authorities.
 专员将把这笔资金分配给所有当局。
+Teaching assistants play a vital role in the learning process.
+教学助理在学习过程中起着至关重要的作用。
 Rivers provide habitat and migration pathways for numerous aquatic species.
 河流为许多水生物种提供了栖息地和迁徙途径。
+The finding shows that chocolate can improve memory, immunity and mood.
+研究结果表明，巧克力可以提高记忆力、免疫力，并改善情绪。
 The extent of advertising to children is very much open to debate.
 广告对儿童的影响程度是很容易引起争论的。
 Rising sea temperatures are a sign of climate change.
@@ -272,8 +272,6 @@ You should have awareness of how the business operates globally.
 你应该了解公司是如何在全球范围内运作的。
 An architect is required to have problem-solving skills and an eye for design.
 建筑师需要有解决问题的能力和设计的眼光。
-The university will cease the colossal renovation of the faint empty theater.
-这所大学将停止对那座昏暗的空剧院的大规模整修。
 The subject was complex and difficult to explain.
 这个话题/主题/学科很复杂，很难解释。
 The campus library will be closed during the winter break.
@@ -306,8 +304,6 @@ Tutors should set clear goals at the start of the class.
 导师应该在课程开始时设定明确的目标。
 Students who study overseas can significantly improve their work chances.
 出国留学的学生可以显著提高他们的工作机会。
-Strangely, people are simultaneously impressed by and are skeptical about statistics.
-奇怪的是，人们对"统计数据"既感到印象深刻又持怀疑态度。
 Vocabulary that is peculiar in a special field is called jargon.
 在某一特定领域特有的词汇被称为“行话”。
 You must answer security questions when you reset your password.
@@ -360,19 +356,29 @@ The biology department is respected to research activities.
 生物系以研究活动著称。
 The integration of archeologists' studies with community projects is widely encouraged.
 考古学家的研究与社区项目的结合得到了广泛的鼓励。
+Leaving valuable possessions unattended in public place is risky.
+把贵重物品放在公共场所无人看管是很危险的。
+The lecture is about the reasons for the financial crisis.
+这场讲座是关于金融危机的原因的。
+Laws protect consumer rights and help to avoid market problems.
+法律保护消费者权利，帮助避免市场问题。
 We can’t consider any increase in our price at this stage.
 在这个阶段，我们不能考虑任何的涨价。
+The students will meet their new teachers after the summer vacation.
+暑假过后，学生们将会见到他们的新老师。
 Please move us to the meeting room for the next hour.
 在接下来的一个小时里，请带我们到会议室去。
-Teaching assistants play a vital role in the learning process.
-教学助理在学习过程中起着至关重要的作用。
-The finding shows that chocolate can improve memory, immunity and mood.
-研究结果表明，巧克力可以提高记忆力、免疫力，并改善情绪。
 Before preparing food, please make sure to wash your hands.
 在准备食物之前，请务必洗手。
 You must call your doctor to make an appointment.
 你必须打电话给你的医生预约。
-Please note that the submission deadlines are only negotiable in exceptional circumstances.
-请注意，截止日期只有在特殊情况下才可以协商。
-The year when the ship of artifacts was wrecked interested historians.
-历史学家们很想知道这艘船的文物是在哪一年被毁的。
+There is a pharmacy on campus near the bookstore.
+校园里书店附近有个药房。
+Convincing evidence to support this theory is hard to obtain.
+支持这一理论的令人信服的证据很难获得。
+Daily practice can build confidence and improve skills.
+每天的练习可以建立自信，提高技能。
+The university will cease the colossal renovation of the faint empty theater.
+这所大学将停止对那座昏暗的空剧院的大规模整修。
+Strangely, people are simultaneously impressed by and are skeptical about statistics.
+奇怪的是，人们对"统计数据"既感到印象深刻又持怀疑态度。
