@@ -57,28 +57,6 @@ function createMenu() {
     })
     $("#left-menu").html(str);
 
-    if (isNeedLoadFont) {
-        // 字体文件的URL
-        const fontURL = 'https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/font%2FAaManYuShouXieTi3.ttf?access_token=c87299575627265144b7db286d3bf673';
-
-        // 创建一个新的FontFace对象
-        const fontFace = new FontFace('AaManYuShouXieTi', `url(${fontURL})`, {
-            weight: 'normal',
-            style: 'normal',
-            // 其他字体属性
-        });
-
-        // 加载字体
-        fontFace.load().then(() => {
-            // 字体加载成功后，将其安装到FontFaceSet中
-            document.fonts.add(fontFace);
-        }).catch(error => {
-            // 字体加载失败的处理
-            console.error('Font loading failed:', error);
-        });
-
-    }
-    loadNotice();
 }
 
 function loadNotice() {
@@ -99,7 +77,7 @@ function loadNotice() {
 }
 
 function initOthers() {
-    isNeedLoadFont = false;
+    loadNotice();
 }
 
 function getAlljs() {
