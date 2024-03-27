@@ -641,7 +641,9 @@ function checkfibranswerbyDefault(obj, event,fibrdata,form) {
         addRightOrFalt(fibrdata.num, "right", localStorageType);
         layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
             // layer.msg('提示框关闭后的回调');
-            if (!isFibRLast()) {
+            var serializeJson = $("#fibrsearch-form").serializeJson();
+            var autonext = serializeJson.autonext;
+            if (!isFibRLast()&&autonext) {
                 nextFibRQuestion(obj, event);
                 //form.render();
             }

@@ -660,9 +660,11 @@ function rocheckanswer(obj, localStorageType) {
     if (!isWrong) {
         addRightOrFalt(xjrodata.num, "right", localStorageType);
         layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
+            var serializeJson = $("#xjrosearch-form").serializeJson();
+            var autonext = serializeJson.autonext;
             //添加正确次数,添加错误次数
             // layer.msg('提示框关闭后的回调');
-            if (!isXjRoLast()) {
+            if (!isXjRoLast()&&autonext) {
                 nextXjRoQuestion(obj, localStorageType);
             }
         });
