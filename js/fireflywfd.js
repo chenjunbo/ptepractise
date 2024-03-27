@@ -160,7 +160,7 @@ function fireFlyWFDTranslateData(fireFlyWFDData) {
     text = $(parent).html();
     var chinese = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">" + cn + "</label></div>";
     var audiosrc = "https://gitee.com/jackiechan/ptepractise/raw/main/mp3/wfd/" + num + ".mp3";
-    var audio="<audio src="+audiosrc+" controls></audio>"
+    var audio="<audio src="+audiosrc+" controls autoplay></audio>"
     startTimer();
     return title + text + chinese + "<br/>" + audio;
 }
