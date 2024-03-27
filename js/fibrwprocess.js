@@ -325,8 +325,8 @@ function createFibRwPdfHtml(parmas, serNum, fibrwdata) {
     if (needchinese) {
         var chinese = getChinese(fibrwdata.num + "");
         if (chinese) {
-            var chinesepre = "<span  style=\"font-size:20px;font-family:AaManYuShouXieTi;color:red;margin: 40px\">";
-            var chinesebiaoshipre = "<span style=\"font-size:20px;font-family:AaManYuShouXieTi;color:green;\">";
+            var chinesepre = "<span  style=\"font-size:20px;color:red;margin: 40px\">";
+            var chinesebiaoshipre = "<span style=\"font-size:20px;color:green;\">";
             var sPanend = "</span>"
             chinese = chinese.replaceAll("【", chinesebiaoshipre + "【" + sPanend)
             chinese = chinese.replaceAll("】", chinesebiaoshipre + "】" + sPanend);

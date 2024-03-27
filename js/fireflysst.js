@@ -107,7 +107,7 @@ function fireFlySSTTranslateData(fireflySSTData,params){
         text = text + "<br>关键词:"+ "<br>"  + fireflySSTData.keyWords;
     }
     if (chinese) {
-        text = text + "<br>中文速记:" + "<br>" + "<span style=\"font-size:16px;font-family:AaManYuShouXieTi;color:red;\">"+fireflySSTData.chineseContent+"</span>";
+        text = text + "<br>中文速记:" + "<br>" + "<span style=\"font-size:16px;color:red;\">"+fireflySSTData.chineseContent+"</span>";
     }
     startTimer();
     return text;
@@ -133,7 +133,7 @@ function createFireFlySSTPdfHtml(params, serNum, fireflySSTData) {
         text = text + "<br>关键词:"+ "<br>"  + fireflySSTData.keyWords+ "<br>";
     }
     if (chinese) {
-        text = text + "<br>中文速记:" + "<br>" + "<span style=\"font-size:16px;font-family:AaManYuShouXieTi;color:red;\">"+fireflySSTData.chineseContent+"</span>";
+        text = text + "<br>中文速记:" + "<br>" + "<span style=\"font-size:16px;color:red;\">"+fireflySSTData.chineseContent+"</span>";
     }
     text = text + "<br/>"+ "<br/>";
 
