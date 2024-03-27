@@ -3,6 +3,7 @@ const fireFlyWFDMap = new Map();
 var fireFlyWFDIndex = 0;//当前第几条
 var isFullContent = true;
 var localStorageType = "fireflywfd";
+
 function fireFlyWFDInit(form) {
     $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/wfd/fireflywfd.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
         var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
@@ -42,18 +43,18 @@ function fireFlyGetWFDdata(param) {
                 return fireFlyWFDCurrentList[0];
             }
             if (onlyundo) {
-                allQnums.forEach((item)=>{
+                allQnums.forEach((item) => {
                     var rightLocal = getFromLocalStorage(item + "right" + localStorageType);
                     var faltlocal = getFromLocalStorage(item + "falt" + localStorageType);
                     if (rightLocal || faltlocal) {
                         //已经做了,不处理
-                    }else{
+                    } else {
                         fireFlyWFDCurrentList.push(fireFlyWFDMap.get(item + ""));
                         return fireFlyWFDCurrentList[0];
                     }
                 })
 
-            }else{
+            } else {
                 fireFlyWFDCurrentList = fireFlyWFDList;
             }
             break;
@@ -67,7 +68,7 @@ function fireFlyGetWFDdata(param) {
         case "9":
             var faltIds = getAllQuestionNumFromLocalStorageByFalt(localStorageType);
             if (faltIds) {
-                faltIds.forEach((qNum,index)=>{
+                faltIds.forEach((qNum, index) => {
                     fireFlyWFDCurrentList.push(fireFlyWFDMap.get(qNum + ""));
                 })
             }
@@ -114,7 +115,7 @@ function fireFlyWFDTranslateData(fireFlyWFDData) {
     var num = fireFlyWFDData.qNum;
     var text = fireFlyWFDData.en;
     var cn = fireFlyWFDData.cn;
-    var title = "<div class=\"layui-form-item\"><div class=\"layui-inline\"><label  style=\"white-space:nowrap\">第" + (fireFlyWFDIndex + 1) + "题/共" + (fireFlyWFDCurrentList.length) + "题, 题号:" + num +  "&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div></div>"
+    var title = "<div class=\"layui-form-item\"><div class=\"layui-inline\"><label  style=\"white-space:nowrap\">第" + (fireFlyWFDIndex + 1) + "题/共" + (fireFlyWFDCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div></div>"
     var lastIndex = text.lastIndexOf(".");
     if (lastIndex != -1) {
         text = text.substring(0, lastIndex);
@@ -160,9 +161,19 @@ function fireFlyWFDTranslateData(fireFlyWFDData) {
     text = $(parent).html();
     var chinese = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">" + cn + "</label></div>";
     var audiosrc = "https://gitee.com/jackiechan/ptepractise/raw/main/mp3/wfd/" + num + ".mp3";
-    var audio="<audio src="+audiosrc+" controls autoplay></audio>"
+    var audio = "<audio id='wfdmp3' src=" + audiosrc + " controls></audio>"
     startTimer();
     return title + text + chinese + "<br/>" + audio;
+}
+
+
+function playwfdmp3() {
+    var player = $("#wfdmp3").get(0);
+    player.oncanplaythrough = function () {
+        setTimeout(function () {
+            player.play();
+        }, 2000);
+    }
 }
 
 function fireFlyWFDNextQuest() {
