@@ -12,22 +12,23 @@ StringBuffer.prototype.toString = function () {
 var isNeedLoadFont = true;
 
 function createMenu() {
-    var bodycontent = "<div class=\"layui-header\">\n" +
-        "  <ul class=\"layui-nav \">\n" +
-        "      <li class=\"layui-nav-item\">\n" +
-        "          <a href=\"javascript:;\">点击这里选择功能</a>\n" +
-        "          <dl class=\"layui-nav-child\" id=\"left-menu\">\n" +
-        "             \n" +
-        "          </dl>\n" +
-        "      </li>\n" +
-        "  </ul>\n" +
-        "</div>\n" +
-        "<div class=\"layui-layout layui-layout-admin\" style=\"margin-top: 10px\">\n" +
-        "  <div class=\"layui-fluid\" id=\"main\">\n" +
-        "  </div>\n" +
-        "</div>";
-    $("div").remove();
-    $("body").prepend(bodycontent);
+    var headerContent = "<ul class=\"layui-nav \">\n" +
+        "        <!-- 移动端显示 -->\n" +
+        "        <li class=\"layui-nav-item\">\n" +
+        "            <a href=\"javascript:;\">点击这里选择功能</a>\n" +
+        "            <dl class=\"layui-nav-child\" id=\"left-menu\">\n" +
+        "                <!--                    <dd><a href=\"javascript:;\">menu 11</a></dd>-->\n" +
+        "                <!--                    <dd><a href=\"javascript:;\">menu 22</a></dd>-->\n" +
+        "                <!--                    <dd><a href=\"javascript:;\">menu 33</a></dd>-->\n" +
+        "            </dl>\n" +
+        "        </li>\n" +
+        "    </ul>";
+
+
+    $("#main").attr("class", "layui-fluid");
+    $(".layui-side").remove();
+    $(".layui-header").html(headerContent);
+
     var allPages = [
         {
             "menuName": "FIB-RW阅读下拉",
