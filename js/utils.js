@@ -12,6 +12,21 @@ StringBuffer.prototype.toString = function () {
 var isNeedLoadFont = true;
 
 function createMenu() {
+    var bodycontent = "<div class=\"layui-header\">\n" +
+        "  <ul class=\"layui-nav \">\n" +
+        "      <li class=\"layui-nav-item\">\n" +
+        "          <a href=\"javascript:;\">点击这里选择功能</a>\n" +
+        "          <dl class=\"layui-nav-child\" id=\"left-menu\">\n" +
+        "             \n" +
+        "          </dl>\n" +
+        "      </li>\n" +
+        "  </ul>\n" +
+        "</div>\n" +
+        "<div class=\"layui-layout layui-layout-admin\" style=\"margin-top: 10px\">\n" +
+        "  <div class=\"layui-fluid\" id=\"main\">\n" +
+        "  </div>\n" +
+        "</div>";
+    $("body").html(bodycontent);
     var allPages = [
         {
             "menuName": "FIB-RW阅读下拉",
@@ -48,12 +63,19 @@ function createMenu() {
         }
 
     ]
+    // var str = "";
+    // allPages.forEach(function (obj) {
+    //     str += '<li class="layui-nav-item layui-nav-itemed">';
+    //     //拼接每一个地址
+    //     str += '<a class="" href="javascript:;" onclick="openRight(\'' + obj.url + '\')">' + obj.menuName + '</a>';
+    //     str += '</li>'
+    // })
     var str = "";
     allPages.forEach(function (obj) {
-        str += '<li class="layui-nav-item layui-nav-itemed">';
+        str += '<dd>';
         //拼接每一个地址
         str += '<a class="" href="javascript:;" onclick="openRight(\'' + obj.url + '\')">' + obj.menuName + '</a>';
-        str += '</li>'
+        str += '</dd>'
     })
     $("#left-menu").html(str);
 
