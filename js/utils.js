@@ -15,8 +15,9 @@ function createMenu() {
     $(".layui-header").remove();
 
     var ul =$("<ul class=\"layui-nav \"> </ul>");
+    var dl="<dl class=\"layui-nav-child layui-anim layui-anim-upbit\" id=\"left-menu\"></dl>"
     var li=$(" <li class=\"layui-nav-item\"></li>")
-    var a=$(" <a href=\"javascript:;\">点击这里选择功能</a>")
+    var a=$("<a href=\"javascript:;\">点击这里选择功能<i class=\"layui-icon layui-icon-down layui-nav-more\"></i></a>")
 
 
 
@@ -77,7 +78,8 @@ function createMenu() {
    // $("#left-menu").html(str);
     li.html(str);
     li.prepend(a);
-    ul.append(li);
+    dl.append(li);
+    ul.append(dl);
     var header=$("<div class=\"layui-header\"></div>")
     header.append(ul)
     $("body").prepend(header);
