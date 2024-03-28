@@ -28,10 +28,11 @@ function createMenu() {
     var ul =$("<ul class=\"layui-nav \"> </ul>");
     var li=$(" <li class=\"layui-nav-item\"></li>")
     var a=$(" <a href=\"javascript:;\">点击这里选择功能</a>")
-    li.prepend(a);
+
 
 
     $("#main").attr("class", "layui-fluid");
+    $("#main").attr("style", "margin-top: 10px");
     $(".layui-side").remove();
 
 
@@ -87,6 +88,7 @@ function createMenu() {
     })
    // $("#left-menu").html(str);
     li.html(str);
+    li.prepend(a);
     ul.append(li);
     $(".layui-header").children().remove();
     $(".layui-header").append(ul);
