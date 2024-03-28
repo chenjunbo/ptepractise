@@ -76,10 +76,10 @@ function createMenu() {
         str += '</dd>'
     })
    // $("#left-menu").html(str);
-    li.html(str);
+    dl.html(str);
     li.prepend(a);
-    dl.append(li);
-    ul.append(dl);
+    li.append(dl);
+    ul.append(li);
     var header=$("<div class=\"layui-header\"></div>")
     header.append(ul)
     $("body").prepend(header);
