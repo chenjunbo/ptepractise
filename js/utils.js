@@ -12,18 +12,7 @@ StringBuffer.prototype.toString = function () {
 var isNeedLoadFont = true;
 
 function createMenu() {
-    var headerContent = "<ul class=\"layui-nav \">\n" +
-        "        <!-- 移动端显示 -->\n" +
-        "        <li class=\"layui-nav-item\">\n" +
-        "            <a href=\"javascript:;\">点击这里选择功能</a>\n" +
-        "            <dl class=\"layui-nav-child\" id=\"left-menu\">\n" +
-        "                <!--                    <dd><a href=\"javascript:;\">menu 11</a></dd>-->\n" +
-        "                <!--                    <dd><a href=\"javascript:;\">menu 22</a></dd>-->\n" +
-        "                <!--                    <dd><a href=\"javascript:;\">menu 33</a></dd>-->\n" +
-        "            </dl>\n" +
-        "        </li>\n" +
-        "    </ul>";
-
+    $(".layui-header").remove();
 
     var ul =$("<ul class=\"layui-nav \"> </ul>");
     var li=$(" <li class=\"layui-nav-item\"></li>")
@@ -34,7 +23,6 @@ function createMenu() {
     $("#main").attr("class", "layui-fluid");
     $("#main").attr("style", "margin-top: 10px");
     $(".layui-side").remove();
-
 
     var allPages = [
         {
@@ -90,8 +78,9 @@ function createMenu() {
     li.html(str);
     li.prepend(a);
     ul.append(li);
-    $(".layui-header").children().remove();
-    $(".layui-header").append(ul);
+    var header=$("<div class=\"layui-header\"></div>")
+    header.append(ul)
+    $("body").prepend(header);
 }
 
 
