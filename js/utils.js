@@ -25,9 +25,15 @@ function createMenu() {
         "    </ul>";
 
 
+    var ul =$("<ul class=\"layui-nav \"> </ul>");
+    var li=$(" <li class=\"layui-nav-item\"></li>")
+    var a=$(" <a href=\"javascript:;\">点击这里选择功能</a>")
+    li.prepend(a);
+
+
     $("#main").attr("class", "layui-fluid");
     $(".layui-side").remove();
-    $(".layui-header").html(headerContent);
+
 
     var allPages = [
         {
@@ -79,8 +85,11 @@ function createMenu() {
         str += '<a class="" href="javascript:;" onclick="openRight(\'' + obj.url + '\')">' + obj.menuName + '</a>';
         str += '</dd>'
     })
-    $("#left-menu").html(str);
-
+   // $("#left-menu").html(str);
+    li.html(str);
+    ul.append(li);
+    $(".layui-header").children().remove();
+    $(".layui-header").append(ul);
 }
 
 
