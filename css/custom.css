@@ -1,0 +1,35 @@
+
+.layui-container {
+    font-size: 20px; /* 默认字体大小 */
+}
+
+/* 当屏幕宽度小于或等于800px时，字体大小调整为18px */
+@media (max-width: 800px) {
+    .layui-container {
+        font-size: 16px;
+    }
+}
+
+/* 当屏幕宽度小于或等于600px时，字体大小调整为14px */
+@media (max-width: 600px) {
+    .layui-container {
+        font-size: 14px;
+    }
+}
+#question-div {
+    font-size: 20px; /* 默认字体大小 */
+}
+
+/* 当屏幕宽度小于或等于800px时，字体大小调整为18px */
+@media (max-width: 800px) {
+    #question-div {
+        font-size: 18px;
+    }
+}
+
+/* 当屏幕宽度小于或等于600px时，字体大小调整为14px */
+@media (max-width: 600px) {
+    #question-div {
+        font-size: 16px;
+    }
+}

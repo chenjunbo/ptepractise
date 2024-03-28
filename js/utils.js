@@ -59,6 +59,55 @@ function createMenu() {
 
 }
 
+
+function createNav() {
+    var allPages = [
+        {
+            "menuName": "FIB-RW阅读下拉",
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibrw.html?access_token=c87299575627265144b7db286d3bf673"
+        },
+        {
+            "menuName": "FIB-R阅读拖拽",
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibr.html?access_token=c87299575627265144b7db286d3bf673"
+        },
+        {
+            "menuName": "RO阅读排序",
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/xjro.html?access_token=c87299575627265144b7db286d3bf673"
+        },
+        {
+            "menuName": "WFD",
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflywfd.html?access_token=c87299575627265144b7db286d3bf673"
+        },
+        {
+            "menuName": "SST",
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflysst.html?access_token=c87299575627265144b7db286d3bf673"
+        },
+        {
+            "menuName": "WE",
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflywe.html?access_token=c87299575627265144b7db286d3bf673"
+        },
+
+        {
+            "menuName": "生成PDF",
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/createpdf.html?access_token=c87299575627265144b7db286d3bf673"
+        },
+        {
+            "menuName": "乱序小工具",
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/tools.html?access_token=c87299575627265144b7db286d3bf673"
+        }
+
+    ]
+    var str = "";
+    allPages.forEach(function (obj) {
+        str += '<dd>';
+        //拼接每一个地址
+        str += '<a class="" href="javascript:;" onclick="openRight(\'' + obj.url + '\')">' + obj.menuName + '</a>';
+        str += '</dd>'
+    })
+    $("#left-menu").html(str);
+
+}
+
 function loadNotice() {
     $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673")
     var version="15";
