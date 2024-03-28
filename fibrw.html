@@ -1,13 +1,14 @@
 <form action="#" class="layui-form" id="search-form">
-    <div class="layui-form-item">
-        <div class="layui-inline">
-            <label>题号:</label>
-            <div class="layui-inline">
+
+    <div class="layui-row">
+        <div class="layui-col-xs3 layui-col-sm2 layui-col-md1">
+            <div class="grid-demo">
                 <input id="qNumInput" type="number" name="qNum" autocomplete="off" placeholder="请输入题号"
                        class="layui-input">
             </div>
-            类型:
-            <div class="layui-inline">
+        </div>
+        <div class="layui-col-xs6 layui-col-sm4 layui-col-md2">
+            <div class="grid-demo">
                 <select name="type" id="typeselection">
                     <option value="1">C哥阅读下拉蓝色题目</option>
                     <option value="2">C哥阅读下拉黄色题目</option>
@@ -20,7 +21,9 @@
                     <option value="9">错题集</option>
                 </select>
             </div>
-            <div class="layui-inline">
+        </div>
+        <div class="layui-hide-xs layui-col-sm4 layui-col-md3">
+            <div class="grid-demo">
                 <label class="layui-form-label" style="color: red">可选选项:</label>
                 <div class="layui-input-block">
                     <input type="checkbox" name="autonext" title="自动下一题">
@@ -28,45 +31,96 @@
                     <input type="checkbox" name="onlyundo" title="仅显示未做">
                 </div>
             </div>
-            <button class="layui-btn" lay-header-event="search">先点这里加载(搜索)题目</button>
-            <button class="layui-btn" lay-header-event="testlucky">试试手气(玩的就是心跳)</button>
-            <button class="layui-btn" lay-header-event="deleteallrightorfalt">清理本题型的所有对错记录</button>
-            <button class="layui-btn" lay-header-event="uncompleted" id="uncompleted">不完整题目</button>
+        </div>
+        <div class=" layui-col-sm2 layui-col-md6 layui-row grid-demo">
+            <div class="layui-col-md3">
+                <button class="layui-btn layui-btn-sm" lay-header-event="search">加载(搜索)题目</button>
+            </div>
+            <div class="layui-col-md3 layui-hide-xs">
+                <button class="layui-btn layui-btn-sm" lay-header-event="testlucky">试试手气</button>
+            </div>
+            <div class="layui-col-md3">
+                <button class="layui-btn layui-btn-sm" lay-header-event="deleteallrightorfalt">清空题型对错记录</button>
+            </div>
+            <div class="layui-col-md3 layui-hide-xs">
+                <button class="layui-btn layui-btn-sm" lay-header-event="uncompleted" id="uncompleted">不完整题目
+                </button>
+            </div>
         </div>
     </div>
 </form>
 
 
-<form class="layui-form" action="" id="question-form">
-    <div id="question-div" style="padding-left: 20px;padding-right: 20px;line-height: 30px;font-size: large"></div>
+<form class="layui-form" action="" id="question-form" style="margin-top: 30px">
+    <div class="layui-row">
+        <div id="question-div" class="layui-col-xs12 layui-col-sm12 layui-col-md12"
+             style="padding-left: 20px;padding-right: 20px;line-height: 30px;"></div>
 
-    <div class="layui-form-item" id="operationtools">
-        <div class="layui-input-block" style="padding-top: 30px">
-            <button type="submit" class="layui-btn" lay-submit lay-header-event="checkanswer" lay-filter="demo1"
-                    hidden="hidden">
-                检查答案
-            </button>
-            <button class="layui-btn" id="pre" lay-header-event="pre" hidden="hidden">上一题</button>
-            <button class="layui-btn" id="next" lay-header-event="next" hidden="hidden">下一题</button>
-            <button class="layui-btn" id="showanswer" lay-header-event="showanswer" hidden="hidden">显示/隐藏答案
-                <button class="layui-btn" id="adddeletefav" lay-header-event="adddeletefav" hidden="hidden">添加到收藏
-                </button>
-                <div class="layui-inline" id="gotoarea">
-                    <div class="layui-inline" style="width: 100px;">
+        <div class="layui-form-item" id="operationtools" class="layui-col-xs12 layui-col-sm12 layui-col-md12"
+             hidden="hidden" style="margin-top: 30px">
+
+
+            <div class="layui-input-block">
+                <div class="grid-demo layui-col-xs12 layui-col-sm3 layui-col-lg2">
+                    <button type="submit" class="layui-btn layui-btn-sm layui-col-xs4" lay-submit
+                            lay-header-event="checkanswer" lay-filter="demo1"
+                            layui-btn layui-btn-sm>
+                        检查答案
+                    </button>
+                    <button class="layui-btn layui-btn-sm" id="showanswer" lay-header-event="showanswer" layui-btn
+                            layui-btn-sm>显示/隐藏答案
+                    </button>
+
+
+                </div>
+                <div class="grid-demo layui-col-xs12 layui-col-sm3 layui-col-lg2">
+                    <button class="layui-btn layui-btn-sm layui-col-xs4" id="pre" lay-header-event="pre" layui-btn
+                            layui-btn-sm>上一题
+                    </button>
+                    <button class="layui-btn layui-btn-sm layui-col-xs4" id="next" lay-header-event="next" layui-btn
+                            layui-btn-sm>下一题
+                    </button>
+                </div>
+
+                <div class="grid-demo  layui-col-xs12 layui-col-sm3 layui-col-lg1">
+                    <button class="layui-btn layui-btn-sm" id="adddeletefav" lay-header-event="adddeletefav" layui-btn
+                            layui-btn-sm>添加到收藏
+                    </button>
+
+                </div>
+
+                <div class="grid-demo  layui-col-xs12 layui-col-sm3 layui-col-lg2">
+                    <div class="grid-demo  layui-col-xs6 layui-col-sm6">
                         <input type="number" id="qindex" name="price_min" placeholder="第几题" autocomplete="off"
                                class="layui-input" min="0" step="1" lay-affix="number">
                     </div>
-                    <div class="layui-inline" style="width: 100px;">
-                        <button class="layui-btn" id="gotoindex" lay-header-event="gotoindex">跳转</button>
+
+                    <div class="grid-demo  layui-col-xs6 layui-col-sm6">
+                        <button class="layui-btn layui-btn-sm" id="gotoindex" lay-header-event="gotoindex">跳转
+                        </button>
                     </div>
-                    <div class="layui-inline" id="rightandfalt"></div>
+                    <!--                    <div class="layui-inline" id="gotoarea">-->
+                    <!--                        <div class="layui-inline" style="width: 100px;">-->
+                    <!--                            <input type="number" id="qindex" name="price_min" placeholder="第几题" autocomplete="off"-->
+                    <!--                                   class="layui-input" min="0" step="1" lay-affix="number">-->
+                    <!--                        </div>-->
+                    <!--                        <div class="layui-inline" style="width: 100px;">-->
+                    <!--                            <button class="layui-btn layui-btn-sm" id="gotoindex" lay-header-event="gotoindex">跳转-->
+                    <!--                            </button>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                </div>
+                <div class="grid-demo  layui-col-xs12 layui-col-sm3 layui-col-lg4">
+                    <div class="layui-inline layui-hide-xs" id="rightandfalt"></div>
                     <div class="layui-inline">
-                        <button class="layui-btn" id="clearrightorfalt" lay-header-event="clearrightorfalt">清理对错记录
+                        <button class="layui-btn layui-btn-sm" id="clearrightorfalt"
+                                lay-header-event="clearrightorfalt">清理对错记录
                         </button>
                     </div>
                 </div>
-        </div>
 
+            </div>
+        </div>
     </div>
 </form>
 <div class="layui-form-item" id="chineseandanswer">
@@ -74,6 +128,7 @@
 <pre class="layui-code answer-area" lay-options="{}" id="answer-area" style="font-size: 18px;font-family: Arial">
 </pre>
 </div>
+
 
 <script type="text/javascript">
     var localStorageType = "fibrw";

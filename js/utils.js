@@ -64,36 +64,36 @@ function createNav() {
     var allPages = [
         {
             "menuName": "FIB-RW阅读下拉",
-            "url": "./fibrw.html"
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibrw.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
         },
         {
             "menuName": "FIB-R阅读拖拽",
-            "url": "./fibr.html"
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibr.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
         },
         {
             "menuName": "RO阅读排序",
-            "url": "./xjro.html"
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/xjro.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
         },
         {
             "menuName": "WFD",
-            "url": "./fireflywfd.html"
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflywfd.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
         },
         {
             "menuName": "SST",
-            "url": "./fireflysst.html"
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflysst.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
         },
         {
             "menuName": "WE",
-            "url": "./fireflywe.html"
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflywe.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
         },
 
         {
             "menuName": "生成PDF",
-            "url": "./createpdf.html"
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/createpdf.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
         },
         {
             "menuName": "乱序小工具",
-            "url": "./tools.html"
+            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/tools.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
         }
 
     ]
@@ -143,6 +143,23 @@ function getAlljs() {
         "https://gitee.com/jackiechan/ptepractise/raw/main/js/we.js?time="+time,
         "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflyrs.js?time="+time,
         "https://gitee.com/jackiechan/ptepractise/raw/main/js/utils2.js?time="+time
+    ]
+    return js;
+}
+function getAlljsweb() {
+    var time = new Date().getTime();
+    var js = [
+        "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fibrwprocess.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fibrprocess.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fireflywfd.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fireflysst.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/xjrs.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/ptefibl.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/pteasq.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/xjro.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/we.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fireflyrs.js?time="+time,
+        "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/utils2.js?time="+time
     ]
     return js;
 }
