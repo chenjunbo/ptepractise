@@ -26,7 +26,8 @@ function createMenu() {
         "  <div class=\"layui-fluid\" id=\"main\">\n" +
         "  </div>\n" +
         "</div>";
-    $("body").html(bodycontent);
+    $("div").remove();
+    $("body").prepend(bodycontent);
     var allPages = [
         {
             "menuName": "FIB-RW阅读下拉",
