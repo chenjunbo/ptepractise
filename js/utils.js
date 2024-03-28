@@ -15,7 +15,7 @@ function createMenu() {
     $(".layui-header").remove();
 
     var ul =$("<ul class=\"layui-nav \"> </ul>");
-    var dl="<dl class=\"layui-nav-child layui-anim layui-anim-upbit\" id=\"left-menu\"></dl>"
+    var dl = $("<dl class=\"layui-nav-child layui-anim layui-anim-upbit\" id=\"left-menu\"></dl>");
     var li=$(" <li class=\"layui-nav-item\"></li>")
     var a=$("<a href=\"javascript:;\">点击这里选择功能<i class=\"layui-icon layui-icon-down layui-nav-more\"></i></a>")
 
