@@ -64,36 +64,36 @@ function createNav() {
     var allPages = [
         {
             "menuName": "FIB-RW阅读下拉",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibrw.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": "./fibrw.html"
         },
         {
             "menuName": "FIB-R阅读拖拽",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibr.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": "./fibr.html"
         },
         {
             "menuName": "RO阅读排序",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/xjro.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": "./xjro.html"
         },
         {
             "menuName": "WFD",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflywfd.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": "./fireflywfd.html"
         },
         {
             "menuName": "SST",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflysst.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": "./fireflysst.html"
         },
         {
             "menuName": "WE",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflywe.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": "./fireflywe.html"
         },
 
         {
             "menuName": "生成PDF",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/createpdf.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": "./createpdf.html"
         },
         {
             "menuName": "乱序小工具",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/tools.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": "./tools.html"
         }
 
     ]
