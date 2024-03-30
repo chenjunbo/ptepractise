@@ -60,7 +60,7 @@
         var layer = layui.layer;
         var util = layui.util;
         $ = layui.$;
-        var alljs = getAlljsweb();
+        var alljs = getAlljs("1");
         alljs.forEach(function (url) {
             loadScript(url);
         });
