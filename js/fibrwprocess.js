@@ -167,7 +167,14 @@ function fibRwCurrentTypedata(param) {
     if (filePath) {
         $.ajaxSettings.async = false;
         $.get(filePath, function (response) {
-            let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            // let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            var qNums;
+            try {
+                qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            }catch (e) {
+                qNums = response;
+            }
+
             qNums.forEach((item, index) => { // 删除空项
                 if (qNum && qNum != item) {
 
@@ -429,7 +436,15 @@ function fibrwUncompleted() {
         fibrwunCompletedList = new Array();
         $.ajaxSettings.async = false;
         $.get(getGitContentPre()+"/questions/fibrw/cge_fib_rw_all.txt"+getGitContentAccess(), function (response) {
-            let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            // let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            var qNums;
+            try {
+                qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            }catch (e) {
+                qNums = response;
+            }
+
+
             qNums.forEach((item, index) => { // 删除空项
 
                 if (!item) {

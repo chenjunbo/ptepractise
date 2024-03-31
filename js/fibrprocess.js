@@ -116,8 +116,14 @@ function fibRCurrentTypedata(param) {
     //当前数据
     if (filePath) {
         $.ajaxSettings.async = false;
+        let qNums;
         $.get(filePath, function (response) {
-            let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            try {
+                qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            }catch (e) {
+                qNums = response;
+            }
+
             qNums.forEach((item, fibrIndex) => { // 删除空项
                 if (qNum && qNum != item) {
 
@@ -504,7 +510,14 @@ function fibrUncompleted() {
         fibrunCompletedList = new Array();
         $.ajaxSettings.async = false;
         $.get(getGitContentPre()+"/questions/fibr/cge_fib_r_all.txt"+getGitContentAccess(), function (response) {
-            let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            var qNums;
+            try {
+                qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            }catch (e) {
+                qNums = response;
+            }
+
+            // let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
             qNums.forEach((item, index) => { // 删除空项
 
                 if (!item) {
