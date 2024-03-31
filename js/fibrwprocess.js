@@ -172,7 +172,7 @@ function fibRwCurrentTypedata(param) {
             try {
                 qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
             }catch (e) {
-                qNums = response;
+                 qNums = response.split(/[(\r\n)\r\n]+/);;
             }
 
             qNums.forEach((item, index) => { // 删除空项
@@ -441,7 +441,7 @@ function fibrwUncompleted() {
             try {
                 qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
             }catch (e) {
-                qNums = response;
+                 qNums = response.split(/[(\r\n)\r\n]+/);;
             }
 
 
