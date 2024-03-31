@@ -11,7 +11,13 @@ function fibrInit() {
     $.get(getGitContentPre()+"/data/fibr/fibrallquestions.txt"+getGitContentAccess(), function (response) {
         //fibrCnList = JSON.parse(response);
         // fibrCnList = response;
-        var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        var result
+        try {
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        } catch (e){
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+        }
+
         fibrCnList = JSON.parse(result);
         for (let i = 0; i < fibrCnList.length; i++) {
             var fibrData = fibrCnList[i];
@@ -22,7 +28,13 @@ function fibrInit() {
     $.get(getGitContentPre()+"/data/fibr/fibrallquestionsen.txt"+getGitContentAccess(), function (response) {
         // fibrEnList = JSON.parse(response);
         // fibrEnList = response;
-        var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        var result
+        try {
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        } catch (e){
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+        }
+
         fibrEnList = JSON.parse(result);
         for (let i = 0; i < fibrEnList.length; i++) {
             var fibrData = fibrEnList[i];

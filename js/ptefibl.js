@@ -1,16 +1,34 @@
 var xjfiblweekList, xjfiblMonthList, fireflygfiblList;
 function ptefiblInit() {
     $.get(getGitContentPre()+"/data/fibl/fireflyfibl.txt"+getGitContentAccess(), function (response) {
-        var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        var result
+        try {
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        } catch (e){
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+        }
+
         fireflygfiblList= JSON.parse(result);
     })
     $.get(getGitContentPre()+"/data/fibl/xjfiblweekdata.txt"+getGitContentAccess(), function (response) {
-        var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        var result
+        try {
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        } catch (e){
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+        }
+
         xjfiblweekList= JSON.parse(result);
     })
 
     $.get(getGitContentPre()+"/data/fibl/xjfiblmonthdata.txt"+getGitContentAccess(), function (response) {
-        var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        var result
+        try {
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        } catch (e){
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+        }
+
         xjfiblMonthList= JSON.parse(result);
     })
 

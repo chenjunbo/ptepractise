@@ -4,7 +4,12 @@ const sstMap = new Map();
 var sstIndex = 0;//当前第几条
 function fireFlySSTInit() {
     $.get(getGitContentPre()+"/data/sst/fireflysst.txt"+getGitContentAccess(), function (response) {
-        var result=decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        var result
+        try {
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        } catch (e){
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+        }
         sstAllDataList= JSON.parse(result);
         for (let i = 0; i < sstAllDataList.length; i++) {
             var sstData = sstAllDataList[i];

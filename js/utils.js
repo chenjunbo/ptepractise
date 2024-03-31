@@ -127,12 +127,32 @@ function createNav() {
     allPages.forEach(function (obj) {
         str += '<dd>';
         //拼接每一个地址
-        str += '<a class="" href="javascript:;" onclick="openRight(\'' + obj.url + '\')">' + obj.menuName + '</a>';
+        str += '<a class="" href="javascript:;" onclick="openRightNew(\'' + obj.url + '\')">' + obj.menuName + '</a>';
         str += '</dd>'
     })
     $("#left-menu").html(str);
 
 }
+
+function openRightNew(url) {
+    $.ajax({
+        type:"get",
+        async: false,
+        url: url,
+        success:function (data){
+            var content;
+            try {
+                content = decodeURIComponent(escape(window.atob(data.content)));
+            }catch (e){
+                content = data;
+            }
+            // var content = decodeURIComponent(escape(window.atob(data.content)));
+            $("#main").html(content);
+        }
+    });
+    // $("#main").load(url)
+}
+
 
 function loadNotice() {
     $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673")

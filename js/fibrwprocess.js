@@ -14,7 +14,14 @@ function fibrwInit() {
         crossDomain: true, // 设置为true，则不发送Origin头部
         success: function (response) {
             // 处理响应数据
-            var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+            var result
+            try {
+                result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+            } catch (e){
+                result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+            }
+
+            // var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
             cnList = JSON.parse(result);
             for (let i = 0; i < cnList.length; i++) {
                 var fibrwData = cnList[i];
@@ -33,7 +40,12 @@ function fibrwInit() {
         crossDomain: true, // 设置为true，则不发送Origin头部
         success: function (response) {
             // 处理响应数据
-            var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+            var result
+            try {
+                result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+            } catch (e){
+                result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+            }
             enList = JSON.parse(result);
             for (let i = 0; i < enList.length; i++) {
                 var fibrwData = enList[i];
@@ -52,7 +64,13 @@ function fibrwInit() {
         type: "GET",
         crossDomain: true, // 设置为true，则不发送Origin头部
         success: function (response) {
-            var chineseContent = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content))))))))); // 根据换行或者回车进行识别
+            var chineseContent
+            try {
+                chineseContent = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+            } catch (e){
+                chineseContent = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+            }
+
             var json = JSON.parse(chineseContent);
                for (var key in json)
                    chineseContentMap.set(key, json[key])

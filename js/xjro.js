@@ -12,7 +12,13 @@ function xjroInit() {
         crossDomain: true, // 设置为true，则不发送Origin头部
         success: function (response) {
             // 处理响应数据
-            var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+            var result
+            try {
+                result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+            } catch (e){
+                result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+            }
+
             cnxjroList = JSON.parse(result);
             for (let i = 0; i < cnxjroList.length; i++) {
                 var xjrodata = cnxjroList[i];
@@ -31,7 +37,13 @@ function xjroInit() {
         crossDomain: true, // 设置为true，则不发送Origin头部
         success: function (response) {
             // 处理响应数据
-            var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+            var result
+            try {
+                result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+            } catch (e){
+                result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+            }
+
             enxjroList = JSON.parse(result);
             for (let i = 0; i < enxjroList.length; i++) {
                 var xjrodata = enxjroList[i];

@@ -4,7 +4,13 @@ const weMap = new Map();
 var weIndex = 0;//当前第几条
 function fireFlyWeInit() {
     $.get(getGitContentPre()+"/data/we/fireflywe.txt"+getGitContentAccess(), function (response) {
-        var result=decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        var result
+        try {
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        } catch (e){
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+        }
+
         weAllDataList= JSON.parse(result);
         for (let i = 0; i < weAllDataList.length; i++) {
             var weData = weAllDataList[i];

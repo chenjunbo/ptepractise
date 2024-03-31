@@ -7,8 +7,12 @@ var plaintxt;
 
 function fireFlyWFDInit(form) {
     $.get(getGitContentPre()+"/data/wfd/fireflywfd.txt"+getGitContentAccess(), function (response) {
-        var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
-        allQnums = new Array();
+        var result
+        try {
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        } catch (e){
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+        }allQnums = new Array();
         fireFlyWFDList = JSON.parse(result);
         for (let i = 0; i < fireFlyWFDList.length; i++) {
             var fireFlyWFDData = fireFlyWFDList[i];
@@ -18,7 +22,13 @@ function fireFlyWFDInit(form) {
     })
     if (form) {
         $.get(getGitContentPre()+"/data/wfd/wfdcategoryid.txt"+getGitContentAccess(), function (response) {
-            var result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+            var result
+            try {
+                result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+            } catch (e){
+                result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+            }
+
             categoryIdDataList = JSON.parse(result);
             for (key in categoryIdDataList) {
                 //分类名称,根据名称添加分类
@@ -29,7 +39,12 @@ function fireFlyWFDInit(form) {
         });
     }
     $.get(getGitContentPre()+"/data/wfd/yhcwfdplaintxt.txt"+getGitContentAccess(), function (response) {
-        plaintxt = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        try {
+            plaintxt = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        } catch (e){
+            plaintxt = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+        }
+        // plaintxt = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
     })
 }
 
