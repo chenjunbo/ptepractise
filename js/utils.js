@@ -58,6 +58,10 @@ function createMenu() {
         {
             "menuName": "乱序小工具",
             "url": getGitContentPre()+"/tools.html?access_token=c87299575627265144b7db286d3bf673"
+        },
+        {
+            "menuName": "导出导入记录",
+            "url": getGitContentPre()+"/processlocalstorage.html"+getGitContentAccess()
         }
 
     ]
