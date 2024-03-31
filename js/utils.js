@@ -250,7 +250,7 @@ function getRawPre() {
     if ("china" == currentlocaltion) {
         return "https://gitee.com/jackiechan/ptepractise/raw/webversion";
     }else if ("oversea" == currentlocaltion) {
-        return "https://raw.githubusercontent.com/chenjunbo/ptepractise/webversion";
+        return "https://chenjunbo.github.io/ptepractise";
     }
 }
 
