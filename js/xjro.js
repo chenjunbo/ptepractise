@@ -7,7 +7,7 @@ var xjroindex = 0;//当前第几条
 var localStorageType = "xjroublue";
 function xjroInit() {
     $.ajax({
-        url: "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/ro/roallquestions.txt?access_token=c87299575627265144b7db286d3bf673",
+        url: "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/ro/roallquestions.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion",
         type: "GET",
         crossDomain: true, // 设置为true，则不发送Origin头部
         success: function (response) {
@@ -26,7 +26,7 @@ function xjroInit() {
     });
 
     $.ajax({
-        url: "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/ro/roallquestionsen.txt?access_token=c87299575627265144b7db286d3bf673",
+        url: "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/ro/roallquestionsen.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion",
         type: "GET",
         crossDomain: true, // 设置为true，则不发送Origin头部
         success: function (response) {
@@ -60,28 +60,28 @@ function xjroCurrentTypedata(param) {
     switch (type) {
         case "1":
             //C哥蓝色数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/cge_xj_ro_lan.txt?access_token=c87299575627265144b7db286d3bf673"
+            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/cge_xj_ro_lan.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
             break;
         case "2":
             //C哥黄色数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/cge_xj_ro_huang.txt?access_token=c87299575627265144b7db286d3bf673"
+            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/cge_xj_ro_huang.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
             break;
         case "3":
             //C哥白色数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/cge_xj_ro_bai.txt?access_token=c87299575627265144b7db286d3bf673"
+            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/cge_xj_ro_bai.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
             break;
         case "4":
             //C哥所有数据
             xjRounCompletedList = new Array();
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/cge_xj_ro_all.txt?access_token=c87299575627265144b7db286d3bf673"
+            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/cge_xj_ro_all.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
             break;
         case "5":
             //自定义数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/xj_ro_week.txt?access_token=c87299575627265144b7db286d3bf673"
+            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/xj_ro_week.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
             break;
         case "6":
             //自定义数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/xj_ro_month.txt?access_token=c87299575627265144b7db286d3bf673"
+            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/xj_ro_month.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
             break;
         case "7":
             var content = getFromLocalStorage("xjroublue");
@@ -91,7 +91,7 @@ function xjroCurrentTypedata(param) {
             }
             break;
         case "8":
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/xjxj_ro_withoutc.txt?access_token=c87299575627265144b7db286d3bf673"
+            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/xjxj_ro_withoutc.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
             break
         case "9":
             var faltIds = getAllQuestionNumFromLocalStorageByFalt("xjroublue");
@@ -759,7 +759,7 @@ function xjROUncompleted() {
     } else {
         xjRounCompletedList = new Array();
         $.ajaxSettings.async = false;
-        $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/cge_xj_ro_all.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
+        $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/ro/cge_xj_ro_all.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion", function (response) {
             let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
             qNums.forEach((item, index) => { // 删除空项
 

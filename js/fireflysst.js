@@ -3,7 +3,7 @@ let sstAllDataList;
 const sstMap = new Map();
 var sstIndex = 0;//当前第几条
 function fireFlySSTInit() {
-    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/sst/fireflysst.txt?access_token=c87299575627265144b7db286d3bf673", function (response) {
+    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/sst/fireflysst.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion", function (response) {
         var result=decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
         sstAllDataList= JSON.parse(result);
         for (let i = 0; i < sstAllDataList.length; i++) {
@@ -23,7 +23,7 @@ function fireflySSTCurrentTypedata(param) {
     switch (type) {
         case "1":
             //高频预测
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/sst/fireflysstprediction.txt?access_token=c87299575627265144b7db286d3bf673"
+            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/sst/fireflysstprediction.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
             break;
         case "2":
 
