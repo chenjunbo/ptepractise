@@ -28,36 +28,36 @@ function createMenu() {
     var allPages = [
         {
             "menuName": "FIB-RW阅读下拉",
-            "url": getGitContentPre()+"/fibrw.html"+getGitContentAccess()
+            "url": getGitContentPre()+"/fibrw.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "FIB-R阅读拖拽",
-            "url": getGitContentPre()+"/fibr.html"+getGitContentAccess()
+            "url": getGitContentPre()+"/fibr.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "RO阅读排序",
-            "url": getGitContentPre()+"/xjro.html"+getGitContentAccess()
+            "url": getGitContentPre()+"/xjro.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "WFD",
-            "url": getGitContentPre()+"/fireflywfd.html"+getGitContentAccess()
+            "url": getGitContentPre()+"/fireflywfd.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "SST",
-            "url": getGitContentPre()+"/fireflysst.html"+getGitContentAccess()
+            "url": getGitContentPre()+"/fireflysst.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "WE",
-            "url": getGitContentPre()+"/fireflywe.html"+getGitContentAccess()
+            "url": getGitContentPre()+"/fireflywe.html?access_token=c87299575627265144b7db286d3bf673"
         },
 
         {
             "menuName": "生成PDF",
-            "url": getGitContentPre()+"/createpdf.html"+getGitContentAccess()
+            "url": getGitContentPre()+"/createpdf.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "乱序小工具",
-            "url": getGitContentPre()+"/tools.html"+getGitContentAccess()
+            "url": getGitContentPre()+"/tools.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "导出导入记录",
@@ -182,7 +182,15 @@ function openRightNew(url) {
 
 
 function loadNotice() {
-    $("#main").load(getGitContentPre()+"/notice.html"+getGitContentAccess())
+    var currentlocaltion = window.localStorage.getItem("currentlocaltion");
+    if ("china" == currentlocaltion) {
+        $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
+    }else if ("oversea" == currentlocaltion) {
+        $("#main").load(getRawPre()+"/notice.html")
+    }else{
+        $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
+    }
+    // $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
     var version="18";
     var currentversion = window.localStorage.getItem("currentversion");
     if (version == currentversion) {
