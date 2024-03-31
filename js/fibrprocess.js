@@ -782,6 +782,27 @@ function fillfibrAnswer(fibrdata) {
     var answerInText = fibrdata.answer_in_text;
     var explanation_in_locale = fibrdata.explanation_in_locale;
     var answercontent = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + explanation_in_locale;
+
+    var params = $("#fibrsearch-form").serializeJson();
+    var needTrans = params.trans;
+    if (needTrans) {
+        var contents = fibrdata.contents;
+        if (contents && contents.length > 0) {
+            answercontent = answercontent + "<br/>" + "<br/>"+ "<br/>"+ "翻译:" + "<br/>"
+            contents.forEach((eachContent) => {
+                var type = eachContent.type;
+                if (type == "option" || type == "caption") {
+                } else {
+                    var content = eachContent.content;
+                    answercontent = answercontent + "<br/>" + content + "<br/>";
+                }
+            });
+        }else{
+            answercontent = answercontent + "<br/>本题暂无翻译<br/>";
+        }
+    }
+
+
     $("#fibranswer-area").html(answercontent);
     setRightAndFaltNum(fibrdata.num, localStorageType);
 }
