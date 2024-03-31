@@ -1,0 +1,20 @@
+<div class="layui-form-item">
+    <label>导出记录包括收藏夹和对错记录</label>
+    <div class="layui-inline">
+        <button class="layui-btn" lay-header-event="shuff" onclick="readLocal()">打乱顺序</button>
+    </div>
+</div>
+<div class="layui-inline" style="width: 70%;height: 60%; margin-top: 30px;padding-left: 30px">
+    <label style="color: red;font-size: 20px">结果区,鼠标点击内部后通过快捷键全选复制,windows快捷键 ctrl+A, Mac系统command+A,然后访问新的域名页面导入即可</label>
+    <textarea class="layui-input" style="width: 100%; height: 100%" id="result"></textarea>
+</div>
+<script type="text/javascript">
+
+    function readLocal() {
+        var localStorage = exportAllLocalStorage();
+        $("#result").html(JSON.stringify(localStorage));
+    }
+
+
+
+</script>

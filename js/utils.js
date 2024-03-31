@@ -121,7 +121,11 @@ function createNav() {
             "menuName": "乱序小工具",
             "url": getGitContentPre()+"/tools.html"+getGitContentAccess()
         }
-
+        ,
+        {
+            "menuName": "导出导入记录",
+            "url": getGitContentPre()+"/processlocalstorage.html"+getGitContentAccess()
+        }
     ]
     var str = "";
     allPages.forEach(function (obj) {
@@ -477,4 +481,19 @@ function getAllQuestionNumFromLocalStorageByFalt(localStroageType) {
         resultList.push(item[0]);
     })
     return resultList;
+}
+
+function exportAllLocalStorage() {
+    const storage = {};
+    for (let i = 0; i < window.localStorage.length; i++) {
+        const key = window.localStorage.key(i);
+        storage[key] = window.localStorage.getItem(key);
+    }
+    return storage;
+}
+
+function import2LocalStorage(storage) {
+    for (key in storage) {
+        window.localStorage.setItem(key, storage[key]);
+    }
 }
