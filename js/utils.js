@@ -279,7 +279,7 @@ function getGitContentPre() {
     if ("china" == currentlocaltion) {
         return "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents";
     }else if ("oversea" == currentlocaltion) {
-        return "https://chenjunbo.github.io/ptepractise";
+        return "https://raw.githubusercontent.com/chenjunbo/ptepractise/webversion";
     }
 }
 function getGitContentAccess() {
