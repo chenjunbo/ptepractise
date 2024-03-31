@@ -17,13 +17,13 @@
     }
 }
 #question-div,#fibrquestion-div {
-    font-size: 22px; /* 默认字体大小 */
+    font-size: 20px; /* 默认字体大小 */
 }
 
 /* 当屏幕宽度小于或等于800px时，字体大小调整为18px */
 @media (max-width: 800px) {
     #question-div,#fibrquestion-div {
-        font-size: 20px;
+        font-size: 18px;
     }
 }
 
