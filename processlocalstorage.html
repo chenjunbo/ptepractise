@@ -22,7 +22,7 @@
     function importLocal() {
         var html = $("#result").html();
         console.log(html);
-        if (!html) {
+        if (html) {
             import2LocalStorage(JSON.parse(html));
         }
     }
