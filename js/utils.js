@@ -28,36 +28,36 @@ function createMenu() {
     var allPages = [
         {
             "menuName": "FIB-RW阅读下拉",
-            "url": getGitContentPre()+"/fibrw.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre()+"/fibrw.html"+getGitContentAccess()
         },
         {
             "menuName": "FIB-R阅读拖拽",
-            "url": getGitContentPre()+"/fibr.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre()+"/fibr.html"+getGitContentAccess()
         },
         {
             "menuName": "RO阅读排序",
-            "url": getGitContentPre()+"/xjro.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre()+"/xjro.html"+getGitContentAccess()
         },
         {
             "menuName": "WFD",
-            "url": getGitContentPre()+"/fireflywfd.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre()+"/fireflywfd.html"+getGitContentAccess()
         },
         {
             "menuName": "SST",
-            "url": getGitContentPre()+"/fireflysst.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre()+"/fireflysst.html"+getGitContentAccess()
         },
         {
             "menuName": "WE",
-            "url": getGitContentPre()+"/fireflywe.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre()+"/fireflywe.html"+getGitContentAccess()
         },
 
         {
             "menuName": "生成PDF",
-            "url": getGitContentPre()+"/createpdf.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre()+"/createpdf.html"+getGitContentAccess()
         },
         {
             "menuName": "乱序小工具",
-            "url": getGitContentPre()+"/tools.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre()+"/tools.html"+getGitContentAccess()
         },
         {
             "menuName": "导出导入记录",
@@ -182,7 +182,7 @@ function openRightNew(url) {
 
 
 function loadNotice() {
-    $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673")
+    $("#main").load(getGitContentPre()+"/notice.html"+getGitContentAccess())
     var version="18";
     var currentversion = window.localStorage.getItem("currentversion");
     if (version == currentversion) {
