@@ -1,11 +1,15 @@
 <div class="layui-form-item">
     <label>导出记录包括收藏夹和对错记录</label>
     <div class="layui-inline">
-        <button class="layui-btn" lay-header-event="shuff" onclick="readLocal()">打乱顺序</button>
+        <button class="layui-btn" lay-header-event="shuff" onclick="readLocal()">导出数据</button>
+        <button class="layui-btn" lay-header-event="shuff" onclick="importLocal()">导入</button>
     </div>
 </div>
 <div class="layui-inline" style="width: 70%;height: 60%; margin-top: 30px;padding-left: 30px">
-    <label style="color: red;font-size: 20px">结果区,鼠标点击内部后通过快捷键全选复制,windows快捷键 ctrl+A, Mac系统command+A,然后访问新的域名页面导入即可</label>
+    <label style="color: red;font-size: 20px">导出的时候从本区域全选复制内容,导入的时候将内容复制进来即可.<br/>
+        注意,本功能主要是给原本使用html文件或者最早的网址http://ftp6599843.host127.sanfengyun.cn/,
+        <br/>现在要使用https://jackiechan.gitee.io/ptepractise/ 但是担心数据丢失的小伙伴,
+        <br/>从html或者最早网址导出,复制内容,然后访问https://jackiechan.gitee.io/ptepractise/粘贴内容导入即可</label>
     <textarea class="layui-input" style="width: 100%; height: 100%" id="result"></textarea>
 </div>
 <script type="text/javascript">
@@ -15,6 +19,12 @@
         $("#result").html(JSON.stringify(localStorage));
     }
 
+    function importLocal() {
+        var html = $("#result").html();
+        if (!html) {
+            import2LocalStorage(JSON.parse(html));
+        }
+    }
 
 
 </script>
