@@ -24,6 +24,8 @@
         console.log(html);
         if (html) {
             import2LocalStorage(JSON.parse(html));
+            layer.msg('导入完成,开始你的九炸之旅吧', {icon: 0}, function () {
+            });
         }
     }
 
