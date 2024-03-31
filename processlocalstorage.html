@@ -16,11 +16,11 @@
 
     function readLocal() {
         var localStorage = exportAllLocalStorage();
-        $("#result").html(JSON.stringify(localStorage));
+        $("#result").val(JSON.stringify(localStorage));
     }
 
     function importLocal() {
-        var html = $("#result").html();
+        var html = $("#result").val();
         console.log(html);
         if (html) {
             import2LocalStorage(JSON.parse(html));
