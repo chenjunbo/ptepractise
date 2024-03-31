@@ -28,36 +28,36 @@ function createMenu() {
     var allPages = [
         {
             "menuName": "FIB-RW阅读下拉",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibrw.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre()+"/fibrw.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "FIB-R阅读拖拽",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibr.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre()+"/fibr.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "RO阅读排序",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/xjro.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre()+"/xjro.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "WFD",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflywfd.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre()+"/fireflywfd.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "SST",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflysst.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre()+"/fireflysst.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "WE",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflywe.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre()+"/fireflywe.html?access_token=c87299575627265144b7db286d3bf673"
         },
 
         {
             "menuName": "生成PDF",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/createpdf.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre()+"/createpdf.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "乱序小工具",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/tools.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre()+"/tools.html?access_token=c87299575627265144b7db286d3bf673"
         }
 
     ]
@@ -90,36 +90,36 @@ function createNav() {
     var allPages = [
         {
             "menuName": "FIB-RW阅读下拉",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibrw.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
+            "url": getGitContentPre()+"/fibrw.html"+getGitContentAccess()
         },
         {
             "menuName": "FIB-R阅读拖拽",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fibr.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
+            "url": getGitContentPre()+"/fibr.html"+getGitContentAccess()
         },
         {
             "menuName": "RO阅读排序",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/xjro.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
+            "url": getGitContentPre()+"/xjro.html"+getGitContentAccess()
         },
         {
             "menuName": "WFD",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflywfd.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
+            "url": getGitContentPre()+"/fireflywfd.html"+getGitContentAccess()
         },
         {
             "menuName": "SST",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflysst.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
+            "url": getGitContentPre()+"/fireflysst.html"+getGitContentAccess()
         },
         {
             "menuName": "WE",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/fireflywe.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
+            "url": getGitContentPre()+"/fireflywe.html"+getGitContentAccess()
         },
 
         {
             "menuName": "生成PDF",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/createpdf.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
+            "url": getGitContentPre()+"/createpdf.html"+getGitContentAccess()
         },
         {
             "menuName": "乱序小工具",
-            "url": "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/tools.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
+            "url": getGitContentPre()+"/tools.html"+getGitContentAccess()
         }
 
     ]
@@ -173,24 +173,104 @@ function getAlljs(version) {
         ]
         return js;
     }else if (version == "1") {
-        var time = new Date().getTime();
-        var js = [
-            "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fibrwprocess.js?time="+time,
-            "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fibrprocess.js?time="+time,
-            "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fireflywfd.js?time="+time,
-            "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fireflysst.js?time="+time,
-            "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/xjrs.js?time="+time,
-            "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/ptefibl.js?time="+time,
-            "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/pteasq.js?time="+time,
-            "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/xjro.js?time="+time,
-            "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/we.js?time="+time,
-            "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fireflyrs.js?time="+time,
-            "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/utils2.js?time="+time
-        ]
-        return js;
+        var currentlocaltion = window.localStorage.getItem("currentlocaltion");
+        if (!currentlocaltion) {
+            //还没有设置
+            layer.alert('请选择您所在区域', {
+                btn: ['国内', '国外且可访问github'],
+                btnAlign: 'c', // 按钮居中显示
+                btn1: function(){
+                    window.localStorage.setItem("currentlocaltion", "china");
+                    location.reload();//刷新页面
+                },
+                btn2: function(){
+                    window.localStorage.setItem("currentlocaltion", "oversea");
+                    location.reload();//刷新页面
+                }
+            });
+        }else{
+                var time = new Date().getTime();
+                var js = [
+                    getRawPre()+"/js/fibrwprocess.js?time="+time,
+                    getRawPre()+"/js/fibrprocess.js?time="+time,
+                    getRawPre()+"/js/fireflywfd.js?time="+time,
+                    getRawPre()+"/js/fireflysst.js?time="+time,
+                    getRawPre()+"/js/xjrs.js?time="+time,
+                    getRawPre()+"/js/ptefibl.js?time="+time,
+                    getRawPre()+"/js/pteasq.js?time="+time,
+                    getRawPre()+"/js/xjro.js?time="+time,
+                    getRawPre()+"/js/we.js?time="+time,
+                    getRawPre()+"/js/fireflyrs.js?time="+time,
+                    getRawPre()+"/js/utils2.js?time="+time
+                ]
+                return js;
+        }
+
+
+        // else if ("china" == currentlocaltion) {
+        //     var time = new Date().getTime();
+        //     var js = [
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fibrwprocess.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fibrprocess.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fireflywfd.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fireflysst.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/xjrs.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/ptefibl.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/pteasq.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/xjro.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/we.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fireflyrs.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/utils2.js?time="+time
+        //     ]
+        //     return js;
+        // }else if ("oversea" == currentlocaltion) {
+        //     var time = new Date().getTime();
+        //     var js = [
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fibrwprocess.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fibrprocess.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fireflywfd.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fireflysst.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/xjrs.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/ptefibl.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/pteasq.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/xjro.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/we.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fireflyrs.js?time="+time,
+        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/utils2.js?time="+time
+        //     ]
+        //     return js;
+        // }
+
     }
 
 }
+
+function getRawPre() {
+    var currentlocaltion = window.localStorage.getItem("currentlocaltion");
+    if ("china" == currentlocaltion) {
+        return "https://gitee.com/jackiechan/ptepractise/raw/webversion";
+    }else if ("oversea" == currentlocaltion) {
+        return "https://raw.githubusercontent.com/chenjunbo/ptepractise/webversion";
+    }
+}
+
+function getGitContentPre() {
+    var currentlocaltion = window.localStorage.getItem("currentlocaltion");
+    if ("china" == currentlocaltion) {
+        return "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents";
+    }else if ("oversea" == currentlocaltion) {
+        return "https://api.github.com/repos/chenjunbo/ptepractise/contents";
+    }
+}
+function getGitContentAccess() {
+    var currentlocaltion = window.localStorage.getItem("currentlocaltion");
+    if ("china" == currentlocaltion) {
+        return "?access_token=c87299575627265144b7db286d3bf673&ref=webversion";
+    }else if ("oversea" == currentlocaltion) {
+        return "";
+    }
+}
+
 /**
  *
  * @param key

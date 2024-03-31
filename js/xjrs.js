@@ -1,15 +1,15 @@
 var xjrsweekconten,xjrsmonthconten,xjrsallconten,xjrsallcontendesc;
 function xjrsInit() {
-    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/rs/xjrsweek.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion", function (response) {
+    $.get(getGitContentPre()+"/data/rs/xjrsweek.txt"+getGitContentAccess(), function (response) {
         xjrsweekconten=decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
     })
-    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/rs/xjrsmonth.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion", function (response) {
+    $.get(getGitContentPre()+"/data/rs/xjrsmonth.txt"+getGitContentAccess(), function (response) {
         xjrsmonthconten=decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
     })
-    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/rs/xjrsall.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion", function (response) {
+    $.get(getGitContentPre()+"/data/rs/xjrsall.txt"+getGitContentAccess(), function (response) {
         xjrsallconten=decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
     })
-    $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/rs/xjrsalldesc.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion", function (response) {
+    $.get(getGitContentPre()+"/data/rs/xjrsalldesc.txt"+getGitContentAccess(), function (response) {
         xjrsallcontendesc=decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
     })
 }

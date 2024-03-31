@@ -9,7 +9,7 @@ var localStorageType = "fibrw";
 
 function fibrwInit() {
     $.ajax({
-        url: "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fibrw/fibrwallquestions.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion",
+        url: getGitContentPre()+"/data/fibrw/fibrwallquestions.txt"+getGitContentAccess(),
         type: "GET",
         crossDomain: true, // 设置为true，则不发送Origin头部
         success: function (response) {
@@ -28,7 +28,7 @@ function fibrwInit() {
     });
 
     $.ajax({
-        url: "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fibrw/fibrwallquestionsen.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion",
+        url: getGitContentPre()+"/data/fibrw/fibrwallquestionsen.txt"+getGitContentAccess(),
         type: "GET",
         crossDomain: true, // 设置为true，则不发送Origin头部
         success: function (response) {
@@ -48,7 +48,7 @@ function fibrwInit() {
     });
 
     $.ajax({
-        url: "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/data/fibrw/阅读答案.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion",
+        url: getGitContentPre()+"/data/fibrw/阅读答案.txt"+getGitContentAccess(),
         type: "GET",
         crossDomain: true, // 设置为true，则不发送Origin头部
         success: function (response) {
@@ -86,28 +86,28 @@ function fibRwCurrentTypedata(param) {
     switch (type) {
         case "1":
             //C哥蓝色数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibrw/cge_fib_rw_lan.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
+            filePath = getGitContentPre()+"/questions/fibrw/cge_fib_rw_lan.txt"+getGitContentAccess()
             break;
         case "2":
             //C哥黄色数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibrw/cge_fib_rw_huang.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
+            filePath = getGitContentPre()+"/questions/fibrw/cge_fib_rw_huang.txt"+getGitContentAccess()
             break;
         case "3":
             //C哥白色数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibrw/cge_fib_rw_bai.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
+            filePath = getGitContentPre()+"/questions/fibrw/cge_fib_rw_bai.txt"+getGitContentAccess()
             break;
         case "4":
             fibrwunCompletedList = new Array();
             //C哥所有数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibrw/cge_fib_rw_all.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
+            filePath = getGitContentPre()+"/questions/fibrw/cge_fib_rw_all.txt"+getGitContentAccess()
             break;
         case "5":
             //自定义数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibrw/xjfibrwweek.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
+            filePath = getGitContentPre()+"/questions/fibrw/xjfibrwweek.txt"+getGitContentAccess()
             break;
         case "6":
             //自定义数据
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibrw/xjfibrwmonth.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
+            filePath = getGitContentPre()+"/questions/fibrw/xjfibrwmonth.txt"+getGitContentAccess()
             break;
         case "7":
             onlyundo = "";
@@ -118,7 +118,7 @@ function fibRwCurrentTypedata(param) {
             }
             break;
         case "8":
-            filePath = "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibrw/xjfib_rw_withoutc.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion"
+            filePath = getGitContentPre()+"/questions/fibrw/xjfib_rw_withoutc.txt"+getGitContentAccess()
             break;
         case "9":
             onlyundo = "";
@@ -410,7 +410,7 @@ function fibrwUncompleted() {
     } else {
         fibrwunCompletedList = new Array();
         $.ajaxSettings.async = false;
-        $.get("https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents/questions/fibrw/cge_fib_rw_all.txt?access_token=c87299575627265144b7db286d3bf673&ref=webversion", function (response) {
+        $.get(getGitContentPre()+"/questions/fibrw/cge_fib_rw_all.txt"+getGitContentAccess(), function (response) {
             let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
             qNums.forEach((item, index) => { // 删除空项
 
