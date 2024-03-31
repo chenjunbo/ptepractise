@@ -130,10 +130,29 @@ function createNav() {
         str += '<a class="" href="javascript:;" onclick="openRightNew(\'' + obj.url + '\')">' + obj.menuName + '</a>';
         str += '</dd>'
     })
+    str += '<dd>';
+    //拼接每一个地址
+    str += '<a class="" href="javascript:;" onclick="resetLocation()">重置区域位置</a>';
+    str += '</dd>'
+
     $("#left-menu").html(str);
 
 }
 
+function resetLocation() {
+    layer.alert('请选择您所在区域', {
+        btn: ['国内', '国外且可访问github'],
+        btnAlign: 'c', // 按钮居中显示
+        btn1: function(){
+            window.localStorage.setItem("currentlocaltion", "china");
+            location.reload();//刷新页面
+        },
+        btn2: function(){
+            window.localStorage.setItem("currentlocaltion", "oversea");
+            location.reload();//刷新页面
+        }
+    });
+}
 function openRightNew(url) {
     $.ajax({
         type:"get",
