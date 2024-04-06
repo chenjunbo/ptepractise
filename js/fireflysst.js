@@ -122,7 +122,7 @@ function fireFlySSTTranslateData(fireflySSTData,params){
             text = text + "<br>逻辑梳理图:" + "<br>" + "<span style=\"font-size:16px;color:red;\">暂无梳理图</span>";
 
         }else{
-            text = text +'<br>逻辑梳理图:<br><img src='+sstPic+'  width="60%">';
+            text = text +'<br>逻辑梳理图:<br><img src='+sstPic+'  width="40%">';
         }
     }
     startTimer();
@@ -159,7 +159,7 @@ function createFireFlySSTPdfHtml(params, serNum, fireflySSTData) {
             text = text + "<br>逻辑梳理图:" + "<br>" + "<span style=\"font-size:16px;color:red;\">暂无梳理图</span>";
 
         }else{
-            text = text +'<br>逻辑梳理图:<br><img src='+sstPic+' width="60%">';
+            text = text +'<br>逻辑梳理图:<br><img src='+sstPic+' width="40%">';
         }
     }
     text = text + "<br/>"+ "<br/>";
