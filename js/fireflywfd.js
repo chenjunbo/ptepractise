@@ -6,13 +6,14 @@ var localStorageType = "fireflywfd";
 var plaintxt;
 
 function fireFlyWFDInit(form) {
-    $.get(getGitContentPre()+"/data/wfd/fireflywfd.txt"+getGitContentAccess(), function (response) {
+    $.get(getGitContentPre() + "/data/wfd/fireflywfd.txt" + getGitContentAccess(), function (response) {
         var result
         try {
             result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
-        } catch (e){
+        } catch (e) {
             result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
-        }allQnums = new Array();
+        }
+        allQnums = new Array();
         fireFlyWFDList = JSON.parse(result);
         for (let i = 0; i < fireFlyWFDList.length; i++) {
             var fireFlyWFDData = fireFlyWFDList[i];
@@ -21,11 +22,11 @@ function fireFlyWFDInit(form) {
         }
     })
     if (form) {
-        $.get(getGitContentPre()+"/data/wfd/wfdcategoryid.txt"+getGitContentAccess(), function (response) {
+        $.get(getGitContentPre() + "/data/wfd/wfdcategoryid.txt" + getGitContentAccess(), function (response) {
             var result
             try {
                 result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
-            } catch (e){
+            } catch (e) {
                 result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
             }
 
@@ -38,10 +39,10 @@ function fireFlyWFDInit(form) {
             form.render();
         });
     }
-    $.get(getGitContentPre()+"/data/wfd/yhcwfdplaintxt.txt"+getGitContentAccess(), function (response) {
+    $.get(getGitContentPre() + "/data/wfd/yhcwfdplaintxt.txt" + getGitContentAccess(), function (response) {
         try {
             plaintxt = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
-        } catch (e){
+        } catch (e) {
             plaintxt = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
         }
         // plaintxt = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
@@ -131,6 +132,8 @@ function fireFlyGetWFDdata(param) {
 
 
 function fireFlyWFDTranslateData(fireFlyWFDData) {
+    var param = $("#search-form").serializeJson();
+    var showChinese = param.chinese;
     var num = fireFlyWFDData.qNum;
     var text = fireFlyWFDData.en;
     var cn = fireFlyWFDData.cn;
@@ -178,7 +181,10 @@ function fireFlyWFDTranslateData(fireFlyWFDData) {
 
     }
     text = $(parent).html();
-    var chinese = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">" + cn + "</label></div>";
+    var chinese = "";
+    if (showChinese) {
+        chinese = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">" + cn + "</label></div>";
+    }
     var audiosrc = "https://gitee.com/jackiechan/ptepractise/raw/main/mp3/wfd/" + num + ".mp3";
     var audio = "<audio id='wfdmp3' src=" + audiosrc + " controls></audio>"
     startTimer();
