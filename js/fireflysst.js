@@ -105,6 +105,7 @@ function fireFlySSTTranslateData(fireflySSTData,params){
     var simpleanswer = params.simpleanswer;
     var keyword = params.keyword;
     var chinese = params.chinese;
+    var logicpic = params.logicpic;
     if (simpleanswer) {
         text = text + "<br>简单答案:"+ "<br>"  + fireflySSTData.simpleAnswer;
     }
@@ -113,6 +114,16 @@ function fireFlySSTTranslateData(fireflySSTData,params){
     }
     if (chinese) {
         text = text + "<br>中文速记:" + "<br>" + "<span style=\"font-size:16px;color:red;\">"+fireflySSTData.chineseContent+"</span>";
+    }
+    if (logicpic) {
+        var sstPic = fireflySSTData.sstPic;
+        if (!sstPic) {
+            sstPic="暂无梳理图"
+            text = text + "<br>逻辑梳理图:" + "<br>" + "<span style=\"font-size:16px;color:red;\">暂无梳理图</span>";
+
+        }else{
+            text = text +'<br>逻辑梳理图:<br><img src='+sstPic+'>';
+        }
     }
     startTimer();
     return text;
@@ -131,6 +142,7 @@ function createFireFlySSTPdfHtml(params, serNum, fireflySSTData) {
     var simpleanswer = params.simpleanswer;
     var keyword = params.keyword;
     var chinese = params.chinese;
+    var logicpic = params.logicpic;
     if (simpleanswer) {
         text = text + "<br>简单答案:"+ "<br>"  + fireflySSTData.simpleAnswer;
     }
@@ -139,6 +151,16 @@ function createFireFlySSTPdfHtml(params, serNum, fireflySSTData) {
     }
     if (chinese) {
         text = text + "<br>中文速记:" + "<br>" + "<span style=\"font-size:16px;color:red;\">"+fireflySSTData.chineseContent+"</span>";
+    }
+    if (logicpic) {
+        var sstPic = fireflySSTData.sstPic;
+        if (!sstPic) {
+            sstPic="暂无梳理图"
+            text = text + "<br>逻辑梳理图:" + "<br>" + "<span style=\"font-size:16px;color:red;\">暂无梳理图</span>";
+
+        }else{
+            text = text +'<br>逻辑梳理图:<br><img src='+sstPic+'>';
+        }
     }
     text = text + "<br/>"+ "<br/>";
 
