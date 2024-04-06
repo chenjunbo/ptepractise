@@ -107,7 +107,7 @@ function fireFlySSTTranslateData(fireflySSTData,params){
     var chinese = params.chinese;
     var logicpic = params.logicpic;
     if (simpleanswer) {
-        text = text + "<br>简单答案:"+ "<br>"  + fireflySSTData.simpleAnswer;
+        text = text + "简单答案:"+ "<br>"  + fireflySSTData.simpleAnswer;
     }
     if (keyword) {
         text = text + "<br>关键词:"+ "<br>"  + fireflySSTData.keyWords;
@@ -144,7 +144,7 @@ function createFireFlySSTPdfHtml(params, serNum, fireflySSTData) {
     var chinese = params.chinese;
     var logicpic = params.logicpic;
     if (simpleanswer) {
-        text = text + "<br>简单答案:"+ "<br>"  + fireflySSTData.simpleAnswer;
+        text = text + "简单答案:"+ "<br>"  + fireflySSTData.simpleAnswer;
     }
     if (keyword) {
         text = text + "<br>关键词:"+ "<br>"  + fireflySSTData.keyWords+ "<br>";
