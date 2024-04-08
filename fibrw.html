@@ -404,7 +404,7 @@
                 var data = currentFibRWData();
                 var qNum = data.num;
                 var local = "cn";
-                if (!cnMap[qNum]) {
+                if (!cnMap.get(qNum)) {
                     local = "en";
                 }
                 gotoxj(local, "fib_wr", qNum);

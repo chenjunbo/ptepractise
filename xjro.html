@@ -167,7 +167,7 @@
                 var data = currentXjRoData();
                 var qNum = data.num;
                 var local = "cn";
-                if (!ro[qNum]) {
+                if (!cnxjroMap.get(qNum+"")) {
                     local = "en";
                 }
                 gotoxj(local, "fib_wr", qNum);

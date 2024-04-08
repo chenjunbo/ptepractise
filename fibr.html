@@ -203,7 +203,7 @@
                 var data = currentFibRData();
                 var qNum = data.num;
                 var local = "cn";
-                if (!fibrCnMap[qNum]) {
+                if (!fibrCnMap.get(qNum)) {
                     local = "en";
                 }
                 gotoxj(local, "fib_rd", qNum);
