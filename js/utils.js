@@ -191,7 +191,7 @@ function loadNotice() {
         $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
     }
     // $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
-    var version="4.6";
+    var version="4.8";
     var currentversion = window.localStorage.getItem("currentversion");
     if (version == currentversion) {
         layer.msg('祝你八炸九炸心想事成', {icon: 0}, function () {
