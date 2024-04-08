@@ -118,7 +118,13 @@
                         </button>
                     </div>
                 </div>
-
+                <div class="grid-demo  layui-col-xs4 layui-col-sm2 layui-col-lg1">
+                    <div class="layui-inline">
+                        <button class="layui-btn layui-btn-sm" id="gotoaepui"
+                                lay-header-event="gotoaepui">跳转到⭐️刷本题
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -392,6 +398,15 @@
 
                 }
 
+            },
+            gotoaepui: function (obj,event){
+                var data = currentFibRWData();
+                var qNum = data.nums;
+                var local = "cn";
+                if (!cnMap[qNum]) {
+                    local = "en";
+                }
+                gotoxj(local, "fib_wr", qNum);
             }
         });
         // 自定义验证规则

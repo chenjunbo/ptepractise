@@ -28,3 +28,18 @@ function startTimer() {
         $("#timer").html(showhours + ':' + showminutes + ':' + showseconds);
     }, 1000);
 }
+
+function gotoxj(local,type, qNum) {
+    var url = "https://www.ptexj.com/zh-CN/practice/{{type}}/{{qNum}}";
+    var msg="即将跳转到⭐️中文区答题,请确认已经登录⭐️,同一账号无法同时登录中英文双区"
+    if (local == "en") {
+        url = "https://www.apeuni.com/en/practice/{{type}}/{{qNum}}";
+         msg="即将跳转到⭐️英文区答题,请确认已经登录⭐️,同一账号无法同时登录中英文双区";
+    }
+    layer.confirm(msg, {icon: 3}, function () {
+        url = url.replace("{{type}}", type).replace("{{qNum}}", qNum);
+        window.open(url, '_blank');
+    }, function () {
+    });
+
+}

@@ -72,6 +72,11 @@
                         <button class="layui-btn" id="clearrightorfalt" lay-header-event="clearrightorfalt">清理对错记录
                         </button>
                     </div>
+                        <div class="layui-inline">
+                            <button class="layui-btn layui-btn-sm" id="gotoaepui"
+                                    lay-header-event="gotoaepui">跳转到⭐️刷本题
+                            </button>
+                        </div>
                 </div>
         </div>
 
@@ -156,6 +161,15 @@
                 event.preventDefault();
                 return roadddeletefav(localStorageType);
 
+            },
+            gotoaepui: function (obj,event){
+                var data = currentXjRoData();
+                var qNum = data.nums;
+                var local = "cn";
+                if (!ro[qNum]) {
+                    local = "en";
+                }
+                gotoxj(local, "fib_wr", qNum);
             }
         });
         // 自定义验证规则

@@ -127,6 +127,13 @@
                         </button>
                     </div>
                 </div>
+                <div class="grid-demo  layui-col-xs4 layui-col-sm2 layui-col-lg1">
+                    <div class="layui-inline">
+                        <button class="layui-btn layui-btn-sm" id="gotoaepui"
+                                lay-header-event="gotoaepui">跳转到⭐️刷本题
+                        </button>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -190,6 +197,15 @@
             adddeletefav: function (obj, event) {
                 adddeletefibrfav(obj, event);
 
+            },
+            gotoaepui: function (obj,event){
+                var data = currentFibRData();
+                var qNum = data.nums;
+                var local = "cn";
+                if (!fibrCnMap[qNum]) {
+                    local = "en";
+                }
+                gotoxj(local, "fib_rd", qNum);
             }
         });
         // 自定义验证规则
