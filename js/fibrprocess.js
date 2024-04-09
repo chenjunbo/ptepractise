@@ -354,7 +354,7 @@ function createFibRPdfHtml(parmas, serNum, fibrdata) {
             answerInText = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + explanation_in_locale;
         }
     }
-    var needTrans = params.trans;
+    var needTrans = parmas.trans;
     if (needTrans) {
         var contents = fibrdata.contents;
         if (contents && contents.length > 0) {
