@@ -354,6 +354,24 @@ function createFibRPdfHtml(parmas, serNum, fibrdata) {
             answerInText = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + explanation_in_locale;
         }
     }
+    var needTrans = params.trans;
+    if (needTrans) {
+        var contents = fibrdata.contents;
+        if (contents && contents.length > 0) {
+            answerInText = answerInText + "<br/>" + "<br/>"+ "<br/>"+ "翻译:" + "<br/>"
+            contents.forEach((eachContent) => {
+                var type = eachContent.type;
+                if (type == "option" || type == "caption") {
+                } else {
+                    var content = eachContent.content;
+                    answerInText = answerInText + "<br/>" + content + "<br/>";
+                }
+            });
+        }else{
+            answerInText = answerInText + "<br/>本题暂无翻译<br/>";
+        }
+    }
+
     $(analysispre).html(answerInText);
     $(anserDive).append(analysispre);
     $(questionDiv).append(anserDive);
