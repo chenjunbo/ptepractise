@@ -36,13 +36,38 @@ function gotoxj(local,type, qNum) {
         url = "https://www.apeuni.com/en/practice/{{type}}/{{qNum}}";
          msg="即将跳转到⭐️英文区答题,请确认已经登录⭐️,同一账号无法同时登录中英文双区";
     }
-    layer.confirm(msg, {icon: 3}, function () {
-        url = url.replace("{{type}}", type)
-        url = url .replace("{{qNum}}", qNum);
-        window.open(url, '_blank');
-        layer.msg('努力刷刷刷', {icon: 0}, function () {
+    url = url.replace("{{type}}", type)
+    url = url .replace("{{qNum}}", qNum);
+    var alwaysshowgotoxjtip = window.localStorage.getItem("alwaysshowgotoxjtip");
+
+    if (!alwaysshowgotoxjtip) {
+        layer.alert(msg, {
+            btn: ['跳转', '跳转并下次不再提示','取消'],
+            btnAlign: 'c', // 按钮居中显示
+            btn1: function(){
+                window.open(url, '_blank');
+            },
+            btn2: function(){
+                window.open(url, '_blank');
+                window.localStorage.setItem("alwaysshowgotoxjtip", "false");
+            },
+            btn3: function(){
+
+            }
         });
-    }, function () {
-    });
+    }else{
+        window.open(url, '_blank');
+    }
+
+
+
+    // layer.confirm(msg, {icon: 3}, function () {
+    //     url = url.replace("{{type}}", type)
+    //     url = url .replace("{{qNum}}", qNum);
+    //     window.open(url, '_blank');
+    //     layer.msg('努力刷刷刷', {icon: 0}, function () {
+    //     });
+    // }, function () {
+    // });
 
 }
