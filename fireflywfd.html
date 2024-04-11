@@ -331,14 +331,14 @@
             }
         });
         // 自定义验证规则
-        form.verify({
-            answer: function (value) {
-
-                if (value.startsWith("false")) {
-                    return "答案错误";
-                }
-            }
-        });
+        // form.verify({
+        //     answer: function (value) {
+        //
+        //         if (value.startsWith("false")) {
+        //             return "答案错误";
+        //         }
+        //     }
+        // });
     })
     $.fn.serializeJson = function () {
         var serializeObj = {};
