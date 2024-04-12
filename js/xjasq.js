@@ -100,7 +100,7 @@ function createXjAsqPdfHtml(serNum, xjasqdata) {
             });
         }
 
-    $(questionDiv).innerHTML(answerInText);
+    $(questionDiv).append(answerInText);
     $(questionDiv).append("<br/>");
     return questionDiv;
 }
