@@ -88,14 +88,16 @@ function createXjAsqPdfHtml(serNum, xjasqdata) {
     var answerInText = "";
         var contents = xjasqdata.contents;
         if (contents && contents.length > 0) {
-            answerInText = answerInText + "<br/>" + "<br/>" + "<br/>" + "翻译:" + "<br/>"
             contents.forEach((eachContent, index) => {
                 var type = eachContent.type;
                 if (type == "option" || type == "caption"|| type == "break") {
 
                 } else {
                     var content = eachContent.content;
-                    answerInText = answerInText + "<br/>" + content + "<br/>";
+                    if (content.startsWith("Answer")) {
+                        content="<span style='color:red'>"+content+"</span>"
+                    }
+                    answerInText = answerInText  + content + "<br/>";
                 }
             });
         }
