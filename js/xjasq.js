@@ -8,7 +8,7 @@ var FavlocalStorageType = "xjqsqblue";//收藏夹类型key
 
 
 function xjAsqInit() {
-    $.get(getGitContentPre()+"/data/xjasq/xjasqall.txt"+getGitContentAccess(), function (response) {
+    $.get(getGitContentPre()+"/data/asq/xjasqall.txt"+getGitContentAccess(), function (response) {
         //xjasqCnList = JSON.parse(response);
         // xjasqCnList = response;
         var result
@@ -36,11 +36,11 @@ function XjAsqCurrentTypedata(param) {
     switch (type) {
         case "5":
             //自定义数据
-            filePath = getGitContentPre()+"/questions/xjasq/xjasqweek.txt"+getGitContentAccess()
+            filePath = getGitContentPre()+"/questions/asq/xjasqweek.txt"+getGitContentAccess()
             break;
         case "6":
             //自定义数据
-            filePath = getGitContentPre()+"/questions/xjasq/xjxjasqmonth.txt"+getGitContentAccess()
+            filePath = getGitContentPre()+"/questions/asq/xjxjasqmonth.txt"+getGitContentAccess()
             break;
         case "10":
             xjasqCurrentList=xjasqCnList;
