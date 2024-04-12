@@ -618,17 +618,16 @@
                         break;
                     case "5":
                         name = "⭐️ASQ周预测";
+                        fillxjasqdata(params, body);
+                        break;
                     case "6":
                         name = "⭐️ASQ月预测";
+                        fillxjasqdata(params, body);
+                        break;
                     case "10":
                         name = "⭐️ASQ全题库";
-                        XjAsqCurrentTypedata(params);
-                        var currentXjAsqList1 = currentXjAsqList();
-                        currentXjAsqList1.forEach(function (item, index) {
-                            var questionHtml = createXjAsqPdfHtml((index + 1), item);
-                            $(body).append(questionHtml);
-                        })
-                        break
+                        fillxjasqdata(params, body);
+                        break;
                 }
                 fillPdf(newPage, name);
             }
@@ -649,7 +648,14 @@
         });
         return serializeObj;
     };
-
+function fillxjasqdata(params,body){
+    XjAsqCurrentTypedata(params);
+    var currentXjAsqList1 = currentXjAsqList();
+    currentXjAsqList1.forEach(function (item, index) {
+        var questionHtml = createXjAsqPdfHtml((index + 1), item);
+        $(body).append(questionHtml);
+    })
+}
 
     function fillPdf(newPage, name) {
         //var newPage = document.implementation.createHTMLDocument('New Page');
