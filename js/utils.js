@@ -224,7 +224,8 @@ function getAlljs(version) {
             "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjro.js?time=" + time,
             "https://gitee.com/jackiechan/ptepractise/raw/main/js/we.js?time=" + time,
             "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflyrs.js?time=" + time,
-            "https://gitee.com/jackiechan/ptepractise/raw/main/js/utils2.js?time=" + time
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/utils2.js?time=" + time,
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjasq.js?time=" + time
         ]
         return js;
     }else if (version == "1") {
@@ -256,6 +257,7 @@ function getAlljs(version) {
                     getRawPre()+"/js/xjro.js?time="+time,
                     getRawPre()+"/js/we.js?time="+time,
                     getRawPre()+"/js/fireflyrs.js?time="+time,
+                    getRawPre()+"/js/xjasq.js?time="+time,
                     getRawPre()+"/js/utils2.js?time="+time
                 ]
                 return js;
