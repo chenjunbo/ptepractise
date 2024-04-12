@@ -40,7 +40,7 @@ function XjAsqCurrentTypedata(param) {
             break;
         case "6":
             //自定义数据
-            filePath = getGitContentPre()+"/questions/asq/xjxjasqmonth.txt"+getGitContentAccess()
+            filePath = getGitContentPre()+"/questions/asq/xjasqmonth.txt"+getGitContentAccess()
             break;
         case "10":
             xjasqCurrentList=xjasqCnList;
@@ -85,7 +85,7 @@ function currentXjAsqList() {
 function createXjAsqPdfHtml(serNum, xjasqdata) {
     var questionDiv = document.createElement("div");
     $(questionDiv).attr("style", "padding-left: 20px;padding-right: 20px;line-height: 30px;font-size: large;width:90%;");
-    var answerInText = "";
+    var answerInText = serNum+". ";
         var contents = xjasqdata.contents;
         if (contents && contents.length > 0) {
             contents.forEach((eachContent, index) => {
