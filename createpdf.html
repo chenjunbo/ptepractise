@@ -236,6 +236,9 @@
             <div class="layui-inline">
                 <select name="type">
                     <option value="1">萤火虫ASQ高频</option>
+                    <option value="5">⭐️ASQ周预测</option>
+                    <option value="6">⭐️ASQ月预测</option>
+                    <option value="10">⭐️ASQ全题库</option>
                 </select>
             </div>
             <button class="layui-btn" lay-header-event="createasqpdf">点击生成网页后通过浏览器的打印功能保存为pdf
@@ -260,6 +263,7 @@
         fireFlyWeInit();
         xjroInit();
         fireFlyWFDInit();
+        xjAsqInit();
         form.render();
         util.event('lay-header-event', {
             createfibrwpdf: function (obj, event) { // 左侧菜单事件
@@ -612,6 +616,19 @@
                         name = "萤火虫ASQ高频预测";
                         $(body).append(currentFireflyASQcontent());
                         break;
+                    case "5":
+                        name = "⭐️ASQ周预测";
+                    case "6":
+                        name = "⭐️ASQ月预测";
+                    case "10":
+                        name = "⭐️ASQ全题库";
+                        XjAsqCurrentTypedata(params);
+                        var currentXjAsqList1 = currentXjAsqList();
+                        currentXjAsqList1.forEach(function (item, index) {
+                            var questionHtml = createXjAsqPdfHtml((index + 1), item);
+                            $(body).append(questionHtml);
+                        })
+                        break
                 }
                 fillPdf(newPage, name);
             }
