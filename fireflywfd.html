@@ -378,10 +378,6 @@
             $("#next").hide();
             return false;
         }
-        var player = $("#wfdmp3").get(0);
-        if (player) {
-            player.stop();
-        }
         var fireFlydata = fireFlyWFDNextQuest();
         var content = fireFlyWFDTranslateData(fireFlydata);
         if (isFireFlyWFDLast()) {
