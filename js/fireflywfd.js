@@ -185,7 +185,7 @@ function fireFlyWFDTranslateData(fireFlyWFDData) {
     if (showChinese) {
         chinese = "<div class=\"layui-form-item\"><label class=\"layui-form-label\" style=\"white-space:nowrap\">" + cn + "</label></div>";
     }
-    var audiosrc = "https://gitee.com/jackiechan/ptepractise/raw/main/mp3/wfd/" + num + ".mp3";
+    var audiosrc = "https://gitee.com/jackiechan/ptepractise/raw/webversion/mp3/wfd/" + num + ".mp3";
     var audio = "<audio id='wfdmp3' src=" + audiosrc + " controls></audio>"
     startTimer();
     return title + text + chinese + "<br/>" + audio;
