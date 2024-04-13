@@ -378,6 +378,12 @@
             $("#next").hide();
             return false;
         }
+        var audio = $("#wfdmp3").get(0);
+        if (audio) {
+            audio.pause(); // 暂停播放
+            audio.src = ''; // 清除src属性，停止加载音频数据
+        }
+
         var fireFlydata = fireFlyWFDNextQuest();
         var content = fireFlyWFDTranslateData(fireFlydata);
         if (isFireFlyWFDLast()) {
