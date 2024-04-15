@@ -217,8 +217,28 @@ function loadWFDChangeLog() {
             '    <title>WFD换题季变化</title>\n' +
             '</head>\n' +
             '<body>\n' +
-            '<h2>2024.04.15 萤火虫228句版本相较于上周190句更新:</h2>\n' +
+            '<h2>2024.04.15 萤火虫相较于上周190句更新:</h2>\n' +
             '<span style="font-size: 26px; color: red">\n' +
+            '新增:131110:Organization plays an important role in academic literature.\n' +
+            '新增:131245:The summer course is canceled due to insufficient enrollment.\n' +
+            '新增:131303:When parents talk to children, the tense tends to be simplified.\n' +
+            '新增:131834:This course places considerable emphasis on critical thinking skills.\n' +
+            '新增:131016:All students are expected to attend ten lab sessions per semester.\n' +
+            '新增:131235:The results of study underscored the importance of early detection.\n' +
+            '新增:131259:The visiting speaker used to be a lecturer in this department.\n' +
+            '新增:1311025:Visual aid can be really helpful when you are revising.\n' +
+            '新增:131412:The economy is now showing the first sign of recovery.\n' +
+            '新增:131265:There is clearly a need for further research in this field.\n' +
+            '新增:131295:We can work together to achieve high educational standard.\n' +
+            '更新:131476:更新前Some vocational courses at institutions are funded by private enterprises. ->更新后 Many vocational courses at institutions are funded by private enterprises.\n' +
+            '新增:131122:Please note that the submission deadlines are only negotiable in exceptional circumstances.\n' +
+            '新增:131153:Some students find that true or false questions are harder than short answers.\n' +
+            '新增:131330:Speak to your tutor if you require further assistance.\n' +
+            '新增:131118:Peer group pressure has a significant effect on young people.\n' +
+            '新增:131211:The history of the university is a long and interesting one.\n' +
+            '新增:131434:You should submit your term papers to the general office.\n' +
+            '新增:131633:New media journalism is an exciting area of study.\n' +
+            '升频:1311015:Any gain on sales of property must be allocated promptly.\n' +
             '新增:131093:Many birds migrate to warmer areas for the winter.<br/>\n' +
             '新增:131107:Nurses can specialize in clinical work or management.<br/>\n' +
             '新增:131111:Organizational failure is considered from various perspectives in academic literature.<br/>\n' +
