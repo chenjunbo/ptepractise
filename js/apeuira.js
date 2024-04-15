@@ -109,7 +109,7 @@ function fibRwCurrentTypedata(param) {
             onlyundo = "";
             var faltIds = getAllQuestionNumFromLocalStorageByFalt(localStorageType);
             if (faltIds) {
-                faltIds.forEach((qNum, raindex) => {
+                faltIds.forEach((qNum, raindex) => {u
                     getFromLocalStorage()
                     var raData = racnMap.get(parseInt(qNum));
                     if (!raData) {
