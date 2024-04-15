@@ -196,9 +196,9 @@ function loadwfdpdfmd(filename,pdfname){
     $.get(getGitContentPre() + "/pdf/"+filename + getGitContentAccess(), function (response) {
         var result
         try {
-            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+            result = decodeURIComponent(escape(window.atob(response.content)));
         } catch (e) {
-            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+            result = decodeURIComponent(escape(window.atob(response)));
         }
         var newPage = document.implementation.createHTMLDocument('New Page');
         var name = pdfname;
