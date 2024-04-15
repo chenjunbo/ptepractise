@@ -192,6 +192,7 @@ function fireFlyWFDTranslateData(fireFlyWFDData) {
 }
 
 function loadwfdpdfmd(filename){
+    $.ajaxSettings.async = false;
     $.get(getGitContentPre() + "/data/wfd/"+filename + getGitContentAccess(), function (response) {
         var result
         try {
@@ -201,6 +202,7 @@ function loadwfdpdfmd(filename){
         }
         return result;
     })
+    $.ajaxSettings.async = true;
 }
 
 
