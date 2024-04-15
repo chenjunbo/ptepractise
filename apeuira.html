@@ -1,0 +1,37 @@
+<form action="#" class="layui-form" id="search-form">
+
+    <div class="layui-row">
+        <div class="layui-col-xs5 layui-col-sm2 layui-col-md1">
+            <div class="grid-demo">
+                <input id="qNumInput" type="number" name="qNum" autocomplete="off" placeholder="请输入题号"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-col-xs7 layui-col-sm4 layui-col-md2">
+            <div class="grid-demo">
+                <select name="type" id="typeselection">
+                    <option value="1">C哥RA下拉蓝色题目</option>
+                    <option value="2">C哥RA下拉黄色题目</option>
+                    <option value="3">C哥RA下拉白色题目</option>
+                    <option value="4">C哥RA下拉全部题目</option>
+                    <option value="8">⭐️RA下拉月预测除C哥之外题目</option>
+                    <option value="7">RA下拉收藏夹</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-hide-xs layui-col-sm4 layui-col-md3">
+            <div class="grid-demo">
+                <label class="layui-form-label" style="color: red">可选选项:</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="onlyundo" title="仅显示未做">
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs12 layui-col-sm2 layui-col-md6 layui-row grid-demo">
+            <div class="layui-col-md3">
+                <button class="layui-btn layui-btn-sm" lay-header-event="search">加载(搜索)题目</button>
+            </div>
+        </div>
+    </div>
+</form>
+
