@@ -191,6 +191,18 @@ function fireFlyWFDTranslateData(fireFlyWFDData) {
     return title + text + chinese + "<br/>" + audio;
 }
 
+function loadwfdpdfmd(filename){
+    $.get(getGitContentPre() + "/data/wfd/"+filename + getGitContentAccess(), function (response) {
+        var result
+        try {
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        } catch (e) {
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+        }
+        return result;
+    })
+}
+
 
 function playwfdmp3() {
     var player = $("#wfdmp3").get(0);

@@ -467,6 +467,7 @@
                 var url = "";
                 var newPage = document.implementation.createHTMLDocument('New Page');
                 var name = "萤火虫wfd预测";
+
                 switch (params.type) {
                     case "-1":
                       //  name = "萤火虫WFD注音正序版";
@@ -486,9 +487,13 @@
                         break;
 
                     case "2":
-                       // name = "萤火虫WFD分类版";
-                        url=getRawPre()+"/pdf/萤火虫WFD分类版.pdf"
-                        break;
+                       name = "萤火虫WFD分类版";
+                       // url=getRawPre()+"/pdf/萤火虫WFD分类版.pdf"
+                        var content = loadwfdpdfmd("萤火虫WFD分类版.md");
+                        var body = newPage.body;
+                        $(body).append(content);
+                        fillPdf(newPage, name);
+                        return ;
                     case "3":
                        // name = "萤火虫WFD分类版";
                         url=getRawPre()+"/pdf/wfd萤火虫大西瓜相似句.pdf"
