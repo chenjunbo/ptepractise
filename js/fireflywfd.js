@@ -191,7 +191,7 @@ function fireFlyWFDTranslateData(fireFlyWFDData) {
     return title + text + chinese + "<br/>" + audio;
 }
 
-function loadwfdpdfmd(filename){
+function loadwfdpdfmd(filename,pdfname){
     $.ajaxSettings.async = false;
     $.get(getGitContentPre() + "/data/wfd/"+filename + getGitContentAccess(), function (response) {
         var result
@@ -200,6 +200,11 @@ function loadwfdpdfmd(filename){
         } catch (e) {
             result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
         }
+        var newPage = document.implementation.createHTMLDocument('New Page');
+        var name = pdfname;
+        var body = newPage.body;
+        $(body).append(result);
+        fillPdf(newPage, name);
         return result;
     })
     $.ajaxSettings.async = true;
