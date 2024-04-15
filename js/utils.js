@@ -207,6 +207,7 @@ function loadNotice() {
 }
 
 function loadWFDChangeLog() {
+    var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
         $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/wfdchangelog.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
     }else if ("oversea" == currentlocaltion) {
