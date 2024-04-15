@@ -16,6 +16,7 @@
                     <option value="-1">萤火虫WFD注音正序版</option>
                     <option value="-2">萤火虫WFD注音倒序版</option>
                     <option value="-3">萤火虫WFD正序无注音版</option>
+                    <option value="-3">萤火虫WFD倒序无注音版</option>
                     <option value="1">萤火虫WFD首字母</option>
                     <option value="2">萤火虫WFD分类版</option>
                     <option value="3">大西瓜萤火虫WFD相似句</option>
@@ -479,8 +480,14 @@
                         break;
                     case "-3":
                         //name = "萤火虫WFD注音倒序版";
-                        url=getRawPre()+"/pdf/萤火虫WFD正序版.pdf"
-                        break;
+                        // url=getRawPre()+"/pdf/萤火虫WFD正序版.pdf"
+                        loadwfdpdfmd("萤火虫WFD正序版.md","萤火虫WFD正序版")
+                        return ;
+                    case "-4":
+                        //name = "萤火虫WFD注音倒序版";
+                        // url=getRawPre()+"/pdf/萤火虫WFD正序版.pdf"
+                        loadwfdpdfmd("萤火虫WFD倒序版.md","萤火虫WFD倒序版")
+                        return ;
                     case "1":
                       //  name = "萤火虫WFD首字母版";
                       //   url=getRawPre()+"/pdf/萤火虫WFD首字母.pdf"
