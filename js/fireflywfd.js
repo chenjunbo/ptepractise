@@ -203,6 +203,7 @@ function loadwfdpdfmd(filename,pdfname){
         var newPage = document.implementation.createHTMLDocument('New Page');
         var name = pdfname;
         var body = newPage.body;
+        $(body).attr("style","margin-left: 20px")
         $(body).append(result);
         fillPdf(newPage, name);
         return result;
