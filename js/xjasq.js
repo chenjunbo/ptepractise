@@ -4,7 +4,7 @@ var xjasqIdsSet = new Set();
 const xjasqCnMap = new Map();
 var xjasqIndex = 0;//当前第几条
 var localStorageType = "xjasq";//类型key
-var FavlocalStorageType = "xjqsqblue";//收藏夹类型key
+var FavlocalStorageType = "xjasqblue";//收藏夹类型key
 
 
 function xjAsqInit() {

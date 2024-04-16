@@ -5,7 +5,7 @@ const fibrCnMap = new Map();
 const fibrEnMap = new Map();
 var fibrIndex = 0;//当前第几条
 var localStorageType = "fibr";//类型key
-var FavlocalStorageType = "fibrblue";//收藏夹类型key
+var XjFIBRFavlocalStorageType = "fibrblue";//收藏夹类型key
 
 function fibrInit() {
     $.get(getGitContentPre()+"/data/fibr/fibrallquestions.txt"+getGitContentAccess(), function (response) {
@@ -80,7 +80,7 @@ function fibRCurrentTypedata(param) {
             filePath = getGitContentPre()+"/questions/fibr/xjfibrmonth.txt"+getGitContentAccess()
             break;
         case "7":
-            var content = getFromLocalStorage(FavlocalStorageType);
+            var content = getFromLocalStorage(XjFIBRFavlocalStorageType);
             if (content) {
                 var json = JSON.parse(content);
                 localstoragedata = json.nums;
