@@ -8,7 +8,7 @@ var localStorageType = "xjra";
 
 function raInit() {
     $.ajax({
-        url: getGitContentPre()+"/data/ra/raallquestions.txt"+getGitContentAccess(),
+        url: getGitContentPre()+"/data/ra/raallquests.txt"+getGitContentAccess(),
         type: "GET",
         crossDomain: true, // 设置为true，则不发送Origin头部
         success: function (response) {
@@ -34,7 +34,7 @@ function raInit() {
     });
 
     $.ajax({
-        url: getGitContentPre()+"/data/ra/raallquestionsen.txt"+getGitContentAccess(),
+        url: getGitContentPre()+"/data/ra/raallquestsen.txt"+getGitContentAccess(),
         type: "GET",
         crossDomain: true, // 设置为true，则不发送Origin头部
         success: function (response) {
