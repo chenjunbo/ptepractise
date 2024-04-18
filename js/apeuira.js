@@ -276,7 +276,7 @@ function createRaPdfHtml(parmas, serNum, radata) {
             });
         }
     }
-    $(questionDiv).append(text + "<br/>" + "<br/>");
+    $(questionDiv).append(text );
     return questionDiv;
 
 }
