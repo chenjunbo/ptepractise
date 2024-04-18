@@ -51,13 +51,20 @@ function currentxjmonthFibLList(){
 function createpteFilbPdf(serNum, fiblData) {
     var num = fiblData.num;
     var name = fiblData.name;
+    var params = $("#ptefibl-form").serializeJson();
+    var hiddencontenanswer = params.hiddencontenanswer;
     var questionDiv = document.createElement("div");
     $(questionDiv).attr("style", "padding-left: 20px;padding-right: 20px;line-height: 30px;font-size: larger");
     var h3 = document.createElement("h3");
     h3.innerHTML = serNum + "." + "&nbsp;" + "&nbsp;" + name + "&nbsp;" + "&nbsp;题号:" + num + "<br/>" ;
     $(questionDiv).append(h3);
-    var text =fiblData.text;
-    text = text + "<br/>"+ "<br/>";
+    var text = "";
+    if (hiddencontenanswer) {
+        text = fiblData.textWithspace+"<br/>"+ "答案:"+"<br/>"+fiblData.realWords+"<br/>"+"<br/>";
+    }else{
+        text =fiblData.text;
+        text = text + "<br/>"+ "<br/>";
+    }
     $(questionDiv).append(text);
     return questionDiv;
 }
