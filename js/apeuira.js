@@ -2,7 +2,6 @@ var racurrentList;
 let racnList, raenList, xjraIdsList, xjraunCompletedList;
 const racnMap = new Map();
 var xjraIdsSet = new Set();
-let chineseContentMap = new Map();//存放中文注释的
 const xjraenMap = new Map();
 var raindex = 0;//当前第几条
 var localStorageType = "xjra";
@@ -377,9 +376,6 @@ function getraindex() {
     return raindex;
 }
 
-function getChinese(qNum) {
-    return chineseContentMap.get(qNum);
-}
 
 
 function getRaTotalNum() {
