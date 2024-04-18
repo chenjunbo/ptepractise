@@ -102,6 +102,10 @@ function fibRwCurrentTypedata(param) {
     currentList = new Array();
     var localstoragedata;
     switch (type) {
+        case "-1":
+            //C哥蓝色数据
+            filePath = getGitContentPre()+"/questions/fibrw/cge_fib_rw_hightest.txt"+getGitContentAccess()
+            break;
         case "1":
             //C哥蓝色数据
             filePath = getGitContentPre()+"/questions/fibrw/cge_fib_rw_lan.txt"+getGitContentAccess()
