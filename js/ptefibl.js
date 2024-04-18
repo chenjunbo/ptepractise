@@ -53,6 +53,7 @@ function createpteFilbPdf(serNum, fiblData) {
     var name = fiblData.name;
     var params = $("#ptefibl-form").serializeJson();
     var hiddencontenanswer = params.hiddencontenanswer;
+    var hiddenstandanswer = params.hiddenstandanswer;
     var questionDiv = document.createElement("div");
     $(questionDiv).attr("style", "padding-left: 20px;padding-right: 20px;line-height: 30px;font-size: larger");
     var h3 = document.createElement("h3");
@@ -61,7 +62,12 @@ function createpteFilbPdf(serNum, fiblData) {
     var text = "";
     if (hiddencontenanswer) {
 
-        text = fiblData.textWithspace+"<br/>"+"<br/>"+ "答案:"+"<br/><span style='color:red'>"+fiblData.realWords+"</span><br/>"+"<br/>";
+        if (hiddenstandanswer) {
+            text = fiblData.textWithspace+"<br/>"+"<br/>"+ "答案:"+"<br/>";
+
+        }else{
+            text = fiblData.textWithspace+"<br/>"+"<br/>"+ "答案:"+"<br/><span style='color:red'>"+fiblData.realWords+"</span><br/>"+"<br/>";
+        }
     }else{
         text =fiblData.text;
         text = text + "<br/>"+ "<br/>";
