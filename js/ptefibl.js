@@ -60,7 +60,8 @@ function createpteFilbPdf(serNum, fiblData) {
     $(questionDiv).append(h3);
     var text = "";
     if (hiddencontenanswer) {
-        text = fiblData.textWithspace+"<br/>"+ "答案:"+"<br/>"+fiblData.realWords+"<br/>"+"<br/>";
+
+        text = fiblData.textWithspace+"<br/>"+"<br/>"+ "答案:"+"<br/><span style='color:red'>"+fiblData.realWords+"</span><br/>"+"<br/>";
     }else{
         text =fiblData.text;
         text = text + "<br/>"+ "<br/>";
