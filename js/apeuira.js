@@ -122,10 +122,18 @@ function fibRaCurrentTypedata(param) {
 
             break;
         case "10":
-            racurrentList = racnList;
+            if (qNum) {
+                racurrentList.push(racnMap.get(parseInt(qNum)));
+            }else{
+                racurrentList = racnList;
+            }
             break;
         case "11":
-            racurrentList = raenList;
+            if (qNum) {
+                racurrentList.push(xjraenMap.get(parseInt(qNum)))
+            }else{
+                racurrentList = raenList;
+            }
             break;
 
     }
