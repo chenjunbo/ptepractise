@@ -682,21 +682,38 @@
                 switch (params.type) {
                     case "5":
                         name = "⭐️RA周预测";
-                        var xjralist = fibRaCurrentTypedata(params);
-                        xjralist.forEach(function (item, index) {
-                            var questionHtml = createRaPdfHtml(params,(index + 1), item);
-                            $(body).append(questionHtml);
-                        })
+
                         break;
                     case "6":
                         name = "⭐️RA月预测";
                         var xjralist = fibRaCurrentTypedata(params);
-                        xjralist.forEach(function (item, index) {
-                            var questionHtml = createRaPdfHtml(params,(index + 1), item);
-                            $(body).append(questionHtml);
-                        })
+                        // xjralist.forEach(function (item, index) {
+                        //     var questionHtml = createRaPdfHtml(params,(index + 1), item);
+                        //     $(body).append(questionHtml);
+                        // })
+                        break;
+                    case "10":
+                        name = "⭐️RA全";
+                        // var xjralist = fibRaCurrentTypedata(params);
+                        // xjralist.forEach(function (item, index) {
+                        //     var questionHtml = createRaPdfHtml(params,(index + 1), item);
+                        //     $(body).append(questionHtml);
+                        // })
+                        break;
+                    case "11":
+                        name = "⭐️️RA全EN";
+                        // var xjralist = fibRaCurrentTypedata(params);
+                        // xjralist.forEach(function (item, index) {
+                        //     var questionHtml = createRaPdfHtml(params,(index + 1), item);
+                        //     $(body).append(questionHtml);
+                        // })
                         break;
                 }
+                var xjralist = fibRaCurrentTypedata(params);
+                xjralist.forEach(function (item, index) {
+                    var questionHtml = createRaPdfHtml(params,(index + 1), item);
+                    $(body).append(questionHtml);
+                })
                 fillPdf(newPage, name);
             }
         })

@@ -108,7 +108,7 @@ function fibRaCurrentTypedata(param) {
             onlyundo = "";
             var faltIds = getAllQuestionNumFromLocalStorageByFalt(localStorageType);
             if (faltIds) {
-                faltIds.forEach((qNum, raindex) => {u
+                faltIds.forEach((qNum, raindex) => {
                     getFromLocalStorage()
                     var raData = racnMap.get(parseInt(qNum));
                     if (!raData) {
@@ -276,7 +276,7 @@ function createRaPdfHtml(parmas, serNum, radata) {
             });
         }
     }
-    $(questionDiv).append(text );
+    $(questionDiv).append(text);
     return questionDiv;
 
 }
