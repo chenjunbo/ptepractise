@@ -248,7 +248,21 @@
         </div>
     </div>
 </form>
-
+<form action="#" class="layui-form" id="ptera-form">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <span style="font-size: 16px; color: red"> &nbsp;&nbsp;&nbsp;&nbsp;RA:</span>
+            <div class="layui-inline">
+                <select name="type">
+                    <option value="5">⭐️RA周预测</option>
+                    <option value="6">⭐️RA月预测</option>
+                </select>
+            </div>
+            <button class="layui-btn" lay-header-event="createrapdf">点击生成网页后通过浏览器的打印功能保存为pdf
+            </button>
+        </div>
+    </div>
+</form>
 <script type="text/javascript">
     layui.use(['table', 'layer', 'form', 'util'], function () {
         var table = layui.table;
@@ -266,6 +280,7 @@
         xjroInit();
         fireFlyWFDInit();
         xjAsqInit();
+        raInit();
         form.render();
         util.event('lay-header-event', {
             createfibrwpdf: function (obj, event) { // 左侧菜单事件
@@ -639,6 +654,32 @@
                     case "10":
                         name = "⭐️ASQ全题库";
                         fillxjasqdata(params, body);
+                        break;
+                }
+                fillPdf(newPage, name);
+            },
+            createrapdf: function (obj, event) {
+                event.preventDefault();
+                var params = $("#ptera-form").serializeJson();
+                var name = "";
+                var newPage = document.implementation.createHTMLDocument('New Page');
+                var body = newPage.body;
+                switch (params.type) {
+                    case "5":
+                        name = "⭐️RA周预测";
+                        var xjralist = fibRaCurrentTypedata(params);
+                        xjralist.forEach(function (item, index) {
+                            var questionHtml = createRaPdfHtml(params,(index + 1), item);
+                            $(body).append(questionHtml);
+                        })
+                        break;
+                    case "6":
+                        name = "⭐️RA月预测";
+                        var xjralist = fibRaCurrentTypedata(params);
+                        xjralist.forEach(function (item, index) {
+                            var questionHtml = createRaPdfHtml(params,(index + 1), item);
+                            $(body).append(questionHtml);
+                        })
                         break;
                 }
                 fillPdf(newPage, name);

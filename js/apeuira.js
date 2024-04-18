@@ -60,7 +60,7 @@ function raInit() {
     });
 }
 
-function fibRwCurrentTypedata(param) {
+function fibRaCurrentTypedata(param) {
     var qNum = param.qNum;//题号
     var type = param.type;//类型
     var onlyundo = param.onlyundo;//类型
@@ -250,110 +250,34 @@ function raTranslateData(raData) {
 }
 
 
-function createFibRwPdfHtml(parmas, serNum, radata) {
-    var analysis = parmas.analysis;//是否需要解析
-    var needchinese = parmas.needchinese;//是否需要中文
-    var highlight = parmas.highlight;//是否需要中文
+function createRaPdfHtml(parmas, serNum, radata) {
     var needtrans = parmas.trans;//是否需要全文翻译
-
     var questionDiv = document.createElement("div");
     $(questionDiv).attr("style", "padding-left: 20px;padding-right: 20px;line-height: 30px;font-size: large;width:90%;");
-    var anserDive = document.createElement("div");
-    $(anserDive).attr("class", "layui-form-item");
-    var analysispre = document.createElement("pre");
-    $(analysispre).attr("class", "answer-area");
-    $(analysispre).attr("style", "font-size: 18px;font-family: Arial;word-wrap:break-word;");
-
-
     //内容
     var nameWithoutNum = radata.name_without_num;//名字
     nameWithoutNum = nameWithoutNum.replaceAll(" ", "&nbsp;");
     var num = radata.num;//题号
     var text = radata.text;//内容
-    var choices = radata.choices;//选项
     var h3 = document.createElement("h3");
     h3.innerHTML = serNum + "." + "&nbsp;" + "&nbsp;" + nameWithoutNum + "&nbsp;" + "&nbsp;题号:" + num + "<br/>" + "<br/>";
     $(questionDiv).append(h3);
-    Object.keys(choices.allData).forEach(function (key) {
-        var choice = choices[key];
-        if (choice) {//每一个答案的所有选项
-            //遍历每一个选项
-            var stringBuffer = new StringBuffer();
-            stringBuffer.append("<span style=\"font-family:Arial;color:green;\">");
-            stringBuffer.append(" 【");
-            stringBuffer.append("</span>");
-
-            Object.keys(choice).forEach(function (key1, raindex) {
-                var option = choice[key1];
-                if (option) {
-                    console.log(option);
-                    var correct = option.correct;
-                    var eachoptionText = option.choice;
-                    console.log("eachoptionText---->" + eachoptionText);
-                    eachoptionText = eachoptionText.replace(",", "");
-                    if (highlight && correct) {
-                        stringBuffer.append("<span style=\"font-family:Arial;font-style:italic;color:red;\">");
-                        stringBuffer.append(eachoptionText);
-                        stringBuffer.append("</span>")
-                    } else {
-                        stringBuffer.append(eachoptionText);
-                    }
-                    if (raindex != choice.length - 1) {
-                        stringBuffer.append(" , ");
-                    }
-                }
-            });
-            stringBuffer.append("<span style=\"font-family:Arial;color:green;\">");
-            stringBuffer.append("】 ");
-            stringBuffer.append("</span>");
-
-            //将内容替换掉
-            text = text.replace("{{" + key + "}}", stringBuffer.toString());
-        }
-    })
-    $(questionDiv).append(text + "<br/>" + "<br/>");
-
-
-    if (needchinese) {
-        var chinese = getChinese(radata.num + "");
-        if (chinese) {
-            var chinesepre = "<span  style=\"font-size:20px;color:red;margin: 40px\">";
-            var chinesebiaoshipre = "<span style=\"font-size:20px;color:green;\">";
-            var sPanend = "</span>"
-            chinese = chinese.replaceAll("【", chinesebiaoshipre + "【" + sPanend)
-            chinese = chinese.replaceAll("】", chinesebiaoshipre + "】" + sPanend);
-            chinese = chinesepre + chinese + sPanend;
-            $(anserDive).prepend(chinese);
-        }
-    }
-
-    var answerInText = "<span  style=\"background-color:#ecf8f2;\">" + radata.answer_in_text + "</span>";
-    if (analysis) {
-        var explanation_in_locale = radata.explanation_in_locale;
-        if (explanation_in_locale) {
-            answerInText = "</br>" + "</br>" + answerInText + "</br>" + "</br>" + explanation_in_locale;
-        }
-    }
     if (needtrans) {
         var contents = radata.contents;
         if (contents && contents.length > 0) {
-            answerInText = answerInText + "<br/>" + "<br/>" + "<br/>" + "翻译:" + "<br/>"
-            contents.forEach((eachContent, raindex) => {
+            text = text + "<br/>" + "<br/>" + "<br/>" + "翻译:" + "<br/>"
+            contents.forEach((eachContent, index) => {
                 var type = eachContent.type;
                 if (type == "option" || type == "caption") {
 
                 } else {
                     var content = eachContent.content;
-                    answerInText = answerInText + "<br/>" + content + "<br/>";
+                    text = text + "<br/>" + content + "<br/>";
                 }
             });
         }
     }
-
-    $(analysispre).html(answerInText);
-    $(anserDive).append(analysispre);
-    $(questionDiv).append(anserDive);
-    $(questionDiv).append("<br/>");
+    $(questionDiv).append(text + "<br/>" + "<br/>");
     return questionDiv;
 
 }
@@ -437,11 +361,11 @@ function raUncompleted() {
 }
 
 
-function isFibRwFirst() {
+function isRaFirst() {
     return raindex == 0;
 }
 
-function isFibRwLast() {
+function isRaLast() {
     return raindex == racurrentList.length - 1;
 }
 
@@ -449,7 +373,7 @@ function shuffle(arr) {
     arr.sort(() => Math.random() - 0.5);
 }
 
-function getFibRwraindex() {
+function getraindex() {
     return raindex;
 }
 
@@ -458,18 +382,18 @@ function getChinese(qNum) {
 }
 
 
-function getFibRwTotalNum() {
+function getRaTotalNum() {
     return racurrentList.length;
 }
 
-function setFibRWIndex(qraindex) {
+function setRaIndex(qraindex) {
     raindex = qraindex - 1;
 }
 
-function currentFibRWData() {
+function currentRaData() {
     return racurrentList[raindex];
 }
 
-function currentFibRWListData() {
+function currentRaListData() {
     return racurrentList;
 }

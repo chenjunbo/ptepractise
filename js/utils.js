@@ -215,81 +215,6 @@ function loadWFDChangeLog() {
     }else{
         $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/wfdchangelog.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
     }
-    // layer.open({
-    //     type: 1,
-    //     // area: ['420px', '240px'], // 宽高
-    //     content: '<!DOCTYPE html>\n' +
-    //         '<html lang="en">\n' +
-    //         '<head>\n' +
-    //         '    <meta charset="UTF-8">\n' +
-    //         '    <title>WFD换题季变化</title>\n' +
-    //         '</head>\n' +
-    //         '<body>\n' +
-    //         '<h2>2024.04.15 萤火虫相较于上周190句更新:</h2>\n' +
-    //         '<span style="font-size: 26px; color: red">\n' +
-    //         '新增:131110:Organization plays an important role in academic literature.\n' +
-    //         '新增:131245:The summer course is canceled due to insufficient enrollment.\n' +
-    //         '新增:131303:When parents talk to children, the tense tends to be simplified.\n' +
-    //         '新增:131834:This course places considerable emphasis on critical thinking skills.\n' +
-    //         '新增:131016:All students are expected to attend ten lab sessions per semester.\n' +
-    //         '新增:131235:The results of study underscored the importance of early detection.\n' +
-    //         '新增:131259:The visiting speaker used to be a lecturer in this department.\n' +
-    //         '新增:1311025:Visual aid can be really helpful when you are revising.\n' +
-    //         '新增:131412:The economy is now showing the first sign of recovery.\n' +
-    //         '新增:131265:There is clearly a need for further research in this field.\n' +
-    //         '新增:131295:We can work together to achieve high educational standard.\n' +
-    //         '更新:131476:更新前Some vocational courses at institutions are funded by private enterprises. ->更新后 Many vocational courses at institutions are funded by private enterprises.\n' +
-    //         '新增:131122:Please note that the submission deadlines are only negotiable in exceptional circumstances.\n' +
-    //         '新增:131153:Some students find that true or false questions are harder than short answers.\n' +
-    //         '新增:131330:Speak to your tutor if you require further assistance.\n' +
-    //         '新增:131118:Peer group pressure has a significant effect on young people.\n' +
-    //         '新增:131211:The history of the university is a long and interesting one.\n' +
-    //         '新增:131434:You should submit your term papers to the general office.\n' +
-    //         '新增:131633:New media journalism is an exciting area of study.\n' +
-    //         '升频:1311015:Any gain on sales of property must be allocated promptly.\n' +
-    //         '新增:131093:Many birds migrate to warmer areas for the winter.<br/>\n' +
-    //         '新增:131107:Nurses can specialize in clinical work or management.<br/>\n' +
-    //         '新增:131111:Organizational failure is considered from various perspectives in academic literature.<br/>\n' +
-    //         '新增:131142:The supposed benefits of space exploration are frequently questioned.<br/>\n' +
-    //         '新增:131146:She has made a significant contribution to the field of chemistry.<br/>\n' +
-    //         '新增:131150:Some economists argue that the entire financial system is fatally flawed.<br/>\n' +
-    //         '新增:131173:A bar chart provides a useful means of data comparison.<br/>\n' +
-    //         '新增:131183:The business policy seminar includes an internship with a local firm.<br/>\n' +
-    //         '新增:131196:The rising inflation rate indicates a decrease in demand for consumer products.<br/>\n' +
-    //         '新增:131198:The earth\'s atmosphere is primarily composed of oxygen and nitrogen gases.<br/>\n' +
-    //         '新增:131230:The qualification will be assessed by using a criterion-referenced approach.<br/>\n' +
-    //         '新增:131239:The school’s summer programs help students to accelerate their studies.<br/>\n' +
-    //         '新增:131249:The new technician dropped the microscope in the biology lab.<br/>\n' +
-    //         '新增:131285:Traveling by boat on the river is not possible in winter.<br/>\n' +
-    //         '新增:131293:Water filters on campus will discourage the unnecessary use of plastic bottles.<br/>\n' +
-    //         '新增:131309:Upload your assignments to the website by Tuesday.<br/>\n' +
-    //         '新增:131313:You must submit your assignments by next Friday at the latest.<br/>\n' +
-    //         '新增:131334:Education and training provide important skills for the labor force.<br/>\n' +
-    //         '新增:131336:Find out how to get resources before your research.<br/>\n' +
-    //         '新增:131339:Global connections thrived in academic communities, thanks to social media.<br/>\n' +
-    //         '新增:131346:Several candidates would be qualified as the greatest scientists of all time.<br/>\n' +
-    //         '新增:131348:The Industrial Revolution in Europe was driven by steam technology.<br/>\n' +
-    //         '新增:131375:New credit cards will soon use fingerprint technology.<br/>\n' +
-    //         '新增:131380:Collaboration between departments is a feature of successful companies.<br/>\n' +
-    //         '新增:131393:This course provides the opportunity to get valuable industry experience.<br/>\n' +
-    //         '新增:131401:The ability to work with fellow students cannot be stressed enough.<br/>\n' +
-    //         '新增:131409:The elective course introduces engineering students to construction practices and concepts.<br/>\n' +
-    //         '新增:131483:Distance learning allows you to develop a career around your commitments.<br/>\n' +
-    //         '新增:131506:It takes a long time to walk to university.<br/>\n' +
-    //         '新增:131535:Many food crops require large amounts of water and fertilizer.<br/>\n' +
-    //         '新增:131844:A typical part of the course involves the study of society.<br/>\n' +
-    //         '新增:131896:This new camera can identify your eyes and focus on them.<br/>\n' +
-    //         '新增:131929:The dance department stages elaborated performances each semester.<br/>\n' +
-    //         '新增:131936:Read the first section before the next meeting.<br/>\n' +
-    //         '新增:131990:One student representative will be selected from each class.<br/>\n' +
-    //         '新增:131992:All answers must be thoroughly researched and supported by relevant theories.<br/>\n' +
-    //         '新增:1311017:Efforts are being made to reduce harmful emissions.<br/>\n' +
-    //         '新增:1311054:She began by giving an outline of the previous lecture.<br/>\n' +
-    //         '更新:131308:更新前Years of training are required to become a medical specialist.->更新后 Years of training is needed to become a medical specialist.<br/>\n' +
-    //         '</span>\n' +
-    //         '</body>\n' +
-    //         '</html>'
-    // });
 }
 
 
@@ -312,6 +237,7 @@ function getAlljs(version) {
             "https://gitee.com/jackiechan/ptepractise/raw/main/js/we.js?time=" + time,
             "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflyrs.js?time=" + time,
             "https://gitee.com/jackiechan/ptepractise/raw/main/js/utils2.js?time=" + time,
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/apeuira.js?time=" + time,
             "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjasq.js?time=" + time
         ]
         return js;
@@ -345,6 +271,7 @@ function getAlljs(version) {
                     getRawPre()+"/js/we.js?time="+time,
                     getRawPre()+"/js/fireflyrs.js?time="+time,
                     getRawPre()+"/js/xjasq.js?time="+time,
+                    getRawPre()+"/js/apeuira.js?time="+time,
                     getRawPre()+"/js/utils2.js?time="+time
                 ]
                 return js;
