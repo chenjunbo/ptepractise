@@ -37,6 +37,7 @@
             <span style="font-size: 16px; color: red">&nbsp;&nbsp;&nbsp;&nbsp;FIB-RW:</span>
             <div class="layui-inline">
                 <select name="type" id="typeselection">
+                    <option value="-1">C哥阅读下拉换题季极高频</option>
                     <option value="1">C哥阅读下拉蓝色题目</option>
                     <option value="2">C哥阅读下拉黄色题目</option>
                     <option value="3">C哥阅读下拉白色题目</option>
@@ -74,6 +75,7 @@
             <span style="font-size: 16px; color: red"> &nbsp;&nbsp;&nbsp;&nbsp;FIB-R:</span>
             <div class="layui-inline">
                 <select name="type">
+                    <option value="-1">C哥阅读拖拽换题季极高频</option>
                     <option value="1">C哥阅读拖拽蓝色题目</option>
                     <option value="2">C哥阅读拖拽黄色题目</option>
                     <option value="3">C哥阅读拖拽白色题目</option>
@@ -331,6 +333,9 @@
                 var params = $("#fibrwcreate-form").serializeJson();
                 var name = "C哥阅读下拉预测";
                 switch (params.type) {
+                    case "-1":
+                        name = "C哥阅读下拉极高频";
+                        break;
                     case "1":
                         name = "C哥阅读下拉蓝色题目";
                         break;
@@ -388,6 +393,9 @@
                 var params = $("#xjrocreate-form").serializeJson();
                 var name = "C哥阅读拖拽预测";
                 switch (params.type) {
+                    case "-1":
+                        name = "C哥阅读拖拽极高频";
+                        break;
                     case "1":
                         name = "C哥阅读RO蓝色题目";
                         break;
