@@ -295,4 +295,5 @@ function getMp3url() {
     for (var i =0;i <allmp3listaddress.length;i++){
         str = allmp3listaddress[i] + "\n";
     }
+    return str;
 }
