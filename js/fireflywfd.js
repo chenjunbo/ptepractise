@@ -293,7 +293,7 @@ function getWFDPlainTxt() {
 function getMp3url() {
     var str=""
     for (var i =0;i <allmp3listaddress.length;i++){
-        str += allmp3listaddress[i] + "\n";
+        str += allmp3listaddress[i] + "\r\n";
     }
     return str;
 }
