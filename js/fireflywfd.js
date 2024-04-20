@@ -1,4 +1,4 @@
-let fireFlyWFDList, fireFlyWFDCurrentList, categoryIdDataList, allQnums;
+let fireFlyWFDList, fireFlyWFDCurrentList, categoryIdDataList, allQnums,allmp3listaddress;
 const fireFlyWFDMap = new Map();
 var fireFlyWFDIndex = 0;//当前第几条
 var isFullContent = true;
@@ -19,6 +19,7 @@ function fireFlyWFDInit(form) {
             var fireFlyWFDData = fireFlyWFDList[i];
             fireFlyWFDMap.set(fireFlyWFDData.qNum + "", fireFlyWFDData);
             allQnums.push(fireFlyWFDData.qNum + "");//保存所有id
+            allmp3listaddress.push(getRawPre() + "/mp3/wfd/" + fireFlyWFDData.qNum + ".mp3");
         }
     })
     if (form) {
@@ -286,4 +287,11 @@ function isNeedFirstLetter() {
 
 function getWFDPlainTxt() {
     return plaintxt;
+}
+
+function getMp3url() {
+    var str=""
+    for (var i =0;i <allmp3listaddress.length;i++){
+        str = allmp3listaddress[i] + "\n";
+    }
 }

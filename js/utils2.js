@@ -69,5 +69,26 @@ function gotoxj(local,type, qNum) {
     //     });
     // }, function () {
     // });
-
+    function copystring(value, onError, onSuccess) {
+        if (value === undefined) return;
+        const input = document.createElement("input");
+        // 设置 display为none会导致无法复制
+        // input.style.display = "none";
+        // 所以只能用其他方法隐藏
+        input.style.opacity = 0;
+        // 为了不影响布局
+        input.style.position = 'fixed';
+        input.style.left = "-100%";
+        input.style.top = "-100%";
+        input.value = value;
+        document.body.appendChild(input);
+        input.select()
+        const success = document.execCommand("copy");
+        document.body.removeChild(input);
+        if (!success) {
+            onError && onError();
+            return;
+        }
+        onSuccess && onSuccess();
+    }
 }

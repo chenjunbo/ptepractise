@@ -227,6 +227,7 @@ function getAlljs(version) {
     if (!version) {
         var time = new Date().getTime();
         var js = [
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/utils2.js?time=" + time,
             "https://gitee.com/jackiechan/ptepractise/raw/main/js/fibrwprocess.js?time=" + time,
             "https://gitee.com/jackiechan/ptepractise/raw/main/js/fibrprocess.js?time=" + time,
             "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflywfd.js?time=" + time,
@@ -237,7 +238,6 @@ function getAlljs(version) {
             "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjro.js?time=" + time,
             "https://gitee.com/jackiechan/ptepractise/raw/main/js/we.js?time=" + time,
             "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflyrs.js?time=" + time,
-            "https://gitee.com/jackiechan/ptepractise/raw/main/js/utils2.js?time=" + time,
             "https://gitee.com/jackiechan/ptepractise/raw/main/js/apeuira.js?time=" + time,
             "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjasq.js?time=" + time
         ]
@@ -261,6 +261,7 @@ function getAlljs(version) {
         }else{
                 var time = new Date().getTime();
                 var js = [
+                    getRawPre()+"/js/utils2.js?time="+time,
                     getRawPre()+"/js/fibrwprocess.js?time="+time,
                     getRawPre()+"/js/fibrprocess.js?time="+time,
                     getRawPre()+"/js/fireflywfd.js?time="+time,
@@ -272,8 +273,7 @@ function getAlljs(version) {
                     getRawPre()+"/js/we.js?time="+time,
                     getRawPre()+"/js/fireflyrs.js?time="+time,
                     getRawPre()+"/js/xjasq.js?time="+time,
-                    getRawPre()+"/js/apeuira.js?time="+time,
-                    getRawPre()+"/js/utils2.js?time="+time
+                    getRawPre()+"/js/apeuira.js?time="+time
                 ]
                 return js;
         }
