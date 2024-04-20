@@ -14,6 +14,7 @@ function fireFlyWFDInit(form) {
             result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
         }
         allQnums = new Array();
+        allmp3listaddress = new Array();
         fireFlyWFDList = JSON.parse(result);
         for (let i = 0; i < fireFlyWFDList.length; i++) {
             var fireFlyWFDData = fireFlyWFDList[i];
