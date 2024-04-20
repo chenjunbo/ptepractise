@@ -73,7 +73,7 @@ function gotoxj(local,type, qNum) {
 }
 function copystring(value, onError, onSuccess) {
     if (value === undefined) return;
-    const input = document.createElement("input");
+    const input = document.createElement("textarea");
     // 设置 display为none会导致无法复制
     // input.style.display = "none";
     // 所以只能用其他方法隐藏
