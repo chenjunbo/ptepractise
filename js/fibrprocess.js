@@ -58,6 +58,18 @@ function fibRCurrentTypedata(param) {
             //C哥蓝色数据
             filePath = getGitContentPre()+"/questions/fibr/cge_fib_r_hightest.txt"+getGitContentAccess()
             break;
+        case "-2":
+            //C哥蓝色数据
+            filePath = getGitContentPre()+"/questions/fibr/xj_fib_r_huang.txt"+getGitContentAccess()
+            break;
+        case "-3":
+            //C哥蓝色数据
+            filePath = getGitContentPre()+"/questions/fibr/xj_fib_r_lv.txt"+getGitContentAccess()
+            break;
+        case "-4":
+            //C哥蓝色数据
+            filePath = getGitContentPre()+"/questions/fibr/xj_fib_r_bai.txt"+getGitContentAccess()
+            break;
         case "1":
             //C哥蓝色数据
             filePath = getGitContentPre()+"/questions/fibr/cge_fib_r_lan.txt"+getGitContentAccess()
