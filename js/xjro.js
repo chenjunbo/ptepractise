@@ -72,15 +72,15 @@ function xjroCurrentTypedata(param) {
     switch (type) {
         case "-2":
             //C哥蓝色数据
-            filePath = getGitContentPre()+"/questions/fibr/xj_fib_ro_huang.txt"+getGitContentAccess()
+            filePath = getGitContentPre()+"/questions/ro/xj_fib_ro_huang.txt"+getGitContentAccess()
             break;
         case "-3":
             //C哥蓝色数据
-            filePath = getGitContentPre()+"/questions/fibr/xj_fib_ro_lv.txt"+getGitContentAccess()
+            filePath = getGitContentPre()+"/questions/ro/xj_fib_ro_lv.txt"+getGitContentAccess()
             break;
         case "-4":
             //C哥蓝色数据
-            filePath = getGitContentPre()+"/questions/fibr/xj_fib_ro_bai.txt"+getGitContentAccess()
+            filePath = getGitContentPre()+"/questions/ro/xj_fib_ro_bai.txt"+getGitContentAccess()
             break;
         case "1":
             //C哥蓝色数据
