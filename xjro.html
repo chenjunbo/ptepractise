@@ -32,10 +32,10 @@
                     <input type="checkbox" name="chinese" title="中文翻译" checked>
                 </div>
             </div>
-            <button class="layui-btn" lay-header-event="xjrosearch">先点这里加载(搜索)题目</button>
-            <button class="layui-btn" lay-header-event="testlucky">你猜这是干啥的</button>
-            <button class="layui-btn" lay-header-event="deleteallrightorfalt">清理本题型的所有对错记录</button>
-            <button class="layui-btn" lay-header-event="uncompleted" id="uncompleted">不完整题目</button>
+            <button class="layui-btn layui-btn-sm" lay-header-event="xjrosearch">先点这里加载(搜索)题目</button>
+            <button class="layui-btn layui-btn-sm" lay-header-event="testlucky">你猜这是干啥的</button>
+            <button class="layui-btn layui-btn-sm" lay-header-event="deleteallrightorfalt">清理本题型的所有对错记录</button>
+            <button class="layui-btn layui-btn-sm" lay-header-event="uncompleted" id="uncompleted">不完整题目</button>
         </div>
     </div>
 </form>
@@ -51,14 +51,14 @@
 
     <div class="layui-form-item" id="operationtools">
         <div class="layui-input-block" style="padding-top: 30px">
-            <button type="submit" class="layui-btn" lay-submit lay-header-event="checkanswer" lay-filter="demo1"
+            <button type="submit" class="layui-btn layui-btn-sm" lay-submit lay-header-event="checkanswer" lay-filter="demo1"
                     hidden="hidden">
                 检查答案
             </button>
-            <button class="layui-btn" id="pre" lay-header-event="pre" hidden="hidden">上一题</button>
-            <button class="layui-btn" id="next" lay-header-event="next" hidden="hidden">下一题</button>
-            <button class="layui-btn" id="showanswer" lay-header-event="showanswer" hidden="hidden">显示/隐藏答案
-                <button class="layui-btn" id="adddeletefav" lay-header-event="adddeletefav" hidden="hidden">添加到收藏
+            <button class="layui-btn layui-btn-sm" id="pre" lay-header-event="pre" hidden="hidden">上一题</button>
+            <button class="layui-btn layui-btn-sm" id="next" lay-header-event="next" hidden="hidden">下一题</button>
+            <button class="layui-btn layui-btn-sm" id="showanswer" lay-header-event="showanswer" hidden="hidden">显示/隐藏答案
+                <button class="layui-btn layui-btn-sm" id="adddeletefav" lay-header-event="adddeletefav" hidden="hidden">添加到收藏
                 </button>
                 <div class="layui-inline" id="gotoarea">
                     <div class="layui-inline" style="width: 100px;">
@@ -66,20 +66,21 @@
                                class="layui-input" min="0" step="1" lay-affix="number">
                     </div>
                     <div class="layui-inline" style="width: 100px;">
-                        <button class="layui-btn" id="gotoindex" lay-header-event="gotoindex">跳转</button>
+                        <button class="layui-btn layui-btn-sm" id="gotoindex" lay-header-event="gotoindex">跳转</button>
                     </div>
                     <div class="layui-inline" id="rightandfalt">
 
                     </div>
                     <div class="layui-inline">
-                        <button class="layui-btn" id="clearrightorfalt" lay-header-event="clearrightorfalt">清理对错记录
+                        <button class="layui-btn layui-btn-sm" id="clearrightorfalt" lay-header-event="clearrightorfalt">清理对错记录
                         </button>
                     </div>
-                        <div class="layui-inline">
-                            <button class="layui-btn layui-btn-sm" id="gotoaepui"
-                                    lay-header-event="gotoaepui">跳转到⭐️刷本题
-                            </button>
-                        </div>
+
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-sm" id="gotoaepui"
+                            lay-header-event="gotoaepui">跳转到⭐️刷本题
+                    </button>
                 </div>
         </div>
 
