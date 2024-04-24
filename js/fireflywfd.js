@@ -55,6 +55,7 @@ function fireFlyGetWFDdata(param) {
     var qNum = param.qNum;//题号
     var type = param.type;//类型
     var onlyundo = param.onlyundo;//仅未做
+    var randomindex = param.randomindex;//仅未做
     var localstoragedata;
     fireFlyWFDIndex = 0;
     fireFlyWFDCurrentList = new Array();
@@ -72,12 +73,18 @@ function fireFlyGetWFDdata(param) {
                         //已经做了,不处理
                     } else {
                         fireFlyWFDCurrentList.push(fireFlyWFDMap.get(item + ""));
+                        if (randomindex) {
+                            shuffle(fireFlyWFDCurrentList);
+                        }
                         return fireFlyWFDCurrentList[0];
                     }
                 })
 
             } else {
                 fireFlyWFDCurrentList = fireFlyWFDList;
+                if (randomindex) {
+                    shuffle(fireFlyWFDCurrentList);
+                }
             }
             break;
         case "2":
@@ -94,7 +101,9 @@ function fireFlyGetWFDdata(param) {
                     fireFlyWFDCurrentList.push(fireFlyWFDMap.get(qNum + ""));
                 })
             }
-
+            if (randomindex) {
+                shuffle(fireFlyWFDCurrentList);
+            }
             break;
         default:
             //按照分类来获取数据
@@ -105,6 +114,9 @@ function fireFlyGetWFDdata(param) {
                         fireFlyWFDCurrentList.push(fireFlyWFDMap.get(num + ""));
                     }
                 })
+            }
+            if (randomindex) {
+                shuffle(fireFlyWFDCurrentList);
             }
             return fireFlyWFDCurrentList[0];
             break;
@@ -126,9 +138,14 @@ function fireFlyGetWFDdata(param) {
                 }
             }
         });
+        if (randomindex) {
+            shuffle(fireFlyWFDCurrentList);
+        }
         return fireFlyWFDCurrentList[0];
     }
-
+    if (randomindex) {
+        shuffle(fireFlyWFDCurrentList);
+    }
     return fireFlyWFDCurrentList[fireFlyWFDIndex];
 }
 
@@ -302,4 +319,8 @@ function getMp3url() {
         }
     }
     return str;
+}
+
+function shuffle(arr) {
+    arr.sort(() => Math.random() - 0.5);
 }
