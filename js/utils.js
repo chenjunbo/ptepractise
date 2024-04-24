@@ -488,6 +488,7 @@ function checkupdate() {
     }
 
     checkupdateinterval= setInterval(() => {
+        $.ajaxSettings.async = false;
         $.get(getGitContentPre()+"/txt/version.txt"+getGitContentAccess(), function (response) {
             // let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
             var version;
@@ -512,6 +513,7 @@ function checkupdate() {
             }
 
         })
+        $.ajaxSettings.async = true;
     }, 3600000);
 
 
