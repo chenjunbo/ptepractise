@@ -487,7 +487,7 @@ function checkupdate() {
     if (checkupdateinterval) {
         clearInterval(checkupdateinterval);
     }
-    checkupdateinterval= setInterval(checkversion, 30000);
+    checkupdateinterval= setInterval(checkversion, 3600000);
 }
 
 function  checkversion(){
@@ -513,6 +513,7 @@ function  checkversion(){
                 });
                 window.localStorage.setItem("currentversion", version);
             }, function () {
+                window.localStorage.setItem("currentversion", version);
             });
         }
     })
