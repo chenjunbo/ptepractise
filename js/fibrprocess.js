@@ -746,7 +746,6 @@ function firbgotoindex(obj, event) {
         // fillfibrAnswer(fibrdata);
         // fillfibrOptions(fibrdata);
         checkFav(fibrdata.num, localStorageType);
-        form.render();
         return false;
     }
 
