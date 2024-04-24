@@ -14,11 +14,10 @@ var isNeedLoadFont = true;
 function createMenu() {
     $(".layui-header").remove();
 
-    var ul =$("<ul class=\"layui-nav \"> </ul>");
+    var ul = $("<ul class=\"layui-nav \"> </ul>");
     var dl = $("<dl class=\"layui-nav-child layui-anim layui-anim-upbit\" id=\"left-menu\"></dl>");
-    var li=$(" <li class=\"layui-nav-item\"></li>")
-    var a=$("<a href=\"javascript:;\">点击这里选择功能<i class=\"layui-icon layui-icon-down layui-nav-more\"></i></a>")
-
+    var li = $(" <li class=\"layui-nav-item\"></li>")
+    var a = $("<a href=\"javascript:;\">点击这里选择功能<i class=\"layui-icon layui-icon-down layui-nav-more\"></i></a>")
 
 
     $("#main").attr("class", "layui-fluid");
@@ -28,40 +27,40 @@ function createMenu() {
     var allPages = [
         {
             "menuName": "FIB-RW阅读下拉",
-            "url": getGitContentPre()+"/fibrw.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre() + "/fibrw.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "FIB-R阅读拖拽",
-            "url": getGitContentPre()+"/fibr.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre() + "/fibr.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "RO阅读排序",
-            "url": getGitContentPre()+"/xjro.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre() + "/xjro.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "WFD",
-            "url": getGitContentPre()+"/fireflywfd.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre() + "/fireflywfd.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "SST",
-            "url": getGitContentPre()+"/fireflysst.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre() + "/fireflysst.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "WE",
-            "url": getGitContentPre()+"/fireflywe.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre() + "/fireflywe.html?access_token=c87299575627265144b7db286d3bf673"
         },
 
         {
             "menuName": "生成PDF",
-            "url": getGitContentPre()+"/createpdf.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre() + "/createpdf.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "乱序小工具",
-            "url": getGitContentPre()+"/tools.html?access_token=c87299575627265144b7db286d3bf673"
+            "url": getGitContentPre() + "/tools.html?access_token=c87299575627265144b7db286d3bf673"
         },
         {
             "menuName": "导出导入记录",
-            "url": getGitContentPre()+"/processlocalstorage.html"+getGitContentAccess()
+            "url": getGitContentPre() + "/processlocalstorage.html" + getGitContentAccess()
         }
 
     ]
@@ -79,12 +78,12 @@ function createMenu() {
         str += '<a class="" href="javascript:;" onclick="openRight(\'' + obj.url + '\')">' + obj.menuName + '</a>';
         str += '</dd>'
     })
-   // $("#left-menu").html(str);
+    // $("#left-menu").html(str);
     dl.html(str);
     li.prepend(a);
     li.append(dl);
     ul.append(li);
-    var header=$("<div class=\"layui-header\"></div>")
+    var header = $("<div class=\"layui-header\"></div>")
     header.append(ul)
     $("body").prepend(header);
 }
@@ -94,41 +93,41 @@ function createNav() {
     var allPages = [
         {
             "menuName": "FIB-RW阅读下拉",
-            "url": getGitContentPre()+"/fibrw.html"+getGitContentAccess()
+            "url": getGitContentPre() + "/fibrw.html" + getGitContentAccess()
         },
         {
             "menuName": "FIB-R阅读拖拽",
-            "url": getGitContentPre()+"/fibr.html"+getGitContentAccess()
+            "url": getGitContentPre() + "/fibr.html" + getGitContentAccess()
         },
         {
             "menuName": "RO阅读排序",
-            "url": getGitContentPre()+"/xjro.html"+getGitContentAccess()
+            "url": getGitContentPre() + "/xjro.html" + getGitContentAccess()
         },
         {
             "menuName": "WFD",
-            "url": getGitContentPre()+"/fireflywfd.html"+getGitContentAccess()
+            "url": getGitContentPre() + "/fireflywfd.html" + getGitContentAccess()
         },
         {
             "menuName": "SST",
-            "url": getGitContentPre()+"/fireflysst.html"+getGitContentAccess()
+            "url": getGitContentPre() + "/fireflysst.html" + getGitContentAccess()
         },
         {
             "menuName": "WE",
-            "url": getGitContentPre()+"/fireflywe.html"+getGitContentAccess()
+            "url": getGitContentPre() + "/fireflywe.html" + getGitContentAccess()
         },
 
         {
             "menuName": "生成PDF",
-            "url": getGitContentPre()+"/createpdf.html"+getGitContentAccess()
+            "url": getGitContentPre() + "/createpdf.html" + getGitContentAccess()
         },
         {
             "menuName": "乱序小工具",
-            "url": getGitContentPre()+"/tools.html"+getGitContentAccess()
+            "url": getGitContentPre() + "/tools.html" + getGitContentAccess()
         }
         ,
         {
             "menuName": "导出导入记录",
-            "url": getGitContentPre()+"/processlocalstorage.html"+getGitContentAccess()
+            "url": getGitContentPre() + "/processlocalstorage.html" + getGitContentAccess()
         }
     ]
     var str = "";
@@ -151,26 +150,27 @@ function resetLocation() {
     layer.alert('请选择您所在区域', {
         btn: ['国内', '国外且可访问github'],
         btnAlign: 'c', // 按钮居中显示
-        btn1: function(){
+        btn1: function () {
             window.localStorage.setItem("currentlocaltion", "china");
             location.reload();//刷新页面
         },
-        btn2: function(){
+        btn2: function () {
             window.localStorage.setItem("currentlocaltion", "oversea");
             location.reload();//刷新页面
         }
     });
 }
+
 function openRightNew(url) {
     $.ajax({
-        type:"get",
+        type: "get",
         async: false,
         url: url,
-        success:function (data){
+        success: function (data) {
             var content;
             try {
                 content = decodeURIComponent(escape(window.atob(data.content)));
-            }catch (e){
+            } catch (e) {
                 content = data;
             }
             // var content = decodeURIComponent(escape(window.atob(data.content)));
@@ -185,35 +185,22 @@ function loadNotice() {
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
         $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
-    }else if ("oversea" == currentlocaltion) {
-        $("#main").load(getRawPre()+"/notice.html")
-    }else{
+    } else if ("oversea" == currentlocaltion) {
+        $("#main").load(getRawPre() + "/notice.html")
+    } else {
         $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
     }
     // $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
-    var version="4.24.2";
-    var currentversion = window.localStorage.getItem("currentversion");
-    if (version == currentversion) {
-        layer.msg('祝你八炸九炸心想事成', {icon: 0}, function () {
-        });
-    }else{
-        layer.confirm('功能发生变化,请看更新日志', {icon: 3}, function () {
-        // layer.confirm('今天(19日)飞新西兰,20日周六下午达到,期间的更新会延迟,到达后那边整理下再更新', {icon: 3}, function () {
-            layer.msg('祝你八炸九炸心想事成', {icon: 0}, function () {
-            });
-            window.localStorage.setItem("currentversion", version);
-        }, function () {
-        });
-    }
+    checkupdate();
 }
 
 function loadWFDChangeLog() {
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
         $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/wfdchangelog.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
-    }else if ("oversea" == currentlocaltion) {
-        $("#main").load(getRawPre()+"/notice.html")
-    }else{
+    } else if ("oversea" == currentlocaltion) {
+        $("#main").load(getRawPre() + "/notice.html")
+    } else {
         $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/wfdchangelog.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
     }
 }
@@ -242,77 +229,41 @@ function getAlljs(version) {
             "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjasq.js?time=" + time
         ]
         return js;
-    }else if (version == "1") {
+    } else if (version == "1") {
         var currentlocaltion = window.localStorage.getItem("currentlocaltion");
         if (!currentlocaltion) {
             //还没有设置
             layer.alert('请选择您所在区域', {
                 btn: ['国内', '国外且可访问github'],
                 btnAlign: 'c', // 按钮居中显示
-                btn1: function(){
+                btn1: function () {
                     window.localStorage.setItem("currentlocaltion", "china");
                     location.reload();//刷新页面
                 },
-                btn2: function(){
+                btn2: function () {
                     window.localStorage.setItem("currentlocaltion", "oversea");
                     location.reload();//刷新页面
                 }
             });
-        }else{
-                var time = new Date().getTime();
-                var js = [
-                    getRawPre()+"/js/utils2.js?time="+time,
-                    getRawPre()+"/js/fibrwprocess.js?time="+time,
-                    getRawPre()+"/js/fibrprocess.js?time="+time,
-                    getRawPre()+"/js/fireflywfd.js?time="+time,
-                    getRawPre()+"/js/fireflysst.js?time="+time,
-                    getRawPre()+"/js/xjrs.js?time="+time,
-                    getRawPre()+"/js/ptefibl.js?time="+time,
-                    getRawPre()+"/js/pteasq.js?time="+time,
-                    getRawPre()+"/js/xjro.js?time="+time,
-                    getRawPre()+"/js/we.js?time="+time,
-                    getRawPre()+"/js/fireflyrs.js?time="+time,
-                    getRawPre()+"/js/xjasq.js?time="+time,
-                    getRawPre()+"/js/apeuira.js?time="+time
-                ]
-                return js;
+        } else {
+            var time = new Date().getTime();
+            var js = [
+                getRawPre() + "/js/utils2.js?time=" + time,
+                getRawPre() + "/js/fibrwprocess.js?time=" + time,
+                getRawPre() + "/js/fibrprocess.js?time=" + time,
+                getRawPre() + "/js/fireflywfd.js?time=" + time,
+                getRawPre() + "/js/fireflysst.js?time=" + time,
+                getRawPre() + "/js/xjrs.js?time=" + time,
+                getRawPre() + "/js/ptefibl.js?time=" + time,
+                getRawPre() + "/js/pteasq.js?time=" + time,
+                getRawPre() + "/js/xjro.js?time=" + time,
+                getRawPre() + "/js/we.js?time=" + time,
+                getRawPre() + "/js/fireflyrs.js?time=" + time,
+                getRawPre() + "/js/xjasq.js?time=" + time,
+                getRawPre() + "/js/apeuira.js?time=" + time
+            ]
+            return js;
         }
-
-
-        // else if ("china" == currentlocaltion) {
-        //     var time = new Date().getTime();
-        //     var js = [
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fibrwprocess.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fibrprocess.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fireflywfd.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fireflysst.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/xjrs.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/ptefibl.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/pteasq.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/xjro.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/we.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fireflyrs.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/utils2.js?time="+time
-        //     ]
-        //     return js;
-        // }else if ("oversea" == currentlocaltion) {
-        //     var time = new Date().getTime();
-        //     var js = [
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fibrwprocess.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fibrprocess.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fireflywfd.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fireflysst.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/xjrs.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/ptefibl.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/pteasq.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/xjro.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/we.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/fireflyrs.js?time="+time,
-        //         "https://gitee.com/jackiechan/ptepractise/raw/webversion/js/utils2.js?time="+time
-        //     ]
-        //     return js;
-        // }
-
     }
 
 }
@@ -321,7 +272,7 @@ function getRawPre() {
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
         return "https://gitee.com/jackiechan/ptepractise/raw/webversion";
-    }else if ("oversea" == currentlocaltion) {
+    } else if ("oversea" == currentlocaltion) {
         return "https://chenjunbo.github.io/ptepractise";
     }
 }
@@ -330,15 +281,16 @@ function getGitContentPre() {
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
         return "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents";
-    }else if ("oversea" == currentlocaltion) {
+    } else if ("oversea" == currentlocaltion) {
         return "https://raw.githubusercontent.com/chenjunbo/ptepractise/webversion";
     }
 }
+
 function getGitContentAccess() {
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
         return "?access_token=c87299575627265144b7db286d3bf673&ref=webversion";
-    }else if ("oversea" == currentlocaltion) {
+    } else if ("oversea" == currentlocaltion) {
         return "";
     }
 }
@@ -499,14 +451,14 @@ function getAllQuestionNumFromLocalStorageByFalt(localStroageType) {
     var countMap = new Map();
     keys.forEach((key) => {
         if (key.endsWith("falt" + localStorageType)) {
-            countMap.set(key.substring(0,key.indexOf("falt")), window.localStorage.getItem(key));
+            countMap.set(key.substring(0, key.indexOf("falt")), window.localStorage.getItem(key));
         }
     });
     const sortedEntries = Array.from(countMap).sort(([keyA, valueA], [keyB, valueB]) => {
         return valueB - valueA; // 或者使用其他比较算法来确定排序优先级
     });
     var resultList = new Array();
-    sortedEntries.forEach(function (item,index){
+    sortedEntries.forEach(function (item, index) {
         resultList.push(item[0]);
     })
     return resultList;
@@ -525,4 +477,40 @@ function import2LocalStorage(storage) {
     for (key in storage) {
         window.localStorage.setItem(key, storage[key]);
     }
+}
+
+
+var checkupdateinterval;
+
+function checkupdate() {
+    if (checkupdateinterval) {
+        clearInterval(checkupdateinterval);
+    }
+    checkupdateinterval = setInterval(() => {
+        $.get(getGitContentPre()+"/questions/txt/version.txt"+getGitContentAccess(), function (response) {
+            // let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            var version;
+            try {
+                version = decodeURIComponent(escape(window.atob(response.content))); // 根据换行或者回车进行识别
+            } catch (e) {
+                version = response;
+            }
+            // var version="4.24.2";
+            var currentversion = window.localStorage.getItem("currentversion");
+            if (version == currentversion) {
+                layer.msg('祝你八炸九炸心想事成', {icon: 0}, function () {
+                });
+            } else {
+                layer.confirm('功能发生变化,请看更新日志', {icon: 3}, function () {
+                    // layer.confirm('今天(19日)飞新西兰,20日周六下午达到,期间的更新会延迟,到达后那边整理下再更新', {icon: 3}, function () {
+                    layer.msg('祝你八炸九炸心想事成', {icon: 0}, function () {
+                    });
+                    window.localStorage.setItem("currentversion", version);
+                }, function () {
+                });
+            }
+
+        }, 3600000);
+    })
+
 }
