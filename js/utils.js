@@ -486,35 +486,34 @@ function checkupdate() {
     if (checkupdateinterval) {
         clearInterval(checkupdateinterval);
     }
-
     checkupdateinterval= setInterval(() => {
         console.log("检查更新")
-        $.ajaxSettings.async = false;
-        var path = getGitContentPre() + "/txt/version.txt" + getGitContentAccess();
-        $.get(path, function (response) {
-            // let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
-            var version;
-            try {
-                version = decodeURIComponent(escape(window.atob(response.content))); // 根据换行或者回车进行识别
-            } catch (e) {
-                version = response;
-            }
-            // var version="4.24.2";
-            var currentversion = window.localStorage.getItem("currentversion");
-            if (version == currentversion) {
-                layer.msg('祝你八炸九炸心想事成', {icon: 0}, function () {
-                });
-            } else {
-                layer.confirm('功能发生变化,请看更新日志', {icon: 3}, function () {
-                    // layer.confirm('今天(19日)飞新西兰,20日周六下午达到,期间的更新会延迟,到达后那边整理下再更新', {icon: 3}, function () {
-                    layer.msg('祝你八炸九炸心想事成', {icon: 0}, function () {
-                    });
-                    window.localStorage.setItem("currentversion", version);
-                }, function () {
-                });
-            }
-        })
-        $.ajaxSettings.async = true;
+        // $.ajaxSettings.async = false;
+        // var path = getGitContentPre() + "/txt/version.txt" + getGitContentAccess();
+        // $.get(path, function (response) {
+        //     // let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+        //     var version;
+        //     try {
+        //         version = decodeURIComponent(escape(window.atob(response.content))); // 根据换行或者回车进行识别
+        //     } catch (e) {
+        //         version = response;
+        //     }
+        //     // var version="4.24.2";
+        //     var currentversion = window.localStorage.getItem("currentversion");
+        //     if (version == currentversion) {
+        //         layer.msg('祝你八炸九炸心想事成', {icon: 0}, function () {
+        //         });
+        //     } else {
+        //         layer.confirm('功能发生变化,请看更新日志', {icon: 3}, function () {
+        //             // layer.confirm('今天(19日)飞新西兰,20日周六下午达到,期间的更新会延迟,到达后那边整理下再更新', {icon: 3}, function () {
+        //             layer.msg('祝你八炸九炸心想事成', {icon: 0}, function () {
+        //             });
+        //             window.localStorage.setItem("currentversion", version);
+        //         }, function () {
+        //         });
+        //     }
+        // })
+        // $.ajaxSettings.async = true;
     }, 3600000);
 
 
