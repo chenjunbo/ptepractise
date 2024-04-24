@@ -186,7 +186,7 @@ function loadNotice() {
     if ("china" == currentlocaltion) {
         $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
     } else if ("oversea" == currentlocaltion) {
-        $("#main").load(getRawPre() + "/notice.html")
+        $("#main").load(getGitContentPre() + "/notice.html"+ getGitContentAccess())
     } else {
         $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
     }
@@ -215,19 +215,19 @@ function getAlljs(version) {
     if (!version) {
         var time = new Date().getTime();
         var js = [
-            "https://gitee.com/jackiechan/ptepractise/raw/main/js/utils2.js?time=" + time,
-            "https://gitee.com/jackiechan/ptepractise/raw/main/js/fibrwprocess.js?time=" + time,
-            "https://gitee.com/jackiechan/ptepractise/raw/main/js/fibrprocess.js?time=" + time,
-            "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflywfd.js?time=" + time,
-            "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflysst.js?time=" + time,
-            "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjrs.js?time=" + time,
-            "https://gitee.com/jackiechan/ptepractise/raw/main/js/ptefibl.js?time=" + time,
-            "https://gitee.com/jackiechan/ptepractise/raw/main/js/pteasq.js?time=" + time,
-            "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjro.js?time=" + time,
-            "https://gitee.com/jackiechan/ptepractise/raw/main/js/we.js?time=" + time,
-            "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflyrs.js?time=" + time,
-            "https://gitee.com/jackiechan/ptepractise/raw/main/js/apeuira.js?time=" + time,
-            "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjasq.js?time=" + time
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/utils2.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/fibrwprocess.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/fibrprocess.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflywfd.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflysst.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjrs.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/ptefibl.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/pteasq.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjro.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/we.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflyrs.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/apeuira.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjasq.js"
         ]
         return js;
     } else if (version == "1") {
@@ -247,21 +247,21 @@ function getAlljs(version) {
                 }
             });
         } else {
-            var time = new Date().getTime();
+            // var time = new Date().getTime();
             var js = [
-                getRawPre() + "/js/utils2.js?time=" + time,
-                getRawPre() + "/js/fibrwprocess.js?time=" + time,
-                getRawPre() + "/js/fibrprocess.js?time=" + time,
-                getRawPre() + "/js/fireflywfd.js?time=" + time,
-                getRawPre() + "/js/fireflysst.js?time=" + time,
-                getRawPre() + "/js/xjrs.js?time=" + time,
-                getRawPre() + "/js/ptefibl.js?time=" + time,
-                getRawPre() + "/js/pteasq.js?time=" + time,
-                getRawPre() + "/js/xjro.js?time=" + time,
-                getRawPre() + "/js/we.js?time=" + time,
-                getRawPre() + "/js/fireflyrs.js?time=" + time,
-                getRawPre() + "/js/xjasq.js?time=" + time,
-                getRawPre() + "/js/apeuira.js?time=" + time
+                getRawPre() + "/js/utils2.js",
+                getRawPre() + "/js/fibrwprocess.js",
+                getRawPre() + "/js/fibrprocess.js",
+                getRawPre() + "/js/fireflywfd.js",
+                getRawPre() + "/js/fireflysst.js",
+                getRawPre() + "/js/xjrs.js",
+                getRawPre() + "/js/ptefibl.js",
+                getRawPre() + "/js/pteasq.js",
+                getRawPre() + "/js/xjro.js",
+                getRawPre() + "/js/we.js",
+                getRawPre() + "/js/fireflyrs.js",
+                getRawPre() + "/js/xjasq.js",
+                getRawPre() + "/js/apeuira.js"
             ]
             return js;
         }
@@ -275,6 +275,15 @@ function getRawPre() {
         return "https://gitee.com/jackiechan/ptepractise/raw/webversion";
     } else if ("oversea" == currentlocaltion) {
         return "https://chenjunbo.github.io/ptepractise";
+    }
+}
+
+function getRawPreforpdf() {
+    var currentlocaltion = window.localStorage.getItem("currentlocaltion");
+    if ("china" == currentlocaltion) {
+        return "https://gitee.com/jackiechan/ptepractise/raw/webversion";
+    } else if ("oversea" == currentlocaltion) {
+        return "https://raw.githubusercontent.com/chenjunbo/ptepractise/webversion";
     }
 }
 
