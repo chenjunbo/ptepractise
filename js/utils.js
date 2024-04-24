@@ -487,7 +487,7 @@ function checkupdate() {
         clearInterval(checkupdateinterval);
     }
     checkupdateinterval = setInterval(() => {
-        $.get(getGitContentPre()+"/questions/txt/version.txt"+getGitContentAccess(), function (response) {
+        $.get(getGitContentPre()+"/txt/version.txt"+getGitContentAccess(), function (response) {
             // let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
             var version;
             try {
