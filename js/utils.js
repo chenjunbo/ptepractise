@@ -488,6 +488,7 @@ function checkupdate() {
     }
 
     checkupdateinterval= setInterval(() => {
+        console.log("检查更新")
         $.ajaxSettings.async = false;
         var path = getGitContentPre() + "/txt/version.txt" + getGitContentAccess();
         $.get(path, function (response) {
