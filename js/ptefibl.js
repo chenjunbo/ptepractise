@@ -1,4 +1,4 @@
-var xjfiblweekList, xjfiblMonthList, fireflygfiblList;
+var xjfiblweekList, xjfiblMonthList, fireflygfiblList,cgefiblList;
 function ptefiblInit() {
     $.get(getGitContentPre()+"/data/fibl/fireflyfibl.txt"+getGitContentAccess(), function (response) {
         var result
@@ -31,6 +31,16 @@ function ptefiblInit() {
 
         xjfiblMonthList= JSON.parse(result);
     })
+    $.get(getGitContentPre()+"/data/fibl/xjfibl_c_all.txt"+getGitContentAccess(), function (response) {
+        var result
+        try {
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        } catch (e){
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+        }
+
+        cgefiblList= JSON.parse(result);
+    })
 
 
 
@@ -48,6 +58,11 @@ function currentxjweekFibLList(){
 function currentxjmonthFibLList(){
     return xjfiblMonthList;
 }
+
+function currentcgefiblList(){
+    return cgefiblList;
+}
+
 function createpteFilbPdf(serNum, fiblData) {
     var num = fiblData.num;
     var name = fiblData.name;

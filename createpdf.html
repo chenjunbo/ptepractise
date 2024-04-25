@@ -223,9 +223,10 @@
             <div class="layui-inline">
                 <select name="type">
                     <option value="1">萤火虫FIBL高频</option>
-                    <option value="2">⭐️FIB周预测</option>
-                    <option value="3">⭐️FIB月预测</option>
-                    <option value="100">⭐️FIB听力单词频率</option>
+                    <option value="2">⭐️FIBL周预测</option>
+                    <option value="3">⭐️FIBL月预测</option>
+                    <option value="4">C哥FILB预测全部</option>
+                    <option value="100">⭐️FIBL听力单词频率</option>
                 </select>
         </div>
             <div class="layui-inline">
@@ -653,6 +654,14 @@
                         name = "xjFIBL月预测";
                         var xjfiblmonthList = currentxjmonthFibLList();
                         xjfiblmonthList.forEach(function (item, index) {
+                            var questionHtml = createpteFilbPdf((index + 1), item);
+                            $(body).append(questionHtml);
+                        })
+                        break;
+                    case "4":
+                        name = "C哥FIBL预测";
+                        var cgefiblList = currentcgefiblList();
+                        cgefiblList.forEach(function (item, index) {
                             var questionHtml = createpteFilbPdf((index + 1), item);
                             $(body).append(questionHtml);
                         })
