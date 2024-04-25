@@ -237,6 +237,7 @@ function xjrasearch(obj, event) { // 左侧菜单事件
         return false;
     } else {
         $("#raquestion-form").show();
+        $("#operationtools").show();
     }
     var content = raTranslateData(xjradata);
     $("#raquestion-div").html(content);
