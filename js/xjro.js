@@ -70,16 +70,20 @@ function xjroCurrentTypedata(param) {
     currentROList = new Array();
     var localstoragedata;
     switch (type) {
+        case "-1":
+            //猩际黄
+            filePath = getGitContentPre()+"/questions/ro/cge_ro_hightest.txt"+getGitContentAccess()
+            break;
         case "-2":
-            //C哥蓝色数据
+            //猩际黄
             filePath = getGitContentPre()+"/questions/ro/xj_fib_ro_huang.txt"+getGitContentAccess()
             break;
         case "-3":
-            //C哥蓝色数据
+            //猩际绿
             filePath = getGitContentPre()+"/questions/ro/xj_fib_ro_lv.txt"+getGitContentAccess()
             break;
         case "-4":
-            //C哥蓝色数据
+            //猩际bai
             filePath = getGitContentPre()+"/questions/ro/xj_fib_ro_bai.txt"+getGitContentAccess()
             break;
         case "1":
