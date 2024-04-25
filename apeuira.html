@@ -1,4 +1,4 @@
-<form action="#" class="layui-form" id="search-form">
+<form action="#" class="layui-form" id="rasearch-form">
 
     <div class="layui-row">
         <div class="layui-col-xs5 layui-col-sm2 layui-col-md1">
@@ -29,9 +29,125 @@
         </div>
         <div class="layui-col-xs12 layui-col-sm2 layui-col-md6 layui-row grid-demo">
             <div class="layui-col-md3">
-                <button class="layui-btn layui-btn-sm" lay-header-event="search">加载(搜索)题目</button>
+                <button class="layui-btn layui-btn-sm" lay-header-event="rasearch">加载(搜索)题目</button>
+            </div>
+            <div class="layui-col-md2">
+                <button class="layui-btn layui-btn-sm" lay-header-event="cleanfav">清空收藏夹</button>
             </div>
         </div>
     </div>
 </form>
 
+
+<form class="layui-form" action="" id="raquestion-form">
+
+    <div class="layui-row">
+        <div id="raquestion-div"  class="layui-col-xs12 layui-col-sm12 layui-col-md12" style="padding-left: 20px;padding-right: 20px; line-height: 50px;"></div>
+
+        <div class="layui-form-item" id="operationtools" class="layui-col-xs12 layui-col-sm12 layui-col-md12"
+             hidden="hidden" style="margin-top: 30px">
+            <div class="layui-input-block">
+                <div class="grid-demo layui-col-xs12 layui-col-sm3 layui-col-lg2">
+                    <button class="layui-btn layui-btn-sm layui-col-xs4" id="pre" lay-header-event="rapre" layui-btn
+                            layui-btn-sm>上一题
+                    </button>
+                    <button class="layui-btn layui-btn-sm layui-col-xs4" id="next" lay-header-event="ranext" layui-btn
+                            layui-btn-sm>下一题
+                    </button>
+                </div>
+
+                <div class="grid-demo  layui-col-xs12 layui-col-sm3 layui-col-lg1">
+                    <button class="layui-btn layui-btn-sm" id="adddeletefav" lay-header-event="adddeletefav" layui-btn
+                            layui-btn-sm>添加到收藏
+                    </button>
+                </div>
+                <div class="grid-demo  layui-col-xs12 layui-col-sm3 layui-col-lg2">
+                    <div class="grid-demo  layui-col-xs6 layui-col-sm6">
+                        <input type="number" id="qindex" name="price_min" placeholder="第几题" autocomplete="off"
+                               class="layui-input" min="0" step="1" lay-affix="number">
+                    </div>
+
+                    <div class="grid-demo  layui-col-xs6 layui-col-sm6">
+                        <button class="layui-btn layui-btn-sm" id="gotoindex" lay-header-event="gotoindex">跳转
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid-demo  layui-col-xs4 layui-col-sm2 layui-col-lg1">
+            <div class="layui-inline">
+                <button class="layui-btn layui-btn-sm" id="gotoaepui"
+                        lay-header-event="gotoaepui">跳转到⭐️刷本题
+                </button>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+<script type="text/javascript">
+    var localStorageType = "fibr";
+    layui.use(['table', 'layer', 'form', 'util'], function () {
+        var layer = layui.layer;
+        var form = layui.form;
+        var util = layui.util;
+        $("#raquestion-form").hide();
+        $("#uncompleted").hide();
+        raInit();
+        form.render();
+        util.event('lay-header-event', {
+            rasearch: function (obj, event) { // 左侧菜单事件
+                xjrasearch(obj, event);
+                form.render();
+            },
+            ranext: function (obj, event) {
+                var result = nextxjraQuestion(obj, event);
+                form.render();
+                return result;
+            },
+            rapre: function (obj, event) {
+                xjrapre(obj, event);
+                form.render();
+                return false;
+            },
+            gotoindex: function (obj, event) {
+                xjragotoindex(obj, event);
+            },
+            adddeletefav: function (obj, event) {
+                adddeleterafav(obj, event);
+
+            },
+            cleanfav: function (obj,event){
+                event.preventDefault();
+                cleanxjrafav()
+            },
+            gotoaepui: function (obj,event){
+                event.preventDefault();
+                var data = currentRaData();
+                var qNum = data.num;
+                var local = "cn";
+                if (!racnMap.get(qNum)) {
+                    local = "en";
+                }
+                gotoxj(local, "read_alouds", qNum);
+            }
+        });
+    })
+    $.fn.serializeJson = function () {
+        var serializeObj = {};
+        var array = this.serializeArray();
+        $.each(array, function () {
+            if (serializeObj[this.name] !== undefined) {
+                if (!serializeObj[this.name].push) {
+                    serializeObj[this.name] = [serializeObj[this.name]];
+                }
+                serializeObj[this.name].push(this.value || '');
+            } else {
+                serializeObj[this.name] = this.value || '';
+            }
+        });
+        return serializeObj;
+    };
+
+</script>

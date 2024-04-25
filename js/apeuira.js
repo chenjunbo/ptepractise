@@ -95,14 +95,14 @@ function fibRaCurrentTypedata(param) {
             break;
         case "7":
             onlyundo = "";
-            var content = getFromLocalStorage("rablue");
+            var content = getFromLocalStorage(localStorageType);
             if (content) {
                 var json = JSON.parse(content);
                 localstoragedata = json.nums;
             }
             break;
         case "8":
-            filePath = getGitContentPre()+"/questions/ra/xjra_withoutc.txt"+getGitContentAccess()
+            filePath = getGitContentPre()+"/questions/ra/xj_ra_withoutc.txt"+getGitContentAccess()
             break;
         case "9":
             onlyundo = "";
@@ -221,39 +221,45 @@ function fibRaCurrentTypedata(param) {
 }
 
 
-function raTranslateData(raData) {
-    //var raData = racurrentList[raindex];
-    var nameWithoutNum = raData.name_without_num;
-    nameWithoutNum = nameWithoutNum.replaceAll(" ", "&nbsp;");
-    var num = raData.num;
-    var text = raData.text;
-    var choices = raData.choices.allData;
-    var title = "<div class=\"layui-form-item\"><div class=\"layui-inline\"><label  style=\"white-space:nowrap\">第" + (raindex + 1) + "题/共" + (racurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div></div>"
-    for (var key in choices) {
-        var choice = choices[key];
-        if (choice) {
-            shuffle(choice);
-            var parent = $("<div class=\"layui-inline\"> </div>");
-            var parentin = $("<div class=\"layui-input-inline\"> </div>");
-            var selectId = "answer" + key;
-            var select = $("<select name=" + selectId + " lay-verify=\"required|answer\" id=" + selectId + "><option value=\"\">请选择</option></select>");
 
-            for (var idx in choice) {
-                var current = choice[idx];
-                if (current) {
-                    var choice1 = current.choice;
-                    var correct = current.correct;
-                    select.append($(" <option value=" + correct + idx + ">" + choice1 + "</option>"))
-                }
-            }
-            parentin.append(select);
-            parent.append(parentin);
-            text = text.replace("{{" + key + "}}", $(parent).html())
-        }
+function xjrasearch(obj, event) { // 左侧菜单事件
+    // var json = JSON.stringify($("#fibrsearch-form").serializeJson())
+    // alert("aaaaa" + json)
+    event.preventDefault();
+    $("#rapre").hide();
+    fibRaCurrentTypedata($("#rasearch-form").serializeJson());
+    var xjradata = currentRaData()
+    if (!xjradata) {
+        $("#raquestion-form").hide();
+        layer.msg('当前分类下不存在该题目', {icon: 0}, function () {
+            // layer.msg('提示框关闭后的回调');
+        });
+        return false;
+    } else {
+        $("#raquestion-form").show();
     }
-    startTimer();
-    // raindex++;
-    return title + text;
+    var content = raTranslateData(xjradata);
+    $("#raquestion-div").html(content);
+    // fillfibrAnswer(xjradata);
+    // fillfibrOptions(xjradata);
+    if (isRaLast()) {
+        $("#fibrnext").hide();
+    } else {
+        $("#fibrnext").show();
+    }
+    if (getRaTotalNum() == 1) {
+        $("#gotoarea").hide();
+    } else {
+        $("#gotoarea").show();
+    }
+    checkFav(xjradata.num, localStorageType);
+}
+
+
+function raTranslateData(raData) {
+    
+  
+    return "本页面主要用于跳转到⭐️刷题用,不显示题目具体内容";
 }
 
 
@@ -289,7 +295,117 @@ function createRaPdfHtml(parmas, serNum, radata) {
 
 }
 
-function raRandomLucky() {
+function nextxjraQuestion(obj, event) {
+    event.preventDefault();
+    if (isRaLast()) {
+        $("#ranext").hide();
+        return false;
+    }
+
+    var xjradata = raNextQuest();
+    var content = raTranslateData(xjradata);
+    if (isRaLast()) {
+        $("#ranext").hide();
+    }
+    $("#raquestion-div").html(content);
+    // fillfibrAnswer(xjradata);
+    // fillfibrOptions(xjradata);
+    if (!isRaFirst()) {
+        $("#rapre").show();
+    }
+    checkFav(xjradata.num, localStorageType);
+    return false;
+}
+
+function xjrapre(obj, event) {
+    event.preventDefault();
+    if (isRaFirst()) {
+        $("#rapre").hide();
+        return false;
+    }
+
+    // var content = fibrwPreQuest();
+    var xjradata = raPreQuest();
+    var content = raTranslateData(xjradata);
+    if (isRaFirst()) {
+        $("#rapre").hide();
+    }
+    if (!isRaLast()) {
+        $("#ranext").show();
+    }
+    $("#raquestion-div").html(content);
+    // fillfibrAnswer(xjradata);
+    // fillfibrOptions(xjradata);
+    checkFav(xjradata.num, localStorageType);
+}
+
+function xjragotoindex(obj, event) {
+    event.preventDefault();
+    var qIndex = $("#qindex").val();//想要跳转的题目
+    console.log(qIndex);
+    if (!qIndex || qIndex <= 0 || qIndex > getRaTotalNum()) {
+
+    } else {
+        setRaIndex(parseInt(qIndex));
+        var xjradata = currentRaData();
+        if (!xjradata) {
+            layer.msg('超出题目数量范围', {icon: 0}, function () {
+            });
+            return false;
+        }
+        var content = raTranslateData(xjradata);
+        if (isRaFirst()) {
+            $("#rapre").hide();
+        } else {
+            $("#rapre").show();
+        }
+        if (!isRaLast()) {
+            $("#ranext").show();
+        } else {
+            $("#ranext").hide();
+        }
+        $("#raquestion-div").html(content);
+        // fillfibrAnswer(xjradata);
+        // fillfibrOptions(xjradata);
+        checkFav(xjradata.num, localStorageType);
+        return false;
+    }
+
+}
+
+
+function adddeleterafav(obj, event) {
+    event.preventDefault();
+    var xjradata = currentRaData();
+    if (!xjradata) {
+        layer.msg('题目无效', {icon: 0}, function () {
+        });
+        return false;
+    }
+    var isContains = containsValue(xjradata.num, localStorageType);
+    if (isContains) {
+        layer.confirm('是否删除收藏？', {icon: 3}, function () {
+            removeFavFromLocalStorage(xjradata.num, localStorageType);
+            layer.msg('操作完成', {icon: 0}, function () {
+            });
+            checkFav(xjradata.num, localStorageType);
+        }, function () {
+        });
+
+    } else {
+        layer.confirm('是否添加到收藏？', {icon: 3}, function () {
+            add2LocalStorage("fibrblue", xjradata.num, localStorageType)
+            layer.msg('操作完成', {icon: 0}, function () {
+            });
+            checkFav(xjradata.num, localStorageType);
+        }, function () {
+        });
+
+    }
+
+}
+
+    function raRandomLucky() {
     if (!xjraIdsList || xjraIdsList.length == 0) {
         xjraIdsList = Array.from(xjraIdsSet);
     }
@@ -384,8 +500,6 @@ function getraindex() {
     return raindex;
 }
 
-
-
 function getRaTotalNum() {
     return racurrentList.length;
 }
@@ -400,4 +514,18 @@ function currentRaData() {
 
 function currentRaListData() {
     return racurrentList;
+}
+
+
+
+
+function cleanxjrafav() {
+    layer.confirm('是否清空收藏夹？', {icon: 3}, function () {
+        cleanFav(localStorageType,localStorageType)
+        layer.msg('操作完成', {icon: 0}, function () {
+        });
+        checkFav(currentRaData().num, localStorageType);
+    }, function () {
+    });
+
 }
