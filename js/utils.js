@@ -251,21 +251,21 @@ function getAlljs(version) {
                 }
             });
         } else {
-            // var time = new Date().getTime();
+            var time = new Date().getTime();
             var js = [
-                getRawPre() + "/js/utils2.js",
-                getRawPre() + "/js/fibrwprocess.js",
-                getRawPre() + "/js/fibrprocess.js",
-                getRawPre() + "/js/fireflywfd.js",
-                getRawPre() + "/js/fireflysst.js",
-                getRawPre() + "/js/xjrs.js",
-                getRawPre() + "/js/ptefibl.js",
-                getRawPre() + "/js/pteasq.js",
-                getRawPre() + "/js/xjro.js",
-                getRawPre() + "/js/we.js",
-                getRawPre() + "/js/fireflyrs.js",
-                getRawPre() + "/js/xjasq.js",
-                getRawPre() + "/js/apeuira.js"
+                getRawPre() + "/js/utils2.js?time="+time,
+                getRawPre() + "/js/fibrwprocess.js?time="+time,
+                getRawPre() + "/js/fibrprocess.js?time="+time,
+                getRawPre() + "/js/fireflywfd.js?time="+time,
+                getRawPre() + "/js/fireflysst.js?time="+time,
+                getRawPre() + "/js/xjrs.js?time="+time,
+                getRawPre() + "/js/ptefibl.js?time="+time,
+                getRawPre() + "/js/pteasq.js?time="+time,
+                getRawPre() + "/js/xjro.js?time="+time,
+                getRawPre() + "/js/we.js?time="+time,
+                getRawPre() + "/js/fireflyrs.js?time="+time,
+                getRawPre() + "/js/xjasq.js?time="+time,
+                getRawPre() + "/js/apeuira.js?time="+time
             ]
             return js;
         }
