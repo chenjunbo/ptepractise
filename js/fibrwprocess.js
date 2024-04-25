@@ -525,5 +525,12 @@ function currentFibRWListData() {
 }
 
 function cleanfibrwfav() {
-    cleanFav(XJFIBRWlocalStorageType,localStorageType)
+    layer.confirm('是否清空收藏夹？', {icon: 3}, function () {
+        cleanFav(XJFIBRWlocalStorageType,localStorageType)
+        layer.msg('操作完成', {icon: 0}, function () {
+        });
+        checkFav(currentFibRWData().num, localStorageType);
+    }, function () {
+    });
+
 }

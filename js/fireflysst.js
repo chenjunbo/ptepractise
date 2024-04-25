@@ -228,5 +228,12 @@ function currentSSTListData() {
 }
 
 function cleanfireflysstfav() {
-    cleanFav(sstlocalstoragetype,sstlocalstoragetype)
+    layer.confirm('是否清空收藏夹？', {icon: 3}, function () {
+        cleanFav(sstlocalstoragetype,sstlocalstoragetype)
+        layer.msg('操作完成', {icon: 0}, function () {
+        });
+        checkFav(currentSSTData().id, localStorageType);
+    }, function () {
+    });
+
 }

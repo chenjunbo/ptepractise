@@ -352,5 +352,12 @@ $.fn.serializeJson = function () {
 };
 
 function cleanfireflywefav() {
-    cleanFav(fireflywelocalstoragetype,fireflywelocalstoragetype)
+    layer.confirm('是否清空收藏夹？', {icon: 3}, function () {
+        cleanFav(fireflywelocalstoragetype,fireflywelocalstoragetype)
+        layer.msg('操作完成', {icon: 0}, function () {
+        });
+        checkFav(currentWeData().id, localStorageType);
+    }, function () {
+    });
+
 }

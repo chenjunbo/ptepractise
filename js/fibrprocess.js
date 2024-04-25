@@ -977,5 +977,13 @@ function currentFibRData() {
 }
 
 function cleanfibrfav() {
-    cleanFav(XjFIBRFavlocalStorageType,localStorageType)
+
+    layer.confirm('是否清空收藏夹？', {icon: 3}, function () {
+        cleanFav(XjFIBRFavlocalStorageType,localStorageType)
+        layer.msg('操作完成', {icon: 0}, function () {
+        });
+        checkFav(currentFibRData().num, localStorageType);
+    }, function () {
+    });
+
 }

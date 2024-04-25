@@ -326,5 +326,12 @@ function shuffle(arr) {
 }
 
 function cleanfireflywfdfav() {
-    cleanFav(localStorageType,localStorageType)
+    layer.confirm('是否清空收藏夹？', {icon: 3}, function () {
+        cleanFav(localStorageType,localStorageType)
+        layer.msg('操作完成', {icon: 0}, function () {
+        });
+        checkFav(currentSSTData().id, localStorageType);
+    }, function () {
+    });
+
 }

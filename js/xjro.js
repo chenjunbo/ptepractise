@@ -870,5 +870,12 @@ $.fn.serializeJson = function () {
 }
 
 function cleanxjrofav() {
-    cleanFav(localStorageType,localStorageType)
+    layer.confirm('是否清空收藏夹？', {icon: 3}, function () {
+        cleanFav(localStorageType,localStorageType)
+        layer.msg('操作完成', {icon: 0}, function () {
+        });
+        checkFav(currentXjRoData().num, localStorageType);
+    }, function () {
+    });
+
 }
