@@ -324,3 +324,7 @@ function getMp3url() {
 function shuffle(arr) {
     arr.sort(() => Math.random() - 0.5);
 }
+
+function cleanfireflywfdfav() {
+    cleanFav(localStorageType,localStorageType)
+}

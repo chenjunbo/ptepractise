@@ -44,6 +44,9 @@
                 <button class="layui-btn layui-btn-sm" lay-header-event="testlucky">试试手气</button>
             </div>
             <div class="layui-col-md3">
+                <button class="layui-btn layui-btn-sm" lay-header-event="cleanfav">清空收藏夹</button>
+            </div>
+            <div class="layui-col-md3">
                 <button class="layui-btn layui-btn-sm" lay-header-event="deleteallrightorfalt">清空题型对错记录</button>
             </div>
             <div class="layui-col-md3 layui-hide-xs">
@@ -219,6 +222,9 @@
                 checkFav(fibrwdata.num, localStorageType);
                 form.render();
                 return false;
+            },
+            cleanfav: function (obj,event){
+                cleanfibrwfav()
             },
             deleteallrightorfalt: function (obj, event) {
                 event.preventDefault();

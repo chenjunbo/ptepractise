@@ -868,3 +868,7 @@ $.fn.serializeJson = function () {
     });
     return serializeObj;
 }
+
+function cleanxjrofav() {
+    cleanFav(localStorageType,localStorageType)
+}

@@ -22,6 +22,7 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm" lay-header-event="fireflywesearch">先点这里加载(搜索)题目</button>
+                <button class="layui-btn layui-btn-sm" lay-header-event="cleanfav">清空收藏夹</button>
         </div>
     </div>
 </form>
@@ -76,6 +77,8 @@
                 getwePreQuestion(localStorageType);
                 form.render();
                 return false;
+            },cleanfav: function (obj,event){
+                cleanfireflywefav()
             },
             gotoindex: function (obj, event) {
                 event.preventDefault();

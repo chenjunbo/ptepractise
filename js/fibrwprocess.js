@@ -6,6 +6,7 @@ let chineseContentMap = new Map();//存放中文注释的
 const enMap = new Map();
 var index = 0;//当前第几条
 var localStorageType = "fibrw";
+var XJFIBRWlocalStorageType = "fibrwblue";
 
 function fibrwInit() {
     $.ajax({
@@ -145,7 +146,7 @@ function fibRwCurrentTypedata(param) {
             break;
         case "7":
             onlyundo = "";
-            var content = getFromLocalStorage("fibrwblue");
+            var content = getFromLocalStorage(XJFIBRWlocalStorageType);
             if (content) {
                 var json = JSON.parse(content);
                 localstoragedata = json.nums;
@@ -521,4 +522,8 @@ function currentFibRWData() {
 
 function currentFibRWListData() {
     return currentList;
+}
+
+function cleanfibrwfav() {
+    cleanFav(XJFIBRWlocalStorageType,localStorageType)
 }

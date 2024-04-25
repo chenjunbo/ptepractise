@@ -2,6 +2,7 @@ var sstCurrentList;
 let sstAllDataList;
 const sstMap = new Map();
 var sstIndex = 0;//当前第几条
+sstlocalstoragetype = "fireflysst";
 function fireFlySSTInit() {
     $.get(getGitContentPre()+"/data/sst/fireflysst.txt"+getGitContentAccess(), function (response) {
         var result
@@ -34,7 +35,7 @@ function fireflySSTCurrentTypedata(param) {
 
             break;
         case "3":
-            var content = getFromLocalStorage("fireflysst");
+            var content = getFromLocalStorage(sstlocalstoragetype);
             if (content) {
                 var json = JSON.parse(content);
                 localstoragedata = json.nums;
@@ -224,4 +225,8 @@ function currentSSTData() {
 
 function currentSSTListData() {
     return sstCurrentList;
+}
+
+function cleanfireflysstfav() {
+    cleanFav(sstlocalstoragetype,sstlocalstoragetype)
 }

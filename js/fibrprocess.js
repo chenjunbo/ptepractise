@@ -975,3 +975,7 @@ function setFibRIndex(qindex) {
 function currentFibRData() {
     return fibrCurrentList[fibrIndex];
 }
+
+function cleanfibrfav() {
+    cleanFav(XjFIBRFavlocalStorageType,localStorageType)
+}

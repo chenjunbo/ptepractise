@@ -34,7 +34,8 @@
             </div>
             <button class="layui-btn layui-btn-sm" lay-header-event="xjrosearch">先点这里加载(搜索)题目</button>
             <button class="layui-btn layui-btn-sm" lay-header-event="testlucky">你猜这是干啥的</button>
-            <button class="layui-btn layui-btn-sm" lay-header-event="deleteallrightorfalt">清理本题型的所有对错记录</button>
+            <button class="layui-btn layui-btn-sm" lay-header-event="cleanfav">清空收藏夹</button>
+            <button class="layui-btn layui-btn-sm" lay-header-event="deleteallrightorfalt">清理题型对错记录</button>
             <button class="layui-btn layui-btn-sm" lay-header-event="uncompleted" id="uncompleted">不完整题目</button>
         </div>
     </div>
@@ -160,6 +161,8 @@
                 rogotoindex(localStorageType);
                 form.render();
                 return false;
+            },cleanfav: function (obj,event){
+                cleanxjrofav()
             },
             adddeletefav: function (obj, event) {
                 event.preventDefault();

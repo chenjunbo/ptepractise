@@ -24,6 +24,7 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm" lay-header-event="fireflysstsearch">先点这里加载(搜索)题目</button>
+            <button class="layui-btn layui-btn-sm" lay-header-event="cleanfav">清空收藏夹</button>
         </div>
     </div>
 </form>
@@ -132,6 +133,8 @@
                 checkFav(fireFlySSTData.id, localStorageType);
                 form.render();
                 return false;
+            },cleanfav: function (obj,event){
+                cleanfireflysstfav()
             },
             gotoindex: function (obj, event) {
                 event.preventDefault();

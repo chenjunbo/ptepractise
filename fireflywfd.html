@@ -30,7 +30,8 @@
             </div>
             <button class="layui-btn layui-btn-sm" lay-header-event="search">先点这里加载(搜索)题目</button>
             <button class="layui-btn layui-btn-sm" lay-header-event="testlucky">试试手气(纯属娱乐)</button>
-            <button class="layui-btn layui-btn-sm" lay-header-event="deleteallrightorfalt">清理本题型的所有对错记录</button>
+            <button class="layui-btn layui-btn-sm" lay-header-event="cleanfav">清空收藏夹</button>
+            <button class="layui-btn layui-btn-sm" lay-header-event="deleteallrightorfalt">清理题型对错记录</button>
             <button class="layui-btn layui-btn-sm" lay-header-event="copyalmp3url">复制wfdMP3地址</button>
         </div>
     </div>
@@ -174,6 +175,8 @@
                     });
                 }, function () {
                 });
+            },cleanfav: function (obj,event){
+                cleanfireflywfdfav()
             },
             clearrightorfalt: function (obj, event) {
                 event.preventDefault();

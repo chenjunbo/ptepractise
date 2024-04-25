@@ -48,6 +48,9 @@
             <div class="layui-col-md3">
                 <button class="layui-btn layui-btn-sm" lay-header-event="deleteallrightorfalt">清空题型对错记录</button>
             </div>
+            <div class="layui-col-md3">
+                <button class="layui-btn layui-btn-sm" lay-header-event="cleanfav">清空收藏夹</button>
+            </div>
             <div class="layui-col-md3 layui-hide-xs">
                 <button class="layui-btn layui-btn-sm" lay-header-event="uncompleted" id="uncompleted">不完整题目
                 </button>
@@ -201,6 +204,9 @@
             adddeletefav: function (obj, event) {
                 adddeletefibrfav(obj, event);
 
+            },
+            cleanfav: function (obj,event){
+                cleanfibrfav()
             },
             gotoaepui: function (obj,event){
                 event.preventDefault();

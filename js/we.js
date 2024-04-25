@@ -2,6 +2,7 @@ var weCurrentList;
 let weAllDataList;
 const weMap = new Map();
 var weIndex = 0;//当前第几条
+fireflywelocalstoragetype = "fireflywe";
 function fireFlyWeInit() {
     $.get(getGitContentPre()+"/data/we/fireflywe.txt"+getGitContentAccess(), function (response) {
         var result
@@ -35,7 +36,7 @@ function fireflyWeCurrentTypedata(param) {
 
             break;
         case "3":
-            var content = getFromLocalStorage("fireflywe");
+            var content = getFromLocalStorage(fireflywelocalstoragetype);
             if (content) {
                 var json = JSON.parse(content);
                 localstoragedata = json.nums;
@@ -349,3 +350,7 @@ $.fn.serializeJson = function () {
     });
     return serializeObj;
 };
+
+function cleanfireflywefav() {
+    cleanFav(fireflywelocalstoragetype,fireflywelocalstoragetype)
+}

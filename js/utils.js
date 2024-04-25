@@ -389,6 +389,19 @@ function checkFav(qNum, type) {
 
 }
 
+function cleanFav(typekey,suffix) {
+    var data = window.localStorage.getItem(typekey);
+    if (data) {
+        var json = JSON.parse(data);
+        var nums = json.nums;
+        nums.forEach((item, index)=>{
+            window.localStorage.removeItem(item + suffix);
+        })
+
+    }
+    window.localStorage.removeItem(typekey);
+}
+
 function clearAllFaltByType(localStorageType) {
     removeFromLocalStorage(localStorageType + "falt");
     removeFromLocalStorage(localStorageType + "right");
