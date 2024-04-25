@@ -4,7 +4,7 @@ const racnMap = new Map();
 var xjraIdsSet = new Set();
 const xjraenMap = new Map();
 var raindex = 0;//当前第几条
-var localStorageType = "xjra";
+var xjralocalStorageType = "xjra";
 
 function raInit() {
     $.ajax({
@@ -95,7 +95,7 @@ function fibRaCurrentTypedata(param) {
             break;
         case "7":
             onlyundo = "";
-            var content = getFromLocalStorage(localStorageType);
+            var content = getFromLocalStorage(xjralocalStorageType);
             if (content) {
                 var json = JSON.parse(content);
                 localstoragedata = json.nums;
@@ -106,7 +106,7 @@ function fibRaCurrentTypedata(param) {
             break;
         case "9":
             onlyundo = "";
-            var faltIds = getAllQuestionNumFromLocalStorageByFalt(localStorageType);
+            var faltIds = getAllQuestionNumFromLocalStorageByFalt(xjralocalStorageType);
             if (faltIds) {
                 faltIds.forEach((qNum, raindex) => {
                     getFromLocalStorage()
@@ -158,8 +158,8 @@ function fibRaCurrentTypedata(param) {
                     } else {
                         //检查是不是选择了仅做未做的题目
                         if (onlyundo) {
-                            var rightLocal = getFromLocalStorage(item + "right" + localStorageType);
-                            var faltlocal = getFromLocalStorage(item + "falt" + localStorageType);
+                            var rightLocal = getFromLocalStorage(item + "right" + xjralocalStorageType);
+                            var faltlocal = getFromLocalStorage(item + "falt" + xjralocalStorageType);
                             if (rightLocal || faltlocal) {
                                 //已经做了,不处理
                             } else {
@@ -253,7 +253,7 @@ function xjrasearch(obj, event) { // 左侧菜单事件
     } else {
         $("#gotoarea").show();
     }
-    checkFav(xjradata.num, localStorageType);
+    checkFav(xjradata.num, xjralocalStorageType);
 }
 
 
@@ -316,7 +316,7 @@ function nextxjraQuestion(obj, event) {
     if (!isRaFirst()) {
         $("#rapre").show();
     }
-    checkFav(xjradata.num, localStorageType);
+    checkFav(xjradata.num, xjralocalStorageType);
     return false;
 }
 
@@ -339,7 +339,7 @@ function xjrapre(obj, event) {
     $("#raquestion-div").html(content);
     // fillfibrAnswer(xjradata);
     // fillfibrOptions(xjradata);
-    checkFav(xjradata.num, localStorageType);
+    checkFav(xjradata.num, xjralocalStorageType);
 }
 
 function xjragotoindex(obj, event) {
@@ -370,7 +370,7 @@ function xjragotoindex(obj, event) {
         $("#raquestion-div").html(content);
         // fillfibrAnswer(xjradata);
         // fillfibrOptions(xjradata);
-        checkFav(xjradata.num, localStorageType);
+        checkFav(xjradata.num, xjralocalStorageType);
         return false;
     }
 
@@ -385,22 +385,22 @@ function adddeleterafav(obj, event) {
         });
         return false;
     }
-    var isContains = containsValue(xjradata.num, localStorageType);
+    var isContains = containsValue(xjradata.num, xjralocalStorageType);
     if (isContains) {
         layer.confirm('是否删除收藏？', {icon: 3}, function () {
-            removeFavFromLocalStorage(xjradata.num, localStorageType);
+            removeFavFromLocalStorage(xjradata.num, xjralocalStorageType);
             layer.msg('操作完成', {icon: 0}, function () {
             });
-            checkFav(xjradata.num, localStorageType);
+            checkFav(xjradata.num, xjralocalStorageType);
         }, function () {
         });
 
     } else {
         layer.confirm('是否添加到收藏？', {icon: 3}, function () {
-            add2LocalStorage("fibrblue", xjradata.num, localStorageType)
+            add2LocalStorage("fibrblue", xjradata.num, xjralocalStorageType)
             layer.msg('操作完成', {icon: 0}, function () {
             });
-            checkFav(xjradata.num, localStorageType);
+            checkFav(xjradata.num, xjralocalStorageType);
         }, function () {
         });
 
@@ -524,10 +524,10 @@ function currentRaListData() {
 
 function cleanxjrafav() {
     layer.confirm('是否清空收藏夹？', {icon: 3}, function () {
-        cleanFav(localStorageType,localStorageType)
+        cleanFav(xjralocalStorageType,xjralocalStorageType)
         layer.msg('操作完成', {icon: 0}, function () {
         });
-        checkFav(currentRaData().num, localStorageType);
+        checkFav(currentRaData().num, xjralocalStorageType);
     }, function () {
     });
 
