@@ -516,14 +516,24 @@ function  checkversion(){
             layer.msg('祝你八炸九炸心想事成', {icon: 0}, function () {
             });
         } else {
-            layer.confirm('功能发生变化,请看更新日志', {icon: 3}, function () {
-                // layer.confirm('今天(19日)飞新西兰,20日周六下午达到,期间的更新会延迟,到达后那边整理下再更新', {icon: 3}, function () {
-                layer.msg('祝你八炸九炸心想事成', {icon: 0}, function () {
-                });
-                window.localStorage.setItem("currentversion", version);
-            }, function () {
-                window.localStorage.setItem("currentversion", version);
+
+            layer.alert('功能发生变化,请看更新日志', {
+                btn: ['朕已阅'],
+                btnAlign: 'c', // 按钮居中显示
+                btn1: function(){
+                    layer.msg('祝你八炸九炸心想事成', {icon: 0}, function () {
+                    });
+                    window.localStorage.setItem("currentversion", version);
+                }
             });
+            // layer.confirm('功能发生变化,请看更新日志', {icon: 3}, function () {
+            //     // layer.confirm('今天(19日)飞新西兰,20日周六下午达到,期间的更新会延迟,到达后那边整理下再更新', {icon: 3}, function () {
+            //     layer.msg('祝你八炸九炸心想事成', {icon: 0}, function () {
+            //     });
+            //     window.localStorage.setItem("currentversion", version);
+            // }, function () {
+            //     window.localStorage.setItem("currentversion", version);
+            // });
         }
     })
 }
