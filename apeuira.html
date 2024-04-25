@@ -2,13 +2,13 @@
 
     <div class="layui-row">
         <div class="layui-col-xs5 layui-col-sm2 layui-col-md1">
-            <div class="grid-demo">
+            <div class="layui-inline">
                 <input id="qNumInput" type="number" name="qNum" autocomplete="off" placeholder="请输入题号"
                        class="layui-input">
             </div>
         </div>
         <div class="layui-col-xs7 layui-col-sm4 layui-col-md2">
-            <div class="grid-demo">
+            <div class="layui-inline">
                 <select name="type" id="typeselection">
                     <option value="1">C哥RA下拉蓝色题目</option>
                     <option value="2">C哥RA下拉黄色题目</option>
@@ -20,14 +20,14 @@
             </div>
         </div>
 <!--        <div class="layui-hide-xs layui-col-sm4 layui-col-md3">-->
-<!--            <div class="grid-demo">-->
+<!--            <div class="layui-inline">-->
 <!--                <label class="layui-form-label" style="color: red">可选选项:</label>-->
 <!--                <div class="layui-input-block">-->
 <!--                    <input type="checkbox" name="onlyundo" title="仅显示未做">-->
 <!--                </div>-->
 <!--            </div>-->
 <!--        </div>-->
-        <div class="layui-col-xs12 layui-col-sm2 layui-col-md6 layui-row grid-demo">
+        <div class="layui-col-xs12 layui-col-sm2 layui-col-md6 layui-row layui-inline">
             <div class="layui-col-md3">
                 <button class="layui-btn layui-btn-sm" lay-header-event="rasearch">加载(搜索)题目</button>
             </div>
@@ -41,44 +41,42 @@
 
 <form class="layui-form" action="" id="raquestion-form">
 
-    <div id="raquestion-div"  class="layui-col-xs12 layui-col-sm12 layui-col-md12" style="padding-left: 20px;padding-right: 20px; line-height: 50px;"></div>
-    <div class="layui-row">
-        <div class="layui-form-item" id="operationtools" class="layui-col-xs8 layui-col-sm8 layui-col-md8"
+    <div id="raquestion-div"   style="padding-left: 20px;padding-right: 20px; line-height: 50px;"></div>
+    <div class="layui-form-item">
+        <div class="layui-inline" id="operationtools" class="layui-form-item"
              hidden="hidden" style="margin-top: 30px">
             <div class="layui-input-block">
-                <div class="grid-demo layui-col-xs12 layui-col-sm3 layui-col-lg2">
-                    <button class="layui-btn layui-btn-sm layui-col-xs4" id="rapre" lay-header-event="rapre" layui-btn
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-sm " id="rapre" lay-header-event="rapre" layui-btn
                             layui-btn-sm>上一题
                     </button>
-                    <button class="layui-btn layui-btn-sm layui-col-xs4" id="ranext" lay-header-event="ranext" layui-btn
+                    <button class="layui-btn layui-btn-sm " id="ranext" lay-header-event="ranext" layui-btn
                             layui-btn-sm>下一题
                     </button>
                 </div>
 
-                <div class="grid-demo  layui-col-xs12 layui-col-sm3 layui-col-lg1">
+                <div class="layui-inline  ">
                     <button class="layui-btn layui-btn-sm" id="adddeletefav" lay-header-event="adddeletefav" layui-btn
                             layui-btn-sm>添加到收藏
                     </button>
                 </div>
-                <div class="grid-demo  layui-col-xs12 layui-col-sm3 layui-col-lg2">
-                    <div class="grid-demo  layui-col-xs6 layui-col-sm6">
+                <div class="layui-inline">
+                    <div class="layui-input-inline ">
                         <input type="number" id="qindex" name="price_min" placeholder="第几题" autocomplete="off"
                                class="layui-input" min="0" step="1" lay-affix="number">
                     </div>
 
-                    <div class="grid-demo  layui-col-xs6 layui-col-sm2">
+                    <div class="layui-inline  ">
                         <button class="layui-btn layui-btn-sm" id="gotoindex" lay-header-event="gotoindex">跳转
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="layui-col-xs2 layui-col-sm2 layui-col-md2 layui-col-lg1">
             <div class="layui-inline">
                 <button class="layui-btn layui-btn-sm" id="gotoaepui"
                         lay-header-event="gotoaepui">跳转到⭐️刷本题
                 </button>
-            </div>
         </div>
     </div>
 
