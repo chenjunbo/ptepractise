@@ -397,7 +397,7 @@ function adddeleterafav(obj, event) {
 
     } else {
         layer.confirm('是否添加到收藏？', {icon: 3}, function () {
-            add2LocalStorage("fibrblue", xjradata.num, xjralocalStorageType)
+            add2LocalStorage(xjralocalStorageType, xjradata.num, xjralocalStorageType)
             layer.msg('操作完成', {icon: 0}, function () {
             });
             checkFav(xjradata.num, xjralocalStorageType);
