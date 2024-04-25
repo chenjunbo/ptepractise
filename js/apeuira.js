@@ -244,9 +244,9 @@ function xjrasearch(obj, event) { // 左侧菜单事件
     // fillfibrAnswer(xjradata);
     // fillfibrOptions(xjradata);
     if (isRaLast()) {
-        $("#fibrnext").hide();
+        $("#ranext").hide();
     } else {
-        $("#fibrnext").show();
+        $("#ranext").show();
     }
     if (getRaTotalNum() == 1) {
         $("#gotoarea").hide();
