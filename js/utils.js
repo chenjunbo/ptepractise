@@ -115,6 +115,10 @@ function createNav() {
             "menuName": "WE",
             "url": getGitContentPre() + "/fireflywe.html" + getGitContentAccess()
         },
+        {
+            "menuName": "RA",
+            "url": getGitContentPre() + "/apeuira.html" + getGitContentAccess()
+        },
 
         {
             "menuName": "生成PDF",
