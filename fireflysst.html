@@ -11,6 +11,7 @@
                 <select name="type" id="typeselection">
                     <option value="1">萤火虫SST高频</option>
                     <option value="2">萤火虫SST已整理题库</option>
+                    <option value="-1">C哥SST预测(⭐️题库)</option>
                     <option value="3">SST收藏夹</option>
                 </select>
             </div>
@@ -48,6 +49,9 @@
                     <button class="layui-btn layui-btn-sm" id="gotoindex" lay-header-event="gotoindex">跳转</button>
                 </div>
             </div>
+            <button class="layui-btn layui-btn-sm" id="gotoaepui"
+                    lay-header-event="gotoaepui">跳转到⭐️刷本题
+            </button>
         </div>
 
     </div>
@@ -64,73 +68,20 @@
         util.event('lay-header-event', {
             fireflysstsearch: function (obj, event) { // 左侧菜单事件
                 event.preventDefault();
-                $("#pre").hide();
-                var params = $("#fireflysst-form").serializeJson();
-                 fireflySSTCurrentTypedata(params);
-                var fireFlySSTData = currentSSTData();
-                if (!fireFlySSTData) {
-                    $("#question-form").hide();
-                    layer.msg('当前分类下不存在该题目', {icon: 0}, function () {
-                        // layer.msg('提示框关闭后的回调');
-                    });
-                    return false;
-                }else{
-                    $("#question-form").show();
-                }
-                var content = fireFlySSTTranslateData(fireFlySSTData,params);
-                $("#question-div").html(content);
-                if (isSSTLast()) {
-                    $("#next").hide();
-                } else {
-                    $("#next").show();
-                }
-                if (getSSTTotalNum() == 1) {
-                    $("#gotoarea").hide();
-                }else{
-                    $("#gotoarea").show();
-                }
-                checkFav(fireFlySSTData.id, localStorageType);
+                fireflysstsearch();
                 form.render();
                 return false;
             }
             , next: function (obj, event) {
                 event.preventDefault();
-                if (isSSTLast()) {
-                    $("#next").hide();
-                    return false;
-                }
-                var params = $("#fireflysst-form").serializeJson();
-                var fireFlySSTData = sstNextQuest();
-                var content = fireFlySSTTranslateData(fireFlySSTData,params);
-                if (isSSTLast()) {
-                    $("#next").hide();
-                }
-                $("#question-div").html(content);
-                if (!isSSTFirst()) {
-                    $("#pre").show();
-                }
-                checkFav(fireFlySSTData.id, localStorageType);
+                sstNext()
                 form.render();
                 return false;
             },
             pre: function (obj, event) {
                 event.preventDefault();
-                if (isSSTFirst()) {
-                    $("#pre").hide();
-                    return false;
-                }
-                var params = $("#fireflysst-form").serializeJson();
-                // var content = fireFlyPreQuest();
-                var fireFlySSTData = sstPreQuest();
-                var content = fireFlySSTTranslateData(fireFlySSTData,params);
-                if (isSSTFirst()) {
-                    $("#pre").hide();
-                }
-                if (!isSSTLast()) {
-                    $("#next").show();
-                }
-                $("#question-div").html(content);
-                checkFav(fireFlySSTData.id, localStorageType);
+                sstPre()
+
                 form.render();
                 return false;
             },cleanfav: function (obj,event){
@@ -139,65 +90,19 @@
             },
             gotoindex: function (obj, event) {
                 event.preventDefault();
-                var qIndex = $("#qindex").val();//想要跳转的题目
-                console.log(qIndex);
-                if (!qIndex || qIndex <= 0 || qIndex > getSSTTotalNum) {
-
-                } else {
-                    setSSTIndex(parseInt(qIndex));
-                    var fireFlySSTData = currentSSTData();
-                    if (!fireFlySSTData) {
-                        layer.msg('超出题目数量范围', {icon: 0}, function () {
-                        });
-                        return false;
-                    }
-                    var params = $("#fireflysst-form").serializeJson();
-                    var content = fireFlySSTTranslateData(fireFlySSTData,params);
-                    if (isSSTFirst()) {
-                        $("#pre").hide();
-                    } else {
-                        $("#pre").show();
-                    }
-                    if (!isSSTLast()) {
-                        $("#next").show();
-                    } else {
-                        $("#next").hide();
-                    }
-                    $("#question-div").html(content);
-                    checkFav(fireFlySSTData.id, localStorageType);
+                    sstgotoindex()
                     form.render();
                     return false;
-                }
+            },
+            gotoaepui: function (obj, event) {
+                event.preventDefault();
+                    sstgotoaepui()
+                    form.render();
+                    return false;
             },
             adddeletefav: function (obj, event) {
                 event.preventDefault();
-                var fireFlySSTData = currentSSTData();
-                if (!fireFlySSTData) {
-                    layer.msg('题目无效', {icon: 0}, function () {
-                    });
-                    return false;
-                }
-                var isContains = containsValue(fireFlySSTData.id, localStorageType);
-                if (isContains) {
-                    layer.confirm('是否删除收藏？', {icon: 3}, function () {
-                        removeFavFromLocalStorage(fireFlySSTData.id, localStorageType);
-                        layer.msg('操作完成', {icon: 0}, function () {
-                        });
-                        checkFav(fireFlySSTData.id, localStorageType);
-                    }, function () {
-                    });
-
-                } else {
-                    layer.confirm('是否添加到收藏？', {icon: 3}, function () {
-                        add2LocalStorage("fireflysst", fireFlySSTData.id, localStorageType)
-                        layer.msg('操作完成', {icon: 0}, function () {
-                        });
-                        checkFav(fireFlySSTData.id, localStorageType);
-                    }, function () {
-                    });
-
-                }
-
+                adddeletesstfav()
             }
         });
     })
