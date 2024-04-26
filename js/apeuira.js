@@ -258,6 +258,7 @@ function xjrasearch(obj, event) { // 左侧菜单事件
 
 
 function raTranslateData(raData) {
+    stopTimer();
     var nameWithoutNum = raData.name_without_num;
     nameWithoutNum = nameWithoutNum.replaceAll(" ", "&nbsp;");
     var num = raData.num;

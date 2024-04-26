@@ -29,6 +29,13 @@ function startTimer() {
     }, 1000);
 }
 
+function stopTimer() {
+    if (interval) {
+        clearInterval(interval);
+        interval = null;
+    }
+}
+
 function gotoxj(local,type, qNum) {
     var url = "https://www.ptexj.com/zh-CN/practice/{{type}}/{{qNum}}";
     var msg="即将跳转到⭐️中文区答题,请确认已经登录⭐️,同一账号无法同时登录中英文双区"
