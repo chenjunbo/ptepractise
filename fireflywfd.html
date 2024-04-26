@@ -38,8 +38,11 @@
 
 </form>
 <div class="layui-input-inline">
-    <label style="color: red">勾选后答案中需要填写首字母</label>
-    <input type="checkbox" id="check" name="BBB" title="答案中要填写首字母" lay-skin="tag" checked>
+    <div class="layui-input-inline"><label style="color: red">勾选后答案中需要填写首字母</label>
+        <input type="checkbox" id="check" name="BBB" title="答案中要填写首字母" lay-skin="tag" checked></div>
+    <div class="layui-input-inline"><label style="color: red">不显示字母模式,勾选后上面选项失效</label>
+        <input type="checkbox" id="nofirstletter" name="BBB" title="无首字母模式" lay-skin="tag"></div>
+
 </div>
 <br>
 <br>
@@ -49,7 +52,8 @@
 
     <div class="layui-form-item">
         <div class="layui-input-block" style="padding-top: 30px">
-            <button type="submit" class="layui-btn layui-btn-sm" lay-submit lay-header-event="checkanswer" lay-filter="demo1"
+            <button type="submit" class="layui-btn layui-btn-sm" lay-submit lay-header-event="checkanswer"
+                    lay-filter="demo1"
                     hidden="hidden">
                 检查答案
             </button>
@@ -57,7 +61,8 @@
             <button class="layui-btn layui-btn-sm" id="next" lay-header-event="next" hidden="hidden">下一题</button>
             <button class="layui-btn layui-btn-sm" id="showanswer" lay-header-event="showanswer" hidden="hidden">显示/隐藏答案
             </button>
-            <button class="layui-btn layui-btn-sm" id="adddeletefav" lay-header-event="adddeletefav" hidden="hidden">添加到收藏
+            <button class="layui-btn layui-btn-sm" id="adddeletefav" lay-header-event="adddeletefav" hidden="hidden">
+                添加到收藏
             </button>
             <div class="layui-inline" id="gotoarea">
                 <div class="layui-inline" style="width: 100px;">
@@ -67,10 +72,11 @@
                 <div class="layui-inline" style="width: 100px;">
                     <button class="layui-btn layui-btn-sm" id="gotoindex" lay-header-event="gotoindex">跳转</button>
                 </div>
-                <div class="layui-inline" id="rightandfalt" >
+                <div class="layui-inline" id="rightandfalt">
                 </div>
                 <div class="layui-inline">
-                    <button class="layui-btn layui-btn-sm" id="clearrightorfalt" lay-header-event="clearrightorfalt">清理对错记录
+                    <button class="layui-btn layui-btn-sm" id="clearrightorfalt" lay-header-event="clearrightorfalt">
+                        清理对错记录
                     </button>
                 </div>
             </div>
@@ -95,6 +101,9 @@
         form.render();
         $("#check").click(function () {
             setNeedFirstLetter();
+        });
+        $("#nofirstletter").click(function () {
+            setNoFirstletter();
         });
         util.event('lay-header-event', {
             search: function (obj, event) { // 左侧菜单事件
@@ -127,7 +136,7 @@
                 form.render();
                 return false;
             },
-            testlucky: function (obj,event){
+            testlucky: function (obj, event) {
                 event.preventDefault();
                 $("#pre").hide();
                 $("#question-form").show();
@@ -158,24 +167,24 @@
                 form.render();
                 return false;
             }
-            ,deleteallrightorfalt: function (obj, event) {
+            , deleteallrightorfalt: function (obj, event) {
                 event.preventDefault();
                 //移除所有数据
                 layer.confirm('是否删清空本题型的对错记录？', {icon: 3}, function () {
                     clearAllFaltByType(localStorageType);
-                   try {
-                       var fireFlydata = currentFireFlyWFDData();
-                       if (fireFlydata) {
-                           setRightAndFaltNum(fireFlydata.qNum, localStorageType);
-                       }
-                   }catch (e) {
+                    try {
+                        var fireFlydata = currentFireFlyWFDData();
+                        if (fireFlydata) {
+                            setRightAndFaltNum(fireFlydata.qNum, localStorageType);
+                        }
+                    } catch (e) {
 
-                   }
+                    }
                     layer.msg('操作完成', {icon: 0}, function () {
                     });
                 }, function () {
                 });
-            },cleanfav: function (obj,event){
+            }, cleanfav: function (obj, event) {
                 event.preventDefault();
                 cleanfireflywfdfav()
             },
@@ -231,11 +240,15 @@
                     if (id && id.startsWith("answerblank")) {
                         var val = $(currentInput).val();
                         var realanswer;
-                        if (isNeedFirstLetter()) {
-
+                        if (isNofirstLetter) {
                             realanswer = $(currentInput).attr("realanswer");
                         } else {
-                            realanswer = $(currentInput).attr("realanswerunfull");
+                            if (isNeedFirstLetter()) {
+
+                                realanswer = $(currentInput).attr("realanswer");
+                            } else {
+                                realanswer = $(currentInput).attr("realanswerunfull");
+                            }
                         }
                         console.log(val + "---->" + realanswer);
                         if (val.toLowerCase().trim() != realanswer.toLowerCase().trim()) {
@@ -253,7 +266,7 @@
                     layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
                         var serializeJson = $("#search-form").serializeJson();
                         var autonext = serializeJson.autonext;
-                        if (!isFireFlyWFDLast()&&autonext) {
+                        if (!isFireFlyWFDLast() && autonext) {
                             nextWfdQuestion(obj, event, localStorageType);
                             form.render();
                         }
@@ -276,7 +289,7 @@
             },
             copyalmp3url: function (obj, event) {
                 event.preventDefault();
-                var mp3url=getMp3url();
+                var mp3url = getMp3url();
                 copystring(mp3url);
             },
             gotoindex: function (obj, event) {

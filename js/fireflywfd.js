@@ -2,6 +2,7 @@ let fireFlyWFDList, fireFlyWFDCurrentList, categoryIdDataList, allQnums,allmp3li
 const fireFlyWFDMap = new Map();
 var fireFlyWFDIndex = 0;//当前第几条
 var isFullContent = true;
+isNoFirstletter = false;//默认有首字母
 var localStorageType = "fireflywfd";
 var plaintxt;
 
@@ -176,11 +177,14 @@ function fireFlyWFDTranslateData(fireFlyWFDData) {
         // var firstplace = document.createElement("input");
         // $(firstplace).attr("class", "layui-input");
         // $(firstplace).attr("value",firstLetter.toUpperCase());
-        var firstplace = document.createElement("div");
-        $(firstplace).attr("class", "layui-input-inline");
-        $(firstplace).attr("style", "padding-left: 10px; color:red;");
-        $(firstplace).html(firstLetter.toUpperCase());
-        parent.append(firstplace);
+        if (!isNoFirstletter) {
+
+            var firstplace = document.createElement("div");
+            $(firstplace).attr("class", "layui-input-inline");
+            $(firstplace).attr("style", "padding-left: 10px; color:red;");
+            $(firstplace).html(firstLetter.toUpperCase());
+            parent.append(firstplace);
+        }
         var input = document.createElement("input");
 
         $(input).attr("type", "text");
@@ -301,6 +305,13 @@ function setNeedFirstLetter() {
     isFullContent = !isFullContent;
 }
 
+function setNoFirstletter() {
+    isNoFirstletter = !isNoFirstletter;
+}
+
+function isNofirstLetter() {
+    return isNoFirstletter;
+}
 function isNeedFirstLetter() {
     return isFullContent;
 }
