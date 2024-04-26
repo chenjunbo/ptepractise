@@ -19,6 +19,10 @@
                     <option value="-4">萤火虫WFD倒序无注音版</option>
                     <option value="1">萤火虫WFD首字母</option>
                     <option value="2">萤火虫WFD分类版</option>
+                    <option value="5">萤火虫WFD简单到难</option>
+                    <option value="6">萤火虫WFD简单句</option>
+                    <option value="7">萤火虫WFD普通句</option>
+                    <option value="8">萤火虫WFD难句</option>
                     <option value="3">大西瓜萤火虫WFD相似句</option>
                     <option value="4">萤火虫WFD纯文本</option>
                 </select>
@@ -555,6 +559,25 @@
                         body.innerHTML=getWFDPlainTxt();
                         fillPdf(newPage, name);
                         return ;
+
+                    /*
+                     <option value="5">萤火虫WFD简单到难</option>
+                    <option value="6">萤火虫WFD简单句</option>
+                    <option value="7">萤火虫WFD普通句</option>
+                    <option value="8">萤火虫WFD难句</option>
+                     */
+                    case "5":
+                        var content = loadwfdpdfmd("萤火虫WFD简单到难.md","萤火虫WFD简单到难");
+                        return;
+                    case "6":
+                        var content = loadwfdpdfmd("萤火虫WFD简单.md","萤火虫WFD简单句");
+                        return;
+                    case "7":
+                        var content = loadwfdpdfmd("萤火虫WFD普通.md","萤火虫WFD普通难度");
+                        return;
+                    case "7":
+                        var content = loadwfdpdfmd("萤火虫WFD难.md","萤火虫WFD难句");
+                        return;
                 }
                 window.open(url, '_blank');
                 return false;

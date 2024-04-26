@@ -219,6 +219,8 @@ function loadwfdpdfmd(filename,pdfname){
         } catch (e) {
             result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
         }
+        var rawPre = getRawPre();
+        str.replace(new RegExp("https://gitee.com/jackiechan/ptepractise/raw/webversion","gm"),rawPre)
         var newPage = document.implementation.createHTMLDocument('New Page');
         var name = pdfname;
         var body = newPage.body;
