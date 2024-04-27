@@ -155,6 +155,9 @@ function fibRwCurrentTypedata(param) {
         case "8":
             filePath = getGitContentPre()+"/questions/fibrw/xjfib_rw_withoutc.txt"+getGitContentAccess()
             break;
+        case "-5":
+            filePath = getGitContentPre()+"/questions/fibrw/cge_fib_rw_without_xj.txt"+getGitContentAccess()
+            break;
         case "9":
             onlyundo = "";
             var faltIds = getAllQuestionNumFromLocalStorageByFalt(localStorageType);

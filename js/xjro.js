@@ -121,6 +121,9 @@ function xjroCurrentTypedata(param) {
         case "8":
             filePath = getGitContentPre()+"/questions/ro/xjxj_ro_withoutc.txt"+getGitContentAccess()
             break
+        case "-5":
+            filePath = getGitContentPre()+"/questions/ro/cge_fib_ro_without_xj.txt"+getGitContentAccess()
+            break
         case "9":
             var faltIds = getAllQuestionNumFromLocalStorageByFalt("xjroublue");
             if (faltIds) {

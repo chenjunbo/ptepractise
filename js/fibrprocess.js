@@ -105,7 +105,9 @@ function fibRCurrentTypedata(param) {
         case "8":
             filePath = getGitContentPre()+"/questions/fibr/xjfib_r_withoutc.txt"+getGitContentAccess()
             break
-
+        case "-5":
+            filePath = getGitContentPre()+"/questions/fibr/cge_fib_r_without_xj.txt"+getGitContentAccess()
+            break
         case "9":
             var faltIds = getAllQuestionNumFromLocalStorageByFalt("fibr");
             if (faltIds) {
