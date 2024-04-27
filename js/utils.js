@@ -125,6 +125,10 @@ function createNav() {
             "url": getGitContentPre() + "/createpdf.html" + getGitContentAccess()
         },
         {
+            "menuName": "签证入境注意点",
+            "url": getGitContentPre() + "/visa.html" + getGitContentAccess()
+        },
+        {
             "menuName": "乱序小工具",
             "url": getGitContentPre() + "/tools.html" + getGitContentAccess()
         }
