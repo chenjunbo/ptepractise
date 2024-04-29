@@ -342,7 +342,7 @@ function create_all_words_order_by_dic(order_by_count) {
     var thead= document.createElement("thead");
     var thead_tr= document.createElement("tr");
     var word_th= document.createElement("th");
-    var count_th= document.createElement("tr");
+    var count_th= document.createElement("th");
     word_th.innerHTML="单词"
     count_th.innerHTML="频率"
     thead_tr.appendChild(word_th)
