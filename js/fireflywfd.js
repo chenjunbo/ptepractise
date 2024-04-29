@@ -339,6 +339,17 @@ function getMp3url() {
 function create_all_words_order_by_dic(order_by_count) {
     var allWords = ""
     var table = document.createElement("table");
+    var thead= document.createElement("thead");
+    var thead_tr= document.createElement("tr");
+    var word_th= document.createElement("th");
+    var count_th= document.createElement("tr");
+    word_th.innerHTML="单词"
+    count_th.innerHTML="频率"
+    thead_tr.appendChild(word_th)
+    thead_tr.appendChild(count_th)
+    thead.appendChild(thead_tr)
+    table.appendChild(thead)
+
     var tbody = document.createElement("tbody");
     fireFlyWFDList.forEach((wfd, ind) => {
         allWords += (wfd.en.toLowerCase().replace(".", "").replace(",", "")) + " "
@@ -363,7 +374,7 @@ function create_all_words_order_by_dic(order_by_count) {
     console.log(sorted_result_by_char)
     var array = sorted_result_by_char;
     if (order_by_count) {
-        array = order_by_count;
+        array = sorted_result_by_count;
     }
     array.forEach((word, index) => {
         var wordTd = document.createElement("td");
