@@ -371,11 +371,11 @@ function create_all_words_order_by_dic(order_by_count) {
         var countTd = document.createElement("td");
         wordTd.innerHTML = word;
         countTd.innerHTML = result[word];
-        $(tr).append(wordTd)
-        $(tr).append(countTd)
-        $(tbody).append(tr)
+        tr.appendChild(wordTd)
+        tr.appendChild(countTd)
+        tbody.appendChild(tr)
     })
-    table.innerHTML = tbody
+    table.appendChild(tbody)
     return table;
 }
 
