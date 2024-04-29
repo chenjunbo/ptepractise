@@ -342,7 +342,8 @@ function create_all_words_order_by_dic(order_by_count) {
         allWords += (wfd.en.toLowerCase().replace(".", "").replace(",", "")) + " "
     })
     let result = allWords.split(" ").reduce((temp, data) => {
-        if (data in excWords) {
+        if (excWords.indexOf(data) > -1) {
+            
         } else {
             temp[data] = temp[data] ? temp[data] + 1 : 1;
         }
