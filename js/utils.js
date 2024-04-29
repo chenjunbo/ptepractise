@@ -125,6 +125,10 @@ function createNav() {
             "url": getGitContentPre() + "/createpdf.html" + getGitContentAccess()
         },
         {
+            "menuName": "PTE官方规则介绍",
+            "url": getGitContentPre() + "/pteinfo.html" + getGitContentAccess()
+        },
+        {
             "menuName": "签证入境注意点",
             "url": getGitContentPre() + "/visa.html" + getGitContentAccess()
         },
