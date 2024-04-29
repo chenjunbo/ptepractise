@@ -338,6 +338,8 @@ function getMp3url() {
 
 function create_all_words_order_by_dic(order_by_count) {
     var allWords = ""
+    var table = document.createElement("table");
+    var tbody = document.createElement("tbody");
     fireFlyWFDList.forEach((wfd, ind) => {
         allWords += (wfd.en.toLowerCase().replace(".", "").replace(",", "")) + " "
     })
@@ -349,7 +351,7 @@ function create_all_words_order_by_dic(order_by_count) {
         }
         return temp;
     }, {})
-    var sorted_result = Object.keys(result).sort((key1, key2) => result[key1] - result[key2]);
+    var sorted_result_by_count = Object.keys(result).sort((key1, key2) => result[key1] - result[key2]);
     var sorted_result_by_char = Object.keys(result).sort((key1, key2) => {
         let a = key1.toLowerCase();
         let b = key2.toLowerCase();
@@ -357,9 +359,24 @@ function create_all_words_order_by_dic(order_by_count) {
         if (a > b) return 1;
         return 0;
     });
-    console.log(sorted_result)
+    console.log(sorted_result_by_count)
     console.log(sorted_result_by_char)
-    return result;
+    var array = sorted_result_by_char;
+    if (order_by_count) {
+        array = order_by_count;
+    }
+    array.forEach((word,index)=>{
+        var wordTd = document.createElement("td");
+        var tr = document.createElement("tr");
+        var countTd = document.createElement("td");
+        $(wordTd).innerHTML = word;
+        $(countTd).innerHTML = result[word];
+        $(tr).append(wordTd)
+        $(tr).append(countTd)
+        $(tbody).append(tr)
+    })
+    $(table).append(tbody)
+    return table;
 }
 
 

@@ -582,10 +582,10 @@
                         return;
                     case "9":
                         // name = "纯文本";
-                        create_all_words_order_by_dic()
-                        // var body = newPage.body;
-                        // body.innerHTML=getWFDPlainTxt();
-                        // fillPdf(newPage, name);
+                        var content=create_all_words_order_by_dic()
+                        var body = newPage.body;
+                        body.innerHTML=content;
+                        fillPdf(newPage, name);
                         return ;
                 }
                 window.open(url, '_blank');
