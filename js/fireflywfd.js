@@ -350,7 +350,7 @@ function create_all_words_order_by_dic(order_by_count) {
         return temp;
     }, {})
     var sorted_result = Object.keys(result).sort((key1, key2) => result[key1] - result[key2]);
-
+    var sorted_result_by_char = Object.keys(result).sort((key1, key2) => key1-key2);
     console.log(result)
     console.log(sorted_result)
     return result;
