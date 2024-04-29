@@ -342,15 +342,17 @@ function create_all_words_order_by_dic(order_by_count) {
         allWords += (wfd.en.toLowerCase().replace(".", "").replace(",", "")) + " "
     })
     let result = allWords.split(" ").reduce((temp, data) => {
-        if (excWords.indexOf(data) > -1|| !excWords) {
+        if (excWords.indexOf(data) > -1 || !excWords) {
 
         } else {
             temp[data] = temp[data] ? temp[data] + 1 : 1;
         }
         return temp;
     }, {})
-    console.log(typeof result)
+    var sorted_result = Object.keys(result).sort((key1, key2) => result[key1] - result[key2]);
 
+    console.log(result)
+    console.log(sorted_result)
     return result;
 }
 
