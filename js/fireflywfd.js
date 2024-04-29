@@ -338,12 +338,12 @@ function getMp3url() {
 
 function create_all_words_order_by_dic(order_by_count) {
     var allWords = ""
-    for (wfd in fireFlyWFDList) {
+    fireFlyWFDList.forEach((wfd, ind) => {
         allWords += wfd.en.toLowerCase().replace("\\.", "") + " "
-    }
+    })
     let result = allWords.split(" ").reduce((temp, data) => {
         if (data in excWords) {
-        }else{
+        } else {
             temp[data] = temp[data] ? temp[data] + 1 : 1;
         }
         return temp;
