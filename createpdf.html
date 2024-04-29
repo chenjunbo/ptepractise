@@ -24,7 +24,7 @@
                     <option value="7">萤火虫WFD普通句</option>
                     <option value="8">萤火虫WFD难句</option>
                     <option value="9">萤火虫WFD高频单词表</option>
-<!--                    <option value="10">萤火虫WFD高频单词表频率排序</option>-->
+                    <option value="10">萤火虫WFD高频单词表频率排序</option>
 <!--                    <option value="3">大西瓜萤火虫WFD相似句</option>-->
                     <option value="4">萤火虫WFD纯文本</option>
                 </select>
@@ -583,6 +583,13 @@
                     case "9":
                         // name = "纯文本";
                         var content=create_all_words_order_by_dic()
+                        var body = newPage.body;
+                        body.innerHTML=content;
+                        fillPdf(newPage, name);
+                        return ;
+                    case "10":
+                        // name = "纯文本";
+                        var content=create_all_words_order_by_dic(true)
                         var body = newPage.body;
                         body.innerHTML=content;
                         fillPdf(newPage, name);

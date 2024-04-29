@@ -365,17 +365,17 @@ function create_all_words_order_by_dic(order_by_count) {
     if (order_by_count) {
         array = order_by_count;
     }
-    array.forEach((word,index)=>{
+    array.forEach((word, index) => {
         var wordTd = document.createElement("td");
         var tr = document.createElement("tr");
         var countTd = document.createElement("td");
-        $(wordTd).innerHTML = word;
-        $(countTd).innerHTML = result[word];
+        wordTd.innerHTML = word;
+        countTd.innerHTML = result[word];
         $(tr).append(wordTd)
         $(tr).append(countTd)
         $(tbody).append(tr)
     })
-    $(table).append(tbody)
+    table.innerHTML = tbody
     return table;
 }
 
