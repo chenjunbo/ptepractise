@@ -1,10 +1,11 @@
-let fireFlyWFDList, fireFlyWFDCurrentList, categoryIdDataList, allQnums,allmp3listaddress;
+let fireFlyWFDList, fireFlyWFDCurrentList, categoryIdDataList, allQnums, allmp3listaddress;
 const fireFlyWFDMap = new Map();
 var fireFlyWFDIndex = 0;//当前第几条
 var isFullContent = true;
 isNoFirstletter = false;//默认有首字母
 var localStorageType = "fireflywfd";
 var plaintxt;
+var excWords = ["of", "to", "as", "at", "on", "in", "for", "by", "about", "with", "up", "a", "an", "the", "this", "that", "is", "are", "was", "were", "has", "have", "had", "been", "be", "can", "could", "would", "should", "I", "you", "he", "she", "his", "her", "your", "and", "or"]
 
 function fireFlyWFDInit(form) {
     $.get(getGitContentPre() + "/data/wfd/fireflywfd.txt" + getGitContentAccess(), function (response) {
@@ -214,9 +215,9 @@ function fireFlyWFDTranslateData(fireFlyWFDData) {
     return title + text + chinese + "<br/>" + audio;
 }
 
-function loadwfdpdfmd(filename,pdfname){
+function loadwfdpdfmd(filename, pdfname) {
     $.ajaxSettings.async = false;
-    $.get(getGitContentPre() + "/pdf/"+filename + getGitContentAccess(), function (response) {
+    $.get(getGitContentPre() + "/pdf/" + filename + getGitContentAccess(), function (response) {
         var result
         try {
             result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
@@ -224,11 +225,11 @@ function loadwfdpdfmd(filename,pdfname){
             result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
         }
         var rawPre = getRawPre();
-        result= result.replace(new RegExp("https://gitee.com/jackiechan/ptepractise/raw/webversion","gm"),rawPre)
+        result = result.replace(new RegExp("https://gitee.com/jackiechan/ptepractise/raw/webversion", "gm"), rawPre)
         var newPage = document.implementation.createHTMLDocument('New Page');
         var name = pdfname;
         var body = newPage.body;
-        $(body).attr("style","margin-left: 20px")
+        $(body).attr("style", "margin-left: 20px")
         $(body).append(result);
         fillPdf(newPage, name);
         return result;
@@ -312,6 +313,7 @@ function setNoFirstletter() {
 function isNofirstLetter() {
     return isNoFirstletter;
 }
+
 function isNeedFirstLetter() {
     return isFullContent;
 }
@@ -321,12 +323,12 @@ function getWFDPlainTxt() {
 }
 
 function getMp3url() {
-    var str=""
-    for (var i =0;i <allmp3listaddress.length;i++){
+    var str = ""
+    for (var i = 0; i < allmp3listaddress.length; i++) {
         if (i != allmp3listaddress.length - 1) {
 
             str += allmp3listaddress[i] + "\r\n";
-        }else{
+        } else {
             str += allmp3listaddress[i];
 
         }
@@ -334,13 +336,30 @@ function getMp3url() {
     return str;
 }
 
+function create_all_words_order_by_dic(order_by_count) {
+    var allWords = ""
+    for (wfd in fireFlyWFDList) {
+        allWords += wfd.en.toLowerCase().replace("\\.", "") + " "
+    }
+    let result = allWords.split(" ").reduce((temp, data) => {
+        if (data in excWords) {
+        }else{
+            temp[data] = temp[data] ? temp[data] + 1 : 1;
+        }
+        return temp;
+    }, {})
+    console.log(result)
+    return result;
+}
+
+
 function shuffle(arr) {
     arr.sort(() => Math.random() - 0.5);
 }
 
 function cleanfireflywfdfav() {
     layer.confirm('是否清空收藏夹？', {icon: 3}, function () {
-        cleanFav(localStorageType,localStorageType)
+        cleanFav(localStorageType, localStorageType)
         layer.msg('操作完成', {icon: 0}, function () {
         });
         checkFav(currentSSTData().id, localStorageType);
