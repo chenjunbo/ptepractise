@@ -584,14 +584,14 @@
                         // name = "纯文本";
                         var content=create_all_words_order_by_dic()
                         var body = newPage.body;
-                        body.innerHTML=content;
+                        body.appendChild(content);
                         fillPdf(newPage, name);
                         return ;
                     case "10":
                         // name = "纯文本";
                         var content=create_all_words_order_by_dic(true)
                         var body = newPage.body;
-                        body.innerHTML=content;
+                        body.appendChild(content);
                         fillPdf(newPage, name);
                         return ;
                 }
