@@ -521,7 +521,7 @@ function checkupdate() {
     if (checkupdateinterval) {
         clearInterval(checkupdateinterval);
     }
-    checkupdateinterval= setInterval(checkversion, 3600000);
+    checkupdateinterval= setInterval(checkversion, 900000);
 }
 
 function  checkversion(){
