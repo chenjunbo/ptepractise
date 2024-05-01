@@ -351,9 +351,9 @@ function getfavMp3() {
                     localstoragedata.splice(index, 1);
                 } else {
                     if (i != localstoragedata.length - 1) {
-                        str += item + "\r\n";
+                        str += getRawPre() + "/mp3/wfd/"+item +".mp3"+ "\r\n";
                     } else {
-                        str += item;
+                        str += getRawPre() + "/mp3/wfd/"+item +".mp3";
 
                     }
                 }
