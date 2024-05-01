@@ -292,11 +292,15 @@
                 event.preventDefault();
                 var mp3url = getMp3url();
                 copystring(mp3url);
+                layer.msg('复制完成,打开迅雷粘贴下载', {icon: 0}, function () {
+                });
             },
             copyfavmp3url: function (obj, event) {
                 event.preventDefault();
                 var mp3url = getfavMp3();
                 copystring(mp3url);
+                layer.msg('复制完成,打开迅雷粘贴下载', {icon: 0}, function () {
+                });
             },
             gotoindex: function (obj, event) {
                 event.preventDefault();
