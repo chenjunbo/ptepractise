@@ -346,7 +346,7 @@ function getfavMp3() {
     }
     if (localstoragedata) {
         //如果有数据
-        localstoragedata.forEach(function (item) {
+        localstoragedata.forEach(function (item,i) {
                 if (!item) {
                     localstoragedata.splice(index, 1);
                 } else {
