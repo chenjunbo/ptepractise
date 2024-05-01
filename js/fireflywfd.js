@@ -359,6 +359,7 @@ function getfavMp3() {
                 }
         });
     }
+    return str;
 }
 
 function create_all_words_order_by_dic(order_by_count) {
