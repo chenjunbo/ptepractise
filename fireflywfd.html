@@ -32,7 +32,8 @@
             <button class="layui-btn layui-btn-sm" lay-header-event="testlucky">试试手气(纯属娱乐)</button>
             <button class="layui-btn layui-btn-sm" lay-header-event="cleanfav">清空收藏夹</button>
             <button class="layui-btn layui-btn-sm" lay-header-event="deleteallrightorfalt">清理题型对错记录</button>
-            <button class="layui-btn layui-btn-sm" lay-header-event="copyalmp3url">复制wfdMP3地址</button>
+            <button class="layui-btn layui-btn-sm" lay-header-event="copyallmp3url">复制所有题目MP3地址</button>
+            <button class="layui-btn layui-btn-sm" lay-header-event="copyfavmp3url">复制收藏夹题目MP3地址</button>
         </div>
     </div>
 
@@ -287,7 +288,12 @@
                     $("#answer-area").hide();
                 }
             },
-            copyalmp3url: function (obj, event) {
+            copyallmp3url: function (obj, event) {
+                event.preventDefault();
+                var mp3url = getMp3url();
+                copystring(mp3url);
+            },
+            copyfavmp3url: function (obj, event) {
                 event.preventDefault();
                 var mp3url = getMp3url();
                 copystring(mp3url);

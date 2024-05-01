@@ -133,9 +133,9 @@ function fireFlyGetWFDdata(param) {
                 if (!item) {
                     localstoragedata.splice(index, 1);
                 } else {
-                    var fibrwData = fireFlyWFDMap.get(item + "");
-                    if (fibrwData) {
-                        fireFlyWFDCurrentList.push(fibrwData);
+                    var fireFlyWFD = fireFlyWFDMap.get(item + "");
+                    if (fireFlyWFD) {
+                        fireFlyWFDCurrentList.push(fireFlyWFD);
                     }
                 }
             }
@@ -336,15 +336,40 @@ function getMp3url() {
     return str;
 }
 
+function getfavMp3() {
+    var str = ""
+    var localstoragedata;
+    var content = getFromLocalStorage(localStorageType);
+    if (content) {
+        var json = JSON.parse(content);
+        localstoragedata = json.nums;
+    }
+    if (localstoragedata) {
+        //如果有数据
+        localstoragedata.forEach(function (item) {
+                if (!item) {
+                    localstoragedata.splice(index, 1);
+                } else {
+                    if (i != localstoragedata.length - 1) {
+                        str += item + "\r\n";
+                    } else {
+                        str += item;
+
+                    }
+                }
+        });
+    }
+}
+
 function create_all_words_order_by_dic(order_by_count) {
     var allWords = ""
     var table = document.createElement("table");
-    var thead= document.createElement("thead");
-    var thead_tr= document.createElement("tr");
-    var word_th= document.createElement("th");
-    var count_th= document.createElement("th");
-    word_th.innerHTML="单词"
-    count_th.innerHTML="频率"
+    var thead = document.createElement("thead");
+    var thead_tr = document.createElement("tr");
+    var word_th = document.createElement("th");
+    var count_th = document.createElement("th");
+    word_th.innerHTML = "单词"
+    count_th.innerHTML = "频率"
     thead_tr.appendChild(word_th)
     thead_tr.appendChild(count_th)
     thead.appendChild(thead_tr)
