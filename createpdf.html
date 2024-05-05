@@ -405,9 +405,10 @@
                 event.preventDefault();
                 var newPage = document.implementation.createHTMLDocument('New Page');
                 var params = $("#xjrocreate-form").serializeJson();
-                var name = "C哥阅读拖拽预测";
+                var name = "C哥阅读ro预测";
                 switch (params.type) {
-
+                    case "-1":
+                        name = "C哥阅读RO绿色题目";
                     case "1":
                         name = "C哥阅读RO蓝色题目";
                         break;
@@ -430,9 +431,7 @@
                     case "-5":
                         name = "C哥阅读RO除⭐️月预测之外题目";
                         break
-                    case "-5":
-                        name="C哥阅读拖拽除⭐️月预测之外题目"
-                    case "8":
+                    case "9":
                         name = "RO错题集"
                         break;
                 }
