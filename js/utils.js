@@ -133,6 +133,10 @@ function createNav() {
             "url": getGitContentPre() + "/visa.html" + getGitContentAccess()
         },
         {
+            "menuName": "公告页",
+            "url": getGitContentPre() + "/notice.html" + getGitContentAccess()
+        },
+        {
             "menuName": "乱序小工具",
             "url": getGitContentPre() + "/tools.html" + getGitContentAccess()
         }
