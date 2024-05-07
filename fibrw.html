@@ -3,11 +3,11 @@
     <div class="layui-row">
         <div class="layui-col-xs5 layui-col-sm2 layui-col-md1">
             <div class="grid-demo">
-                <input id="qNumInput" type="number" name="qNum" autocomplete="off" placeholder="请输入题号"
+                <input id="qNumInput" type="number" name="qNum" autocomplete="off" placeholder="题号非必须"
                        class="layui-input">
             </div>
         </div>
-        <div class="layui-col-xs7 layui-col-sm4 layui-col-md2">
+        <div class="layui-col-xs7 layui-col-sm3 layui-col-md2">
             <div class="grid-demo">
                 <select name="type" id="typeselection">
                     <option value="-1">C哥阅读下拉绿色题目</option>
@@ -27,7 +27,7 @@
                 </select>
             </div>
         </div>
-        <div class="layui-hide-xs layui-col-sm4 layui-col-md3">
+        <div class="layui-hide-xs layui-col-sm3 layui-col-md3">
             <div class="grid-demo">
                 <label class="layui-form-label" style="color: red">可选选项:</label>
                 <div class="layui-input-block">
@@ -37,23 +37,16 @@
                 </div>
             </div>
         </div>
-        <div class="layui-col-xs12 layui-col-sm2 layui-col-md6 layui-row grid-demo">
-            <div class="layui-col-md3">
+        <div class="layui-col-xs12 layui-col-sm4 layui-col-md5">
                 <button class="layui-btn layui-btn-sm" lay-header-event="search">加载(搜索)题目</button>
-            </div>
-            <div class="layui-col-md2 layui-hide-xs">
                 <button class="layui-btn layui-btn-sm" lay-header-event="testlucky">试试手气</button>
-            </div>
-            <div class="layui-col-md2">
                 <button class="layui-btn layui-btn-sm" lay-header-event="cleanfav">清空收藏夹</button>
-            </div>
-            <div class="layui-col-md3">
                 <button class="layui-btn layui-btn-sm" lay-header-event="deleteallrightorfalt">清空对错记录</button>
-            </div>
-            <div class="layui-col-md2 layui-hide-xs">
-                <button class="layui-btn layui-btn-sm" lay-header-event="uncompleted" id="uncompleted">不完整题目
-                </button>
-            </div>
+
+        </div>
+        <div class="layui-col-sm2 layui-col-md1 layui-hide-xs">
+            <button class="layui-btn layui-btn-sm" lay-header-event="uncompleted" id="uncompleted">不完整题目
+            </button>
         </div>
     </div>
 </form>
@@ -69,7 +62,7 @@
 
 
             <div class="layui-input-block">
-                <div class="grid-demo layui-col-xs12 layui-col-sm3 layui-col-lg2">
+                <div class="grid-demo layui-col-xs12 layui-col-sm2 layui-col-md2 layui-col-lg2">
                     <button type="submit" class="layui-btn layui-btn-sm layui-col-xs4" lay-submit
                             lay-header-event="checkanswer" lay-filter="demo1"
                             layui-btn layui-btn-sm>
@@ -81,23 +74,23 @@
 
 
                 </div>
-                <div class="grid-demo layui-col-xs12 layui-col-sm3 layui-col-lg2">
-                    <button class="layui-btn layui-btn-sm layui-col-xs4" id="pre" lay-header-event="pre" layui-btn
+                <div class="grid-demo layui-col-xs12 layui-col-sm2 layui-col-md2 layui-col-lg2">
+                    <button class="layui-btn layui-btn-sm " id="pre" lay-header-event="pre" layui-btn
                             layui-btn-sm>上一题
                     </button>
-                    <button class="layui-btn layui-btn-sm layui-col-xs4" id="next" lay-header-event="next" layui-btn
+                    <button class="layui-btn layui-btn-sm" id="next" lay-header-event="next" layui-btn
                             layui-btn-sm>下一题
                     </button>
                 </div>
 
-                <div class="grid-demo  layui-col-xs12 layui-col-sm3 layui-col-lg1">
+                <div class="grid-demo  layui-col-xs12 layui-col-sm1 layui-col-md1 layui-col-lg1">
                     <button class="layui-btn layui-btn-sm" id="adddeletefav" lay-header-event="adddeletefav" layui-btn
                             layui-btn-sm>添加到收藏
                     </button>
 
                 </div>
 
-                <div class="grid-demo  layui-col-xs12 layui-col-sm3 layui-col-lg2">
+                <div class="grid-demo  layui-col-xs12 layui-col-sm2 layui-col-md2 layui-col-lg2">
                     <div class="grid-demo  layui-col-xs6 layui-col-sm6">
                         <input type="number" id="qindex" name="price_min" placeholder="第几题" autocomplete="off"
                                class="layui-input" min="0" step="1" lay-affix="number">
@@ -107,18 +100,8 @@
                         <button class="layui-btn layui-btn-sm" id="gotoindex" lay-header-event="gotoindex">跳转
                         </button>
                     </div>
-                    <!--                    <div class="layui-inline" id="gotoarea">-->
-                    <!--                        <div class="layui-inline" style="width: 100px;">-->
-                    <!--                            <input type="number" id="qindex" name="price_min" placeholder="第几题" autocomplete="off"-->
-                    <!--                                   class="layui-input" min="0" step="1" lay-affix="number">-->
-                    <!--                        </div>-->
-                    <!--                        <div class="layui-inline" style="width: 100px;">-->
-                    <!--                            <button class="layui-btn layui-btn-sm" id="gotoindex" lay-header-event="gotoindex">跳转-->
-                    <!--                            </button>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
                 </div>
-                <div class="grid-demo  layui-col-xs12 layui-col-sm3 layui-col-lg4">
+                <div class="grid-demo  layui-col-xs12 layui-col-sm4 layui-col-md4 layui-col-lg3">
                     <div class="layui-inline layui-hide-xs" id="rightandfalt"></div>
                     <div class="layui-inline">
                         <button class="layui-btn layui-btn-sm" id="clearrightorfalt"
@@ -126,7 +109,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="grid-demo  layui-col-xs4 layui-col-sm2 layui-col-lg1">
+                <div class="grid-demo  layui-col-xs4 layui-col-sm1 layui-col-md1 layui-col-lg1">
                     <div class="layui-inline">
                         <button class="layui-btn layui-btn-sm" id="gotoaepui"
                                 lay-header-event="gotoaepui">跳转到⭐️刷本题
