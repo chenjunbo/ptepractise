@@ -793,7 +793,7 @@ function xjROUncompleted() {
         $("#question-form").show();
         $("#parasdiv").children().remove();
         $("#resultdiv").children().remove();
-        $("#question-div").append("<br/>不完整id:" + xjRounCompletedList.join(", ")+"请根据id去⭐️中单独查询");
+        $("#question-div").append("<br/>不完整id:" + xjRounCompletedList.join(", ")+"请根据id去🦍中单独查询");
         $("#operationtools").hide();
     } else {
         xjRounCompletedList = new Array();
@@ -819,7 +819,7 @@ function xjROUncompleted() {
             $("#question-form").show();
             $("#parasdiv").children().remove();
             $("#resultdiv").children().remove();
-            $("#question-div").append("<br/>不完整id:" + xjRounCompletedList.join(", ")+"请根据id去⭐️中单独查询");
+            $("#question-div").append("<br/>不完整id:" + xjRounCompletedList.join(", ")+"请根据id去🦍中单独查询");
             $("#operationtools").hide();
         });
         $.ajaxSettings.async = true;

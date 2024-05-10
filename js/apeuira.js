@@ -263,7 +263,7 @@ function raTranslateData(raData) {
     nameWithoutNum = nameWithoutNum.replaceAll(" ", "&nbsp;");
     var num = raData.num;
     var title = "<div class=\"layui-form-item\"><div class=\"layui-inline\"><label  style=\"white-space:nowrap\">第" + (raindex + 1) + "题/共" + (racurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + nameWithoutNum + "&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div></div>"
-    return title+"<br/><br/>本页面主要用于跳转到⭐️刷题用,不显示题目具体内容";
+    return title+"<br/><br/>本页面主要用于跳转到🦍刷题用,不显示题目具体内容";
 }
 
 
@@ -448,7 +448,7 @@ function raPreQuest() {
 function raUncompleted() {
     if (xjraunCompletedList && xjraunCompletedList.length > 0) {
         $("#question-form").show();
-        $("#question-div").html("不完整id:" + xjraunCompletedList.join(", ") + "请根据id去⭐️中单独查询");
+        $("#question-div").html("不完整id:" + xjraunCompletedList.join(", ") + "请根据id去🦍中单独查询");
         $("#operationtools").hide();
     } else {
         xjraunCompletedList = new Array();
@@ -480,7 +480,7 @@ function raUncompleted() {
                 }
             })
             $("#question-form").show();
-            $("#question-div").html("不完整id:" + xjraunCompletedList.join(", ") + "请根据id去⭐️中单独查询");
+            $("#question-div").html("不完整id:" + xjraunCompletedList.join(", ") + "请根据id去🦍中单独查询");
             $("#operationtools").hide();
         });
         $.ajaxSettings.async = true;

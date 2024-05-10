@@ -38,10 +38,10 @@ function stopTimer() {
 
 function gotoxj(local,type, qNum) {
     var url = "https://www.ptexj.com/zh-CN/practice/{{type}}/{{qNum}}";
-    var msg="即将跳转到⭐️中文区答题,请确认已经登录⭐️,同一账号无法同时登录中英文双区"
+    var msg="即将跳转到🦍中文区答题,请确认已经登录🦍,同一账号无法同时登录中英文双区"
     if (local == "en") {
         url = "https://www.apeuni.com/en/practice/{{type}}/{{qNum}}";
-         msg="即将跳转到⭐️英文区答题,请确认已经登录⭐️,同一账号无法同时登录中英文双区";
+         msg="即将跳转到🦍英文区答题,请确认已经登录🦍,同一账号无法同时登录中英文双区";
     }
     url = url.replace("{{type}}", type)
     url = url .replace("{{qNum}}", qNum);

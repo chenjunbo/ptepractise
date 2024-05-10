@@ -116,7 +116,7 @@ function fireflySSTCurrentTypedata(param) {
 function fireFlySSTTranslateData(fireflySSTData, params) {
     if (isXJSST) {
         stopTimer();
-        return "<div class=\"layui-form-item\"><div class=\"layui-inline\"><label  style=\"white-space:nowrap\">第" + (sstIndex + 1) + "题/共" + (sstCurrentList.length) + "题, 题号:" + fireflySSTData + "&nbsp;&nbsp;本分类主要用于C哥预测跳转到⭐️&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div></div>"
+        return "<div class=\"layui-form-item\"><div class=\"layui-inline\"><label  style=\"white-space:nowrap\">第" + (sstIndex + 1) + "题/共" + (sstCurrentList.length) + "题, 题号:" + fireflySSTData + "&nbsp;&nbsp;本分类主要用于C哥预测跳转到🦍&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div></div>"
     } else {
         var num = fireflySSTData.id;
         var name = fireflySSTData.title;
@@ -365,7 +365,7 @@ function sstgotoaepui() {
         var local = "cn";
         gotoxj(local, "ssts", data);
     } else {
-        layer.msg('SST跳转暂时只针对⭐️题目,请选择⭐️分组', {icon: 0}, function () {
+        layer.msg('SST跳转暂时只针对🦍题目,请选择🦍分组', {icon: 0}, function () {
         });
     }
 }
