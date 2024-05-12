@@ -913,8 +913,8 @@ function fibrdrop1(ev) {
     var dataTransfer = ev.dataTransfer;
     var data = dataTransfer.getData("Text");
     console.log(data);
-    //如果有id说明是有内容
-    if (data && data.startsWith("option")) {
+    //如果有data则代表是放回来的,以 option开头和-结尾代表是从题目句子中拖回来的,只有这种情况才懂,如果不是-结尾在代表拖出去没放下就直接拉回来
+    if (data && data.startsWith("option") &&data.endsWith("-")) {
         //获取到需要显示的选项的id
         var newid = data.substring(0, data.length - 1);
         //显示
