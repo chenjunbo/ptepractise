@@ -5,6 +5,8 @@ var isFullContent = true;
 isNoFirstletter = false;//默认有首字母
 var localStorageType = "fireflywfd";
 var plaintxt;
+var fireFlyWFDHtmlMap = null  //key为题号,value为html格式的内容字符串
+var fireFlyWFDCurrentHtmlList
 var excWords = ["of", "to", "as", "at", "on", "in", "for", "by", "about", "with", "up", "a", "an", "the", "this", "that", "is", "are", "was", "were", "has", "have", "had", "been", "be", "can", "could", "would", "should", "I", "you", "he", "she", "his", "her", "your", "and", "or"]
 
 function fireFlyWFDInit(form) {
@@ -24,6 +26,15 @@ function fireFlyWFDInit(form) {
             allQnums.push(fireFlyWFDData.qNum + "");//保存所有id
             allmp3listaddress.push(getRawPre() + "/mp3/wfd/" + fireFlyWFDData.qNum + ".mp3");
         }
+    })
+    $.get(getGitContentPre() + "/data/wfd/wfdjson.txt" + getGitContentAccess(), function (response) {
+        var result
+        try {
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        } catch (e) {
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+        }
+        fireFlyWFDHtmlMap = JSON.parse(result)
     })
     if (form) {
         $.get(getGitContentPre() + "/data/wfd/wfdcategoryid.txt" + getGitContentAccess(), function (response) {
@@ -101,6 +112,11 @@ function fireFlyGetWFDdata(param) {
             if (faltIds) {
                 faltIds.forEach((qNum, index) => {
                     fireFlyWFDCurrentList.push(fireFlyWFDMap.get(qNum + ""));
+                    var htmldata = fireFlyWFDHtmlMap.get(qNum);
+                    if (!htmldata) {
+                        htmldata=fireFlyWFDHtmlMap.get(qNum+"")
+                    }
+                    fireFlyWFDCurrentHtmlList.push(htmldata);
                 })
             }
             if (randomindex) {
@@ -137,6 +153,11 @@ function fireFlyGetWFDdata(param) {
                     if (fireFlyWFD) {
                         fireFlyWFDCurrentList.push(fireFlyWFD);
                     }
+                    var htmldata = fireFlyWFDHtmlMap.get(qNum);
+                    if (!htmldata) {
+                        htmldata=fireFlyWFDHtmlMap.get(qNum+"")
+                    }
+                    fireFlyWFDCurrentHtmlList.push(htmldata);
                 }
             }
         });
@@ -346,17 +367,17 @@ function getfavMp3() {
     }
     if (localstoragedata) {
         //如果有数据
-        localstoragedata.forEach(function (item,i) {
-                if (!item) {
-                    localstoragedata.splice(index, 1);
+        localstoragedata.forEach(function (item, i) {
+            if (!item) {
+                localstoragedata.splice(index, 1);
+            } else {
+                if (i != localstoragedata.length - 1) {
+                    str += getRawPre() + "/mp3/wfd/" + item + ".mp3" + "\r\n";
                 } else {
-                    if (i != localstoragedata.length - 1) {
-                        str += getRawPre() + "/mp3/wfd/"+item +".mp3"+ "\r\n";
-                    } else {
-                        str += getRawPre() + "/mp3/wfd/"+item +".mp3";
+                    str += getRawPre() + "/mp3/wfd/" + item + ".mp3";
 
-                    }
                 }
+            }
         });
     }
     return str;
