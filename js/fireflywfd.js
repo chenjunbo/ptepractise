@@ -219,7 +219,7 @@ function fireFlyWFDTranslateData(fireFlyWFDData) {
         $(input).attr("realanswer", word)
         //首字母
         $(input).attr("realanswerunfull", otherLetters);
-        $(input).attr("name", "answerinputs")geng
+        $(input).attr("name", "answerinputs")
         $(input).attr("id", "answerblank" + idx)
         $(input).attr("oninput", "resetwrongcolor(event)")
         parentin.append(input);
