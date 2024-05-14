@@ -72,6 +72,7 @@ function fireFlyGetWFDdata(param) {
     var localstoragedata;
     fireFlyWFDIndex = 0;
     fireFlyWFDCurrentList = new Array();
+    fireFlyWFDCurrentHtmlList=new Array()
     switch (type) {
         case "1":
             if (qNum) {
@@ -218,7 +219,7 @@ function fireFlyWFDTranslateData(fireFlyWFDData) {
         $(input).attr("realanswer", word)
         //首字母
         $(input).attr("realanswerunfull", otherLetters);
-        $(input).attr("name", "answerinputs")
+        $(input).attr("name", "answerinputs")geng
         $(input).attr("id", "answerblank" + idx)
         $(input).attr("oninput", "resetwrongcolor(event)")
         parentin.append(input);
