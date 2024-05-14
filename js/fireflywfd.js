@@ -112,9 +112,9 @@ function fireFlyGetWFDdata(param) {
             if (faltIds) {
                 faltIds.forEach((qNum, index) => {
                     fireFlyWFDCurrentList.push(fireFlyWFDMap.get(qNum + ""));
-                    var htmldata = fireFlyWFDHtmlMap.get(qNum);
+                    var htmldata = fireFlyWFDHtmlMap[qNum];
                     if (!htmldata) {
-                        htmldata=fireFlyWFDHtmlMap.get(qNum+"")
+                        htmldata=fireFlyWFDHtmlMap[qNum+""]
                     }
                     fireFlyWFDCurrentHtmlList.push(htmldata);
                 })
@@ -153,9 +153,9 @@ function fireFlyGetWFDdata(param) {
                     if (fireFlyWFD) {
                         fireFlyWFDCurrentList.push(fireFlyWFD);
                     }
-                    var htmldata = fireFlyWFDHtmlMap.get(qNum);
+                    var htmldata = fireFlyWFDHtmlMap[qNum];
                     if (!htmldata) {
-                        htmldata=fireFlyWFDHtmlMap.get(qNum+"")
+                        htmldata=fireFlyWFDHtmlMap[qNum+""]
                     }
                     fireFlyWFDCurrentHtmlList.push(htmldata);
                 }
