@@ -407,7 +407,7 @@
         $(event.target).attr("style", "text-align:left; width:100px");
     }
 
-    function nextWfdQuestion(obj, event, form, localStorageType) {
+    function nextWfdQuestion(obj, event) {
         event.preventDefault();
         if (isFireFlyWFDLast()) {
             $("#next").hide();
