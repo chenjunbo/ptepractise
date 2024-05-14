@@ -17,16 +17,18 @@
 <!--                    <option value="-2">萤火虫WFD注音倒序版</option>-->
                     <option value="-3">萤火虫WFD正序无注音版</option>
                     <option value="-4">萤火虫WFD倒序无注音版</option>
-                    <option value="1">萤火虫WFD首字母</option>
-                    <option value="2">萤火虫WFD分类版</option>
-                    <option value="5">萤火虫WFD简单到难</option>
-                    <option value="6">萤火虫WFD简单句</option>
-                    <option value="7">萤火虫WFD普通句</option>
-                    <option value="8">萤火虫WFD难句</option>
-                    <option value="9">萤火虫WFD高频单词表</option>
-                    <option value="10">萤火虫WFD高频单词表频率排序</option>
-<!--                    <option value="3">大西瓜萤火虫WFD相似句</option>-->
-                    <option value="4">萤火虫WFD纯文本</option>
+                    <option value="-5">萤火虫WFD首字母</option>
+                    <option value="-6">萤火虫WFD分类版</option>
+                    <option value="-8">萤火虫WFD简单到难</option>
+                    <option value="-9">萤火虫WFD简单句</option>
+                    <option value="-10">萤火虫WFD普通句</option>
+                    <option value="-11">萤火虫WFD难句</option>
+                    <option value="-12">萤火虫WFD高频单词表</option>
+                    <option value="-13">萤火虫WFD高频单词表频率排序</option>
+                    <option value="-14">萤火虫WFD纯文本</option>
+<!--                    <option value="2">WFD收藏夹</option>-->
+<!--                    <option value="9">WFD错题集</option>-->
+                    <!--                    <option value="-15">大西瓜萤火虫WFD相似句</option>-->
                 </select>
             </div>
             <button class="layui-btn layui-btn-sm" lay-header-event="fireflywfdcreatepdf">
@@ -534,6 +536,18 @@
                 var name = "萤火虫wfd预测";
 
                 switch (params.type) {
+                    case "2":
+                        var content=create_all_words_order_by_dic(true)
+                        var body = newPage.body;
+                        body.appendChild(content);
+                        fillPdf(newPage, name);
+                        return;
+                    case "3":
+                        var content=create_all_words_order_by_dic(true)
+                        var body = newPage.body;
+                        body.appendChild(content);
+                        fillPdf(newPage, name);
+                        return
                     case "-1":
                       //  name = "萤火虫WFD注音正序版";
                     url=getRawPreforpdf()+"/pdf/萤火虫WFD注音正序.pdf"
@@ -550,21 +564,21 @@
                         //name = "萤火虫WFD注音倒序版";
                         loadwfdpdfmd("萤火虫WFD倒序版.md","萤火虫WFD倒序版")
                         return ;
-                    case "1":
+                    case "-5":
                       //  name = "萤火虫WFD首字母版";
                         loadwfdpdfmd("萤火虫WFD首字母.md","萤火虫WFD首字母")
                         return ;
 
-                    case "2":
+                    case "-6":
                        name = "萤火虫WFD分类版";
                         var content = loadwfdpdfmd("萤火虫WFD分类版.md","萤火虫WFD分类版");
 
                         return ;
-                    case "3":
-                       // name = "萤火虫WFD分类版";
-                        url=getRawPre()+"/pdf/wfd萤火虫大西瓜相似句.pdf"
-                        break;
-                    case "4":
+                    // case "-15":
+                    //    // name = "萤火虫WFD分类版";
+                    //     url=getRawPre()+"/pdf/wfd萤火虫大西瓜相似句.pdf"
+                    //     break;
+                    case "-14":
                        // name = "纯文本";
                         url=getRawPre()+"/data/wfd/yhcwfdplaintxt.txt"
                         var body = newPage.body;
@@ -578,26 +592,26 @@
                     <option value="7">萤火虫WFD普通句</option>
                     <option value="8">萤火虫WFD难句</option>
                      */
-                    case "5":
+                    case "-8":
                         var content = loadwfdpdfmd("萤火虫WFD简单到难.md","萤火虫WFD简单到难");
                         return;
-                    case "6":
+                    case "-9":
                         var content = loadwfdpdfmd("萤火虫WFD简单.md","萤火虫WFD简单句");
                         return;
-                    case "7":
+                    case "-10":
                         var content = loadwfdpdfmd("萤火虫WFD普通.md","萤火虫WFD普通难度");
                         return;
-                    case "8":
+                    case "-11":
                         var content = loadwfdpdfmd("萤火虫WFD难.md","萤火虫WFD难句");
                         return;
-                    case "9":
+                    case "-12":
                         // name = "纯文本";
                         var content=create_all_words_order_by_dic()
                         var body = newPage.body;
                         body.appendChild(content);
                         fillPdf(newPage, name);
                         return ;
-                    case "10":
+                    case "-13":
                         // name = "纯文本";
                         var content=create_all_words_order_by_dic(true)
                         var body = newPage.body;
