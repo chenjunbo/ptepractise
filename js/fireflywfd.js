@@ -4,7 +4,7 @@ var fireFlyWFDIndex = 0;//当前第几条
 var isFullContent = true;
 isNoFirstletter = false;//默认有首字母
 var localStorageType = "fireflywfd";
-var plaintxt;
+var plaintxt,ankitxt;
 var fireFlyWFDHtmlMap = null  //key为题号,value为html格式的内容字符串
 var fireFlyWFDCurrentHtmlList
 var excWords = ["of", "to", "as", "at", "on", "in", "for", "by", "about", "with", "up", "a", "an", "the", "this", "that", "is", "are", "was", "were", "has", "have", "had", "been", "be", "can", "could", "would", "should", "I", "you", "he", "she", "his", "her", "your", "and", "or"]
@@ -59,6 +59,14 @@ function fireFlyWFDInit(form) {
             plaintxt = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
         } catch (e) {
             plaintxt = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+        }
+        // plaintxt = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+    })
+    $.get(getGitContentPre() + "/data/wfd/wfdanki.txt" + getGitContentAccess(), function (response) {
+        try {
+            ankitxt = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        } catch (e) {
+            ankitxt = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
         }
         // plaintxt = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
     })
@@ -342,6 +350,9 @@ function isNeedFirstLetter() {
 
 function getWFDPlainTxt() {
     return plaintxt;
+}
+function getWFDAnkiTxt() {
+    return ankitxt;
 }
 
 function getMp3url() {

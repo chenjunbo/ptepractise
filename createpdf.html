@@ -581,16 +581,14 @@
                     //     break;
                     case "-14":
                        // name = "纯文本";
-                        url=getRawPre()+"/data/wfd/yhcwfdplaintxt.txt"
                         var body = newPage.body;
                         body.innerHTML=getWFDPlainTxt();
                         fillPdf(newPage, name);
                         return ;
                     case "-15":
                         // name = "纯文本";
-                        url=getRawPre()+"/data/wfd/wfdanki.txt"
                         var body = newPage.body;
-                        body.innerHTML=getWFDPlainTxt();
+                        body.innerHTML=getWFDAnkiTxt();
                         fillPdf(newPage, name);
                         return ;
                     /*
