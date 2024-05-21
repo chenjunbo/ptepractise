@@ -195,9 +195,9 @@ function createFireFlySSTAnki(simple, index , fireflySSTData) {
     var name = fireflySSTData.title;
     var text = "";
     if ("simple" == simple) {
-        text = num + name + ":" + fireflySSTData.simpleAnswer.replace(/<\/?.+?>/g,"") + fireflySSTData.chineseContent;
+        text = num + " "+name + ":" + fireflySSTData.simpleAnswer.replace(/<\/?.+?>/g,"") + fireflySSTData.chineseContent;
     } else if ("keyword" == simple) {
-        text = num + name + ":" + fireflySSTData.keyWords;
+        text = num + " "+ name + ":" + fireflySSTData.keyWords;
     }
 
     text = text + "<br/>";
