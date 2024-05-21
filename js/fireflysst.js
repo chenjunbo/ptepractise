@@ -190,6 +190,20 @@ function createFireFlySSTPdfHtml(params, serNum, fireflySSTData) {
     return questionDiv;
 }
 
+function createFireFlySSTAnki(simple, index , fireflySSTData) {
+    var num = fireflySSTData.id;
+    var name = fireflySSTData.title;
+    var text = "";
+    if ("simple" == simple) {
+        text = num + name + ":" + fireflySSTData.simpleAnswer + fireflySSTData.chineseContent;
+    } else if ("keyword" == simple) {
+        text = num + name + ":" + fireflySSTData.keyWords;
+    }
+
+    text = text + "<br/>";
+    return text;
+}
+
 function fireflysstsearch() {
     $("#pre").hide();
     var params = $("#fireflysst-form").serializeJson();

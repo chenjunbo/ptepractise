@@ -14,7 +14,7 @@
             <div class="layui-inline">
                 <select name="type">
                     <option value="-1">萤火虫WFD注音正序版</option>
-<!--                    <option value="-2">萤火虫WFD注音倒序版</option>-->
+                    <!--                    <option value="-2">萤火虫WFD注音倒序版</option>-->
                     <option value="-3">萤火虫WFD正序无注音版</option>
                     <option value="-4">萤火虫WFD倒序无注音版</option>
                     <option value="-5">萤火虫WFD首字母</option>
@@ -27,8 +27,8 @@
                     <option value="-12">萤火虫WFD高频单词表</option>
                     <option value="-13">萤火虫WFD高频单词表频率排序</option>
                     <option value="-14">萤火虫WFD纯文本</option>
-<!--                    <option value="2">WFD收藏夹</option>-->
-<!--                    <option value="9">WFD错题集</option>-->
+                    <!--                    <option value="2">WFD收藏夹</option>-->
+                    <!--                    <option value="9">WFD错题集</option>-->
                     <!--                    <option value="-15">大西瓜萤火虫WFD相似句</option>-->
                 </select>
             </div>
@@ -158,6 +158,8 @@
                     <option value="1">萤火虫SST高频</option>
                     <option value="2">萤火虫SST已整理题库</option>
                     <option value="3">SST收藏夹</option>
+                    <option value="4">萤火虫SST简单答案ANKI版</option>
+                    <option value="5">萤火虫SST纯关键词ANKI版</option>
                 </select>
             </div>
             <div class="layui-inline">
@@ -240,7 +242,7 @@
                     <option value="4">C哥FILB预测全部</option>
                     <option value="100">🦍️FIBL听力单词频率</option>
                 </select>
-        </div>
+            </div>
             <div class="layui-inline">
                 <label class="layui-form-label" style="color: red">可选选项:</label>
                 <div class="layui-input-block">
@@ -251,7 +253,7 @@
 
             <button class="layui-btn layui-btn-sm" lay-header-event="createfiblpdf">点击生成网页后通过浏览器的打印功能保存为pdf
             </button>
-    </div>
+        </div>
 </form>
 <br>
 <form action="#" class="layui-form" id="pteasq-form">
@@ -387,7 +389,7 @@
                     case "100":
                         //fibrw答案比例
                         window.open("https://kdocs.cn/l/cfhVRWRNzRUk", '_blank');
-                        return ;
+                        return;
                     case "101":
                         //fibrw答案比例en
                         window.open("https://kdocs.cn/l/ciAzNLjcDMoW", '_blank');
@@ -508,6 +510,8 @@
                 var newPage = document.implementation.createHTMLDocument('New Page');
                 var params = $("#fireflysstcreate-form").serializeJson();
                 var name = "萤火虫sst预测";
+                var isAnki = false
+                var simple = ""
                 switch (params.type) {
                     case "1":
                         name = "萤火虫SST高频预测";
@@ -519,17 +523,33 @@
                     case "3":
                         name = "萤火虫SST收藏夹";
                         break;
+                    case "4":
+                        isAnki = true
+                        simple = "simple"
+                        name = "萤火虫SST简单答案ANKI版";
+                        break;
+                    case "5":
+                        isAnki = true
+                        simple = "keyword"
+                        name = "萤火虫SST纯关键词ANKI版";
+                        break;
                 }
                 var body = newPage.body;
                 var currentTypedataList = fireflySSTCurrentTypedata(params);
                 currentTypedataList.forEach(function (item, index) {
-                    var questionHtml = createFireFlySSTPdfHtml(params, (index + 1), item);
-                    $(body).append(questionHtml);
+                    if (isAnki) {
+                        var questionHtml = createFireFlySSTAnki(simple, (index + 1), item);
+                        $(body).append(questionHtml);
+                    } else {
+                        var questionHtml = createFireFlySSTPdfHtml(params, (index + 1), item);
+                        $(body).append(questionHtml);
+                    }
+
                 })
                 fillPdf(newPage, name);
 
                 return false;
-            },fireflywfdcreatepdf: function (obj, event) {
+            }, fireflywfdcreatepdf: function (obj, event) {
                 event.preventDefault();
                 var params = $("#fireflywfdcreate-form").serializeJson();
                 var url = "";
@@ -538,59 +558,59 @@
 
                 switch (params.type) {
                     case "2":
-                        var content=create_all_words_order_by_dic(true)
+                        var content = create_all_words_order_by_dic(true)
                         var body = newPage.body;
                         body.appendChild(content);
                         fillPdf(newPage, name);
                         return;
                     case "3":
-                        var content=create_all_words_order_by_dic(true)
+                        var content = create_all_words_order_by_dic(true)
                         var body = newPage.body;
                         body.appendChild(content);
                         fillPdf(newPage, name);
                         return
                     case "-1":
-                      //  name = "萤火虫WFD注音正序版";
-                    url=getRawPreforpdf()+"/pdf/萤火虫WFD注音正序.pdf"
+                        //  name = "萤火虫WFD注音正序版";
+                        url = getRawPreforpdf() + "/pdf/萤火虫WFD注音正序.pdf"
                         break;
                     case "-2":
                         //name = "萤火虫WFD注音倒序版";
-                        url=getRawPreforpdf()+"/pdf/萤火虫WFD注音倒序.pdf"
+                        url = getRawPreforpdf() + "/pdf/萤火虫WFD注音倒序.pdf"
                         break;
                     case "-3":
                         //name = "萤火虫WFD注音倒序版";
-                        loadwfdpdfmd("萤火虫WFD正序版.md","萤火虫WFD正序版")
-                        return ;
+                        loadwfdpdfmd("萤火虫WFD正序版.md", "萤火虫WFD正序版")
+                        return;
                     case "-4":
                         //name = "萤火虫WFD注音倒序版";
-                        loadwfdpdfmd("萤火虫WFD倒序版.md","萤火虫WFD倒序版")
-                        return ;
+                        loadwfdpdfmd("萤火虫WFD倒序版.md", "萤火虫WFD倒序版")
+                        return;
                     case "-5":
-                      //  name = "萤火虫WFD首字母版";
-                        loadwfdpdfmd("萤火虫WFD首字母.md","萤火虫WFD首字母")
-                        return ;
+                        //  name = "萤火虫WFD首字母版";
+                        loadwfdpdfmd("萤火虫WFD首字母.md", "萤火虫WFD首字母")
+                        return;
 
                     case "-6":
-                       name = "萤火虫WFD分类版";
-                        var content = loadwfdpdfmd("萤火虫WFD分类版.md","萤火虫WFD分类版");
+                        name = "萤火虫WFD分类版";
+                        var content = loadwfdpdfmd("萤火虫WFD分类版.md", "萤火虫WFD分类版");
 
-                        return ;
+                        return;
                     // case "-15":
                     //    // name = "萤火虫WFD分类版";
                     //     url=getRawPre()+"/pdf/wfd萤火虫大西瓜相似句.pdf"
                     //     break;
                     case "-14":
-                       // name = "纯文本";
+                        // name = "纯文本";
                         var body = newPage.body;
-                        body.innerHTML=getWFDPlainTxt();
+                        body.innerHTML = getWFDPlainTxt();
                         fillPdf(newPage, name);
-                        return ;
+                        return;
                     case "-15":
                         // name = "纯文本";
                         var body = newPage.body;
-                        body.innerHTML=getWFDAnkiTxt();
+                        body.innerHTML = getWFDAnkiTxt();
                         fillPdf(newPage, name);
-                        return ;
+                        return;
                     /*
                      <option value="5">萤火虫WFD简单到难</option>
                     <option value="6">萤火虫WFD简单句</option>
@@ -598,31 +618,31 @@
                     <option value="8">萤火虫WFD难句</option>
                      */
                     case "-8":
-                        var content = loadwfdpdfmd("萤火虫WFD简单到难.md","萤火虫WFD简单到难");
+                        var content = loadwfdpdfmd("萤火虫WFD简单到难.md", "萤火虫WFD简单到难");
                         return;
                     case "-9":
-                        var content = loadwfdpdfmd("萤火虫WFD简单.md","萤火虫WFD简单句");
+                        var content = loadwfdpdfmd("萤火虫WFD简单.md", "萤火虫WFD简单句");
                         return;
                     case "-10":
-                        var content = loadwfdpdfmd("萤火虫WFD普通.md","萤火虫WFD普通难度");
+                        var content = loadwfdpdfmd("萤火虫WFD普通.md", "萤火虫WFD普通难度");
                         return;
                     case "-11":
-                        var content = loadwfdpdfmd("萤火虫WFD难.md","萤火虫WFD难句");
+                        var content = loadwfdpdfmd("萤火虫WFD难.md", "萤火虫WFD难句");
                         return;
                     case "-12":
                         // name = "纯文本";
-                        var content=create_all_words_order_by_dic()
+                        var content = create_all_words_order_by_dic()
                         var body = newPage.body;
                         body.appendChild(content);
                         fillPdf(newPage, name);
-                        return ;
+                        return;
                     case "-13":
                         // name = "纯文本";
-                        var content=create_all_words_order_by_dic(true)
+                        var content = create_all_words_order_by_dic(true)
                         var body = newPage.body;
                         body.appendChild(content);
                         fillPdf(newPage, name);
-                        return ;
+                        return;
                 }
                 window.open(url, '_blank');
                 return false;
@@ -643,16 +663,16 @@
                         name = "萤火虫WE收藏夹";
                         break;
                     case "4":
-                        window.open(getRawPre()+"/pdf/we模板1.pdf", '_blank');
-                        return ;
+                        window.open(getRawPre() + "/pdf/we模板1.pdf", '_blank');
+                        return;
                     case "5":
-                        window.open(getRawPre()+"/pdf/we模板2.pdf", '_blank');
+                        window.open(getRawPre() + "/pdf/we模板2.pdf", '_blank');
                         return;
                     case "6":
-                        window.open(getRawPre()+"/pdf/we模板3.pdf", '_blank');
+                        window.open(getRawPre() + "/pdf/we模板3.pdf", '_blank');
                         return;
                     case "7":
-                        window.open(getRawPre()+"/pdf/WE万能句.pdf", '_blank');
+                        window.open(getRawPre() + "/pdf/WE万能句.pdf", '_blank');
                         return;
                 }
                 var body = newPage.body;
@@ -805,7 +825,7 @@
                 }
                 var xjralist = fibRaCurrentTypedata(params);
                 xjralist.forEach(function (item, index) {
-                    var questionHtml = createRaPdfHtml(params,(index + 1), item);
+                    var questionHtml = createRaPdfHtml(params, (index + 1), item);
                     $(body).append(questionHtml);
                 })
                 fillPdf(newPage, name);
@@ -827,14 +847,15 @@
         });
         return serializeObj;
     };
-function fillxjasqdata(params,body){
-    XjAsqCurrentTypedata(params);
-    var currentXjAsqList1 = currentXjAsqList();
-    currentXjAsqList1.forEach(function (item, index) {
-        var questionHtml = createXjAsqPdfHtml((index + 1), item);
-        $(body).append(questionHtml);
-    })
-}
+
+    function fillxjasqdata(params, body) {
+        XjAsqCurrentTypedata(params);
+        var currentXjAsqList1 = currentXjAsqList();
+        currentXjAsqList1.forEach(function (item, index) {
+            var questionHtml = createXjAsqPdfHtml((index + 1), item);
+            $(body).append(questionHtml);
+        })
+    }
 
     function fillPdf(newPage, name) {
         //var newPage = document.implementation.createHTMLDocument('New Page');
