@@ -207,7 +207,7 @@ function loadNotice() {
         $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
     }
     // $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
-    checkversion();
+    checkversion(1);
     checkupdate();
 }
 
@@ -528,7 +528,7 @@ function checkupdate() {
     checkupdateinterval= setInterval(checkversion, 900000);
 }
 
-function  checkversion(){
+function  checkversion(num){
     console.log("检查更新")
     var path = getGitContentPre() + "/txt/version.txt" + getGitContentAccess();
     $.get(path, function (response) {
@@ -542,8 +542,10 @@ function  checkversion(){
         // var version="4.24.2";
         var currentversion = window.localStorage.getItem("currentversion");
         if (version == currentversion) {
-            layer.msg('祝你八炸九炸心想事成', {icon: 0}, function () {
-            });
+            if (num) {
+                layer.msg('祝你八炸九炸心想事成', {icon: 0}, function () {
+                });
+            }
         } else {
 
             layer.alert('功能发生变化,请看更新日志', {
