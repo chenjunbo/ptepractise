@@ -799,7 +799,12 @@ function xjROUncompleted() {
         xjRounCompletedList = new Array();
         $.ajaxSettings.async = false;
         $.get(getGitContentPre()+"/questions/ro/cge_xj_ro_all.txt"+getGitContentAccess(), function (response) {
-            let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            var qNums;
+            try {
+                qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
+            }catch (e) {
+                qNums = response.split(/[(\r\n)\r\n]+/);;
+            }
             qNums.forEach((item, index) => { // 删除空项
 
                 if (!item) {
