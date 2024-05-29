@@ -104,19 +104,19 @@ function createNav() {
             "url": getGitContentPre() + "/xjro.html" + getGitContentAccess()
         },
         {
-            "menuName": "WFD",
+            "menuName": "听力WFD",
             "url": getGitContentPre() + "/fireflywfd.html" + getGitContentAccess()
         },
         {
-            "menuName": "SST",
+            "menuName": "听力SST",
             "url": getGitContentPre() + "/fireflysst.html" + getGitContentAccess()
         },
         {
-            "menuName": "WE",
+            "menuName": "写作WE",
             "url": getGitContentPre() + "/fireflywe.html" + getGitContentAccess()
         },
         {
-            "menuName": "RA",
+            "menuName": "口语RA",
             "url": getGitContentPre() + "/apeuira.html" + getGitContentAccess()
         },
 
@@ -125,11 +125,11 @@ function createNav() {
             "url": getGitContentPre() + "/createpdf.html" + getGitContentAccess()
         },
         {
-            "menuName": "PTE老师推荐",
+            "menuName": "PTE老师和公开课推荐",
             "url": getGitContentPre() + "/pteteacher.html" + getGitContentAccess()
         },
         {
-            "menuName": "PTE官方规则介绍",
+            "menuName": "PTE官方规则介绍(必看)",
             "url": getGitContentPre() + "/pteinfo.html" + getGitContentAccess()
         },
         {
@@ -140,13 +140,13 @@ function createNav() {
             "menuName": "公告页",
             "url": getGitContentPre() + "/notice.html" + getGitContentAccess()
         },
+        // {
+        //     "menuName": "乱序小工具",
+        //     "url": getGitContentPre() + "/tools.html" + getGitContentAccess()
+        // }
+        // ,
         {
-            "menuName": "乱序小工具",
-            "url": getGitContentPre() + "/tools.html" + getGitContentAccess()
-        }
-        ,
-        {
-            "menuName": "导出导入记录",
+            "menuName": "导出导入刷题记录",
             "url": getGitContentPre() + "/processlocalstorage.html" + getGitContentAccess()
         }
     ]
