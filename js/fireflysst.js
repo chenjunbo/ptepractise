@@ -114,6 +114,7 @@ function fireflySSTCurrentTypedata(param) {
 }
 
 function fireFlySSTTranslateData(fireflySSTData, params) {
+    stopwfdmp3();
     if (isXJSST) {
         stopTimer();
         return "<div class=\"layui-form-item\"><div class=\"layui-inline\"><label  style=\"white-space:nowrap\">第" + (sstIndex + 1) + "题/共" + (sstCurrentList.length) + "题, 题号:" + fireflySSTData + "&nbsp;&nbsp;本分类主要用于C哥预测跳转到🦍&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div></div>"
@@ -146,10 +147,29 @@ function fireFlySSTTranslateData(fireflySSTData, params) {
                 text = text + '<br>逻辑梳理图:<br><img src=' + sstPic + '  width="40%">';
             }
         }
+        var audiosrc = "https://gitee.com/jackiechan/ptepractise/raw/webversion/mp3/sst/" + num + ".mp3";
+        var audio = "<audio id='sstmp3' src=" + audiosrc + " controls></audio>"
         startTimer();
-        return text;
+        playsstmp3();
+        return text+"</br>"+audio;
 
     }
+}
+
+function playsstmp3() {
+    var player = $("#sstmp3").get(0);
+    player.oncanplaythrough = function () {
+        setTimeout(function () {
+            player.play();
+        }, 2000);
+    }
+}
+function stopwfdmp3() {
+    var player = $("#sstmp3").get(0);
+    if (player) {
+        player.pause();
+    }
+
 }
 
 function createFireFlySSTPdfHtml(params, serNum, fireflySSTData) {

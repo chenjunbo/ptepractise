@@ -183,6 +183,7 @@ function fireFlyGetWFDdata(param) {
 
 
 function fireFlyWFDTranslateData(fireFlyWFDData) {
+    stopwfdmp3();
     var param = $("#search-form").serializeJson();
     var showChinese = param.chinese;
     var num = fireFlyWFDData.qNum;
@@ -275,6 +276,15 @@ function playwfdmp3() {
             player.play();
         }, 2000);
     }
+
+}
+
+function stopwfdmp3() {
+    var player = $("#wfdmp3").get(0);
+    if (player) {
+        player.pause();
+    }
+
 }
 
 function fireFlyWFDNextQuest() {
