@@ -125,6 +125,10 @@ function createNav() {
             "url": getGitContentPre() + "/createpdf.html" + getGitContentAccess()
         },
         {
+            "menuName": "模考卷购买",
+            "url": getGitContentPre() + "/seller.html" + getGitContentAccess()
+        },
+        {
             "menuName": "PTE老师和公开课推荐",
             "url": getGitContentPre() + "/pteteacher.html" + getGitContentAccess()
         },
