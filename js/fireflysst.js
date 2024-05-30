@@ -150,7 +150,6 @@ function fireFlySSTTranslateData(fireflySSTData, params) {
         var audiosrc = "https://gitee.com/jackiechan/ptepractise/raw/webversion/mp3/sst/" + num + ".mp3";
         var audio = "<audio id='sstmp3' src=" + audiosrc + " controls></audio>"
         startTimer();
-        playsstmp3();
         return text+"</br>"+audio;
 
     }

@@ -70,19 +70,21 @@
                 event.preventDefault();
                 fireflysstsearch();
                 form.render();
+                playsstmp3()
                 return false;
             }
             , next: function (obj, event) {
                 event.preventDefault();
                 sstNext()
                 form.render();
+                playsstmp3()
                 return false;
             },
             pre: function (obj, event) {
                 event.preventDefault();
                 sstPre()
-
                 form.render();
+                playsstmp3()
                 return false;
             },cleanfav: function (obj,event){
                 event.preventDefault();
@@ -92,6 +94,7 @@
                 event.preventDefault();
                     sstgotoindex()
                     form.render();
+                    playsstmp3()
                     return false;
             },
             gotoaepui: function (obj, event) {
