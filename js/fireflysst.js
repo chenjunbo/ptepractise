@@ -132,7 +132,7 @@ function fireFlySSTTranslateData(fireflySSTData, params) {
         var chinese = params.chinese;
         var logicpic = params.logicpic;
         if (simpleanswer) {
-            text = text + "简单答案:" + "<br>" + fireflySSTData.simpleAnswer;
+            text = text +"</br>"+ "简单答案:" + "<br>" + fireflySSTData.simpleAnswer;
         }
         if (keyword) {
             text = text + "<br>关键词:" + "<br>" + fireflySSTData.keyWords;
@@ -162,7 +162,7 @@ function playsstmp3() {
     player.oncanplaythrough = function () {
         setTimeout(function () {
             player.play();
-        }, 2000);
+        }, 100);
     }
 }
 function stopwfdmp3() {
