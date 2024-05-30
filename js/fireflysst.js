@@ -124,6 +124,9 @@ function fireFlySSTTranslateData(fireflySSTData, params) {
         var text = "";
         var title = "<div class=\"layui-form-item\"><div class=\"layui-inline\"><label  style=\"white-space:nowrap\">第" + (sstIndex + 1) + "题/共" + (sstCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + name + "&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div></div>"
         text = text + title;
+        var audiosrc = "https://gitee.com/jackiechan/ptepractise/raw/webversion/mp3/sst/" + num + ".mp3";
+        var audio = "<audio id='sstmp3' src=" + audiosrc + " controls></audio>"
+        text=text+"</br>"+audio
         var simpleanswer = params.simpleanswer;
         var keyword = params.keyword;
         var chinese = params.chinese;
@@ -147,10 +150,9 @@ function fireFlySSTTranslateData(fireflySSTData, params) {
                 text = text + '<br>逻辑梳理图:<br><img src=' + sstPic + '  width="40%">';
             }
         }
-        var audiosrc = "https://gitee.com/jackiechan/ptepractise/raw/webversion/mp3/sst/" + num + ".mp3";
-        var audio = "<audio id='sstmp3' src=" + audiosrc + " controls></audio>"
+
         startTimer();
-        return text+"</br>"+audio;
+        return text;
 
     }
 }
