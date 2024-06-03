@@ -748,7 +748,7 @@
                         break;
                     case "4":
                         name = "C哥FIBL预测";
-                        var cgefiblList = currentcgefiblList();
+                        var cgefiblList = currentcgefiblpdfList();
                         cgefiblList.forEach(function (item, index) {
                             var questionHtml = createpteFilbPdf((index + 1), item);
                             $(body).append(questionHtml);
