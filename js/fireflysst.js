@@ -149,7 +149,7 @@ function fireFlySSTTranslateData(fireflySSTData, params) {
         }else if (mp3Type == "2"){
             audioType = "原音频";
         }
-        var title = "<div class=\"layui-form-item\"><div class=\"layui-inline\"><label  style=\"white-space:nowrap\">第" + (sstIndex + 1) + "题/共" + (sstCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + name + "&nbsp;&nbsp;+audioType</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div></div>";
+        var title = "<div class=\"layui-form-item\"><div class=\"layui-inline\"><label  style=\"white-space:nowrap\">第" + (sstIndex + 1) + "题/共" + (sstCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + name + "&nbsp;&nbsp;" + audioType + "&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div></div>";
         text = text + title;
         var audiosrc = "https://gitee.com/jackiechan/ptepractise/raw/webversion/mp3/sst/" + num + ".mp3";
         var audio = "<audio id='sstmp3' src=" + audiosrc + " controls></audio>"
