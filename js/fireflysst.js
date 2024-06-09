@@ -24,6 +24,7 @@ function fireFlySSTInit() {
 function fireflySSTCurrentTypedata(param) {
     var qNum = param.qNum;//题号
     var type = param.type;//类型
+    var randomindex = param.randomindex;//随机
     var filePath;
     sstIndex = 0;
     sstCurrentList = new Array();
@@ -109,6 +110,9 @@ function fireflySSTCurrentTypedata(param) {
     //全部已经整理
     // sstCurrentList = sstAllDataList;
     console.log(sstCurrentList.length);
+    if (randomindex) {
+        shuffle(sstCurrentList)
+    }
     return sstCurrentList;
 
 }
