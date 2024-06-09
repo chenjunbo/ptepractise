@@ -22,6 +22,7 @@ function fireFlySSTInit() {
 }
 
 function fireflySSTCurrentTypedata(param) {
+    stopsstmp3();
     var qNum = param.qNum;//题号
     var type = param.type;//类型
     var randomindex = param.randomindex;//随机
@@ -118,7 +119,7 @@ function fireflySSTCurrentTypedata(param) {
 }
 
 function fireFlySSTTranslateData(fireflySSTData, params) {
-    stopwfdmp3();
+    stopsstmp3();
     if (isXJSST) {
         stopTimer();
         return "<div class=\"layui-form-item\"><div class=\"layui-inline\"><label  style=\"white-space:nowrap\">第" + (sstIndex + 1) + "题/共" + (sstCurrentList.length) + "题, 题号:" + fireflySSTData + "&nbsp;&nbsp;本分类主要用于C哥预测跳转到🦍&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div></div>"
@@ -169,7 +170,7 @@ function playsstmp3() {
         }, 100);
     }
 }
-function stopwfdmp3() {
+function stopsstmp3() {
     var player = $("#sstmp3").get(0);
     if (player) {
         player.pause();
