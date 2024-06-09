@@ -1,6 +1,7 @@
-var sstCurrentList;
+var sstCurrentList,sstCurrentInfoList;
 let sstAllDataList;
 const sstMap = new Map();
+const sstInfoMap = new Map();
 var sstIndex = 0;//当前第几条
 sstlocalstoragetype = "fireflysst";
 isXJSST = false;
@@ -19,6 +20,20 @@ function fireFlySSTInit() {
             sstMap.set(sstData.id + "", sstData);
         }
     })
+    $.get(getGitContentPre() + "/questions/sst/fireflysstinfo.txt" + getGitContentAccess(), function (response) {
+        var result
+        try {
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        } catch (e) {
+            result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+        }
+        sstCurrentInfoList = JSON.parse(result);
+        for (let i = 0; i < sstCurrentInfoList.length; i++) {
+            var sstInfo = sstCurrentInfoList[i];
+            sstInfoMap.set(sstInfo.qNum + "", sstInfo.isSimilar);
+        }
+    })
+
 }
 
 function fireflySSTCurrentTypedata(param) {
@@ -127,7 +142,14 @@ function fireFlySSTTranslateData(fireflySSTData, params) {
         var num = fireflySSTData.id;
         var name = fireflySSTData.title;
         var text = "";
-        var title = "<div class=\"layui-form-item\"><div class=\"layui-inline\"><label  style=\"white-space:nowrap\">第" + (sstIndex + 1) + "题/共" + (sstCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + name + "&nbsp;&nbsp;</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div></div>"
+        var  mp3Type= sstInfoMap.get(num+"");
+        var audioType = "";
+        if (mp3Type == "1") {
+            audioType = "近似音频";
+        }else if (mp3Type == "2"){
+            audioType = "原音频";
+        }
+        var title = "<div class=\"layui-form-item\"><div class=\"layui-inline\"><label  style=\"white-space:nowrap\">第" + (sstIndex + 1) + "题/共" + (sstCurrentList.length) + "题, 题号:" + num + "&nbsp;&nbsp;" + name + "&nbsp;&nbsp;+audioType</label><div class=\"layui-inline\"><span style=\"color: red\" id=\"timer\"></span></div></div></div>";
         text = text + title;
         var audiosrc = "https://gitee.com/jackiechan/ptepractise/raw/webversion/mp3/sst/" + num + ".mp3";
         var audio = "<audio id='sstmp3' src=" + audiosrc + " controls></audio>"
