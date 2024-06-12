@@ -129,6 +129,10 @@ function createNav() {
             "url": getGitContentPre() + "/seller.html" + getGitContentAccess()
         },
         {
+            "menuName": "避雷帖",
+            "url": getGitContentPre() + "/bilei.html" + getGitContentAccess()
+        },
+        {
             "menuName": "PTE老师和公开课推荐",
             "url": getGitContentPre() + "/pteteacher.html" + getGitContentAccess()
         },
