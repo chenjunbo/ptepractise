@@ -5,7 +5,7 @@ var xjraIdsSet = new Set();
 const xjraenMap = new Map();
 var raindex = 0;//当前第几条
 var xjralocalStorageType = "xjra";
-var excWords = ["it","their","from","of", "to", "as", "at", "on", "in", "for", "by", "about", "with", "up", "a", "an", "the", "this", "that", "is", "are", "was", "were", "has", "have", "had", "been", "be", "can", "could", "would", "should", "I", "you", "he", "she", "his", "her", "your", "and", "or","they","more","but","our","which","not","people","we","we","also","one","new","these","than","when","such","will","how","many","may","most","into","other","all","some","its","who","study","there","if","what","while","water","resea","over","so","like","years","year","time","them","often","use","used","us","do","out","now","where","two","one","yes","no","it's",]
+var excWords = ["it","their","from","of", "to", "as", "at", "on", "in", "for", "by", "about", "with", "up", "a", "an", "the", "this", "that", "is", "are", "was", "were", "has", "have", "had", "been", "be", "can", "could", "would", "should", "I", "you", "he", "she", "his", "her", "your", "and", "or","they","more","but","our","which","not","people","we","we","also","one","new","these","than","when","such","will","how","many","may","most","into","other","all","some","its","who","study","there","if","what","while","water","resea","over","so","like","years","year","time","them","often","use","used","us","do","out","now","where","two","one","yes","no","it's","—"]
 
 function raInit() {
     $.ajax({
