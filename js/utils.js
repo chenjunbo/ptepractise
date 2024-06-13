@@ -300,7 +300,7 @@ function getAlljs(version) {
 function getRawPre() {
     var url = window.location.href;
     if (url.indexOf('chenjunbo.top') >= 0) {
-        return "url"
+        return ""
     }
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
@@ -313,7 +313,7 @@ function getRawPre() {
 function getRawPreforpdf() {
     var url = window.location.href;
     if (url.indexOf('chenjunbo.top') >= 0) {
-        return "url"
+        return ""
     }
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
@@ -326,7 +326,7 @@ function getRawPreforpdf() {
 function getGitContentPre() {
     var url = window.location.href;
     if (url.indexOf('chenjunbo.top') >= 0) {
-        return "url"
+        return ""
     }
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
@@ -339,7 +339,7 @@ function getGitContentPre() {
 function getGitContentAccess() {
     var url = window.location.href;
     if (url.indexOf('chenjunbo.top') >= 0) {
-        return "url"
+        return ""
     }
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
