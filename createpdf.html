@@ -293,7 +293,7 @@
                     <option value="11">🦍️全EN</option>
                     <option value="12">🦍RA单词频率表</option>
                     <option value="13">🦍RA单词频率表频率升序</option>
-                    <option value="13">🦍RA单词频率表频率降序</option>
+                    <option value="14">🦍RA单词频率表频率降序</option>
                 </select>
             </div>
             <div class="layui-inline">
@@ -829,8 +829,6 @@
                         break;
                     case "12":
                         name = "🦍RA单词频率表";
-                        fillxjasqdata(params, body);
-                        break;
                         var content = create_ra_all_words_order_by_dic()
                         var body = newPage.body;
                         body.appendChild(content);
@@ -839,8 +837,6 @@
                         break;
                     case "13":
                         name = "🦍RA单词频率表频率升序";
-                        fillxjasqdata(params, body);
-                        break;
                         var content = create_ra_all_words_order_by_dic(0)
                         var body = newPage.body;
                         body.appendChild(content);
@@ -848,8 +844,6 @@
                         return;
                     case "14":
                         name = "🦍RA单词频率表频率降序";
-                        fillxjasqdata(params, body);
-                        break;
                         var content = create_ra_all_words_order_by_dic(1)
                         var body = newPage.body;
                         body.appendChild(content);
