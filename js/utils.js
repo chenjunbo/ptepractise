@@ -124,10 +124,10 @@ function createNav() {
             "menuName": "生成PDF",
             "url": getGitContentPre() + "/createpdf.html" + getGitContentAccess()
         },
-        {
-            "menuName": "模考卷购买",
-            "url": getGitContentPre() + "/seller.html" + getGitContentAccess()
-        },
+        // {
+        //     "menuName": "模考卷购买",
+        //     "url": getGitContentPre() + "/seller.html" + getGitContentAccess()
+        // },
         {
             "menuName": "避雷帖",
             "url": getGitContentPre() + "/bilei.html" + getGitContentAccess()
