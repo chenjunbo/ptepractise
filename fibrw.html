@@ -173,6 +173,7 @@
                 }
                 checkFav(fibrwdata.num, localStorageType);
                 form.render();
+                checkfibrwlastquestion();
                 return false;
             }, testlucky: function (obj, event) { // 左侧菜单事件
                 //  var json = JSON.stringify($("#search-form").serializeJson())
@@ -279,46 +280,8 @@
             },
             checkanswer: function (obj, event) {
                 event.preventDefault();
-                var fibrwdata = currentFibRWData();
-                var content = JSON.stringify($("#question-form").serializeJson());
-                var result = $("#question-form").serializeJson();
-                var isWrong = false;
-                for (var ans in result) {
-                    if (!ans || !ans.startsWith("answer")) {
-                        continue;
-                    }
-                    console.log(result[ans]);
-                    var answer = result[ans];
-                    var select = $("#" + ans);
-                    console.log($(select))
-                    if (!answer || answer.startsWith("false")) {
-                        // $(allSelects[i]).addClass("layui-form-danger");
-                        $(select).removeClass();
-                        $(select).attr("class", "layui-form-danger");
-                        isWrong = true;
-                    }
-
-                }
-                if (!isWrong) {
-                    addRightOrFalt(fibrwdata.num, "right", localStorageType);
-                    layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
-                        var serializeJson = $("#search-form").serializeJson();
-                        var autonext = serializeJson.autonext;
-                        //添加正确次数,添加错误次数
-                        // layer.msg('提示框关闭后的回调');
-                        if (!isFibRwLast()&&autonext) {
-                            nextFibRwQuestion(obj, event, localStorageType);
-                            form.render();
-                        }
-                    });
-                } else {
-                    addRightOrFalt(fibrwdata.num, "falt", localStorageType);
-                    layer.msg('答案不小心选错了哟!', {icon: 0}, function () {
-                        // layer.msg('提示框关闭后的回调');
-                        //添加错误次数
-                    });
-                }
-                setRightAndFaltNum(fibrwdata.num, localStorageType);
+                fibrwcheckanswer();
+                return false;
             },
             showanswer: function (obj, event) {
                 event.preventDefault();
@@ -332,34 +295,9 @@
                 event.preventDefault();
                 var qIndex = $("#qindex").val();//想要跳转的题目
                 console.log(qIndex);
-                if (!qIndex || qIndex <= 0 || qIndex > getFibRwTotalNum) {
-
-                } else {
-                    setFibRWIndex(parseInt(qIndex));
-                    var fibrwdata = currentFibRWData();
-                    if (!fibrwdata) {
-                        layer.msg('超出题目数量范围', {icon: 0}, function () {
-                        });
-                        return false;
-                    }
-                    var content = fibrwTranslateData(fibrwdata);
-                    if (isFibRwFirst()) {
-                        $("#pre").hide();
-                    } else {
-                        $("#pre").show();
-                    }
-                    if (!isFibRwLast()) {
-                        $("#next").show();
-                    } else {
-                        $("#next").hide();
-                    }
-                    $("#question-div").html(content);
-                    fillfibrwAnswer(fibrwdata);
-                    checkFav(fibrwdata.num, localStorageType);
-                    form.render();
-                    return false;
-                }
-
+                fibrwgotoindex(qIndex);
+                form.render();
+                return false;
 
             },
             adddeletefav: function (obj, event) {

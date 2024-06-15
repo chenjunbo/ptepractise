@@ -1,4 +1,4 @@
-var currentList;
+var currentList,currentQnumList;
 let cnList, enList, fibrwIdsList, fibrwunCompletedList;
 const cnMap = new Map();
 var fibrwIdsSet = new Set();
@@ -10,7 +10,7 @@ var XJFIBRWlocalStorageType = "fibrwblue";
 
 function fibrwInit() {
     $.ajax({
-        url: getGitContentPre()+"/data/fibrw/fibrwallquestions.txt"+getGitContentAccess(),
+        url: getGitContentPre() + "/data/fibrw/fibrwallquestions.txt" + getGitContentAccess(),
         type: "GET",
         crossDomain: true, // 设置为true，则不发送Origin头部
         success: function (response) {
@@ -18,7 +18,7 @@ function fibrwInit() {
             var result
             try {
                 result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
-            } catch (e){
+            } catch (e) {
                 result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
             }
 
@@ -36,7 +36,7 @@ function fibrwInit() {
     });
 
     $.ajax({
-        url: getGitContentPre()+"/data/fibrw/fibrwallquestionsen.txt"+getGitContentAccess(),
+        url: getGitContentPre() + "/data/fibrw/fibrwallquestionsen.txt" + getGitContentAccess(),
         type: "GET",
         crossDomain: true, // 设置为true，则不发送Origin头部
         success: function (response) {
@@ -44,7 +44,7 @@ function fibrwInit() {
             var result
             try {
                 result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
-            } catch (e){
+            } catch (e) {
                 result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
             }
             enList = JSON.parse(result);
@@ -61,20 +61,20 @@ function fibrwInit() {
     });
 
     $.ajax({
-        url: getGitContentPre()+"/data/fibrw/阅读答案.txt"+getGitContentAccess(),
+        url: getGitContentPre() + "/data/fibrw/阅读答案.txt" + getGitContentAccess(),
         type: "GET",
         crossDomain: true, // 设置为true，则不发送Origin头部
         success: function (response) {
             var chineseContent
             try {
                 chineseContent = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
-            } catch (e){
+            } catch (e) {
                 chineseContent = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
             }
 
             var json = JSON.parse(chineseContent);
-               for (var key in json)
-                   chineseContentMap.set(key, json[key])
+            for (var key in json)
+                chineseContentMap.set(key, json[key])
 
             // let chineseContent = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content))))))))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
             // chineseContent.forEach((item, index) => { // 删除空项
@@ -101,48 +101,49 @@ function fibRwCurrentTypedata(param) {
     var filePath;
     index = 0;
     currentList = new Array();
+    currentQnumList = new Array();
     var localstoragedata;
     switch (type) {
         case "-1":
             //C哥蓝色数据
-            filePath = getGitContentPre()+"/questions/fibrw/cge_fib_rw_hightest.txt"+getGitContentAccess()
+            filePath = getGitContentPre() + "/questions/fibrw/cge_fib_rw_hightest.txt" + getGitContentAccess()
             break;
         case "-2":
             //C哥蓝色数据
-            filePath = getGitContentPre()+"/questions/fibrw/xj_fib_rw_huang.txt"+getGitContentAccess()
+            filePath = getGitContentPre() + "/questions/fibrw/xj_fib_rw_huang.txt" + getGitContentAccess()
             break;
         case "-3":
             //C哥蓝色数据
-            filePath = getGitContentPre()+"/questions/fibrw/xj_fib_rw_lv.txt"+getGitContentAccess()
+            filePath = getGitContentPre() + "/questions/fibrw/xj_fib_rw_lv.txt" + getGitContentAccess()
             break;
         case "-4":
             //C哥蓝色数据
-            filePath = getGitContentPre()+"/questions/fibwr/xj_fib_rw_bai.txt"+getGitContentAccess()
+            filePath = getGitContentPre() + "/questions/fibwr/xj_fib_rw_bai.txt" + getGitContentAccess()
             break;
         case "1":
             //C哥蓝色数据
-            filePath = getGitContentPre()+"/questions/fibrw/cge_fib_rw_lan.txt"+getGitContentAccess()
+            filePath = getGitContentPre() + "/questions/fibrw/cge_fib_rw_lan.txt" + getGitContentAccess()
             break;
         case "2":
             //C哥黄色数据
-            filePath = getGitContentPre()+"/questions/fibrw/cge_fib_rw_huang.txt"+getGitContentAccess()
+            filePath = getGitContentPre() + "/questions/fibrw/cge_fib_rw_huang.txt" + getGitContentAccess()
             break;
         case "3":
             //C哥白色数据
-            filePath = getGitContentPre()+"/questions/fibrw/cge_fib_rw_bai.txt"+getGitContentAccess()
+            filePath = getGitContentPre() + "/questions/fibrw/cge_fib_rw_bai.txt" + getGitContentAccess()
             break;
         case "4":
             fibrwunCompletedList = new Array();
             //C哥所有数据
-            filePath = getGitContentPre()+"/questions/fibrw/cge_fib_rw_all.txt"+getGitContentAccess()
+            filePath = getGitContentPre() + "/questions/fibrw/cge_fib_rw_all.txt" + getGitContentAccess()
             break;
         case "5":
             //自定义数据
-            filePath = getGitContentPre()+"/questions/fibrw/xjfibrwweek.txt"+getGitContentAccess()
+            filePath = getGitContentPre() + "/questions/fibrw/xjfibrwweek.txt" + getGitContentAccess()
             break;
         case "6":
             //自定义数据
-            filePath = getGitContentPre()+"/questions/fibrw/xjfibrwmonth.txt"+getGitContentAccess()
+            filePath = getGitContentPre() + "/questions/fibrw/xjfibrwmonth.txt" + getGitContentAccess()
             break;
         case "7":
             onlyundo = "";
@@ -153,10 +154,10 @@ function fibRwCurrentTypedata(param) {
             }
             break;
         case "8":
-            filePath = getGitContentPre()+"/questions/fibrw/xjfib_rw_withoutc.txt"+getGitContentAccess()
+            filePath = getGitContentPre() + "/questions/fibrw/xjfib_rw_withoutc.txt" + getGitContentAccess()
             break;
         case "-5":
-            filePath = getGitContentPre()+"/questions/fibrw/cge_fib_rw_without_xj.txt"+getGitContentAccess()
+            filePath = getGitContentPre() + "/questions/fibrw/cge_fib_rw_without_xj.txt" + getGitContentAccess()
             break;
         case "9":
             onlyundo = "";
@@ -170,6 +171,7 @@ function fibRwCurrentTypedata(param) {
                     }
                     if (fibrwData) {
                         currentList.push(fibrwData);
+                        currentQnumList.push(qNum);
                     }
                 })
             }
@@ -177,9 +179,11 @@ function fibRwCurrentTypedata(param) {
             break;
         case "10":
             currentList = cnList;
+            currentQnumList.push(cnMap.keys());
             break;
         case "11":
             currentList = enList;
+            currentQnumList.push(enMap.keys());
             break;
 
     }
@@ -191,8 +195,9 @@ function fibRwCurrentTypedata(param) {
             var qNums;
             try {
                 qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
-            }catch (e) {
-                 qNums = response.split(/[(\r\n)\r\n]+/);;
+            } catch (e) {
+                qNums = response.split(/[(\r\n)\r\n]+/);
+                ;
             }
 
             qNums.forEach((item, index) => { // 删除空项
@@ -215,6 +220,7 @@ function fibRwCurrentTypedata(param) {
                                 }
                                 if (fibrwData) {
                                     currentList.push(fibrwData);
+                                    currentQnumList.push(item);
                                 } else {
                                     if ("4" == type) {
                                         fibrwunCompletedList.push(item);
@@ -228,6 +234,7 @@ function fibRwCurrentTypedata(param) {
                             }
                             if (fibrwData) {
                                 currentList.push(fibrwData);
+                                currentQnumList.push(item);
                             } else {
                                 if ("4" == type) {
                                     fibrwunCompletedList.push(item);
@@ -255,6 +262,7 @@ function fibRwCurrentTypedata(param) {
                     }
                     if (fibrwData) {
                         currentList.push(fibrwData);
+                        currentQnumList.push(item);
                     }
                 }
             }
@@ -455,13 +463,14 @@ function fibrwUncompleted() {
     } else {
         fibrwunCompletedList = new Array();
         $.ajaxSettings.async = false;
-        $.get(getGitContentPre()+"/questions/fibrw/cge_fib_rw_all.txt"+getGitContentAccess(), function (response) {
+        $.get(getGitContentPre() + "/questions/fibrw/cge_fib_rw_all.txt" + getGitContentAccess(), function (response) {
             // let qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
             var qNums;
             try {
                 qNums = decodeURIComponent(escape(window.atob(response.content))).split(/[(\r\n)\r\n]+/); // 根据换行或者回车进行识别
-            }catch (e) {
-                 qNums = response.split(/[(\r\n)\r\n]+/);;
+            } catch (e) {
+                qNums = response.split(/[(\r\n)\r\n]+/);
+                ;
             }
 
 
@@ -489,6 +498,93 @@ function fibrwUncompleted() {
     }
 }
 
+function checkfibrwlastquestion() {
+    var qnum = getlastquestion(localStorageType)
+    if (qnum) {
+        var qIndex = -1;
+        if ((qIndex = currentQnumList.indexOf(qnum)) == 1) {
+            qIndex = currentQnumList.indexOf(parseInt(qnum));
+        }
+        if (qIndex != -1) {
+            layer.confirm('是否删清空本题型的对错记录？', {icon: 3}, function () {
+                fibrwgotoindex(qIndex + 1);
+            }, function () {
+                return;
+            });
+
+        }
+    }
+}
+
+function fibrwgotoindex(qIndex) {
+    if (!qIndex || qIndex <= 0 || qIndex > getFibRwTotalNum()) {
+
+    } else {
+        setFibRWIndex(parseInt(qIndex));
+        var fibrwdata = currentFibRWData();
+        if (!fibrwdata) {
+            layer.msg('超出题目数量范围', {icon: 0}, function () {
+            });
+        }
+        var content = fibrwTranslateData(fibrwdata);
+        if (isFibRwFirst()) {
+            $("#pre").hide();
+        } else {
+            $("#pre").show();
+        }
+        if (!isFibRwLast()) {
+            $("#next").show();
+        } else {
+            $("#next").hide();
+        }
+        $("#question-div").html(content);
+        fillfibrwAnswer(fibrwdata);
+        checkFav(fibrwdata.num, localStorageType);
+    }
+}
+
+function fibrwcheckanswer() {
+    var fibrwdata = currentFibRWData();
+    var content = JSON.stringify($("#question-form").serializeJson());
+    var result = $("#question-form").serializeJson();
+    var isWrong = false;
+    for (var ans in result) {
+        if (!ans || !ans.startsWith("answer")) {
+            continue;
+        }
+        console.log(result[ans]);
+        var answer = result[ans];
+        var select = $("#" + ans);
+        console.log($(select))
+        if (!answer || answer.startsWith("false")) {
+            // $(allSelects[i]).addClass("layui-form-danger");
+            $(select).removeClass();
+            $(select).attr("class", "layui-form-danger");
+            isWrong = true;
+        }
+
+    }
+    if (!isWrong) {
+        addRightOrFalt(fibrwdata.num, "right", localStorageType);
+        layer.msg('全部正确,考试必过!', {icon: 0, time: 800}, function () {
+            var serializeJson = $("#search-form").serializeJson();
+            var autonext = serializeJson.autonext;
+            //添加正确次数,添加错误次数
+            // layer.msg('提示框关闭后的回调');
+            if (!isFibRwLast()&&autonext) {
+                nextFibRwQuestion(obj, event, localStorageType);
+                form.render();
+            }
+        });
+    } else {
+        addRightOrFalt(fibrwdata.num, "falt", localStorageType);
+        layer.msg('答案不小心选错了哟!', {icon: 0}, function () {
+            // layer.msg('提示框关闭后的回调');
+            //添加错误次数
+        });
+    }
+    setRightAndFaltNum(fibrwdata.num, localStorageType);
+}
 
 function isFibRwFirst() {
     return index == 0;
@@ -529,7 +625,7 @@ function currentFibRWListData() {
 
 function cleanfibrwfav() {
     layer.confirm('是否清空收藏夹？', {icon: 3}, function () {
-        cleanFav(XJFIBRWlocalStorageType,localStorageType)
+        cleanFav(XJFIBRWlocalStorageType, localStorageType)
         layer.msg('操作完成', {icon: 0}, function () {
         });
         checkFav(currentFibRWData().num, localStorageType);

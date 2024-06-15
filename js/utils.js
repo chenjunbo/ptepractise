@@ -474,6 +474,11 @@ function addRightOrFalt(qNum, rightorfalt, localStroageType) {
     window.localStorage.setItem(qNum + rightorfalt + localStroageType, num);
     saveRightAndFaltByType(qNum, localStorageType + "right");
     saveRightAndFaltByType(qNum, localStorageType + "falt");
+    window.localStorage.setItem(localStroageType+"last_num", num);
+}
+
+function getlastquestion(localStroageType) {
+    return window.localStorage.getItem(localStroageType + "last_num");
 }
 
 function saveRightAndFaltByType(qNum, key) {
