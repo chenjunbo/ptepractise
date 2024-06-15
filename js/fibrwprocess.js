@@ -1,4 +1,4 @@
-var currentList,currentQnumList;
+var currentList,currentFibrwQnumList;
 let cnList, enList, fibrwIdsList, fibrwunCompletedList;
 const cnMap = new Map();
 var fibrwIdsSet = new Set();
@@ -101,7 +101,7 @@ function fibRwCurrentTypedata(param) {
     var filePath;
     index = 0;
     currentList = new Array();
-    currentQnumList = new Array();
+    currentFibrwQnumList = new Array();
     var localstoragedata;
     switch (type) {
         case "-1":
@@ -171,7 +171,7 @@ function fibRwCurrentTypedata(param) {
                     }
                     if (fibrwData) {
                         currentList.push(fibrwData);
-                        currentQnumList.push(qNum);
+                        currentFibrwQnumList.push(qNum);
                     }
                 })
             }
@@ -179,11 +179,11 @@ function fibRwCurrentTypedata(param) {
             break;
         case "10":
             currentList = cnList;
-            currentQnumList.push(cnMap.keys());
+            currentFibrwQnumList.push(cnMap.keys());
             break;
         case "11":
             currentList = enList;
-            currentQnumList.push(enMap.keys());
+            currentFibrwQnumList.push(enMap.keys());
             break;
 
     }
@@ -220,7 +220,7 @@ function fibRwCurrentTypedata(param) {
                                 }
                                 if (fibrwData) {
                                     currentList.push(fibrwData);
-                                    currentQnumList.push(item);
+                                    currentFibrwQnumList.push(item);
                                 } else {
                                     if ("4" == type) {
                                         fibrwunCompletedList.push(item);
@@ -234,7 +234,7 @@ function fibRwCurrentTypedata(param) {
                             }
                             if (fibrwData) {
                                 currentList.push(fibrwData);
-                                currentQnumList.push(item);
+                                currentFibrwQnumList.push(item);
                             } else {
                                 if ("4" == type) {
                                     fibrwunCompletedList.push(item);
@@ -262,7 +262,7 @@ function fibRwCurrentTypedata(param) {
                     }
                     if (fibrwData) {
                         currentList.push(fibrwData);
-                        currentQnumList.push(item);
+                        currentFibrwQnumList.push(item);
                     }
                 }
             }
@@ -502,8 +502,8 @@ function checkfibrwlastquestion() {
     var qnum = getlastquestion(localStorageType)
     if (qnum) {
         var qIndex = -1;
-        if ((qIndex = currentQnumList.indexOf(qnum)) == 1) {
-            qIndex = currentQnumList.indexOf(parseInt(qnum));
+        if ((qIndex = currentFibrwQnumList.indexOf(qnum)) == 1) {
+            qIndex = currentFibrwQnumList.indexOf(parseInt(qnum));
         }
         if (qIndex != -1) {
             layer.confirm('检查到上次刷题题号:'+qnum+" 是否跳转", {icon: 3}, function () {

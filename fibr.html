@@ -166,6 +166,7 @@
             fibrsearch: function (obj, event) { // 左侧菜单事件
                 fibrsearch(obj, event);
                 form.render();
+                checkfibrlastquestion();
             },
             testlucky: function (obj, event) {
                 testfibrlucky(obj, event);
@@ -200,7 +201,10 @@
                 fibrshowanswer(obj, event);
             },
             gotoindex: function (obj, event) {
-                firbgotoindex(obj, event);
+                event.preventDefault();
+                var qIndex = $("#qindex").val();//想要跳转的题目
+                firbgotoindex(qIndex);
+                return false;
             },
             adddeletefav: function (obj, event) {
                 adddeletefibrfav(obj, event);

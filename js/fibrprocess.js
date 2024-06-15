@@ -1,4 +1,4 @@
-var fibrCurrentList;
+var fibrCurrentList,currentFibrwQnumList;
 let fibrCnList, fibrEnList, fibrIdsList, fibrunCompletedList;
 var fibrIdsSet = new Set();
 const fibrCnMap = new Map();
@@ -52,6 +52,7 @@ function fibRCurrentTypedata(param) {
     var filePath;
     fibrIndex = 0;
     fibrCurrentList = new Array();
+    currentFibrwQnumList = new Array();
     var localstoragedata;
     switch (type) {
         case "-1":
@@ -118,6 +119,7 @@ function fibRCurrentTypedata(param) {
                     }
                     if (fibrData) {
                         fibrCurrentList.push(fibrData);
+                        currentFibrwQnumList.push(qNum)
                     }
                 })
             }
@@ -126,9 +128,11 @@ function fibRCurrentTypedata(param) {
 
         case "10":
             fibrCurrentList=fibrCnList;
+            currentFibrwQnumList.push(fibrCnMap.keys())
             break;
         case "11":
             fibrCurrentList = fibrEnList;
+            currentFibrwQnumList.push(fibrEnMap.keys())
             break;
     }
     //当前数据
@@ -161,6 +165,7 @@ function fibRCurrentTypedata(param) {
                                 }
                                 if (fibrData) {
                                     fibrCurrentList.push(fibrData);
+                                    currentFibrwQnumList.push(item)
                                 } else {
                                     if ("4" == type) {
                                         fibrunCompletedList.push(item);
@@ -174,6 +179,7 @@ function fibRCurrentTypedata(param) {
                             }
                             if (fibrData) {
                                 fibrCurrentList.push(fibrData);
+                                currentFibrwQnumList.push(item)
                             } else {
                                 if ("4" == type) {
                                     fibrunCompletedList.push(item);
@@ -203,6 +209,7 @@ function fibRCurrentTypedata(param) {
                     }
                     if (fibrData) {
                         fibrCurrentList.push(fibrData);
+                        currentFibrwQnumList.push(item)
                     }
                 }
             }
@@ -719,9 +726,28 @@ function checkfibranswerbyDefault(obj, event,fibrdata,form) {
     }
 }
 
-function firbgotoindex(obj, event) {
-    event.preventDefault();
-    var qIndex = $("#qindex").val();//想要跳转的题目
+
+function checkfibrlastquestion() {
+    var qnum = getlastquestion(localStorageType)
+    if (qnum) {
+        var qIndex = -1;
+        if ((qIndex = currentFibrwQnumList.indexOf(qnum)) == 1) {
+            qIndex = currentFibrwQnumList.indexOf(parseInt(qnum));
+        }
+        if (qIndex != -1) {
+            layer.confirm('检查到上次刷题题号:'+qnum+" 是否跳转", {icon: 3}, function () {
+                firbgotoindex(qIndex + 1);
+                layer.msg('操作完成', {icon: 0}, function () {
+                });
+            }, function () {
+                return;
+            });
+
+        }
+    }
+}
+
+function firbgotoindex(qIndex) {
     console.log(qIndex);
     if (!qIndex || qIndex <= 0 || qIndex > getFibRTotalNum()) {
 
