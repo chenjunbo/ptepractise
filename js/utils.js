@@ -449,6 +449,7 @@ function cleanFav(typekey,suffix) {
 function clearAllFaltByType(localStorageType) {
     removeFromLocalStorage(localStorageType + "falt");
     removeFromLocalStorage(localStorageType + "right");
+    removeFromLocalStorage(localStorageType+"last_num");
     const keys = Object.keys(window.localStorage);
     keys.forEach((key) => {
         if (key.endsWith("falt" + localStorageType) || key.endsWith("right" + localStorageType)) {
@@ -474,7 +475,7 @@ function addRightOrFalt(qNum, rightorfalt, localStroageType) {
     window.localStorage.setItem(qNum + rightorfalt + localStroageType, num);
     saveRightAndFaltByType(qNum, localStorageType + "right");
     saveRightAndFaltByType(qNum, localStorageType + "falt");
-    window.localStorage.setItem(localStroageType+"last_num", num);
+    window.localStorage.setItem(localStroageType+"last_num", qNum);
 }
 
 function getlastquestion(localStroageType) {
