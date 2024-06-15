@@ -68,6 +68,7 @@ function xjroCurrentTypedata(param) {
     var filePath;
     xjroindex = 0;
     currentROList = new Array();
+    currentxjroQnumList = new Array();
     var localstoragedata;
     switch (type) {
         case "-1":
