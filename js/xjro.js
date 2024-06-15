@@ -1,4 +1,4 @@
-var currentROList;
+var currentROList,currentxjroQnumList;
 let cnxjroList, enxjroList, xjroIdsList, xjRounCompletedList;
 var xjroIdsSet = new Set();
 const cnxjroMap = new Map();
@@ -134,6 +134,7 @@ function xjroCurrentTypedata(param) {
                     }
                     if (xjroData) {
                         currentROList.push(xjroData);
+                        currentxjroQnumList.push(qNum);
                     }
                 })
             }
@@ -174,6 +175,7 @@ function xjroCurrentTypedata(param) {
                                 }
                                 if (xjroData) {
                                     currentROList.push(xjroData);
+                                    currentxjroQnumList.push(item);
                                 } else {
                                     if ("4" == type) {
                                         xjRounCompletedList.push(item);
@@ -188,6 +190,7 @@ function xjroCurrentTypedata(param) {
                             }
                             if (xjroData) {
                                 currentROList.push(xjroData);
+                                currentxjroQnumList.push(item);
                             } else {
                                 if ("4" == type) {
                                     xjRounCompletedList.push(item);
@@ -216,6 +219,7 @@ function xjroCurrentTypedata(param) {
                     }
                     if (xjroData) {
                         currentROList.push(xjroData);
+                        currentxjroQnumList.push(item);
                     }
                 }
             }
@@ -513,6 +517,25 @@ function rosearch(localStorageType) {
     }
     checkFav(xjrodata.num, localStorageType);
 
+}
+function checkxjrolastquestion() {
+    var qnum = getlastquestion(localStorageType)
+    if (qnum) {
+        var qIndex = -1;
+        if ((qIndex = currentxjroQnumList.indexOf(qnum)) == 1) {
+            qIndex = currentxjroQnumList.indexOf(parseInt(qnum));
+        }
+        if (qIndex != -1) {
+            layer.confirm('检查到上次刷题题号:'+qnum+" 是否跳转", {icon: 3}, function () {
+                firbgotoindex(qIndex + 1);
+                layer.msg('操作完成', {icon: 0}, function () {
+                });
+            }, function () {
+                return;
+            });
+
+        }
+    }
 }
 
 function testlucky(localStorageType) {
