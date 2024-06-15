@@ -508,7 +508,8 @@ function checkfibrwlastquestion() {
         if (qIndex != -1) {
             layer.confirm('检查到上次刷题题号:'+qnum+" 是否跳转", {icon: 3}, function () {
                 fibrwgotoindex(qIndex + 1);
-                return;
+                layer.msg('操作完成', {icon: 0}, function () {
+                });
             }, function () {
                 return;
             });
