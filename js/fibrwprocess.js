@@ -506,8 +506,9 @@ function checkfibrwlastquestion() {
             qIndex = currentQnumList.indexOf(parseInt(qnum));
         }
         if (qIndex != -1) {
-            layer.confirm('是否删清空本题型的对错记录？', {icon: 3}, function () {
+            layer.confirm('检查到上次刷题题号:'+qnum+" 是否跳转", {icon: 3}, function () {
                 fibrwgotoindex(qIndex + 1);
+                return;
             }, function () {
                 return;
             });
