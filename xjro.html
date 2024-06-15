@@ -161,7 +161,8 @@
             },
             gotoindex: function (obj, event) {
                 event.preventDefault();
-                rogotoindex(localStorageType);
+                var qIndex = $("#qindex").val();//想要跳转的题目
+                rogotoindex(qIndex);
                 form.render();
                 return false;
             },cleanfav: function (obj,event){

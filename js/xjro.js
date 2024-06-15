@@ -528,7 +528,7 @@ function checkxjrolastquestion() {
         }
         if (qIndex != -1) {
             layer.confirm('检查到上次刷题题号:'+qnum+" 是否跳转", {icon: 3}, function () {
-                firbgotoindex(qIndex + 1);
+                rogotoindex(qIndex + 1);
                 layer.msg('操作完成', {icon: 0}, function () {
                 });
             }, function () {
@@ -750,8 +750,7 @@ function showroanswerarea() {
     }
 }
 
-function rogotoindex(localStorageType) {
-    var qIndex = $("#qindex").val();//想要跳转的题目
+function rogotoindex(qIndex) {
     console.log(qIndex);
     if (!qIndex || qIndex <= 0 || qIndex > getXjRoTotalNum) {
 
@@ -777,7 +776,6 @@ function rogotoindex(localStorageType) {
         // $("#question-div").html(content);
         fillXjroAnswer(xjrodata, localStorageType);
         checkFav(xjrodata.num, localStorageType);
-
         return false;
     }
 }
