@@ -302,7 +302,7 @@ function getRawPre() {
     if (url.indexOf('chenjunbo.top') >= 0) {
         return ""
     }else{
-        return "https://ptepractise.chenjunbo.top/";
+        return "https://ptepractise.chenjunbo.top";
     }
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
@@ -317,7 +317,7 @@ function getRawPreforpdf() {
     if (url.indexOf('chenjunbo.top') >= 0) {
         return ""
     }else{
-        return "https://ptepractise.chenjunbo.top/";
+        return "https://ptepractise.chenjunbo.top";
     }
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
@@ -332,7 +332,7 @@ function getGitContentPre() {
     if (url.indexOf('chenjunbo.top') >= 0) {
         return ""
     }else{
-        return "https://ptepractise.chenjunbo.top/";
+        return "https://ptepractise.chenjunbo.top";
     }
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
@@ -347,7 +347,7 @@ function getGitContentAccess() {
     if (url.indexOf('chenjunbo.top') >= 0) {
         return ""
     }else{
-        return "https://ptepractise.chenjunbo.top/";
+        return "https://ptepractise.chenjunbo.top";
     }
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
