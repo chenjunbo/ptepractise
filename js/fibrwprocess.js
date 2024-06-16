@@ -498,7 +498,7 @@ function fibrwUncompleted() {
     }
 }
 
-function checkfibrwlastquestion() {
+function checkfibrwlastquestion(form) {
     var qnum = getlastquestion(localStorageType)
     if (qnum) {
         var qIndex = -1;
@@ -510,6 +510,7 @@ function checkfibrwlastquestion() {
                 fibrwgotoindex(qIndex + 1);
                 layer.msg('操作完成', {icon: 0}, function () {
                 });
+                form.render();
             }, function () {
                 return;
             });
