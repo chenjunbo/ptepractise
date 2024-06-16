@@ -172,8 +172,8 @@
                     $("#gotoarea").show();
                 }
                 checkFav(fibrwdata.num, localStorageType);
-                form.render();
                 checkfibrwlastquestion();
+                form.render();
                 return false;
             }, testlucky: function (obj, event) { // 左侧菜单事件
                 //  var json = JSON.stringify($("#search-form").serializeJson())
@@ -280,7 +280,7 @@
             },
             checkanswer: function (obj, event) {
                 event.preventDefault();
-                fibrwcheckanswer();
+                fibrwcheckanswer(obj, event,localStorageType);
                 return false;
             },
             showanswer: function (obj, event) {
