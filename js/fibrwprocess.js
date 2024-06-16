@@ -545,7 +545,7 @@ function fibrwgotoindex(qIndex) {
     }
 }
 
-function fibrwcheckanswer() {
+function fibrwcheckanswer(obj,event,localStorageType) {
     var fibrwdata = currentFibRWData();
     var content = JSON.stringify($("#question-form").serializeJson());
     var result = $("#question-form").serializeJson();
