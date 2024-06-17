@@ -68,6 +68,7 @@
         form.render();
         util.event('lay-header-event', {
             fireflysstsearch: function (obj, event) { // 左侧菜单事件
+                stopsstmp3();
                 event.preventDefault();
                 fireflysstsearch();
                 form.render();
@@ -75,6 +76,7 @@
                 return false;
             }
             , next: function (obj, event) {
+                stopsstmp3();
                 event.preventDefault();
                 sstNext()
                 form.render();
@@ -82,6 +84,7 @@
                 return false;
             },
             pre: function (obj, event) {
+                stopsstmp3();
                 event.preventDefault();
                 sstPre()
                 form.render();
@@ -92,6 +95,7 @@
                 cleanfireflysstfav()
             },
             gotoindex: function (obj, event) {
+                stopsstmp3();
                 event.preventDefault();
                     sstgotoindex()
                     form.render();
