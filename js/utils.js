@@ -299,9 +299,9 @@ function getAlljs(version) {
 
 function getRawPre() {
     var url = window.location.href;
-    // if (url.indexOf('chenjunbo.top') >= 0) {
-    //     return ""
-    // }
+    if (url.indexOf('chenjunbo.top') >= 0) {
+        return ""
+    }
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
         return "https://gitee.com/jackiechan/ptepractise/raw/webversion";
@@ -312,9 +312,9 @@ function getRawPre() {
 
 function getRawPreforpdf() {
     var url = window.location.href;
-    // if (url.indexOf('chenjunbo.top') >= 0) {
-    //     return ""
-    // }
+    if (url.indexOf('chenjunbo.top') >= 0) {
+        return ""
+    }
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
         return "https://gitee.com/jackiechan/ptepractise/raw/webversion";
@@ -325,9 +325,9 @@ function getRawPreforpdf() {
 
 function getGitContentPre() {
     var url = window.location.href;
-    // if (url.indexOf('chenjunbo.top') >= 0) {
-    //     return ""
-    // }
+    if (url.indexOf('chenjunbo.top') >= 0) {
+        return ""
+    }
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
         return "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents";
@@ -338,9 +338,9 @@ function getGitContentPre() {
 
 function getGitContentAccess() {
     var url = window.location.href;
-    // if (url.indexOf('chenjunbo.top') >= 0) {
-    //     return ""
-    // }
+    if (url.indexOf('chenjunbo.top') >= 0) {
+        return ""
+    }
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
         return "?access_token=c87299575627265144b7db286d3bf673&ref=webversion";
