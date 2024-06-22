@@ -496,6 +496,12 @@ function rosearch(localStorageType) {
     var xjrodata = currentXjRoData();
     if (!xjrodata) {
         $("#question-form").hide();
+        layer.msg('题库加载中,资源在国外可能会加载较慢,电脑端可以等出现不完整题目按钮后再点击加载', {icon: 0}, function () {
+            // layer.msg('提示框关闭后的回调');
+        });
+        return false;
+    } else if (xjrodata == 1) {
+        $("#question-form").hide();
         layer.msg('当前分类下不存在该题目', {icon: 0}, function () {
             // layer.msg('提示框关闭后的回调');
         });
@@ -880,6 +886,9 @@ function setXjRoIndex(qindex) {
 }
 
 function currentXjRoData() {
+    if (cnxjroList.size > 0 && currentROList.size == 0) {
+        return 1;
+    }
     return currentROList[xjroindex];
 }
 
