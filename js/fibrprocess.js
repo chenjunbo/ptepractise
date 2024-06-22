@@ -451,6 +451,12 @@ function fibrsearch(obj, event) { // 左侧菜单事件
     var fibrdata = currentFibRData()
     if (!fibrdata) {
         $("#fibrquestion-form").hide();
+        layer.msg('题库加载中,资源在国外可能会加载较慢,电脑端可以等出现不完整题目按钮后再点击加载', {icon: 0}, function () {
+            // layer.msg('提示框关闭后的回调');
+        });
+        return false;
+    } else if (fibrdata == 1) {
+        $("#fibrquestion-form").hide();
         layer.msg('当前分类下不存在该题目', {icon: 0}, function () {
             // layer.msg('提示框关闭后的回调');
         });
@@ -1001,6 +1007,9 @@ function setFibRIndex(qindex) {
 }
 
 function currentFibRData() {
+    if (fibrCnList.size > 0 && fibrCurrentList.size == 0) {
+        return 1;
+    }
     return fibrCurrentList[fibrIndex];
 }
 
