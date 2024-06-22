@@ -886,7 +886,7 @@ function setXjRoIndex(qindex) {
 }
 
 function currentXjRoData() {
-    if (cnxjroList.size > 0 && currentROList.size == 0) {
+    if (cnxjroList.length > 0 && currentROList.length == 0) {
         return 1;
     }
     return currentROList[xjroindex];

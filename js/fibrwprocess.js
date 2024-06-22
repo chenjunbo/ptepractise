@@ -619,7 +619,7 @@ function setFibRWIndex(qindex) {
 }
 
 function currentFibRWData() {
-    if (cnList.size > 0 && currentList.size == 0) {
+    if (cnList.length > 0 && currentList.length == 0) {
         return 1;
     }
     return currentList[index];

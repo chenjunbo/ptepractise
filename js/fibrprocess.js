@@ -1007,7 +1007,7 @@ function setFibRIndex(qindex) {
 }
 
 function currentFibRData() {
-    if (fibrCnList.size > 0 && fibrCurrentList.size == 0) {
+    if (fibrCnList.length > 0 && fibrCurrentList.length == 0) {
         return 1;
     }
     return fibrCurrentList[fibrIndex];
