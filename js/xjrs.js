@@ -5,10 +5,10 @@ var excWords = ["it","their","from","of", "to", "as", "at", "on",
     "you", "he", "she", "his", "her", "your", "and", "or","they","more","but","our","which","not",
     "people","we","we","also","one","new","these","than","when","such","will","how","many","may",
     "most","into","other","all","some","its","who","study","there","if","what","while","water","reset",
-    "age","add","after","before","afternoon","ago","air","am",
-    "students","i","next","help","week","need","my","work","first","take","any","think","too","end","every","him","four",
-    "the","it","must","this","a","get","me","very","good","make","student","book","books","most","want","class","don't","our","your","many","lot","food","start","day","find","go","here","to",
-    "over","so","like","years","year","time","them","often","use","used","us","do","out","now","where",
+    "age","add","after","before","afternoon","ago","air","am", "students","i","next","help","week","need","my","work","first",
+    "take","any","think","too","end","every","him","four", "use","used","us","do","out","now","where",
+    "the","it","must","this","a","get","me","very","good","make","student","book","books","most","want","class","don't","our",
+    "your","many","lot","food","start","day","find","go","here","to", "over","so","like","years","year","time","them","often",
     "two","one","yes","no","it's","—"]
 
 function xjrsInit() {
