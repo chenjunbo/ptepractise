@@ -5,7 +5,8 @@ var excWords = ["it","their","from","of", "to", "as", "at", "on",
     "you", "he", "she", "his", "her", "your", "and", "or","they","more","but","our","which","not",
     "people","we","we","also","one","new","these","than","when","such","will","how","many","may",
     "most","into","other","all","some","its","who","study","there","if","what","while","water","reset",
-    "age","add","after","before","afternoon","ago","air","all","am",
+    "age","add","after","before","afternoon","ago","air","am",
+    "the","it","must","this","a","get","me","very","good","make","student","book","books","most","want","class","don't","our","your","many","lot","food","start","day","find","go","here","to",
     "over","so","like","years","year","time","them","often","use","used","us","do","out","now","where",
     "two","one","yes","no","it's","—"]
 
@@ -53,7 +54,7 @@ function create_all_xj_rs_words_order_by_dic(order_by_count,newPage,name) {
         } catch (e){
             allWords = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
         }
-        allWords = allWords.replaceAll(".", "").replaceAll(",", "").replaceAll("?", "").replaceAll("(", "").replaceAll(")", "");
+        allWords = allWords.replaceAll(".", "").replaceAll(",", "").replaceAll("?", "").replaceAll("(", "").replaceAll(")", "").toLowerCase();
         var table = document.createElement("table");
         var thead = document.createElement("thead");
         var thead_tr = document.createElement("tr");
@@ -74,7 +75,7 @@ function create_all_xj_rs_words_order_by_dic(order_by_count,newPage,name) {
             }
             return temp;
         }, {})
-        var sorted_result_by_count = Object.keys(result).sort((key1, key2) => result[key1] - result[key2]);
+        var sorted_result_by_count = Object.keys(result).sort((key1, key2) => result[key2] - result[key1]);
         var sorted_result_by_char = Object.keys(result).sort((key1, key2) => {
             let a = key1.toLowerCase();
             let b = key2.toLowerCase();
