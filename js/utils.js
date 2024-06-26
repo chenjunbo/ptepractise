@@ -602,3 +602,11 @@ function  checkversion(num){
         }
     })
 }
+/**
+ * 是否数字开头
+ * @param str
+ * @returns {boolean}
+ */
+function startsWithNumber(str) {
+    return /^\d/.test(str);
+}

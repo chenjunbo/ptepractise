@@ -67,7 +67,7 @@ function create_all_xj_rs_words_order_by_dic(order_by_count,newPage,name) {
         table.appendChild(thead)
         var tbody = document.createElement("tbody");
         let result = allWords.split(" ").reduce((temp, data) => {
-            if (excWords.indexOf(data) > -1 || !data) {
+            if (!data||excWords.indexOf(data) > -1 || startsWithNumber(data) ) {
 
             } else {
                 temp[data] = temp[data] ? temp[data] + 1 : 1;
