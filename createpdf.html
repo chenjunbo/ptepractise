@@ -221,6 +221,8 @@
                     <option value="3">🦍️RS月预测</option>
                     <option value="4">🦍️RS全题目</option>
                     <option value="5">🦍️RS全题目题号排序</option>
+                    <option value="6">🦍️RS高频单词表</option>
+                    <option value="7">🦍️RS高频单词表频率排序</option>
                 </select>
             </div>
             <button class="layui-btn layui-btn-sm" lay-header-event="createrspdf">点击生成网页后通过浏览器的打印功能保存为pdf
@@ -715,6 +717,16 @@
                         name = "xjRS全题目题号排序";
                         $(body).append(currentxjrsallcontentdesc());
                         break;
+                    case "6":
+                        name = "xjRS高频单词";
+                        // name = "纯文本";
+                       create_all_xj_rs_words_order_by_dic(false,newPage,name)
+                        return;
+                    case "7":
+                        name = "xjRS高频单词按频率排序";
+                        // name = "纯文本";
+                        create_all_xj_rs_words_order_by_dic(true,newPage,name)
+                        return;
                 }
                 fillPdf(newPage, name);
             },

@@ -35,6 +35,64 @@ function xjrsInit() {
     })
 }
 
+function create_all_xj_rs_words_order_by_dic(order_by_count,newPage,name) {
+    $.get(getGitContentPre()+"/data/rs/xjrsallpinlv.txt"+getGitContentAccess(), function (response) {
+        var allWords = ""
+        try {
+            allWords = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response.content)))))))));
+        } catch (e){
+            allWords = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
+        }
+        var table = document.createElement("table");
+        var thead = document.createElement("thead");
+        var thead_tr = document.createElement("tr");
+        var word_th = document.createElement("th");
+        var count_th = document.createElement("th");
+        word_th.innerHTML = "单词"
+        count_th.innerHTML = "频率"
+        thead_tr.appendChild(word_th)
+        thead_tr.appendChild(count_th)
+        thead.appendChild(thead_tr)
+        table.appendChild(thead)
+        var tbody = document.createElement("tbody");
+        let result = allWords.split(" ").reduce((temp, data) => {
+            if (excWords.indexOf(data) > -1 || !data) {
+
+            } else {
+                temp[data] = temp[data] ? temp[data] + 1 : 1;
+            }
+            return temp;
+        }, {})
+        var sorted_result_by_count = Object.keys(result).sort((key1, key2) => result[key1] - result[key2]);
+        var sorted_result_by_char = Object.keys(result).sort((key1, key2) => {
+            let a = key1.toLowerCase();
+            let b = key2.toLowerCase();
+            if (a < b) return -1;
+            if (a > b) return 1;
+            return 0;
+        });
+        console.log(sorted_result_by_count)
+        console.log(sorted_result_by_char)
+        var array = sorted_result_by_char;
+        if (order_by_count) {
+            array = sorted_result_by_count;
+        }
+        array.forEach((word, index) => {
+            var wordTd = document.createElement("td");
+            var tr = document.createElement("tr");
+            var countTd = document.createElement("td");
+            wordTd.innerHTML = word;
+            countTd.innerHTML = result[word];
+            tr.appendChild(wordTd)
+            tr.appendChild(countTd)
+            tbody.appendChild(tr)
+        })
+        table.appendChild(tbody)
+        var body = newPage.body;
+        body.appendChild(table);
+        fillPdf(newPage, name);
+    })
+}
 function currentxjrsweekconten() {
     return xjrsweekconten;
 }
