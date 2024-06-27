@@ -321,6 +321,9 @@ function getRawPre() {
         return "https://gitee.com/jackiechan/ptepractise/raw/webversion";
     } else if ("oversea" == currentlocaltion) {
         // return "https://chenjunbo.github.io/ptepractise";
+        if (url.indexOf('github') >= 0) {
+            return "ptepractise"
+        }
         return "";
     }else if ("default" == currentlocaltion) {
         return "";
@@ -328,7 +331,7 @@ function getRawPre() {
 }
 
 function getRawPreforpdf() {
-    // var url = window.location.href;
+    var url = window.location.href;
     // if (url.indexOf('chenjunbo.top') >= 0) {
     //     return ""
     // }
@@ -337,6 +340,9 @@ function getRawPreforpdf() {
         return "https://gitee.com/jackiechan/ptepractise/raw/webversion";
     } else if ("oversea" == currentlocaltion) {
         // return "https://raw.githubusercontent.com/chenjunbo/ptepractise/webversion";
+        if (url.indexOf('github') >= 0) {
+            return "ptepractise"
+        }
         return "";
     }else if ("default" == currentlocaltion) {
         return "";
@@ -353,6 +359,9 @@ function getGitContentPre() {
         return "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents";
     } else if ("oversea" == currentlocaltion) {
         // return "https://raw.githubusercontent.com/chenjunbo/ptepractise/webversion";
+        if (url.indexOf('github') >= 0) {
+            return "ptepractise"
+        }
         return "";
     }else if ("default" == currentlocaltion) {
         return "";
@@ -368,6 +377,9 @@ function getGitContentAccess() {
     if ("china" == currentlocaltion) {
         return "?access_token=c87299575627265144b7db286d3bf673&ref=webversion";
     } else if ("oversea" == currentlocaltion) {
+        if (url.indexOf('github') >= 0) {
+            return "ptepractise"
+        }
         return "";
     }else if ("default" == currentlocaltion) {
         return "";
