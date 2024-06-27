@@ -312,7 +312,7 @@ function getAlljs(version) {
 }
 
 function getRawPre() {
-    // var url = window.location.href;
+    var url = window.location.href;
     // if (url.indexOf('chenjunbo.top') >= 0) {
     //     return ""
     // }
@@ -350,7 +350,7 @@ function getRawPreforpdf() {
 }
 
 function getGitContentPre() {
-    // var url = window.location.href;
+    var url = window.location.href;
     // if (url.indexOf('chenjunbo.top') >= 0) {
     //     return ""
     // }
@@ -369,7 +369,7 @@ function getGitContentPre() {
 }
 
 function getGitContentAccess() {
-    // var url = window.location.href;
+    var url = window.location.href;
     // if (url.indexOf('chenjunbo.top') >= 0) {
     //     return ""
     // }
