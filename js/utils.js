@@ -257,7 +257,7 @@ function selectLocation() {
             window.localStorage.setItem("currentlocaltion", "china");
             location.reload();//刷新页面
         },
-        btn2: function () {
+        btn3: function () {
             window.localStorage.setItem("currentlocaltion", "oversea");
             location.reload();//刷新页面
         }
