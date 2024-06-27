@@ -175,18 +175,24 @@ function createNav() {
 }
 
 function resetLocation() {
-    layer.alert('请选择您所在区域', {
-        btn: ['国内', '国外且可访问github'],
-        btnAlign: 'c', // 按钮居中显示
-        btn1: function () {
-            window.localStorage.setItem("currentlocaltion", "china");
-            location.reload();//刷新页面
-        },
-        btn2: function () {
-            window.localStorage.setItem("currentlocaltion", "oversea");
-            location.reload();//刷新页面
-        }
-    });
+
+    selectLocation();
+    // layer.alert('请选择您所在区域', {
+    //     btn: ['默认','国内(默认无效的情况下)', '国外'],
+    //     btnAlign: 'c', // 按钮居中显示
+    //     btn1: function () {
+    //         window.localStorage.setItem("currentlocaltion", "default");
+    //         location.reload();//刷新页面
+    //     },
+    //     btn2: function () {
+    //         window.localStorage.setItem("currentlocaltion", "china");
+    //         location.reload();//刷新页面
+    //     },
+    //     btn2: function () {
+    //         window.localStorage.setItem("currentlocaltion", "oversea");
+    //         location.reload();//刷新页面
+    //     }
+    // });
 }
 
 function openRightNew(url) {
@@ -239,6 +245,25 @@ function initOthers() {
     loadNotice();
 }
 
+function selectLocation() {
+    layer.alert('请选择您所在区域', {
+        btn: ['默认', '国内(默认无效的情况下)', '国外'],
+        btnAlign: 'c', // 按钮居中显示
+        btn1: function () {
+            window.localStorage.setItem("currentlocaltion", "default");
+            location.reload();//刷新页面
+        },
+        btn2: function () {
+            window.localStorage.setItem("currentlocaltion", "china");
+            location.reload();//刷新页面
+        },
+        btn2: function () {
+            window.localStorage.setItem("currentlocaltion", "oversea");
+            location.reload();//刷新页面
+        }
+    });
+}
+
 function getAlljs(version) {
     if (!version) {
         var time = new Date().getTime();
@@ -262,22 +287,7 @@ function getAlljs(version) {
         var currentlocaltion = window.localStorage.getItem("currentlocaltion");
         if (!currentlocaltion) {
             //还没有设置
-            layer.alert('请选择您所在区域', {
-                btn: ['默认','国内(默认无效的情况下)', '国外'],
-                btnAlign: 'c', // 按钮居中显示
-                btn1: function () {
-                    window.localStorage.setItem("currentlocaltion", "default");
-                    location.reload();//刷新页面
-                },
-                btn2: function () {
-                    window.localStorage.setItem("currentlocaltion", "china");
-                    location.reload();//刷新页面
-                },
-                btn2: function () {
-                    window.localStorage.setItem("currentlocaltion", "oversea");
-                    location.reload();//刷新页面
-                }
-            });
+            selectLocation();
         } else {
             var time = new Date().getTime();
             var js = [
