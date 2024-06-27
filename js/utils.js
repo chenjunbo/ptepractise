@@ -263,9 +263,13 @@ function getAlljs(version) {
         if (!currentlocaltion) {
             //还没有设置
             layer.alert('请选择您所在区域', {
-                btn: ['国内', '国外且可访问github'],
+                btn: ['默认','国内(默认无效的情况下)', '国外'],
                 btnAlign: 'c', // 按钮居中显示
                 btn1: function () {
+                    window.localStorage.setItem("currentlocaltion", "default");
+                    location.reload();//刷新页面
+                },
+                btn2: function () {
                     window.localStorage.setItem("currentlocaltion", "china");
                     location.reload();//刷新页面
                 },
@@ -298,49 +302,58 @@ function getAlljs(version) {
 }
 
 function getRawPre() {
-    var url = window.location.href;
-    if (url.indexOf('chenjunbo.top') >= 0) {
-        return ""
-    }
+    // var url = window.location.href;
+    // if (url.indexOf('chenjunbo.top') >= 0) {
+    //     return ""
+    // }
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
         return "https://gitee.com/jackiechan/ptepractise/raw/webversion";
     } else if ("oversea" == currentlocaltion) {
-        return "https://chenjunbo.github.io/ptepractise";
+        // return "https://chenjunbo.github.io/ptepractise";
+        return "";
+    }else if ("default" == currentlocaltion) {
+        return "";
     }
 }
 
 function getRawPreforpdf() {
-    var url = window.location.href;
-    if (url.indexOf('chenjunbo.top') >= 0) {
-        return ""
-    }
+    // var url = window.location.href;
+    // if (url.indexOf('chenjunbo.top') >= 0) {
+    //     return ""
+    // }
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
         return "https://gitee.com/jackiechan/ptepractise/raw/webversion";
     } else if ("oversea" == currentlocaltion) {
-        return "https://raw.githubusercontent.com/chenjunbo/ptepractise/webversion";
+        // return "https://raw.githubusercontent.com/chenjunbo/ptepractise/webversion";
+        return "";
+    }else if ("default" == currentlocaltion) {
+        return "";
     }
 }
 
 function getGitContentPre() {
-    var url = window.location.href;
-    if (url.indexOf('chenjunbo.top') >= 0) {
-        return ""
-    }
+    // var url = window.location.href;
+    // if (url.indexOf('chenjunbo.top') >= 0) {
+    //     return ""
+    // }
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
         return "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents";
     } else if ("oversea" == currentlocaltion) {
-        return "https://raw.githubusercontent.com/chenjunbo/ptepractise/webversion";
+        // return "https://raw.githubusercontent.com/chenjunbo/ptepractise/webversion";
+        return "";
+    }else if ("default" == currentlocaltion) {
+        return "";
     }
 }
 
 function getGitContentAccess() {
-    var url = window.location.href;
-    if (url.indexOf('chenjunbo.top') >= 0) {
-        return ""
-    }
+    // var url = window.location.href;
+    // if (url.indexOf('chenjunbo.top') >= 0) {
+    //     return ""
+    // }
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
         return "?access_token=c87299575627265144b7db286d3bf673&ref=webversion";
