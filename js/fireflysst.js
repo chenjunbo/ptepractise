@@ -44,7 +44,7 @@ function fireflySSTCurrentTypedata(param) {
     var filePath;
     sstIndex = 0;
     sstCurrentList = new Array();
-    var localstoragedata;
+    var localstoragedata = new Array();
     isXJSST = false;
     switch (type) {
         case "1":
