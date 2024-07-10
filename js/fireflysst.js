@@ -40,6 +40,9 @@ function fireflySSTCurrentTypedata(param) {
     stopsstmp3();
     var qNum = param.qNum;//题号
     var type = param.type;//类型
+    if (type == 4 || type == 5) {
+        type = "1";
+    }
     var randomindex = param.randomindex;//随机
     var filePath;
     sstIndex = 0;
