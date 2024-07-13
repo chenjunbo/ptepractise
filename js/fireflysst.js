@@ -55,7 +55,7 @@ function fireflySSTCurrentTypedata(param) {
             filePath = getGitContentPre() + "/questions/sst/fireflysstprediction.txt" + getGitContentAccess()
             break;
         case "2":
-
+           sstCurrentList=sstAllDataList;
             break;
         case "3":
             var content = getFromLocalStorage(sstlocalstoragetype);
