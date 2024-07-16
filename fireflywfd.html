@@ -396,6 +396,9 @@
         var en = fireFlydata.en;
         var cn = fireFlydata.cn;
         var answercontent = "</br>" + "</br>" + en + "</br>" + "</br>" + cn;
+        if (fireFlydata.remark) {
+            answercontent=answercontent+"</br>"+fireFlydata.remark;
+        }
         $("#answer-area").html(answercontent);
         playwfdmp3();
         setRightAndFaltNum(fireFlydata.qNum, localStorageType);
