@@ -265,7 +265,7 @@ function loadwfdpdfmd(filename, pdfname) {
             result = decodeURIComponent(escape(window.atob(decodeURIComponent(escape(window.atob(response))))));
         }
         var rawPre = getRawPre();
-        result = result.replace(new RegExp("https://gitee.com/jackiechan/ptepractise/raw/webversion", "gm"), rawPre)
+        result = result.replace(new RegExp("https://gitee.com/jackiechan/pteui/raw/webversion", "gm"), rawPre)
         var newPage = document.implementation.createHTMLDocument('New Page');
         var name = pdfname;
         var body = newPage.body;
