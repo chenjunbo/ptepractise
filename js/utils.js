@@ -218,13 +218,13 @@ function openRightNew(url) {
 function loadNotice() {
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
-        $("#main").load("https://gitee.com/api/v5/repos/jackiechan/pteui/raw/notice.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
+        $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
     } else if ("oversea" == currentlocaltion) {
         $("#main").load(getGitContentPre() + "/notice.html"+ getGitContentAccess())
     } else {
-        $("#main").load("https://gitee.com/api/v5/repos/jackiechan/pteui/raw/notice.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
+        $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
     }
-    // $("#main").load("https://gitee.com/api/v5/repos/jackiechan/pteui/raw/notice.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
+    // $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/notice.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
     checkversion(1);
     checkupdate();
 }
@@ -232,11 +232,11 @@ function loadNotice() {
 function loadWFDChangeLog() {
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
-        $("#main").load("https://gitee.com/api/v5/repos/jackiechan/pteui/raw/wfdchangelog.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
+        $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/wfdchangelog.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
     } else if ("oversea" == currentlocaltion) {
         $("#main").load(getRawPre() + "/notice.html")
     } else {
-        $("#main").load("https://gitee.com/api/v5/repos/jackiechan/pteui/raw/wfdchangelog.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
+        $("#main").load("https://gitee.com/api/v5/repos/jackiechan/ptepractise/raw/wfdchangelog.html?access_token=c87299575627265144b7db286d3bf673&ref=webversion")
     }
 }
 
@@ -268,19 +268,19 @@ function getAlljs(version) {
     if (!version) {
         var time = new Date().getTime();
         var js = [
-            "https://gitee.com/jackiechan/pteui/raw/main/js/utils2.js",
-            "https://gitee.com/jackiechan/pteui/raw/main/js/fibrwprocess.js",
-            "https://gitee.com/jackiechan/pteui/raw/main/js/fibrprocess.js",
-            "https://gitee.com/jackiechan/pteui/raw/main/js/fireflywfd.js",
-            "https://gitee.com/jackiechan/pteui/raw/main/js/fireflysst.js",
-            "https://gitee.com/jackiechan/pteui/raw/main/js/xjrs.js",
-            "https://gitee.com/jackiechan/pteui/raw/main/js/ptefibl.js",
-            "https://gitee.com/jackiechan/pteui/raw/main/js/pteasq.js",
-            "https://gitee.com/jackiechan/pteui/raw/main/js/xjro.js",
-            "https://gitee.com/jackiechan/pteui/raw/main/js/we.js",
-            "https://gitee.com/jackiechan/pteui/raw/main/js/fireflyrs.js",
-            "https://gitee.com/jackiechan/pteui/raw/main/js/apeuira.js",
-            "https://gitee.com/jackiechan/pteui/raw/main/js/xjasq.js"
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/utils2.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/fibrwprocess.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/fibrprocess.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflywfd.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflysst.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjrs.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/ptefibl.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/pteasq.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjro.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/we.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/fireflyrs.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/apeuira.js",
+            "https://gitee.com/jackiechan/ptepractise/raw/main/js/xjasq.js"
         ]
         return js;
     } else if (version == "1") {
@@ -316,12 +316,12 @@ function getRawPre() {
 
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
-        return "https://gitee.com/jackiechan/pteui/raw/webversion";
+        return "https://gitee.com/jackiechan/ptepractise/raw/webversion";
     } else if ("oversea" == currentlocaltion) {
         if (url.indexOf('chenjunbo.top') >= 0) {
             return ""
         }
-        return "https://chenjunbo.github.io/pteui";
+        return "https://chenjunbo.github.io/ptepractise";
         // return "";
     }else if ("default" == currentlocaltion) {
         return "";
@@ -335,12 +335,12 @@ function getRawPreforpdf() {
     // }
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
-        return "https://gitee.com/jackiechan/pteui/raw/webversion";
+        return "https://gitee.com/jackiechan/ptepractise/raw/webversion";
     } else if ("oversea" == currentlocaltion) {
         if (url.indexOf('chenjunbo.top') >= 0) {
             return ""
         }
-        return "https://raw.githubusercontent.com/chenjunbo/pteui/webversion";
+        return "https://raw.githubusercontent.com/chenjunbo/ptepractise/webversion";
         return "";
     }else if ("default" == currentlocaltion) {
         return "";
@@ -354,12 +354,12 @@ function getGitContentPre() {
     // }
     var currentlocaltion = window.localStorage.getItem("currentlocaltion");
     if ("china" == currentlocaltion) {
-        return "https://gitee.com/api/v5/repos/jackiechan/pteui/contents";
+        return "https://gitee.com/api/v5/repos/jackiechan/ptepractise/contents";
     } else if ("oversea" == currentlocaltion) {
         if (url.indexOf('chenjunbo.top') >= 0) {
             return ""
         }
-        return "https://raw.githubusercontent.com/chenjunbo/pteui/webversion";
+        return "https://raw.githubusercontent.com/chenjunbo/ptepractise/webversion";
     }else if ("default" == currentlocaltion) {
         return "";
     }
