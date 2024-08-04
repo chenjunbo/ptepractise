@@ -16,57 +16,57 @@
     <!--            crossorigin="anonymous"></script>-->
 </head>
 <body style="background-color: #CCEED0;height: 100%">
-<div class="layui-header">
-    <ul class="layui-nav ">
-        <li class="layui-nav-item">
-            <a style="color: red;font-size: 20px" href="javascript:;">点击这里选择功能</a>
-            <dl class="layui-nav-child" id="left-menu">
-            </dl>
-        </li>
-    </ul>
-</div>
-<div class="layui-layout layui-layout-admin" style="margin-top: 1px">
 
+<div class="layui-layout layui-layout-admin" style="margin-top: 1px">
+此版本因为代码尚未更新,暂时无法开放,请使用<a style="color: red;font-size: 26px" href="https://ptepractise.chenjunbo.top/" target="_blank">新版本(点击此处跳转)</a>,等后续有时间了会重新更新,历史记录请通过导出功能导出后进入新地址战体
     <div class="layui-fluid" id="main" >
+        <div class="layui-form-item">
+            <label>导出记录包括收藏夹和对错记录</label>
+            <div class="layui-inline">
+                <button class="layui-btn layui-btn-sm" lay-header-event="export" onclick="readLocal()">导出数据</button>
+                <button class="layui-btn layui-btn-sm" lay-header-event="import" onclick="importLocal()">导入</button>
+            </div>
+        </div>
+        <div class="layui-inline" style="width: 70%;height: 60%; margin-top: 30px;padding-left: 30px">
+            <label style="color: red;font-size: 20px">导出后从本区域全选复制内容,然后去新版地址登录选择导入功能,将内容粘贴进去导入即可<br/>
+            </label>
+            <textarea maxlength="-1" class="layui-input" style="width: 100%; height: 100%" id="result"></textarea>
+        </div>
     </div>
 </div>
-<!--<script src="https://cdn.staticfile.net/layui/2.9.4/layui.min.js" type="text/javascript"></script>-->
-<script src="./js/layui.js" type="text/javascript"></script>
-<!--<script src="https://gitee.com/jackiechan/ptepractise/raw/webversion/js/utils.js"  type="text/javascript"></script>-->
-<!--<script src="https://chenjunbo.github.io/ptepractise/js/utils.js"  type="text/javascript"></script>-->
-<!--<script src="https://ptepractise.chenjunbo.top/js/utils.js"  type="text/javascript"></script>-->
-<script src="./js/utils.js"  type="text/javascript"></script>
+<script src="https://cdn.staticfile.net/layui/2.9.4/layui.min.js" type="text/javascript"></script>
 <script type="text/javascript">
-    //JS
     layui.use(['element', 'layer', 'util'], function () {
         var element = layui.element;
         var layer = layui.layer;
         var util = layui.util;
         $ = layui.$;
-        var alljs = getAlljs("1");
-        alljs.forEach(function (url) {
-            loadScript(url);
-        });
-        initOthers();
-        createNav();
     });
-    function openRight(url) {
-        $.ajax({
-            type:"get",
-            async: false,
-            url: url,
-            success:function (data){
-                var content = decodeURIComponent(escape(window.atob(data.content)));
-                $("#main").html(content);
-            }
-        });
+    function readLocal() {
+        var localStorage = exportAllLocalStorage();
+        $("#result").val(JSON.stringify(localStorage));
     }
 
-    function loadScript(url) {
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = url;
-        document.head.appendChild(script);
+    function importLocal() {
+        var html = $("#result").val();
+        console.log(html);
+        if (html) {
+            import2LocalStorage(JSON.parse(html));
+        }
+    }
+    function exportAllLocalStorage() {
+        const storage = {};
+        for (let i = 0; i < window.localStorage.length; i++) {
+            const key = window.localStorage.key(i);
+            storage[key] = window.localStorage.getItem(key);
+        }
+        return storage;
+    }
+
+    function import2LocalStorage(storage) {
+        for (key in storage) {
+            window.localStorage.setItem(key, storage[key]);
+        }
     }
 
 </script>
